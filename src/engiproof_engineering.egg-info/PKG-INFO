@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: engiproof-engineering
-Version: 0.1.1.dev0
+Version: 0.1.1
 Summary: Source-bounded research reproduction and engineering evidence framework
 Author-email: Zhiqiang Gu <Zhiqiang.gu214@gmail.com>
 Keywords: engineering,reproducibility,research,verification,evidence,subsea
@@ -10,7 +10,7 @@ License-File: LICENSE.txt
 Requires-Dist: numpy<3,>=1.26
 Dynamic: license-file
 
-# EngiProof v0.1.1 development
+# EngiProof v0.1.1
 
 > **Windows R1 note:** run `00_SETUP_WINDOWS.bat` once. After that, from this repository folder you can type `engiproof ...` directly even if your prompt still shows `(base)`. The repository-root `engiproof.cmd` dispatches to the local `.venv`.
 
@@ -18,7 +18,7 @@ Dynamic: license-file
 
 EngiProof turns selected published engineering methods into **source-bounded, callable, reproducible and independently checked engineering studies**. It is not a paper summarizer and it does not silently invent missing inputs.
 
-Initial live studies:
+Live studies:
 
 - **P08** — Vaz & Patel (1999), lateral buckling of bundled pipe systems: Figure 7, Eqs. (11)–(12), Appendix A.
 - **P12** — Zhang, Duan & Guedes Soares (2018), PiP lateral-buckling critical force: Table 4, Eq. (22), Table 5 consistency audit.
@@ -29,7 +29,7 @@ Initial live studies:
 
 ## 60-second Windows start
 
-1. Extract this ZIP to a normal folder, for example `D:\Engineering\EngiProof_v0.1.0`.
+1. Clone or extract EngiProof to a normal folder.
 2. Double-click **`00_SETUP_WINDOWS.bat`**.
 3. Double-click **`01_DEMO_WINDOWS.bat`**.
 4. Double-click **`02_VERIFY_WINDOWS.bat`**.
@@ -58,10 +58,9 @@ python run_engiproof.py list
 python run_engiproof.py verify-all
 ```
 
+## Evidence-runtime commands
 
-## v0.1.1 evidence-runtime commands
-
-The develop branch adds versioned generic contracts and queryable evidence/provenance interfaces:
+EngiProof v0.1.1 adds versioned generic contracts and queryable evidence/provenance interfaces:
 
 ```bat
 engiproof schema
@@ -74,7 +73,7 @@ engiproof verify P38
 engiproof tool P38 equation16_ratio --params "{\"diameter_ratio\":0.5,\"thickness_ratio\":0.6,\"yield_ratio\":1.0,\"mode\":\"A\"}"
 ```
 
-P16/P29/P36/P38 copyrighted PDFs and raster snapshots are not distributed. Their DOI/source SHA-256 and source-backed numerical/reference evidence are retained. The new runners independently recompute or audit the published relationships without overwriting the inherited numerical evidence files.
+P16/P29/P36/P38 copyrighted PDFs and raster snapshots are not distributed. Their DOI/source SHA-256 and source-backed numerical/reference evidence are retained. The runners independently recompute or audit the published relationships without overwriting inherited numerical evidence files.
 
 ## Evidence contract
 
@@ -96,14 +95,10 @@ python tools\new_study.py P13 "Paper title" --doi "10.xxxx/xxxxx"
 
 This creates a **DRAFT** study scaffold only. It does not claim reproduction or validation.
 
-## GitHub
-
-For a fast repository launch, read `docs/GITHUB_RELEASE.md`. If GitHub CLI (`gh`) is installed, `03_PUBLISH_GITHUB_WINDOWS.bat` can create and push a repository after you choose public/private.
-
 ## Source PDFs
 
-Place legally obtained originals in `01_doc/` using the canonical filenames recorded in each `study.json`. PDFs are ignored by Git and are **not** included in this package.
+Place legally obtained originals in `01_doc/` using the canonical filenames recorded in each `study.json`. PDFs are ignored by Git and are **not** included in public releases.
 
 ## Status
 
-v0.1.1 development extends the public v0.1.0 baseline into a reusable engineering-evidence runtime. P08/P12 remain backward compatible; P16/P29/P36 add heterogeneous walking, vibration and local-integrity evidence types; P38 remains the first complete evidence-chain showcase. This remains research/verification software, not an engineering qualification certificate or replacement for project-specific design verification.
+v0.1.1 is the first reusable engineering-evidence runtime release. It preserves backward compatibility with P08/P12, adds heterogeneous walking, vibration and local-integrity evidence types through P16/P29/P36, and uses P38 as the first complete evidence-chain showcase. This remains research/verification software, not an engineering qualification certificate or replacement for project-specific design verification.

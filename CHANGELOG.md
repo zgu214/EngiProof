@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.1.1-dev — 2026-09-25
+## 0.1.1 — 2026-09-25
 
-P38 evidence-chain integration, generic contracts, provenance/evidence/comparison/discrepancy CLI, and backward-compatible P08/P12 support. Added source-bounded P16 (walking Figure 5/Table 2), P29 (vibration Figure 16/Eqs. 1,16–18) and P36 (Eq. 8/Figure 14) studies with explicit limitations and independent checks. Engineering qualification remains separate.
+Promoted the engineering-evidence runtime from the v0.1.0 two-study prototype to six live studies. Added generic Study, Source, Evidence, Comparison, Discrepancy and Verification contracts; machine-readable provenance/evidence/comparison/discrepancy queries; P38 complete evidence-chain integration; and source-bounded P16, P29 and P36 studies with independent checks and explicit unresolved discrepancies. P08/P12 remain backward compatible. Engineering qualification remains separate and is not granted by this release.
 
 ## 0.1.0 — 2026-09-25
 
