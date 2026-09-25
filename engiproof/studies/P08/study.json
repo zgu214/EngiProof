@@ -1,0 +1,78 @@
+{
+  "schema_version": "engiproof.study/1.0",
+  "paper_id": "P08",
+  "title": "Lateral buckling of bundled pipe systems",
+  "year": 1999,
+  "evidence_status": "COMPARED",
+  "category": "Global buckling / walking / projects",
+  "source": {
+    "canonical_pdf": "p08-vaz1999.pdf",
+    "sha256": "44161532c5e9a41711539e977a6846755fca8e68d35285d65b48ea8ef8bb7389",
+    "doi": "10.1016/S0951-8339(99)00005-2"
+  },
+  "selected_targets": [
+    "Figure 7",
+    "Equations (11)-(12)",
+    "Appendix A Eq. (A.1)"
+  ],
+  "runner": "papers/P08/run_calculation.py",
+  "source_contract": "papers/P08/SOURCE.md",
+  "result_files": [
+    "results/paper_studies5/p08_figure7_reconstruction.csv",
+    "results/paper_studies5/p08_summary.json"
+  ],
+  "report": "reports/paper_studies5/index.html",
+  "verification_tests": [
+    "tests.test_paper_studies_batch5.PaperStudies5.test_p08_coefficient"
+  ],
+  "tools": [
+    {
+      "name": "critical_temperature_eq11",
+      "module": "papers/P08/tool_api.py",
+      "function": "critical_temperature_eq11",
+      "arguments": {
+        "length_m": "float > 0"
+      },
+      "returns": "critical temperature increment [degC]",
+      "evidence": "P08 Eq. (11), case-study relationship",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "critical_temperature_appendix_a",
+      "module": "papers/P08/tool_api.py",
+      "function": "critical_temperature_appendix_a",
+      "arguments": {
+        "length_m": "float > 0",
+        "mode_n": "integer >= 1"
+      },
+      "returns": "critical temperature increment [degC]",
+      "evidence": "P08 Appendix A beta=0.04 branch used in Figure 7 reconstruction",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "independent_euler_thermal_coefficient",
+      "module": "papers/P08/tool_api.py",
+      "function": "independent_euler_thermal_coefficient",
+      "arguments": {
+        "Do_m": "optional float",
+        "Di_m": "optional float",
+        "alpha_per_C": "optional float"
+      },
+      "returns": "C in dT=C/L^2 [degC*m^2]",
+      "evidence": "independent Euler-load / restrained-thermal-load check",
+      "evidence_class": "INDEPENDENT"
+    }
+  ],
+  "limitations": [
+    "No new FE reproduction.",
+    "Soil friction and pressure differential are excluded in the reproduced source case.",
+    "Source PDF is external to the distributed package; expected SHA256 is preserved."
+  ],
+  "next_actions": [
+    "Use callable equations for bounded parameter checks without changing published-evidence status.",
+    "Extend EngiProof only to source-ready studies with existing reproduction evidence."
+  ],
+  "framework": "EngiProof",
+  "framework_version": "0.1.0",
+  "provenance_note": "Migrated from an earlier internal working prototype; engineering evidence/status unchanged."
+}

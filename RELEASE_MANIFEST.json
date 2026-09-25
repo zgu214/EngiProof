@@ -1,0 +1,281 @@
+{
+  "project": "EngiProof",
+  "version": "0.1.0",
+  "date": "2026-09-25",
+  "tagline": "From Published Research to Verified Engineering",
+  "live_studies": [
+    "P08",
+    "P12"
+  ],
+  "source_pdfs_included": false,
+  "engineering_qualification_granted": false,
+  "test_command": "python -m unittest discover -s tests -v",
+  "verification_command": "engiproof verify-all",
+  "files": [
+    {
+      "path": ".agents/skills/engiproof/SKILL.md",
+      "sha256": "b7241330281cab6d1ce3aaa49de4d983e52e24627813694f36aaeb66594c391b",
+      "size_bytes": 996
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "2333e6961064f6ba9c790e4c426b0997054f046e5fbd2e6ba5ef179445db2e21",
+      "size_bytes": 88
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "d3bac274c4941bd5994463ce3bf80f44354fd1a99ba84a416493ea35f1a55b46",
+      "size_bytes": 503
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "45ab2c592bfb186b5eae4cec2a58eea7c3fd6381db88ff1a79c6db8be114f811",
+      "size_bytes": 238
+    },
+    {
+      "path": "00_SETUP_WINDOWS.bat",
+      "sha256": "32faf0a116f4c9fdd0f3e7c256651bc17a4ab66bdb0c690bd84d6d264754a92f",
+      "size_bytes": 753
+    },
+    {
+      "path": "01_DEMO_WINDOWS.bat",
+      "sha256": "651ecf9f436166f891402d41a5fdeeb68de5439f720bc33db7a63b5cb85d3c0a",
+      "size_bytes": 488
+    },
+    {
+      "path": "01_doc/README.md",
+      "sha256": "8dcaa1259d7fb5cbf51c0e8ea8919057fe3ea1e35bb70f6233b200955c304e83",
+      "size_bytes": 244
+    },
+    {
+      "path": "02_VERIFY_WINDOWS.bat",
+      "sha256": "be0e58d58cddc3258995ff3878a70c95d7d738420274154358c3c6d0a0cd747e",
+      "size_bytes": 356
+    },
+    {
+      "path": "03_PUBLISH_GITHUB_WINDOWS.bat",
+      "sha256": "ac38aaf81e5d9c42092f830a96a3a96d76d9faae51018669d9d18ca768302fd2",
+      "size_bytes": 1273
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "590c96dcf0f4a356fbe0984a8ba2b695a24de4e7f61575e3380797943fe7843f",
+      "size_bytes": 129
+    },
+    {
+      "path": "CITATION.cff",
+      "sha256": "eafdaccca383051ff04c6a61cc53daf2a1f57aa43cb3136d48f4a02ca0923123",
+      "size_bytes": 352
+    },
+    {
+      "path": "DOCTOR.json",
+      "sha256": "9489c358ba57c93213aac84c6a5797a6e4a1ae89d25d8ce3c8f906d7c22703a3",
+      "size_bytes": 269
+    },
+    {
+      "path": "LICENSE.txt",
+      "sha256": "9e3b8104d0eb31e7de965da44b772c2a266a308f9d7320c2798cc5c3551a298a",
+      "size_bytes": 410
+    },
+    {
+      "path": "NAME_DECISION.md",
+      "sha256": "1c871d1aa1abf22d8fbf8cde962b22b51cdb233295e2eacef0c3fc50498c29dc",
+      "size_bytes": 587
+    },
+    {
+      "path": "README.md",
+      "sha256": "c4cd9cff0fec2c51bc15a6ab3744f27c57a89e8428087ce0cea961b57bef9c46",
+      "size_bytes": 2734
+    },
+    {
+      "path": "RELEASE_NOTES_v0.1.0.md",
+      "sha256": "1c49d3fee4bde046f82f799c941ea9f3cd3372d1af158e0ae0d1ab87e81ce024",
+      "size_bytes": 812
+    },
+    {
+      "path": "STUDIES.json",
+      "sha256": "898054e5aeee7337d218cc2991c4a7ad618172b73bee24f6c0fa14976bec3d7f",
+      "size_bytes": 526
+    },
+    {
+      "path": "TEST_RUN.log",
+      "sha256": "a8a396fcde17012e1b88f918dd891e96140187a2a44629089f627483e8ac6aa4",
+      "size_bytes": 887
+    },
+    {
+      "path": "VERIFY_ALL.json",
+      "sha256": "d41679eca18f0429c07ba9b449100e83d1cdef22b9a55bc29dfa680932faad9e",
+      "size_bytes": 2613
+    },
+    {
+      "path": "VERSION",
+      "sha256": "e9dd8507f4bf0c6f42458e41aea833ad0bd3f6127272335eee9bf4d58541ed67",
+      "size_bytes": 6
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "12aaecc951e2f3aff625f6ab965f8c05e4c2d9740ec49374dcf0eed7412f06d6",
+      "size_bytes": 1029
+    },
+    {
+      "path": "docs/GITHUB_RELEASE.md",
+      "sha256": "52316a75a094abcb4cc50a28c4b7311f48a3610dddd37309f8fd91629ea9b769",
+      "size_bytes": 1622
+    },
+    {
+      "path": "docs/PUBLIC_RELEASE_CHECKLIST.md",
+      "sha256": "1247b4c708589660f005cd4e832795082a7b82454e083e756c32ef4f5375751e",
+      "size_bytes": 619
+    },
+    {
+      "path": "docs/QUICKSTART_WINDOWS.md",
+      "sha256": "a094cd856b3bcd380ff5d6d67f0ae02049c826fb4265a5b5ae2fa8140992836f",
+      "size_bytes": 1436
+    },
+    {
+      "path": "docs/SOURCES.md",
+      "sha256": "1bea8fb743912f7b87d1073b347bff4d1874a3fbbece26b397271833954d57cb",
+      "size_bytes": 540
+    },
+    {
+      "path": "engiproof/registry.json",
+      "sha256": "73cb47ee7e621d6b79432861ac847539c2c8b1dd397b4b779163f20b2576ddf3",
+      "size_bytes": 204
+    },
+    {
+      "path": "engiproof/studies/P08/study.json",
+      "sha256": "9be2ec12d0540b34d2742e875bcdd643fa71c7dc35f07929f832e20bb901e955",
+      "size_bytes": 2832
+    },
+    {
+      "path": "engiproof/studies/P12/study.json",
+      "sha256": "b058ff45a163c37420b5b1b8be0e16596987dd10266788b07cbacd42993dbf1f",
+      "size_bytes": 3202
+    },
+    {
+      "path": "papers/P08/SOURCE.md",
+      "sha256": "f8c6aa114a05f5a7492c915ca2f6f874ca96984981f531a070622f5ea82f1faf",
+      "size_bytes": 422
+    },
+    {
+      "path": "papers/P08/run_calculation.py",
+      "sha256": "93eb5b6461903475512fbb5c2dbfc73d7c987a08ff720fb1de51e6b540269202",
+      "size_bytes": 1549
+    },
+    {
+      "path": "papers/P08/tool_api.py",
+      "sha256": "8a32d11d42c30e3c27ec7c89119fc16aa374d7e1e72c04124dd60669a96d6b2a",
+      "size_bytes": 2243
+    },
+    {
+      "path": "papers/P12/SOURCE.md",
+      "sha256": "2c652fd0a9afe537a9fb280bae76342eaaa75b0f916bfd3c57a122aaeae5c99a",
+      "size_bytes": 448
+    },
+    {
+      "path": "papers/P12/run_calculation.py",
+      "sha256": "1fb807d5e4e6b68523de21f63352eb8441be9f8e8bd01a779b8887e772234447",
+      "size_bytes": 3412
+    },
+    {
+      "path": "papers/P12/tool_api.py",
+      "sha256": "5c9584968b601909a1955d2d65bcd99dc199d648e1898ad089ef409a7c61b142",
+      "size_bytes": 3736
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "7e2c2e5bc5e520250883c744304e8c0e6435aff63dfeda7a21bee1cb62bb2684",
+      "size_bytes": 587
+    },
+    {
+      "path": "reports/index.html",
+      "sha256": "055afa3595cc0cff003a0c2d244f3b7646862628111e0c93a4d895a29ff515d3",
+      "size_bytes": 1373
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "99f43573522565d7c480efd1f954892948033915df6a4e685327e995d3396eb6",
+      "size_bytes": 15
+    },
+    {
+      "path": "results/paper_studies5/p08_figure7_reconstruction.csv",
+      "sha256": "6bd1c576d48322de5e8d48eaad462fe77f6252f2b1108e2eb7e244ce28138b8b",
+      "size_bytes": 864
+    },
+    {
+      "path": "results/paper_studies5/p08_summary.json",
+      "sha256": "44f06f3be5e99a13cea3e36ddc24d4f088fc85856825c5c5076fe9d2b7cb4edf",
+      "size_bytes": 392
+    },
+    {
+      "path": "results/paper_studies5/p12_summary.json",
+      "sha256": "7d8efbbf952a76f2cb37fe7fc3a34322dd9526d0f0ef947a1263b366e4685695",
+      "size_bytes": 902
+    },
+    {
+      "path": "results/paper_studies5/p12_table4_eq22_reconstruction.csv",
+      "sha256": "2d8773db5d476939469c1eac0bf570a57cbf82c8358e8a976a12bea38a41e6cf",
+      "size_bytes": 5172
+    },
+    {
+      "path": "results/paper_studies5/p12_table5_duplicate_row_audit.csv",
+      "sha256": "d4031db1623748935cb8c63437b18809b675ba2fd86f78935e0930fad58636e8",
+      "size_bytes": 190
+    },
+    {
+      "path": "run_engiproof.py",
+      "sha256": "417a64aebbec3853ef07cee11c7fb370e7dddd46c620cdf34892b7365f6be887",
+      "size_bytes": 200
+    },
+    {
+      "path": "setup.sh",
+      "sha256": "11f4002eddca7bd680c8820e891e8ae829447eedf9c063a1d7d5ee55ebb8d95f",
+      "size_bytes": 281
+    },
+    {
+      "path": "src/engiproof/__init__.py",
+      "sha256": "7a5879c9229a992635d1f19a85dc8269f41f4da49dbb006456b7a99725b8383a",
+      "size_bytes": 88
+    },
+    {
+      "path": "src/engiproof/__main__.py",
+      "sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+      "size_bytes": 47
+    },
+    {
+      "path": "src/engiproof/cli.py",
+      "sha256": "a3439219d958814cc893d89f70e08fb9b7ce3d7eeee93e00a3eacb5db0697fc1",
+      "size_bytes": 2730
+    },
+    {
+      "path": "src/engiproof/core.py",
+      "sha256": "e083ed0246434ae32b814dd30f5dac227a7c83013d9e427e82d362ce5891e6fc",
+      "size_bytes": 7469
+    },
+    {
+      "path": "tests/test_engiproof.py",
+      "sha256": "2f15a5e68a60917fbdcf3d79ea8887944d29522becb4403a1b12a39aec9637f4",
+      "size_bytes": 1451
+    },
+    {
+      "path": "tests/test_paper_studies_batch5.py",
+      "sha256": "04311cd0867de6de22977caa1db2b40c6b8aeef9b216b0dd8c447b74ea6523a7",
+      "size_bytes": 793
+    },
+    {
+      "path": "tools/build_report.py",
+      "sha256": "af295f0302c47f232016446381de2d510fc4b8c394c2888e71c27537accd187e",
+      "size_bytes": 1584
+    },
+    {
+      "path": "tools/new_study.py",
+      "sha256": "d83b8461ed464238c0cd0e7f5cba25d032b507d5c231fb962493da4916cafa42",
+      "size_bytes": 2184
+    },
+    {
+      "path": "verify.sh",
+      "sha256": "78ec3092aff6920edca55067d269ee981f4ab3ded4cb4b5c4e7ccb44b6c596c7",
+      "size_bytes": 192
+    }
+  ]
+}

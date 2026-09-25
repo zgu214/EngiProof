@@ -1,0 +1,8 @@
+{
+  "source": "Vaz & Patel (1999), Fig. 7, Eqs. (11)-(12), Appendix A Eq. (A.1)",
+  "published_coefficient_C_m2": 9476.0,
+  "independent_coefficient_C_m2": 9440.482226400332,
+  "relative_difference_percent": -0.37481821021177325,
+  "status": "COMPARED",
+  "boundary": "Case-study analytical reconstruction; soil friction and pressure differential are excluded as in the source case study."
+}

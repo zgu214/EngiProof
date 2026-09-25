@@ -1,0 +1,82 @@
+{
+  "schema_version": "engiproof.study/1.0",
+  "paper_id": "P12",
+  "title": "Lateral buckling critical force for submarine pipe-in-pipe pipelines",
+  "year": 2018,
+  "evidence_status": "COMPARED",
+  "category": "Global buckling / walking / projects",
+  "source": {
+    "canonical_pdf": "p12-zhang2018.pdf",
+    "sha256": "52609bed83c41c56edefe7157d88a658c01b1f587b4cdcbde41d7ea151533c23",
+    "doi": "10.1016/j.apor.2018.06.007"
+  },
+  "selected_targets": [
+    "Table 4",
+    "Equation (22)",
+    "Table 5 consistency audit"
+  ],
+  "runner": "papers/P12/run_calculation.py",
+  "source_contract": "papers/P12/SOURCE.md",
+  "result_files": [
+    "results/paper_studies5/p12_table4_eq22_reconstruction.csv",
+    "results/paper_studies5/p12_table5_duplicate_row_audit.csv",
+    "results/paper_studies5/p12_summary.json"
+  ],
+  "report": "reports/paper_studies5/index.html",
+  "verification_tests": [
+    "tests.test_paper_studies_batch5.PaperStudies5.test_p12_eq22_recovery",
+    "tests.test_paper_studies_batch5.PaperStudies5.test_p12_table5_source_inconsistency_retained"
+  ],
+  "tools": [
+    {
+      "name": "eq22_shape_term",
+      "module": "papers/P12/tool_api.py",
+      "function": "eq22_shape_term",
+      "arguments": {
+        "beta": "float > 0",
+        "clearance_mm": "float > 0",
+        "delta_r_mm": "optional float > 0"
+      },
+      "returns": "Eq. (22) functional term before common dimensional scale",
+      "evidence": "P12 Eq. (22); dimensional scale is explicitly not inferred as independent FE physics",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "table4_fit_force_MN",
+      "module": "papers/P12/tool_api.py",
+      "function": "table4_fit_force_MN",
+      "arguments": {
+        "beta": "float > 0",
+        "clearance_mm": "float > 0"
+      },
+      "returns": "independently fitted Table-4 regression force [MN]",
+      "evidence": "regression on printed P12 Table 4 source values",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "eq22_scaled_force_MN",
+      "module": "papers/P12/tool_api.py",
+      "function": "eq22_scaled_force_MN",
+      "arguments": {
+        "beta": "float > 0",
+        "clearance_mm": "float > 0"
+      },
+      "returns": "Eq. (22) shape times common fitted scale [MN]",
+      "evidence": "comparison tool only; not independent FE/contact prediction",
+      "evidence_class": "INDEPENDENT"
+    }
+  ],
+  "limitations": [
+    "Table 4 is published FE-derived source data; EngiProof does not recreate the FE/contact model.",
+    "The common dimensional scale used in comparison is fitted, not claimed as independent physics.",
+    "The duplicated Table 5 beta=1.0/beta=0.3 row is preserved as a source inconsistency.",
+    "Source PDF is external to the distributed package; expected SHA256 is preserved."
+  ],
+  "next_actions": [
+    "Keep the Table 5 inconsistency visible; do not silently repair it.",
+    "Use callable regressions only within the source evidence boundary."
+  ],
+  "framework": "EngiProof",
+  "framework_version": "0.1.0",
+  "provenance_note": "Migrated from an earlier internal working prototype; engineering evidence/status unchanged."
+}

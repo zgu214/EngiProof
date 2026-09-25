@@ -1,0 +1,15 @@
+test_doctor (test_engiproof.EngiProofTests.test_doctor) ... ok
+test_p08_tool (test_engiproof.EngiProofTests.test_p08_tool) ... ok
+test_p12_tool (test_engiproof.EngiProofTests.test_p12_tool) ... ok
+test_registry (test_engiproof.EngiProofTests.test_registry) ... ok
+test_schema (test_engiproof.EngiProofTests.test_schema) ... ok
+test_verify (test_engiproof.EngiProofTests.test_verify) ... ok
+test_verify_all (test_engiproof.EngiProofTests.test_verify_all) ... ok
+test_p08_coefficient (test_paper_studies_batch5.PaperStudies5.test_p08_coefficient) ... ok
+test_p12_eq22_recovery (test_paper_studies_batch5.PaperStudies5.test_p12_eq22_recovery) ... ok
+test_p12_table5_source_inconsistency_retained (test_paper_studies_batch5.PaperStudies5.test_p12_table5_source_inconsistency_retained) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 3.457s
+
+OK

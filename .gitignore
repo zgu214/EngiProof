@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.env
+.env.*
+# Keep legally obtained papers local; do not publish them by accident.
+01_doc/*.pdf
+private_sources/
+client_data/
+*.odb
+*.sim

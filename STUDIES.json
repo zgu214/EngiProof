@@ -1,0 +1,22 @@
+[
+  {
+    "paper_id": "P08",
+    "title": "Lateral buckling of bundled pipe systems",
+    "evidence_status": "COMPARED",
+    "tools": [
+      "critical_temperature_eq11",
+      "critical_temperature_appendix_a",
+      "independent_euler_thermal_coefficient"
+    ]
+  },
+  {
+    "paper_id": "P12",
+    "title": "Lateral buckling critical force for submarine pipe-in-pipe pipelines",
+    "evidence_status": "COMPARED",
+    "tools": [
+      "eq22_shape_term",
+      "table4_fit_force_MN",
+      "eq22_scaled_force_MN"
+    ]
+  }
+]
