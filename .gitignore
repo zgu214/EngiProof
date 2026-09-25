@@ -16,3 +16,9 @@ private_sources/
 client_data/
 *.odb
 *.sim
+*.egg-info/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
