@@ -1,0 +1,88 @@
+{
+  "schema_version": "engiproof.contracts/1.0",
+  "framework": "EngiProof",
+  "framework_version": "0.1.1.dev0",
+  "evidence_classes": [
+    "PUBLISHED",
+    "INDEPENDENT",
+    "SOLVER_NEW"
+  ],
+  "evidence_statuses": [
+    "DRAFT",
+    "SOURCE_READY",
+    "REPRODUCED",
+    "COMPARED",
+    "VERIFIED",
+    "CONDITIONAL",
+    "BLOCKED"
+  ],
+  "contracts": {
+    "study": {
+      "schema": "engiproof.study/1.x",
+      "required": [
+        "schema_version",
+        "paper_id",
+        "title",
+        "evidence_status",
+        "source",
+        "runner",
+        "source_contract",
+        "result_files",
+        "verification_tests",
+        "tools",
+        "limitations"
+      ]
+    },
+    "source": {
+      "schema": "engiproof.source/1.0",
+      "required": [
+        "canonical_pdf",
+        "sha256",
+        "doi"
+      ],
+      "rule": "Copyrighted sources may remain external; expected SHA-256 must be retained."
+    },
+    "evidence": {
+      "schema": "engiproof.evidence/1.0",
+      "required": [
+        "id",
+        "kind",
+        "evidence_class",
+        "status",
+        "source_refs"
+      ],
+      "rule": "Execution alone never promotes evidence status."
+    },
+    "comparison": {
+      "schema": "engiproof.comparison/1.0",
+      "required": [
+        "id",
+        "target",
+        "status",
+        "reference",
+        "metrics"
+      ],
+      "rule": "Reference population and evidence boundary must be explicit."
+    },
+    "discrepancy": {
+      "schema": "engiproof.discrepancy/1.0",
+      "required": [
+        "id",
+        "target",
+        "status",
+        "observation",
+        "engineering_interpretation"
+      ],
+      "rule": "Do not hide or tune unresolved discrepancies."
+    },
+    "verification": {
+      "schema": "engiproof.verification/1.0",
+      "required": [
+        "tests",
+        "source_check",
+        "contract_check"
+      ],
+      "rule": "Computational verification is not engineering qualification."
+    }
+  }
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "paper": "P38",
+    "target": "Fig10a",
+    "status": "COMPARED",
+    "source": "papers/P38/source.pdf",
+    "calculation": "papers/P38/run_calculation.py",
+    "reference": "papers/P38/reference/pixel_points.csv",
+    "results": "papers/P38/results/summary.json",
+    "html": "reports/p38/index.html",
+    "book": "book/continuation/P38_Propagation_Mechanics.pdf",
+    "new_FE": false,
+    "engineering_accepted": false
+  },
+  {
+    "paper": "P38",
+    "target": "Fig10b",
+    "status": "COMPARED",
+    "source": "papers/P38/source.pdf",
+    "calculation": "papers/P38/run_calculation.py",
+    "reference": "papers/P38/reference/pixel_points.csv",
+    "results": "papers/P38/results/summary.json",
+    "html": "reports/p38/index.html",
+    "book": "book/continuation/P38_Propagation_Mechanics.pdf",
+    "new_FE": false,
+    "engineering_accepted": false
+  },
+  {
+    "paper": "P38",
+    "target": "Fig11a",
+    "status": "CONDITIONAL",
+    "source": "papers/P38/source.pdf",
+    "calculation": "papers/P38/run_calculation.py",
+    "reference": "papers/P38/reference/pixel_points.csv",
+    "results": "papers/P38/results/summary.json",
+    "html": "reports/p38/index.html",
+    "book": "book/continuation/P38_Propagation_Mechanics.pdf",
+    "new_FE": false,
+    "engineering_accepted": false
+  },
+  {
+    "paper": "P38",
+    "target": "Fig11b",
+    "status": "CONDITIONAL",
+    "source": "papers/P38/source.pdf",
+    "calculation": "papers/P38/run_calculation.py",
+    "reference": "papers/P38/reference/pixel_points.csv",
+    "results": "papers/P38/results/summary.json",
+    "html": "reports/p38/index.html",
+    "book": "book/continuation/P38_Propagation_Mechanics.pdf",
+    "new_FE": false,
+    "engineering_accepted": false
+  },
+  {
+    "paper": "P38",
+    "target": "Table2_arithmetic",
+    "status": "COMPARED",
+    "source": "papers/P38/source.pdf",
+    "calculation": "papers/P38/run_calculation.py",
+    "reference": "papers/P38/inputs/table1_case.json",
+    "results": "papers/P38/results/summary.json",
+    "html": "reports/p38/index.html",
+    "book": "book/continuation/P38_Propagation_Mechanics.pdf",
+    "new_FE": false,
+    "engineering_accepted": false
+  }
+]

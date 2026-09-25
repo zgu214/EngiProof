@@ -1,4 +1,4 @@
-# EngiProof v0.1.0
+# EngiProof v0.1.1 development
 
 > **Windows R1 note:** run `00_SETUP_WINDOWS.bat` once. After that, from this repository folder you can type `engiproof ...` directly even if your prompt still shows `(base)`. The repository-root `engiproof.cmd` dispatches to the local `.venv`.
 
@@ -10,6 +10,7 @@ Initial live studies:
 
 - **P08** — Vaz & Patel (1999), lateral buckling of bundled pipe systems: Figure 7, Eqs. (11)–(12), Appendix A.
 - **P12** — Zhang, Duan & Guedes Soares (2018), PiP lateral-buckling critical force: Table 4, Eq. (22), Table 5 consistency audit.
+- **P38** — Alrsai, Karampour & Albermani (2018), propagation buckling: Figures 10–11, Eqs. (6b)/(12)/(16), Table 2, plus an independent direct work-balance check. P38 is intentionally `CONDITIONAL` overall because the Figure 11 plotted analytical line conflicts with direct Eq. (6b) evaluation.
 
 ## 60-second Windows start
 
@@ -38,6 +39,24 @@ python run_engiproof.py doctor
 python run_engiproof.py list
 python run_engiproof.py verify-all
 ```
+
+
+## v0.1.1 evidence-runtime commands
+
+The develop branch adds versioned generic contracts and queryable evidence/provenance interfaces:
+
+```bat
+engiproof schema
+engiproof schema study
+engiproof evidence P38
+engiproof compare P38
+engiproof discrepancy P38
+engiproof provenance P38
+engiproof verify P38
+engiproof tool P38 equation16_ratio --params "{\"diameter_ratio\":0.5,\"thickness_ratio\":0.6,\"yield_ratio\":1.0,\"mode\":\"A\"}"
+```
+
+P38's copyrighted PDF and extracted raster figures are not distributed. The source SHA-256, DOI, extraction contract and deterministic digitized-point provenance are retained. The public runner reproduces the inherited numerical evidence without changing the five numerical result files.
 
 ## Evidence contract
 
@@ -69,4 +88,4 @@ Place legally obtained originals in `01_doc/` using the canonical filenames reco
 
 ## Status
 
-v0.1.0 is an engineering research framework prototype with two source-linked study modules and deterministic tests. It is not an engineering qualification certificate and does not replace project-specific design verification.
+v0.1.1 development extends the public v0.1.0 baseline into a reusable engineering-evidence runtime. P08 and P12 remain backward compatible; P38 is the first complete evidence-chain study. This remains research/verification software, not an engineering qualification certificate or replacement for project-specific design verification.

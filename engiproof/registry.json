@@ -1,10 +1,11 @@
 {
   "schema_version": "engiproof.registry/1.0",
   "framework": "EngiProof",
-  "version": "0.1.0",
+  "version": "0.1.1.dev0",
   "tagline": "From Published Research to Verified Engineering",
   "studies": [
     "P08",
-    "P12"
+    "P12",
+    "P38"
   ]
 }

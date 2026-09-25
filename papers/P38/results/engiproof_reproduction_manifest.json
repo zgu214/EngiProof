@@ -1,0 +1,26 @@
+{
+  "schema_version": "engiproof.reproduction/1.0",
+  "paper_id": "P38",
+  "source_asset_check": {
+    "pdf_present": false,
+    "pdf_hash_match": null,
+    "rasters_checked": 0
+  },
+  "inputs_and_code_sha256": {
+    "mechanics.py": "f425074740dfbd3969214518d31ed7f2b2f07c4a19c16b82d613453683243a7f",
+    "run_calculation.py": "b3f3aaf437cc3a3318ff88b247ac54cdb64a8dc88abeeee11cebf9840f734902",
+    "inputs\\table1_case.json": "9d78fecfd59cea3b25fdf98295b59c77742447f08d62e24015ffb43be32a422b",
+    "reference\\extraction_contract.json": "7aedb06aec54039bc32ffc0077e8be54ff5a2a5b8e4c9f5cb9a4cd428305680c",
+    "reference\\pixel_points.csv": "e58fd2671e278fb5de1d768e909449b668aafee998b52ae6d99272fdd38ef103"
+  },
+  "result_sha256": {
+    "results\\reference_comparisons.csv": "4d090d3a4d98fe1ea591984575fdcba50fd21a0b3f5aa4a61d5b009040532118",
+    "results\\calculated_curves.csv": "c960044022247ad61d8fe6915588926b68326b316e471e5ab829632407279330",
+    "results\\table2_check.csv": "dcedb023b568b70c9efa56e50584d4a82b1fed9d299a74909c97483e5d6c90cc",
+    "results\\independent_work_checks.csv": "e72613cda7b67aa7e641ce62b4bae1fb5b2281b788042a971d826c6268d69b8e",
+    "results\\summary.json": "d7d1cccef4f61fe68261d6d2b2a1fd38f6d7c969e1e5818f894d174cab358b38"
+  },
+  "python": "3.12.10",
+  "numpy": "2.5.3",
+  "qualification": "NOT_GRANTED"
+}

@@ -1,0 +1,227 @@
+{
+  "schema_version": "engiproof.patch_manifest/1.0",
+  "patch": "v0.1.1 P38 integration",
+  "base": "public v0.1.0 plus existing develop ROADMAP_v0.1.1.md",
+  "created": "2026-09-25",
+  "tests": {
+    "unittest": "19 PASS",
+    "verify_all": "PASS",
+    "cli_queries": "schema/evidence/compare/discrepancy/provenance/tool PASS"
+  },
+  "copyrighted_assets_included": false,
+  "roadmap_overwritten": false,
+  "inherited_p38_numeric_hashes": {
+    "reference_comparisons.csv": "4d090d3a4d98fe1ea591984575fdcba50fd21a0b3f5aa4a61d5b009040532118",
+    "calculated_curves.csv": "c960044022247ad61d8fe6915588926b68326b316e471e5ab829632407279330",
+    "table2_check.csv": "dcedb023b568b70c9efa56e50584d4a82b1fed9d299a74909c97483e5d6c90cc",
+    "independent_work_checks.csv": "e72613cda7b67aa7e641ce62b4bae1fb5b2281b788042a971d826c6268d69b8e",
+    "summary.json": "aac609cc9f103f8fed46a35553314585207e9ce94837f52b5c90ec511585513a"
+  },
+  "files": [
+    {
+      "path": ".agents/skills/engiproof/SKILL.md",
+      "sha256": "7d6c6d7d2fc88519fa22e248fa3c28769a47883c19c2ac655b62f32c3a89acbe",
+      "size": 1669
+    },
+    {
+      "path": "04_VERIFY_V011_WINDOWS.bat",
+      "sha256": "809fd723dc4f85ebe011c3ef32bd003a965c54082795b0d6287fa3ddf49655d3",
+      "size": 375
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "6fed8bf011fe918aa5b88fc38768814b270c7b9eeb8539046768450d6330e650",
+      "size": 343
+    },
+    {
+      "path": "DOCTOR.json",
+      "sha256": "8957cfd56def14f98b4b4b40ae229fc19d8d3f9a3d54dbff104ad04913f2e221",
+      "size": 297
+    },
+    {
+      "path": "PATCH_NOTES_v0.1.1_P38.md",
+      "sha256": "924ed80f63f3034f729bacf9b294f4ac4d8fb2e37d06b8e1a010c330ad39cdfe",
+      "size": 1352
+    },
+    {
+      "path": "PROGRESS_v0.1.1.md",
+      "sha256": "97d5d17f2abd525f569b9696e239a04afdb7804dc23a16de07770e15bdb930f5",
+      "size": 1495
+    },
+    {
+      "path": "README.md",
+      "sha256": "1eb98d95743711217c145e7be73e26cd5b8552ba5c12a1b75a2be4980ae85fb7",
+      "size": 4127
+    },
+    {
+      "path": "STUDIES.json",
+      "sha256": "7c0658c74908526ad77ff2bbd8a25b5f8dd85ce05e7ff0d1f16803f8589483fe",
+      "size": 1059
+    },
+    {
+      "path": "TEST_RUN.log",
+      "sha256": "37b3833b18a7720638efc2fe77301f87d6c703e3a451156329d7253b5239de44",
+      "size": 1776
+    },
+    {
+      "path": "VERIFY_ALL.json",
+      "sha256": "210ad42c4863419105f56b493d51c31e61b53ea5c904e3d4e51ea012ac3565da",
+      "size": 5638
+    },
+    {
+      "path": "VERSION",
+      "sha256": "9a2b6c4a12bfc6f79180f73310a4bd475325d518cf8443a6678ed708ae82f533",
+      "size": 11
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "07aa2956c25332e67ac8242395014c3a9538c0e2157fc85bf9febcf7a5d8d971",
+      "size": 1143
+    },
+    {
+      "path": "docs/CONTRACTS_v0.1.1.md",
+      "sha256": "f678b5b14f08a68e104555f62c62438b802bb1b58194e02137a4518b87b7fb0d",
+      "size": 1278
+    },
+    {
+      "path": "engiproof/contracts/contracts.json",
+      "sha256": "b19b72620a8890c41089b063d4aded86a80f21ce303618b9b9737c472a4ca52e",
+      "size": 1983
+    },
+    {
+      "path": "engiproof/registry.json",
+      "sha256": "e6c5963debcd2a67f5d0bd11fcfe7d4a402fcf1021e0b872268a121ab338d328",
+      "size": 220
+    },
+    {
+      "path": "engiproof/studies/P38/evidence_graph.json",
+      "sha256": "820bd5ab49b587ccf1a89c7be84bc648809738906db3bf8256f6a235eee21a87",
+      "size": 6436
+    },
+    {
+      "path": "engiproof/studies/P38/study.json",
+      "sha256": "4aedd0b3ecd4458bef2548269e0bfc02466b3eba630c89ba0a60cbcb252a7db2",
+      "size": 8979
+    },
+    {
+      "path": "papers/P38/SOURCE.md",
+      "sha256": "7cfeab340fe664fbbcbe5f6e41e12fe661e3d96f0edb813cb4735110b66ec2f2",
+      "size": 2412
+    },
+    {
+      "path": "papers/P38/inputs/table1_case.json",
+      "sha256": "9d78fecfd59cea3b25fdf98295b59c77742447f08d62e24015ffb43be32a422b",
+      "size": 781
+    },
+    {
+      "path": "papers/P38/mechanics.py",
+      "sha256": "f425074740dfbd3969214518d31ed7f2b2f07c4a19c16b82d613453683243a7f",
+      "size": 3174
+    },
+    {
+      "path": "papers/P38/reference/extraction_contract.json",
+      "sha256": "7aedb06aec54039bc32ffc0077e8be54ff5a2a5b8e4c9f5cb9a4cd428305680c",
+      "size": 2156
+    },
+    {
+      "path": "papers/P38/reference/pixel_points.csv",
+      "sha256": "e58fd2671e278fb5de1d768e909449b668aafee998b52ae6d99272fdd38ef103",
+      "size": 2271
+    },
+    {
+      "path": "papers/P38/results/calculated_curves.csv",
+      "sha256": "c960044022247ad61d8fe6915588926b68326b316e471e5ab829632407279330",
+      "size": 68434
+    },
+    {
+      "path": "papers/P38/results/engiproof_reproduction_manifest.json",
+      "sha256": "95172fee9a88722e17bf56a5f0a990f74925fea1278dbb09532aeb6a8331717c",
+      "size": 1333
+    },
+    {
+      "path": "papers/P38/results/independent_work_checks.csv",
+      "sha256": "e72613cda7b67aa7e641ce62b4bae1fb5b2281b788042a971d826c6268d69b8e",
+      "size": 9059
+    },
+    {
+      "path": "papers/P38/results/reference_comparisons.csv",
+      "sha256": "4d090d3a4d98fe1ea591984575fdcba50fd21a0b3f5aa4a61d5b009040532118",
+      "size": 15328
+    },
+    {
+      "path": "papers/P38/results/source_calculation_manifest.json",
+      "sha256": "7496796ad23e1a4dc2d1dd0e83ba1c253f6cfb1d005f0287177d3f89a6142b28",
+      "size": 572
+    },
+    {
+      "path": "papers/P38/results/summary.json",
+      "sha256": "aac609cc9f103f8fed46a35553314585207e9ce94837f52b5c90ec511585513a",
+      "size": 7297
+    },
+    {
+      "path": "papers/P38/results/table2_check.csv",
+      "sha256": "dcedb023b568b70c9efa56e50584d4a82b1fed9d299a74909c97483e5d6c90cc",
+      "size": 397
+    },
+    {
+      "path": "papers/P38/run_calculation.py",
+      "sha256": "b3f3aaf437cc3a3318ff88b247ac54cdb64a8dc88abeeee11cebf9840f734902",
+      "size": 8670
+    },
+    {
+      "path": "papers/P38/targets.json",
+      "sha256": "53880a6efe3e9d97fb32fb1861001fb106ee8cd8e715f64f183aeffeed144cc1",
+      "size": 2187
+    },
+    {
+      "path": "papers/P38/tool_api.py",
+      "sha256": "b9f235472dd9b5ba0c4ab0e39bc7ed2aad0170a5fcc133464f5f7ca3a2d1616e",
+      "size": 2318
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "fae0580eaf8ac08b772397b80911331245879f87752869a275922852d80c5e39",
+      "size": 592
+    },
+    {
+      "path": "reports/index.html",
+      "sha256": "7144b341d4c1b4f9e0a21fe662ac098e094b12eecf5e6888ce16e2675087ea8c",
+      "size": 1854
+    },
+    {
+      "path": "src/engiproof/__init__.py",
+      "sha256": "91daa5c8e6fd9d9cbe10bf8024355dc0012db0cd24af53ef124ff8569dadca40",
+      "size": 93
+    },
+    {
+      "path": "src/engiproof/cli.py",
+      "sha256": "c56a750eaaa8fc5c51e30c10ae42dc81e89f49675470398435386fb797c94f4f",
+      "size": 3191
+    },
+    {
+      "path": "src/engiproof/core.py",
+      "sha256": "00da7829605cbdfd71e78d3ba5e1894dd3c4cbebf98c256aafb307031127ae92",
+      "size": 11295
+    },
+    {
+      "path": "tests/test_engiproof.py",
+      "sha256": "b773e8691d6974e169d647ff73ce4e7f687609cfe51bda70def07f4a723d6249",
+      "size": 2291
+    },
+    {
+      "path": "tests/test_p38_engiproof.py",
+      "sha256": "bbfe34e6d90969e5618ae401e965f5f7945548ce62445f9b18ed22a0e286f89c",
+      "size": 3405
+    },
+    {
+      "path": "tools/build_report.py",
+      "sha256": "e1fe98e1d104e29c05b32fa43915dc542b92b84a2ed41cdd8edfa3d4d5492320",
+      "size": 1811
+    },
+    {
+      "path": "tools/new_study.py",
+      "sha256": "b781f961788b0764e4395732dae756cb1f23027c7943568f1ffb48d26285dc97",
+      "size": 2538
+    }
+  ]
+}

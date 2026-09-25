@@ -1,0 +1,309 @@
+{
+  "schema_version": "engiproof.evidence_graph/1.0",
+  "paper_id": "P38",
+  "nodes": [
+    {
+      "id": "S-P38",
+      "kind": "source",
+      "label": "Alrsai et al. (2018)",
+      "evidence_class": "PUBLISHED",
+      "status": "SOURCE_READY",
+      "source_refs": [
+        "DOI 10.1016/j.tws.2018.01.019"
+      ]
+    },
+    {
+      "id": "T-10A",
+      "kind": "target",
+      "label": "Figure 10(a)",
+      "evidence_class": "PUBLISHED",
+      "status": "COMPARED",
+      "source_refs": [
+        "PDF p.7 / printed p.125"
+      ]
+    },
+    {
+      "id": "T-10B",
+      "kind": "target",
+      "label": "Figure 10(b)",
+      "evidence_class": "PUBLISHED",
+      "status": "COMPARED",
+      "source_refs": [
+        "PDF p.7 / printed p.125"
+      ]
+    },
+    {
+      "id": "T-11A",
+      "kind": "target",
+      "label": "Figure 11(a)",
+      "evidence_class": "PUBLISHED",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "PDF p.7 / printed p.125"
+      ]
+    },
+    {
+      "id": "T-11B",
+      "kind": "target",
+      "label": "Figure 11(b)",
+      "evidence_class": "PUBLISHED",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "PDF p.7 / printed p.125"
+      ]
+    },
+    {
+      "id": "T-T2",
+      "kind": "target",
+      "label": "Table 2 arithmetic",
+      "evidence_class": "PUBLISHED",
+      "status": "COMPARED",
+      "source_refs": [
+        "PDF p.4 / printed p.122"
+      ]
+    },
+    {
+      "id": "I-EQ6B",
+      "kind": "implementation",
+      "label": "Eq. 6b",
+      "evidence_class": "PUBLISHED",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P38 Eq.6b"
+      ]
+    },
+    {
+      "id": "I-EQ12",
+      "kind": "implementation",
+      "label": "Eqs. 12a/b",
+      "evidence_class": "PUBLISHED",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P38 Eqs.12a,b"
+      ]
+    },
+    {
+      "id": "I-EQ16",
+      "kind": "implementation",
+      "label": "Eqs. 16a/b",
+      "evidence_class": "PUBLISHED",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P38 Eqs.16a,b"
+      ]
+    },
+    {
+      "id": "I-WORK",
+      "kind": "independent_check",
+      "label": "Direct work balance",
+      "evidence_class": "INDEPENDENT",
+      "status": "VERIFIED",
+      "source_refs": [
+        "P38 Eqs.4-5"
+      ]
+    },
+    {
+      "id": "C-10A",
+      "kind": "comparison",
+      "label": "Figure10a FE comparison",
+      "evidence_class": "PUBLISHED",
+      "status": "COMPARED",
+      "source_refs": [
+        "reference_comparisons.csv"
+      ]
+    },
+    {
+      "id": "C-10B",
+      "kind": "comparison",
+      "label": "Figure10b FE comparison",
+      "evidence_class": "PUBLISHED",
+      "status": "COMPARED",
+      "source_refs": [
+        "reference_comparisons.csv"
+      ]
+    },
+    {
+      "id": "C-11A",
+      "kind": "comparison",
+      "label": "Figure11a FE/line comparison",
+      "evidence_class": "PUBLISHED",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "reference_comparisons.csv"
+      ]
+    },
+    {
+      "id": "C-11B",
+      "kind": "comparison",
+      "label": "Figure11b FE/line comparison",
+      "evidence_class": "PUBLISHED",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "reference_comparisons.csv"
+      ]
+    },
+    {
+      "id": "C-T2",
+      "kind": "comparison",
+      "label": "Table2 printed arithmetic comparison",
+      "evidence_class": "PUBLISHED",
+      "status": "COMPARED",
+      "source_refs": [
+        "table2_check.csv"
+      ]
+    },
+    {
+      "id": "D-F11",
+      "kind": "discrepancy",
+      "label": "Figure11 analytical-line inconsistency",
+      "evidence_class": "PUBLISHED",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "summary.json"
+      ]
+    },
+    {
+      "id": "B-P38",
+      "kind": "boundary",
+      "label": "No FE reproduction or qualification",
+      "evidence_class": "INDEPENDENT",
+      "status": "VERIFIED",
+      "source_refs": [
+        "SOURCE.md"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "S-P38",
+      "to": "T-10A",
+      "relation": "defines"
+    },
+    {
+      "from": "S-P38",
+      "to": "T-10B",
+      "relation": "defines"
+    },
+    {
+      "from": "S-P38",
+      "to": "T-11A",
+      "relation": "defines"
+    },
+    {
+      "from": "S-P38",
+      "to": "T-11B",
+      "relation": "defines"
+    },
+    {
+      "from": "S-P38",
+      "to": "T-T2",
+      "relation": "defines"
+    },
+    {
+      "from": "I-EQ6B",
+      "to": "C-10A",
+      "relation": "evaluated_against"
+    },
+    {
+      "from": "I-EQ12",
+      "to": "C-10A",
+      "relation": "evaluated_against"
+    },
+    {
+      "from": "I-EQ16",
+      "to": "C-10A",
+      "relation": "evaluated_against"
+    },
+    {
+      "from": "I-EQ6B",
+      "to": "C-10B",
+      "relation": "evaluated_against"
+    },
+    {
+      "from": "I-EQ12",
+      "to": "C-10B",
+      "relation": "evaluated_against"
+    },
+    {
+      "from": "I-EQ16",
+      "to": "C-10B",
+      "relation": "evaluated_against"
+    },
+    {
+      "from": "I-EQ6B",
+      "to": "C-11A",
+      "relation": "evaluated_against"
+    },
+    {
+      "from": "I-EQ12",
+      "to": "C-11A",
+      "relation": "evaluated_against"
+    },
+    {
+      "from": "I-EQ16",
+      "to": "C-11A",
+      "relation": "evaluated_against"
+    },
+    {
+      "from": "I-EQ6B",
+      "to": "C-11B",
+      "relation": "evaluated_against"
+    },
+    {
+      "from": "I-EQ12",
+      "to": "C-11B",
+      "relation": "evaluated_against"
+    },
+    {
+      "from": "I-EQ16",
+      "to": "C-11B",
+      "relation": "evaluated_against"
+    },
+    {
+      "from": "T-10A",
+      "to": "C-10A",
+      "relation": "compared_by"
+    },
+    {
+      "from": "T-10B",
+      "to": "C-10B",
+      "relation": "compared_by"
+    },
+    {
+      "from": "T-11A",
+      "to": "C-11A",
+      "relation": "compared_by"
+    },
+    {
+      "from": "T-11B",
+      "to": "C-11B",
+      "relation": "compared_by"
+    },
+    {
+      "from": "T-T2",
+      "to": "C-T2",
+      "relation": "compared_by"
+    },
+    {
+      "from": "I-WORK",
+      "to": "I-EQ6B",
+      "relation": "independently_checks_reduction"
+    },
+    {
+      "from": "C-11A",
+      "to": "D-F11",
+      "relation": "reveals"
+    },
+    {
+      "from": "C-11B",
+      "to": "D-F11",
+      "relation": "reveals"
+    },
+    {
+      "from": "D-F11",
+      "to": "B-P38",
+      "relation": "constrains_interpretation"
+    }
+  ],
+  "qualification": "NOT_GRANTED"
+}

@@ -1,0 +1,75 @@
+{
+  "source": "Alrsai, Karampour and Albermani (2018), Thin-Walled Structures 125, 119\u2013128",
+  "doi": "10.1016/j.tws.2018.01.019",
+  "source_sha256": "ad96546c33d7dfe114c4ee59461655f2d5fc08bae70690d3fdded68094bcce12",
+  "pdf_page": 7,
+  "printed_page": 125,
+  "method": "Manual identification of marker/solid-line centres in native embedded source rasters; affine axis calibration. No fitted physical inputs. Pixel choices and image hashes preserved.",
+  "uncertainty": "Conservative reading envelope, not a statistical confidence interval. FE points use +/-4 native pixels vertically and +/-2 horizontally; analytical solid-line centres +/-2 vertically. Add up to 1 pixel for axis calibration.",
+  "panels": {
+    "10a": {
+      "image": "figure10.png",
+      "x0": 118.0,
+      "x1": 961.0,
+      "xmin": 0.35,
+      "xmax": 0.8,
+      "y0": 64.0,
+      "y1": 357.0,
+      "ymax": 1.65,
+      "ymin": 0.9,
+      "x_quantity": "Di/Do",
+      "Do_to": 40.0,
+      "yield_ratio": 1.0,
+      "thickness_ratio": 0.6
+    },
+    "10b": {
+      "image": "figure10.png",
+      "x0": 124.0,
+      "x1": 961.0,
+      "xmin": 0.35,
+      "xmax": 0.8,
+      "y0": 551.0,
+      "y1": 840.0,
+      "ymax": 2.5,
+      "ymin": 0.9,
+      "x_quantity": "Di/Do",
+      "Do_to": 30.0,
+      "yield_ratio": 1.0,
+      "thickness_ratio": 1.0
+    },
+    "11a": {
+      "image": "figure11.jpeg",
+      "x0": 154.0,
+      "x1": 974.0,
+      "xmin": 0.2,
+      "xmax": 1.2,
+      "y0": 55.0,
+      "y1": 376.0,
+      "ymax": 3.0,
+      "ymin": 0.5,
+      "x_quantity": "ti/to",
+      "Do_to": 40.0,
+      "yield_ratio": 1.0,
+      "diameter_ratio": 0.7
+    },
+    "11b": {
+      "image": "figure11.jpeg",
+      "x0": 152.0,
+      "x1": 963.0,
+      "xmin": 0.2,
+      "xmax": 1.2,
+      "y0": 623.0,
+      "y1": 927.0,
+      "ymax": 3.0,
+      "ymin": 0.5,
+      "x_quantity": "ti/to",
+      "Do_to": 30.0,
+      "yield_ratio": 1.12,
+      "diameter_ratio": 0.4
+    }
+  },
+  "image_sha256": {
+    "figure10.png": "c36ee52cc726f281c89c3f058e7c4780b2af893c0c15e4bd694e6577dbbb3882",
+    "figure11.jpeg": "471de1ff40c7617b2b43c764ce39fd75d6385ab4d9345e8e070d216361b9211b"
+  }
+}

@@ -1,12 +1,13 @@
 {
   "status": "PASS",
   "framework": "EngiProof",
-  "version": "0.1.0",
+  "version": "0.1.1.dev0",
   "python": "3.13.5",
   "numpy": "2.3.5",
   "project_root": ".",
   "checks": {
     "registry": true,
+    "contracts": true,
     "papers_dir": true,
     "results_dir": true,
     "tests_dir": true,

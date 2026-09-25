@@ -3,6 +3,7 @@
     "paper_id": "P08",
     "title": "Lateral buckling of bundled pipe systems",
     "evidence_status": "COMPARED",
+    "schema_version": "engiproof.study/1.0",
     "tools": [
       "critical_temperature_eq11",
       "critical_temperature_appendix_a",
@@ -13,10 +14,25 @@
     "paper_id": "P12",
     "title": "Lateral buckling critical force for submarine pipe-in-pipe pipelines",
     "evidence_status": "COMPARED",
+    "schema_version": "engiproof.study/1.0",
     "tools": [
       "eq22_shape_term",
       "table4_fit_force_MN",
       "eq22_scaled_force_MN"
+    ]
+  },
+  {
+    "paper_id": "P38",
+    "title": "Numerical study and parametric analysis of the propagation buckling behaviour of subsea pipe-in-pipe systems",
+    "evidence_status": "CONDITIONAL",
+    "schema_version": "engiproof.study/1.1",
+    "tools": [
+      "equation6b_ratio",
+      "equation12a_ratio",
+      "equation12b_ratio",
+      "equation16_ratio",
+      "independent_work_balance_ratio",
+      "table1_analytical_pressures"
     ]
   }
 ]

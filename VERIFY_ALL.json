@@ -5,6 +5,7 @@
       "paper_id": "P08",
       "status": "PASS_SOURCE_EXTERNAL",
       "evidence_status": "COMPARED",
+      "contract_issues": [],
       "missing_required_files": [],
       "source_check": {
         "expected_sha256": "44161532c5e9a41711539e977a6846755fca8e68d35285d65b48ea8ef8bb7389",
@@ -22,12 +23,14 @@
         "No new FE reproduction.",
         "Soil friction and pressure differential are excluded in the reproduced source case.",
         "Source PDF is external to the distributed package; expected SHA256 is preserved."
-      ]
+      ],
+      "qualification": "NOT_CLAIMED"
     },
     {
       "paper_id": "P12",
       "status": "PASS_SOURCE_EXTERNAL",
       "evidence_status": "COMPARED",
+      "contract_issues": [],
       "missing_required_files": [],
       "source_check": {
         "expected_sha256": "52609bed83c41c56edefe7157d88a658c01b1f587b4cdcbde41d7ea151533c23",
@@ -52,7 +55,59 @@
         "The common dimensional scale used in comparison is fitted, not claimed as independent physics.",
         "The duplicated Table 5 beta=1.0/beta=0.3 row is preserved as a source inconsistency.",
         "Source PDF is external to the distributed package; expected SHA256 is preserved."
-      ]
+      ],
+      "qualification": "NOT_CLAIMED"
+    },
+    {
+      "paper_id": "P38",
+      "status": "PASS_SOURCE_EXTERNAL",
+      "evidence_status": "CONDITIONAL",
+      "contract_issues": [],
+      "missing_required_files": [],
+      "source_check": {
+        "expected_sha256": "ad96546c33d7dfe114c4ee59461655f2d5fc08bae70690d3fdded68094bcce12",
+        "present": false
+      },
+      "tests": [
+        {
+          "test": "tests.test_p38_engiproof.P38EngiProofTests.test_runner_reproduces_key_evidence",
+          "returncode": 0,
+          "passed": true,
+          "output": "test_runner_reproduces_key_evidence (tests.test_p38_engiproof.P38EngiProofTests.test_runner_reproduces_key_evidence) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.555s\n\nOK"
+        },
+        {
+          "test": "tests.test_p38_engiproof.P38EngiProofTests.test_source_issue_is_preserved",
+          "returncode": 0,
+          "passed": true,
+          "output": "test_source_issue_is_preserved (tests.test_p38_engiproof.P38EngiProofTests.test_source_issue_is_preserved) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK"
+        },
+        {
+          "test": "tests.test_p38_engiproof.P38EngiProofTests.test_independent_work_balance",
+          "returncode": 0,
+          "passed": true,
+          "output": "test_independent_work_balance (tests.test_p38_engiproof.P38EngiProofTests.test_independent_work_balance) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK"
+        },
+        {
+          "test": "tests.test_p38_engiproof.P38EngiProofTests.test_pixel_provenance",
+          "returncode": 0,
+          "passed": true,
+          "output": "test_pixel_provenance (tests.test_p38_engiproof.P38EngiProofTests.test_pixel_provenance) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK"
+        },
+        {
+          "test": "tests.test_p38_engiproof.P38EngiProofTests.test_evidence_graph",
+          "returncode": 0,
+          "passed": true,
+          "output": "test_evidence_graph (tests.test_p38_engiproof.P38EngiProofTests.test_evidence_graph) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nOK"
+        }
+      ],
+      "limitations": [
+        "Published FE markers are reference data; EngiProof does not recreate the shell FE model.",
+        "Equation 16 is an in-sample published fit and requires an externally supplied source mode label.",
+        "Figure 11 analytical-line inconsistency remains open and is not tuned away.",
+        "Copyrighted source PDF and raster figures are external to the public package; expected SHA-256 values are preserved.",
+        "Engineering qualification is NOT_GRANTED."
+      ],
+      "qualification": "NOT_GRANTED"
     }
   ]
 }

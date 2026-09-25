@@ -1,0 +1,208 @@
+{
+  "study": "P38 Figures 10a,b / 11a,b and Table2 audit",
+  "source_sha256": "ad96546c33d7dfe114c4ee59461655f2d5fc08bae70690d3fdded68094bcce12",
+  "evidence_class": "Published equation reconstruction compared with manually digitized published FE reference; not independent FE validation. Eq16 is an in-sample published-fit audit, mode label supplied.",
+  "targets": {
+    "Fig10a": "COMPARED",
+    "Fig10b": "COMPARED",
+    "Fig11a": "CONDITIONAL",
+    "Fig11b": "CONDITIONAL",
+    "Table2_arithmetic": "COMPARED"
+  },
+  "panel_statistics": {
+    "10a": {
+      "FE_comparison": {
+        "eq6b": {
+          "n": 8,
+          "mean_signed_percent": 19.010818801716866,
+          "mean_absolute_percent": 19.010818801716866,
+          "max_absolute_percent": 22.48432291205261
+        },
+        "eq12a": {
+          "n": 8,
+          "mean_signed_percent": -2.0128641236077898,
+          "mean_absolute_percent": 2.085082591520318,
+          "max_absolute_percent": 4.111072495439671
+        },
+        "eq12b": {
+          "n": 8,
+          "mean_signed_percent": 3.4657086619367115,
+          "mean_absolute_percent": 3.4657086619367115,
+          "max_absolute_percent": 4.807489779673599
+        },
+        "eq16": {
+          "n": 8,
+          "mean_signed_percent": -0.4932881499937203,
+          "mean_absolute_percent": 0.6240039163778917,
+          "max_absolute_percent": 1.384187220602378
+        }
+      },
+      "source_line_check": {
+        "n": 4,
+        "mean_signed_percent": 0.24438240337715397,
+        "mean_absolute_percent": 0.24438240337715397,
+        "max_absolute_percent": 0.3815746179098754
+      },
+      "line_points_outside_reading_envelope": 0
+    },
+    "10b": {
+      "FE_comparison": {
+        "eq6b": {
+          "n": 8,
+          "mean_signed_percent": 15.627293277673006,
+          "mean_absolute_percent": 17.769187941513668,
+          "max_absolute_percent": 32.821264017165156
+        },
+        "eq12a": {
+          "n": 8,
+          "mean_signed_percent": -13.68833100940453,
+          "mean_absolute_percent": 14.803428374186575,
+          "max_absolute_percent": 36.88959757023539
+        },
+        "eq12b": {
+          "n": 8,
+          "mean_signed_percent": -4.107508379055237,
+          "mean_absolute_percent": 9.040877072376514,
+          "max_absolute_percent": 23.772988748256292
+        },
+        "eq16": {
+          "n": 8,
+          "mean_signed_percent": 2.1911496011423863,
+          "mean_absolute_percent": 2.648349220454225,
+          "max_absolute_percent": 4.917746730720933
+        }
+      },
+      "source_line_check": {
+        "n": 4,
+        "mean_signed_percent": -0.13307464863606167,
+        "mean_absolute_percent": 0.13307464863606167,
+        "max_absolute_percent": 0.37988340359377787
+      },
+      "line_points_outside_reading_envelope": 0
+    },
+    "11a": {
+      "FE_comparison": {
+        "eq6b": {
+          "n": 7,
+          "mean_signed_percent": 18.76655838530051,
+          "mean_absolute_percent": 18.76655838530051,
+          "max_absolute_percent": 23.422943053624856
+        },
+        "eq12a": {
+          "n": 7,
+          "mean_signed_percent": -3.4004498097269353,
+          "mean_absolute_percent": 3.888625476946506,
+          "max_absolute_percent": 12.354709928617787
+        },
+        "eq12b": {
+          "n": 7,
+          "mean_signed_percent": 0.027460436610233657,
+          "mean_absolute_percent": 2.347418189477517,
+          "max_absolute_percent": 6.051463794768837
+        },
+        "eq16": {
+          "n": 7,
+          "mean_signed_percent": -3.300805373948762,
+          "mean_absolute_percent": 3.300805373948762,
+          "max_absolute_percent": 7.178190736576399
+        }
+      },
+      "source_line_check": {
+        "n": 4,
+        "mean_signed_percent": -2.567806120050226,
+        "mean_absolute_percent": 2.567806120050226,
+        "max_absolute_percent": 2.6400882911009504
+      },
+      "line_points_outside_reading_envelope": 4
+    },
+    "11b": {
+      "FE_comparison": {
+        "eq6b": {
+          "n": 7,
+          "mean_signed_percent": 5.112186770171799,
+          "mean_absolute_percent": 6.798082124235857,
+          "max_absolute_percent": 16.986791959203753
+        },
+        "eq12a": {
+          "n": 7,
+          "mean_signed_percent": -18.756909263143346,
+          "mean_absolute_percent": 18.756909263143346,
+          "max_absolute_percent": 40.944329646214776
+        },
+        "eq12b": {
+          "n": 7,
+          "mean_signed_percent": -8.400342936612867,
+          "mean_absolute_percent": 8.733544836776959,
+          "max_absolute_percent": 23.091474174344206
+        },
+        "eq16": {
+          "n": 7,
+          "mean_signed_percent": 0.5370068399448519,
+          "mean_absolute_percent": 6.135909105434202,
+          "max_absolute_percent": 11.617639694159225
+        }
+      },
+      "source_line_check": {
+        "n": 4,
+        "mean_signed_percent": -7.106137414871624,
+        "mean_absolute_percent": 7.106137414871624,
+        "max_absolute_percent": 9.932704690394507
+      },
+      "line_points_outside_reading_envelope": 4
+    }
+  },
+  "table2": [
+    {
+      "quantity": "single_pressure_Pa",
+      "calculated": 578769.223126549,
+      "printed_analytical": 578000.0,
+      "experimental_reference": 1020000.0,
+      "vs_printed_percent": 0.13308358590813857,
+      "vs_experiment_percent": -43.25791930131872
+    },
+    {
+      "quantity": "PiP_pressure_Pa",
+      "calculated": 1166761.2795568774,
+      "printed_analytical": 1165000.0,
+      "experimental_reference": 1570000.0,
+      "vs_printed_percent": 0.15118279458175496,
+      "vs_experiment_percent": -25.683994932682964
+    },
+    {
+      "quantity": "PiP_single_ratio",
+      "calculated": 2.0159352517985614,
+      "printed_analytical": 2.015,
+      "experimental_reference": 1.5392156862745099,
+      "vs_printed_percent": 0.046414481318175826,
+      "vs_experiment_percent": 30.971589607295062
+    }
+  ],
+  "work_check": {
+    "case": {
+      "pressure_Pa": 1166064.0675742715,
+      "area_reduction_m2": 0.0028274333882308137,
+      "flexural_work_N": 2347.523694468437,
+      "membrane_work_N": 949.4447830072902,
+      "external_work_N": 3296.968477475727,
+      "relative_work_residual": -6.896446750904855e-17
+    },
+    "single_case": {
+      "pressure_Pa": 578709.0291262271,
+      "area_reduction_m2": 0.0028274333882308137,
+      "flexural_work_N": 1310.0441365469437,
+      "membrane_work_N": 326.2170944751891,
+      "external_work_N": 1636.261231022133,
+      "relative_work_residual": 6.947963782690041e-17
+    },
+    "constant_exact": 2.5152615959025875,
+    "constant_printed": 2.515,
+    "exact_inner_geometric_coefficient": 0.24901229307818787,
+    "rounded_inner_coefficient": 0.25,
+    "max_work_residual": 1.8854167747831167e-16,
+    "max_rounding_difference_percent": 0.06464990760955018,
+    "case_pressure_vs_eq6a_percent": -0.05975618104765801
+  },
+  "qualification": "NOT_GRANTED",
+  "source_line_issue": "Figure11 analytical line differs from direct Eq6b evaluation with panel-labelled ratios; no hidden parameter adjustment. Figure10 line agrees within extraction uncertainty.",
+  "notes": "Source FE points are reference data. Plotted line sample size and deterministic reading envelopes are not validation tolerances."
+}
