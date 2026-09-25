@@ -1,0 +1,10 @@
+{
+  "paper": "P16",
+  "target": "Figure 5 and Table 2",
+  "status": "COMPARED",
+  "evidence": "Published vector-curve extraction and source-table arithmetic. No independent walking solver.",
+  "remaining": "Original graph and table have finite precision; raw author output has not been supplied.",
+  "script": "tools/repair_named_figures.py",
+  "report": "reports/named_figures1/index.html",
+  "book": "book/PiP_Engineering_Textbook_Integrated_P38.pdf"
+}

@@ -1,0 +1,10 @@
+{
+  "paper": "P29",
+  "target": "Figure 16(a,b), Eqs. (1), (16)-(18)",
+  "status": "CONDITIONAL",
+  "evidence": "Independent non-FE equation evaluation, checked by transfer-function quadrature. Positive-frequency display and two-sided integral both retained.",
+  "remaining": "The source figure scale and printed two-sided integral differ by a factor of two for the same numerical unit S0. Exact source sampling and PSD convention remain unclosed.",
+  "script": "tools/repair_named_figures.py",
+  "report": "reports/named_figures1/index.html",
+  "book": "book/PiP_Engineering_Textbook_Integrated_P38.pdf"
+}

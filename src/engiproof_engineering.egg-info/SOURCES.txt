@@ -12,4 +12,8 @@ src/engiproof_engineering.egg-info/entry_points.txt
 src/engiproof_engineering.egg-info/requires.txt
 src/engiproof_engineering.egg-info/top_level.txt
 tests/test_engiproof.py
+tests/test_p16_engiproof.py
+tests/test_p29_engiproof.py
+tests/test_p36_engiproof.py
+tests/test_p38_engiproof.py
 tests/test_paper_studies_batch5.py

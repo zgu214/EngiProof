@@ -1,0 +1,225 @@
+{
+  "schema_version": "engiproof.study/1.1",
+  "paper_id": "P38",
+  "title": "Numerical study and parametric analysis of the propagation buckling behaviour of subsea pipe-in-pipe systems",
+  "year": 2018,
+  "evidence_status": "CONDITIONAL",
+  "category": "Propagation buckling / local integrity",
+  "source": {
+    "canonical_pdf": "p38-alrsai2018.pdf",
+    "sha256": "ad96546c33d7dfe114c4ee59461655f2d5fc08bae70690d3fdded68094bcce12",
+    "doi": "10.1016/j.tws.2018.01.019"
+  },
+  "selected_targets": [
+    "Figure 10(a,b)",
+    "Figure 11(a,b)",
+    "Equations (6b), (12a,b), (16a,b)",
+    "Table 2 analytical arithmetic",
+    "Equations (4)-(5) direct work balance"
+  ],
+  "runner": "papers/P38/run_calculation.py",
+  "source_contract": "papers/P38/SOURCE.md",
+  "evidence_graph": "engiproof/studies/P38/evidence_graph.json",
+  "result_files": [
+    "papers/P38/results/reference_comparisons.csv",
+    "papers/P38/results/calculated_curves.csv",
+    "papers/P38/results/table2_check.csv",
+    "papers/P38/results/independent_work_checks.csv",
+    "papers/P38/results/summary.json",
+    "papers/P38/results/source_calculation_manifest.json",
+    "papers/P38/results/engiproof_reproduction_manifest.json"
+  ],
+  "verification_tests": [
+    "tests.test_p38_engiproof.P38EngiProofTests.test_runner_reproduces_key_evidence",
+    "tests.test_p38_engiproof.P38EngiProofTests.test_source_issue_is_preserved",
+    "tests.test_p38_engiproof.P38EngiProofTests.test_independent_work_balance",
+    "tests.test_p38_engiproof.P38EngiProofTests.test_pixel_provenance",
+    "tests.test_p38_engiproof.P38EngiProofTests.test_evidence_graph"
+  ],
+  "tools": [
+    {
+      "name": "equation6b_ratio",
+      "module": "papers/P38/tool_api.py",
+      "function": "equation6b_ratio",
+      "arguments": {
+        "diameter_ratio": "0 <= float < 1",
+        "thickness_ratio": "float >= 0",
+        "yield_ratio": "float > 0"
+      },
+      "returns": "normalized PiP/single propagation-pressure ratio",
+      "evidence": "P38 Eq. (6b)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "equation12a_ratio",
+      "module": "papers/P38/tool_api.py",
+      "function": "equation12a_ratio",
+      "arguments": {
+        "diameter_ratio": "0 <= float < 1",
+        "thickness_ratio": "float >= 0",
+        "yield_ratio": "float > 0"
+      },
+      "returns": "published empirical normalized ratio",
+      "evidence": "P38 Eq. (12a)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "equation12b_ratio",
+      "module": "papers/P38/tool_api.py",
+      "function": "equation12b_ratio",
+      "arguments": {
+        "diameter_ratio": "0 <= float < 1",
+        "thickness_ratio": "float >= 0",
+        "yield_ratio": "float > 0"
+      },
+      "returns": "published empirical normalized ratio",
+      "evidence": "P38 Eq. (12b)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "equation16_ratio",
+      "module": "papers/P38/tool_api.py",
+      "function": "equation16_ratio",
+      "arguments": {
+        "diameter_ratio": "0 < float < 1",
+        "thickness_ratio": "float >= 0",
+        "yield_ratio": "float > 0",
+        "mode": "A or B; must be supplied from evidence"
+      },
+      "returns": "published fitted normalized ratio",
+      "evidence": "P38 Eqs. (16a,b); source mode label required",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "independent_work_balance_ratio",
+      "module": "papers/P38/tool_api.py",
+      "function": "independent_work_balance_ratio",
+      "arguments": {
+        "outer_diameter_m": "float",
+        "outer_thickness_m": "float",
+        "inner_diameter_m": "float",
+        "inner_thickness_m": "float",
+        "outer_yield_Pa": "float",
+        "inner_yield_Pa": "float"
+      },
+      "returns": "direct-work PiP/single pressure ratio",
+      "evidence": "independent dimensional work balance from P38 Eqs. (4)-(5)",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "table1_analytical_pressures",
+      "module": "papers/P38/tool_api.py",
+      "function": "table1_analytical_pressures",
+      "arguments": {},
+      "returns": "reconstructed Table-1/Table-2 analytical pressure values",
+      "evidence": "P38 Table 1 inputs + Eq. (1) + Eq. (6b)",
+      "evidence_class": "PUBLISHED"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "P38-C10A-EQ16",
+      "target": "Figure 10(a)",
+      "status": "COMPARED",
+      "reference": "8 digitized published FE markers, source mode A",
+      "metrics": {
+        "n": 8,
+        "mean_absolute_percent": 0.6240039163778917,
+        "max_absolute_percent": 1.384187220602378
+      },
+      "boundary": "In-sample published-fit audit; not independent FE validation."
+    },
+    {
+      "id": "P38-C10B-EQ16",
+      "target": "Figure 10(b)",
+      "status": "COMPARED",
+      "reference": "8 digitized published FE markers, source mode B",
+      "metrics": {
+        "n": 8,
+        "mean_absolute_percent": 2.648349220454225,
+        "max_absolute_percent": 4.917746730720933
+      },
+      "boundary": "In-sample published-fit audit; mode label supplied."
+    },
+    {
+      "id": "P38-C11A-LINE",
+      "target": "Figure 11(a) Eq.6b plotted line",
+      "status": "CONDITIONAL",
+      "reference": "4 digitized source-line points",
+      "metrics": {
+        "n": 4,
+        "mean_absolute_percent": 2.567806120050226,
+        "max_absolute_percent": 2.6400882911009504,
+        "points_outside_reading_envelope": 4
+      },
+      "boundary": "Published plotted line conflicts with direct Eq.6b using labelled panel inputs."
+    },
+    {
+      "id": "P38-C11B-LINE",
+      "target": "Figure 11(b) Eq.6b plotted line",
+      "status": "CONDITIONAL",
+      "reference": "4 digitized source-line points",
+      "metrics": {
+        "n": 4,
+        "mean_absolute_percent": 7.106137414871624,
+        "max_absolute_percent": 9.932704690394507,
+        "points_outside_reading_envelope": 4
+      },
+      "boundary": "Published plotted line conflicts with direct Eq.6b using labelled panel inputs."
+    },
+    {
+      "id": "P38-CT2",
+      "target": "Table 2 printed analytical arithmetic",
+      "status": "COMPARED",
+      "reference": "Printed Table 2 analytical values",
+      "metrics": {
+        "single_pressure_vs_printed_percent": 0.13308358590813857,
+        "PiP_pressure_vs_printed_percent": 0.15118279458175496,
+        "ratio_vs_printed_percent": 0.046414481318175826
+      },
+      "boundary": "Agreement is arithmetic reconstruction within printed-input rounding; experiment mismatch is not hidden."
+    },
+    {
+      "id": "P38-CWORK",
+      "target": "Eq.4-5 direct work balance versus reduced Eq.6b",
+      "status": "VERIFIED",
+      "reference": "Independent direct dimensional work calculation",
+      "metrics": {
+        "max_work_residual": 1.8854167747831167e-16,
+        "max_rounding_difference_percent": 0.06464990760955018
+      },
+      "boundary": "Independent mathematical check, not an independent physical model."
+    }
+  ],
+  "discrepancies": [
+    {
+      "id": "P38-D001",
+      "target": "Figure 11(a,b) plotted analytical line",
+      "status": "OPEN",
+      "observation": "Direct Eq.6b evaluation using the panel-labelled ratios does not reproduce the plotted analytical line; all four sampled line points in each Figure 11 panel lie outside the conservative digitization reading envelope.",
+      "engineering_interpretation": "Treat Figure 11 analytical-line agreement as CONDITIONAL. Do not tune coefficients, yield placement, diameter definition or normalization without author data/erratum."
+    },
+    {
+      "id": "P38-D002",
+      "target": "Table 2 analytical versus experiment",
+      "status": "OBSERVED",
+      "observation": "Reconstructed analytical pressures are about 43.26% below the single-pipe experiment and 25.68% below the PiP experiment for the printed case.",
+      "engineering_interpretation": "This is a model-versus-experiment gap, not a reproduction failure; arithmetic agrees with the printed analytical values within 0.16%."
+    }
+  ],
+  "limitations": [
+    "Published FE markers are reference data; EngiProof does not recreate the shell FE model.",
+    "Equation 16 is an in-sample published fit and requires an externally supplied source mode label.",
+    "Figure 11 analytical-line inconsistency remains open and is not tuned away.",
+    "Copyrighted source PDF and raster figures are external to the public package; expected SHA-256 values are preserved.",
+    "Engineering qualification is NOT_GRANTED."
+  ],
+  "next_actions": [
+    "Seek author data, figure-generation inputs or an erratum before closing the Figure 11 discrepancy.",
+    "Integrate the next source-ready study only after preserving this evidence boundary."
+  ],
+  "framework": "EngiProof",
+  "framework_version": "0.1.1.dev0",
+  "qualification": "NOT_GRANTED",
+  "provenance_note": "Integrated from PiP_Library_Continuation_P38_2026-09-25 without changing inherited numerical result files."
+}

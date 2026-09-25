@@ -1,0 +1,19 @@
+{
+  "schema_version": "engiproof.verification/1.0",
+  "paper_id": "P36",
+  "status": "COMPARED",
+  "source_pdf_external": true,
+  "comparison": {
+    "reference_markers": 27,
+    "mean_absolute_percent": 1.7485966966417408,
+    "maximum_absolute_percent": 3.5857415531854886,
+    "evidence_boundary": "Graphical FE symbol centres; in-sample empirical equation audit, not new FE prediction."
+  },
+  "maximum_recomputed_row_drift": 0.0,
+  "inherited_result_sha256": "53c5212e2852377292f018b4f25facb1a5dc94cbb7888b2922f49b9792c2caa7",
+  "qualification": "NOT_GRANTED",
+  "limitations": [
+    "Source FE marker centres are graphical references, not unrounded FE data.",
+    "The comparison is in-sample and is not an independent FE validation."
+  ]
+}

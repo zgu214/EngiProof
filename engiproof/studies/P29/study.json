@@ -1,0 +1,133 @@
+{
+  "schema_version": "engiproof.study/1.1",
+  "paper_id": "P29",
+  "title": "Using pipe-in-pipe systems for subsea pipeline vibration control",
+  "year": 2016,
+  "evidence_status": "CONDITIONAL",
+  "category": "Free span / vibration",
+  "source": {
+    "canonical_pdf": "p29-bi2016.pdf",
+    "sha256": "9b5d340943f6884990afef08fa8adaf1b4fa7cb6a9b70b9924062cdc53241eba",
+    "doi": "10.1016/j.engstruct.2015.11.018"
+  },
+  "selected_targets": [
+    "Figure 16(a,b)",
+    "Equation (1)",
+    "Equations (16)-(18)"
+  ],
+  "runner": "papers/P29/run_calculation.py",
+  "source_contract": "papers/P29/SOURCE.md",
+  "evidence_graph": "engiproof/studies/P29/evidence_graph.json",
+  "result_files": [
+    "papers/P29/results/figure16_surface.csv",
+    "papers/P29/results/independent_integral_checks.csv",
+    "papers/P29/results/engiproof_verification.json"
+  ],
+  "verification_tests": [
+    "tests.test_p29_engiproof.P29EngiProofTests.test_runner_preserves_surface",
+    "tests.test_p29_engiproof.P29EngiProofTests.test_independent_crosscheck",
+    "tests.test_p29_engiproof.P29EngiProofTests.test_factor_two_discrepancy_is_open"
+  ],
+  "tools": [
+    {
+      "name": "positive_frequency_integral",
+      "module": "papers/P29/tool_api.py",
+      "function": "positive_frequency_integral",
+      "arguments": {
+        "mass_ratio": "float > 0",
+        "gamma": "float > 0",
+        "zeta_t": "float > 0",
+        "omega_s_rad_per_s": "optional float > 0",
+        "zeta_s": "optional float > 0"
+      },
+      "returns": "positive-frequency response integral for unit S0",
+      "evidence": "independent state-space evaluation of P29 Eq. (1) / source parameters",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "two_sided_integral",
+      "module": "papers/P29/tool_api.py",
+      "function": "two_sided_integral",
+      "arguments": {
+        "mass_ratio": "float > 0",
+        "gamma": "float > 0",
+        "zeta_t": "float > 0",
+        "omega_s_rad_per_s": "optional float > 0",
+        "zeta_s": "optional float > 0"
+      },
+      "returns": "two-sided integral, retained explicitly as 2x positive-frequency value",
+      "evidence": "P29 printed Eq. (16) convention retained without hiding factor-of-two issue",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "direct_transfer_quadrature",
+      "module": "papers/P29/tool_api.py",
+      "function": "direct_transfer_quadrature",
+      "arguments": {
+        "mass_ratio": "float > 0",
+        "gamma": "float > 0",
+        "zeta_t": "float > 0",
+        "nodes": "optional integer >= 128"
+      },
+      "returns": "direct transfer-function quadrature of Eqs. (17)-(18)",
+      "evidence": "independent numerical quadrature cross-check of the published transfer function",
+      "evidence_class": "INDEPENDENT"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "P29-C001",
+      "target": "state-space covariance vs direct transfer-function quadrature",
+      "status": "VERIFIED",
+      "reference": "six source-backed checkpoint cases",
+      "metrics": {
+        "checkpoint_cases": 6,
+        "inherited_max_relative_difference": 1.0704940405682521e-13
+      }
+    },
+    {
+      "id": "P29-C002",
+      "target": "Figure 16 reconstructed surface",
+      "status": "CONDITIONAL",
+      "reference": "source Figure 16 visual scale and printed Eqs. (16)-(18)",
+      "metrics": {
+        "surface_points": 7442,
+        "surface_ranges": {
+          "0.853": {
+            "positive_frequency_min": 0.0045778084464661,
+            "positive_frequency_max": 0.0452634930716478,
+            "two_sided_min": 0.0091556168929323,
+            "two_sided_max": 0.0905269861432956
+          },
+          "0.01": {
+            "positive_frequency_min": 0.0086443077028157,
+            "positive_frequency_max": 0.0113559319229605,
+            "two_sided_min": 0.0172886154056314,
+            "two_sided_max": 0.0227118638459211
+          }
+        },
+        "display_to_printed_integral_factor": 2.0
+      }
+    }
+  ],
+  "discrepancies": [
+    {
+      "id": "P29-D001",
+      "target": "Figure 16 spectral normalization",
+      "status": "OPEN",
+      "observation": "For the same numerical S0, the source figure display corresponds to the positive-frequency integral while the printed two-sided integral is exactly twice that value.",
+      "engineering_interpretation": "Keep both conventions explicit. Do not tune S0 or silently relabel the source figure until source sampling/PSD convention is resolved."
+    }
+  ],
+  "limitations": [
+    "The source Figure 16 scale and printed two-sided integral differ by a factor of two for the same numerical S0.",
+    "Exact source sampling and PSD convention remain unclosed.",
+    "No FE model is reproduced; this is an independent non-FE equation evaluation.",
+    "Copyrighted source PDF/raster are external; expected SHA-256 is preserved.",
+    "Engineering qualification is NOT_GRANTED."
+  ],
+  "qualification": "NOT_GRANTED",
+  "framework": "EngiProof",
+  "framework_version": "0.1.1.dev0",
+  "provenance_note": "Integrated from PiP_Library_PublicationRepair_2026-09-25.zip (SHA-256 36550d395a323af6788ae4bc59c6e1725cdd5711e862048ab312bf424dac8a15) without changing inherited numerical evidence files."
+}

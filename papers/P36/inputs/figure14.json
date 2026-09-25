@@ -1,0 +1,11 @@
+{
+  "A": 0.431,
+  "B": 1.023,
+  "exponent": 1.0,
+  "calibration_diameter_ratio": [
+    0.4,
+    0.8
+  ],
+  "equation": "PPS/PP = 1 + A * (Ds/D)^exponent / (1 - B * Ds/D)",
+  "source": "P36 Eq. (8), printed p.214"
+}

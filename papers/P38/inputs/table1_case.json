@@ -1,0 +1,22 @@
+{
+  "source_case": "P38 Table 1 / Table 2, PDF pages 3\u20134, printed pages 121\u2013122",
+  "outer_diameter_m": 0.06,
+  "outer_thickness_m": 0.002,
+  "inner_diameter_m": 0.04,
+  "inner_thickness_m": 0.0016,
+  "outer_yield_Pa": 139000000.0,
+  "inner_yield_Pa": 172000000.0,
+  "published_experiment_single_Pa": 1020000.0,
+  "published_experiment_PiP_Pa": 1570000.0,
+  "replicate_PiP_Pa": [
+    1620000.0,
+    1540000.0,
+    1550000.0
+  ],
+  "published_FE_single_Pa": 976000.0,
+  "published_FE_PiP_Pa": 1504000.0,
+  "printed_analytical_single_Pa": 578000.0,
+  "printed_analytical_PiP_Pa": 1165000.0,
+  "printed_analytical_ratio": 2.015,
+  "note": "Same experimental family as P37; no new experiment. Calculations use the diameters as printed, without mean-diameter substitution."
+}

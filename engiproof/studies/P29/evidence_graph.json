@@ -1,0 +1,134 @@
+{
+  "schema_version": "engiproof.evidence_graph/1.0",
+  "paper_id": "P29",
+  "qualification": "NOT_GRANTED",
+  "nodes": [
+    {
+      "id": "S-P29",
+      "kind": "source",
+      "label": "Bi and Hao (2016)",
+      "evidence_class": "PUBLISHED",
+      "status": "SOURCE_READY",
+      "source_refs": [
+        "10.1016/j.engstruct.2015.11.018"
+      ]
+    },
+    {
+      "id": "T-E1",
+      "kind": "target",
+      "label": "Equation (1) 2-DOF system",
+      "evidence_class": "PUBLISHED",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "Eq. (1)"
+      ]
+    },
+    {
+      "id": "T-E16",
+      "kind": "target",
+      "label": "Equations (16)-(18) response integral",
+      "evidence_class": "PUBLISHED",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "Eqs. (16)-(18)"
+      ]
+    },
+    {
+      "id": "T-F16",
+      "kind": "target",
+      "label": "Figure 16(a,b) response surfaces",
+      "evidence_class": "PUBLISHED",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "Figure 16(a,b)"
+      ]
+    },
+    {
+      "id": "I-STATE",
+      "kind": "implementation",
+      "label": "state-space covariance evaluation",
+      "evidence_class": "INDEPENDENT",
+      "status": "VERIFIED",
+      "source_refs": [
+        "papers/P29/tool_api.py"
+      ]
+    },
+    {
+      "id": "I-QUAD",
+      "kind": "implementation",
+      "label": "direct transfer-function quadrature",
+      "evidence_class": "INDEPENDENT",
+      "status": "VERIFIED",
+      "source_refs": [
+        "papers/P29/tool_api.py"
+      ]
+    },
+    {
+      "id": "C-P29",
+      "kind": "comparison",
+      "label": "state-space vs transfer quadrature",
+      "evidence_class": "INDEPENDENT",
+      "status": "VERIFIED",
+      "source_refs": [
+        "P29-C001"
+      ]
+    },
+    {
+      "id": "D-P29",
+      "kind": "discrepancy",
+      "label": "positive-frequency vs two-sided factor-of-two convention",
+      "evidence_class": "INDEPENDENT",
+      "status": "OPEN",
+      "source_refs": [
+        "P29-D001"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "S-P29",
+      "to": "T-E1",
+      "relation": "contains"
+    },
+    {
+      "from": "S-P29",
+      "to": "T-E16",
+      "relation": "contains"
+    },
+    {
+      "from": "S-P29",
+      "to": "T-F16",
+      "relation": "contains"
+    },
+    {
+      "from": "T-E1",
+      "to": "I-STATE",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "T-E16",
+      "to": "I-QUAD",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "I-STATE",
+      "to": "C-P29",
+      "relation": "compared_with"
+    },
+    {
+      "from": "I-QUAD",
+      "to": "C-P29",
+      "relation": "compared_with"
+    },
+    {
+      "from": "T-F16",
+      "to": "D-P29",
+      "relation": "has_discrepancy"
+    },
+    {
+      "from": "T-E16",
+      "to": "D-P29",
+      "relation": "has_discrepancy"
+    }
+  ]
+}

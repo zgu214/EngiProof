@@ -1,0 +1,10 @@
+{
+  "paper": "P36",
+  "target": "Figure 14 and Eq. (8)",
+  "status": "COMPARED",
+  "evidence": "Frozen empirical equation against 27 source FE symbol centres; in-sample fit audit, not a new FE prediction.",
+  "remaining": "Symbol centres are graphical references, not unrounded FE data. Do not infer qualification from the residual.",
+  "script": "tools/repair_named_figures.py",
+  "report": "reports/named_figures1/index.html",
+  "book": "book/PiP_Engineering_Textbook_Integrated_P38.pdf"
+}

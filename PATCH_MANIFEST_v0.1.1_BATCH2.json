@@ -1,0 +1,113 @@
+{
+  "schema_version": "engiproof.patch/1.0",
+  "patch": "v0.1.1 batch2 P16/P29/P36",
+  "source_package": "PiP_Library_PublicationRepair_2026-09-25.zip",
+  "source_package_sha256": "36550d395a323af6788ae4bc59c6e1725cdd5711e862048ab312bf424dac8a15",
+  "base_expected": "develop after P38 integration commit ef0d41a",
+  "added_files": [
+    "05_APPLY_VERIFY_V011_BATCH2_WINDOWS.bat",
+    "BATCH2_NOTES_v0.1.1.md",
+    "engiproof/studies/P16/evidence_graph.json",
+    "engiproof/studies/P16/study.json",
+    "engiproof/studies/P29/evidence_graph.json",
+    "engiproof/studies/P29/study.json",
+    "engiproof/studies/P36/evidence_graph.json",
+    "engiproof/studies/P36/study.json",
+    "papers/P16/SOURCE.md",
+    "papers/P16/reference/extraction_contract.json",
+    "papers/P16/reference/figure5_vector_curve.csv",
+    "papers/P16/reference/table2_cycles.csv",
+    "papers/P16/results/engiproof_verification.json",
+    "papers/P16/results/figure5_table2_comparison.csv",
+    "papers/P16/run_calculation.py",
+    "papers/P16/targets.json",
+    "papers/P16/tool_api.py",
+    "papers/P29/SOURCE.md",
+    "papers/P29/inputs/figure16.json",
+    "papers/P29/results/engiproof_verification.json",
+    "papers/P29/results/figure16_surface.csv",
+    "papers/P29/results/independent_integral_checks.csv",
+    "papers/P29/run_calculation.py",
+    "papers/P29/targets.json",
+    "papers/P29/tool_api.py",
+    "papers/P36/SOURCE.md",
+    "papers/P36/inputs/figure14.json",
+    "papers/P36/reference/extraction_contract.json",
+    "papers/P36/reference/figure14_vector_markers.csv",
+    "papers/P36/results/engiproof_verification.json",
+    "papers/P36/results/figure14_comparison.csv",
+    "papers/P36/run_calculation.py",
+    "papers/P36/targets.json",
+    "papers/P36/tool_api.py",
+    "tests/test_p16_engiproof.py",
+    "tests/test_p29_engiproof.py",
+    "tests/test_p36_engiproof.py"
+  ],
+  "changed_files": [
+    "CHANGELOG.md",
+    "PROGRESS_v0.1.1.md",
+    "README.md",
+    "STUDIES.json",
+    "engiproof/registry.json",
+    "tests/test_engiproof.py"
+  ],
+  "tracked_files_to_delete": [
+    "Current",
+    "Detected",
+    "Downloading",
+    "Future",
+    "Resolved",
+    "Updating"
+  ],
+  "copyrighted_files_included": false,
+  "inherited_source_evidence_byte_identical": {
+    "P16/reference/extraction_contract.json": true,
+    "P16/reference/figure5_vector_curve.csv": true,
+    "P16/reference/table2_cycles.csv": true,
+    "P16/results/figure5_table2_comparison.csv": true,
+    "P29/inputs/figure16.json": true,
+    "P29/results/figure16_surface.csv": true,
+    "P29/results/independent_integral_checks.csv": true,
+    "P36/inputs/figure14.json": true,
+    "P36/reference/extraction_contract.json": true,
+    "P36/reference/figure14_vector_markers.csv": true,
+    "P36/results/figure14_comparison.csv": true
+  },
+  "verification": {
+    "unit_tests_passed": 28,
+    "verify_all": "PASS",
+    "expected_without_local_source_pdfs": {
+      "P08": [
+        "PASS_SOURCE_EXTERNAL",
+        "COMPARED"
+      ],
+      "P12": [
+        "PASS_SOURCE_EXTERNAL",
+        "COMPARED"
+      ],
+      "P16": [
+        "PASS_SOURCE_EXTERNAL",
+        "COMPARED"
+      ],
+      "P29": [
+        "PASS_SOURCE_EXTERNAL",
+        "CONDITIONAL"
+      ],
+      "P36": [
+        "PASS_SOURCE_EXTERNAL",
+        "COMPARED"
+      ],
+      "P38": [
+        "PASS_SOURCE_EXTERNAL",
+        "CONDITIONAL"
+      ]
+    }
+  },
+  "engineering": {
+    "new_FE": false,
+    "qualification_granted": false,
+    "P16": "COMPARED; source figure/table consistency, no walking solver",
+    "P29": "CONDITIONAL; open factor-of-two PSD/integral convention",
+    "P36": "COMPARED; in-sample empirical Eq.8 vs graphical FE-marker audit"
+  }
+}

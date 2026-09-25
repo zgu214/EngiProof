@@ -1,0 +1,84 @@
+{
+  "schema_version": "engiproof.study/1.1",
+  "paper_id": "P36",
+  "title": "Buckle propagation of pipe-in-pipe systems under external pressure",
+  "year": 2015,
+  "evidence_status": "COMPARED",
+  "category": "Collapse / local integrity / reliability",
+  "source": {
+    "canonical_pdf": "p36-gong2015.pdf",
+    "sha256": "4beea2728973052e8c6a021336dee7a6142d7e3adb159f4f0bd2862c56110200",
+    "doi": "10.1016/j.engstruct.2014.11.032"
+  },
+  "selected_targets": [
+    "Figure 14",
+    "Equation (8)"
+  ],
+  "runner": "papers/P36/run_calculation.py",
+  "source_contract": "papers/P36/SOURCE.md",
+  "evidence_graph": "engiproof/studies/P36/evidence_graph.json",
+  "result_files": [
+    "papers/P36/results/figure14_comparison.csv",
+    "papers/P36/results/engiproof_verification.json"
+  ],
+  "verification_tests": [
+    "tests.test_p36_engiproof.P36EngiProofTests.test_runner_preserves_comparison",
+    "tests.test_p36_engiproof.P36EngiProofTests.test_equation8",
+    "tests.test_p36_engiproof.P36EngiProofTests.test_graphical_reference_boundary"
+  ],
+  "tools": [
+    {
+      "name": "equation8_ratio",
+      "module": "papers/P36/tool_api.py",
+      "function": "equation8_ratio",
+      "arguments": {
+        "diameter_ratio": "float > 0 within source calibration range for direct source comparison"
+      },
+      "returns": "published normalized propagation-pressure ratio",
+      "evidence": "P36 printed Eq. (8), A=0.431, B=1.023, exponent=1",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "figure14_residual_summary",
+      "module": "papers/P36/tool_api.py",
+      "function": "figure14_residual_summary",
+      "arguments": {},
+      "returns": "in-sample Eq. (8) vs graphical FE-marker residual summary",
+      "evidence": "independent arithmetic audit against 27 extracted Figure 14 symbol centres",
+      "evidence_class": "INDEPENDENT"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "P36-C001",
+      "target": "Eq. (8) vs Figure 14 source FE markers",
+      "status": "COMPARED",
+      "reference": "27 PDF-vector symbol centres",
+      "metrics": {
+        "reference_markers": 27,
+        "mean_absolute_percent": 1.7485966966417408,
+        "maximum_absolute_percent": 3.5857415531854886
+      }
+    }
+  ],
+  "discrepancies": [
+    {
+      "id": "P36-D001",
+      "target": "Eq. (8) / Figure 14 residuals",
+      "status": "BOUNDED",
+      "observation": "Mean absolute graphical residual is 1.748597% and maximum is 3.585742% across 27 source markers.",
+      "engineering_interpretation": "This is an in-sample empirical-fit audit using graphical marker centres; it is not held-out validation or independent FE reproduction."
+    }
+  ],
+  "limitations": [
+    "Figure 14 symbol centres are graphical references, not unrounded FE data.",
+    "Eq. (8) is audited in-sample; residuals are not independent validation.",
+    "No FE model is reproduced.",
+    "Copyrighted source PDF/raster are external; expected SHA-256 is preserved.",
+    "Engineering qualification is NOT_GRANTED."
+  ],
+  "qualification": "NOT_GRANTED",
+  "framework": "EngiProof",
+  "framework_version": "0.1.1.dev0",
+  "provenance_note": "Integrated from PiP_Library_PublicationRepair_2026-09-25.zip (SHA-256 36550d395a323af6788ae4bc59c6e1725cdd5711e862048ab312bf424dac8a15) without changing inherited numerical evidence files."
+}

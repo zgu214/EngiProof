@@ -3,6 +3,7 @@
     "paper_id": "P08",
     "title": "Lateral buckling of bundled pipe systems",
     "evidence_status": "COMPARED",
+    "schema_version": "engiproof.study/1.0",
     "tools": [
       "critical_temperature_eq11",
       "critical_temperature_appendix_a",
@@ -13,10 +14,57 @@
     "paper_id": "P12",
     "title": "Lateral buckling critical force for submarine pipe-in-pipe pipelines",
     "evidence_status": "COMPARED",
+    "schema_version": "engiproof.study/1.0",
     "tools": [
       "eq22_shape_term",
       "table4_fit_force_MN",
       "eq22_scaled_force_MN"
+    ]
+  },
+  {
+    "paper_id": "P16",
+    "title": "Pipe-in-Pipe Walking: Understanding the Mechanism, Evaluating and Mitigating the Phenomenon",
+    "evidence_status": "COMPARED",
+    "schema_version": "engiproof.study/1.1",
+    "tools": [
+      "table2_cumulative_displacement_mm",
+      "figure5_interpolated_displacement_mm",
+      "figure5_table2_discrepancy_mm"
+    ]
+  },
+  {
+    "paper_id": "P29",
+    "title": "Using pipe-in-pipe systems for subsea pipeline vibration control",
+    "evidence_status": "CONDITIONAL",
+    "schema_version": "engiproof.study/1.1",
+    "tools": [
+      "positive_frequency_integral",
+      "two_sided_integral",
+      "direct_transfer_quadrature"
+    ]
+  },
+  {
+    "paper_id": "P36",
+    "title": "Buckle propagation of pipe-in-pipe systems under external pressure",
+    "evidence_status": "COMPARED",
+    "schema_version": "engiproof.study/1.1",
+    "tools": [
+      "equation8_ratio",
+      "figure14_residual_summary"
+    ]
+  },
+  {
+    "paper_id": "P38",
+    "title": "Numerical study and parametric analysis of the propagation buckling behaviour of subsea pipe-in-pipe systems",
+    "evidence_status": "CONDITIONAL",
+    "schema_version": "engiproof.study/1.1",
+    "tools": [
+      "equation6b_ratio",
+      "equation12a_ratio",
+      "equation12b_ratio",
+      "equation16_ratio",
+      "independent_work_balance_ratio",
+      "table1_analytical_pressures"
     ]
   }
 ]

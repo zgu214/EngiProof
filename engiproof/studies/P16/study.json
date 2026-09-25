@@ -1,0 +1,98 @@
+{
+  "schema_version": "engiproof.study/1.1",
+  "paper_id": "P16",
+  "title": "Pipe-in-Pipe Walking: Understanding the Mechanism, Evaluating and Mitigating the Phenomenon",
+  "year": 2010,
+  "evidence_status": "COMPARED",
+  "category": "Global buckling / walking / projects",
+  "source": {
+    "canonical_pdf": "p16-chen2010.pdf",
+    "sha256": "9fed9062ddbeb777e82e32197e9c0f4f67c60a326f8ac5be39238672495575e0",
+    "doi": "10.1115/OMAE2010-20058"
+  },
+  "selected_targets": [
+    "Figure 5",
+    "Table 2"
+  ],
+  "runner": "papers/P16/run_calculation.py",
+  "source_contract": "papers/P16/SOURCE.md",
+  "evidence_graph": "engiproof/studies/P16/evidence_graph.json",
+  "result_files": [
+    "papers/P16/results/figure5_table2_comparison.csv",
+    "papers/P16/results/engiproof_verification.json"
+  ],
+  "verification_tests": [
+    "tests.test_p16_engiproof.P16EngiProofTests.test_runner_preserves_comparison",
+    "tests.test_p16_engiproof.P16EngiProofTests.test_table2_arithmetic",
+    "tests.test_p16_engiproof.P16EngiProofTests.test_evidence_boundary"
+  ],
+  "tools": [
+    {
+      "name": "table2_cumulative_displacement_mm",
+      "module": "papers/P16/tool_api.py",
+      "function": "table2_cumulative_displacement_mm",
+      "arguments": {
+        "cycle": "integer 1..6"
+      },
+      "returns": "cumulative printed Table 2 displacement [mm]",
+      "evidence": "P16 printed Table 2 increments",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "figure5_interpolated_displacement_mm",
+      "module": "papers/P16/tool_api.py",
+      "function": "figure5_interpolated_displacement_mm",
+      "arguments": {
+        "step": "float within extracted Figure 5 curve"
+      },
+      "returns": "interpolated Figure 5 displacement [mm]",
+      "evidence": "reviewed P16 Figure 5 vector-curve extraction",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "figure5_table2_discrepancy_mm",
+      "module": "papers/P16/tool_api.py",
+      "function": "figure5_table2_discrepancy_mm",
+      "arguments": {
+        "cycle": "integer 1..6"
+      },
+      "returns": "Figure 5 minus cumulative Table 2 displacement [mm]",
+      "evidence": "independent arithmetic/linear-interpolation comparison of two published representations",
+      "evidence_class": "INDEPENDENT"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "P16-C001",
+      "target": "Figure 5 vs Table 2 cumulative walking displacement",
+      "status": "COMPARED",
+      "reference": "published vector-curve extraction and printed Table 2 increments",
+      "metrics": {
+        "cycles": 6,
+        "maximum_absolute_mm": 0.9172453015464724,
+        "mean_absolute_mm": 0.31767221689703956,
+        "final_table_cumulative_mm": 406.4
+      }
+    }
+  ],
+  "discrepancies": [
+    {
+      "id": "P16-D001",
+      "target": "Figure 5 / Table 2 consistency",
+      "status": "BOUNDED",
+      "observation": "Maximum absolute graph-minus-table difference is 0.917245 mm across the six published cycle endpoints.",
+      "engineering_interpretation": "Consistent with finite graph/table precision; this does not validate an independent walking solver."
+    }
+  ],
+  "limitations": [
+    "No independent pipeline-walking solver is implemented.",
+    "Figure 5 values are graphical vector-curve references, not raw solver output.",
+    "Original graph/table precision limits remain; raw author output is unavailable.",
+    "Copyrighted source PDF/raster are external; expected SHA-256 is preserved.",
+    "Engineering qualification is NOT_GRANTED."
+  ],
+  "qualification": "NOT_GRANTED",
+  "framework": "EngiProof",
+  "framework_version": "0.1.1.dev0",
+  "provenance_note": "Integrated from PiP_Library_PublicationRepair_2026-09-25.zip (SHA-256 36550d395a323af6788ae4bc59c6e1725cdd5711e862048ab312bf424dac8a15) without changing inherited numerical evidence files."
+}

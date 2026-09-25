@@ -1,4 +1,4 @@
-# EngiProof v0.1.0
+# EngiProof v0.1.1
 
 > **Windows R1 note:** run `00_SETUP_WINDOWS.bat` once. After that, from this repository folder you can type `engiproof ...` directly even if your prompt still shows `(base)`. The repository-root `engiproof.cmd` dispatches to the local `.venv`.
 
@@ -6,14 +6,18 @@
 
 EngiProof turns selected published engineering methods into **source-bounded, callable, reproducible and independently checked engineering studies**. It is not a paper summarizer and it does not silently invent missing inputs.
 
-Initial live studies:
+Live studies:
 
 - **P08** — Vaz & Patel (1999), lateral buckling of bundled pipe systems: Figure 7, Eqs. (11)–(12), Appendix A.
 - **P12** — Zhang, Duan & Guedes Soares (2018), PiP lateral-buckling critical force: Table 4, Eq. (22), Table 5 consistency audit.
+- **P16** — Chen & Chia (2010), PiP walking: Figure 5 vs Table 2 source-consistency audit. `COMPARED`; no independent walking solver.
+- **P29** — Bi & Hao (2016), vibration control: Figure 16 and Eqs. (1)/(16)–(18), with independent state-space and transfer-quadrature evaluation. `CONDITIONAL` because the source PSD/integral convention retains an unresolved factor-of-two issue.
+- **P36** — Gong & Li (2015), propagation buckle pressure: Figure 14 vs empirical Eq. (8), using 27 graphical FE-marker centres. `COMPARED`; not a new FE prediction.
+- **P38** — Alrsai, Karampour & Albermani (2018), propagation buckling: Figures 10–11, Eqs. (6b)/(12)/(16), Table 2, plus an independent direct work-balance check. P38 is intentionally `CONDITIONAL` overall because the Figure 11 plotted analytical line conflicts with direct Eq. (6b) evaluation.
 
 ## 60-second Windows start
 
-1. Extract this ZIP to a normal folder, for example `D:\Engineering\EngiProof_v0.1.0`.
+1. Clone or extract EngiProof to a normal folder.
 2. Double-click **`00_SETUP_WINDOWS.bat`**.
 3. Double-click **`01_DEMO_WINDOWS.bat`**.
 4. Double-click **`02_VERIFY_WINDOWS.bat`**.
@@ -29,6 +33,9 @@ engiproof list
 engiproof verify-all
 engiproof tool P08 critical_temperature_eq11 --params "{\"length_m\":100}"
 engiproof tool P12 table4_fit_force_MN --params "{\"beta\":0.6,\"clearance_mm\":12}"
+engiproof tool P16 table2_cumulative_displacement_mm --params "{\"cycle\":6}"
+engiproof tool P29 positive_frequency_integral --params "{\"mass_ratio\":0.853,\"gamma\":0.2,\"zeta_t\":0.1}"
+engiproof tool P36 equation8_ratio --params "{\"diameter_ratio\":0.6}"
 ```
 
 The same commands also work without installation:
@@ -38,6 +45,23 @@ python run_engiproof.py doctor
 python run_engiproof.py list
 python run_engiproof.py verify-all
 ```
+
+## Evidence-runtime commands
+
+EngiProof v0.1.1 adds versioned generic contracts and queryable evidence/provenance interfaces:
+
+```bat
+engiproof schema
+engiproof schema study
+engiproof evidence P38
+engiproof compare P38
+engiproof discrepancy P38
+engiproof provenance P38
+engiproof verify P38
+engiproof tool P38 equation16_ratio --params "{\"diameter_ratio\":0.5,\"thickness_ratio\":0.6,\"yield_ratio\":1.0,\"mode\":\"A\"}"
+```
+
+P16/P29/P36/P38 copyrighted PDFs and raster snapshots are not distributed. Their DOI/source SHA-256 and source-backed numerical/reference evidence are retained. The runners independently recompute or audit the published relationships without overwriting inherited numerical evidence files.
 
 ## Evidence contract
 
@@ -59,14 +83,10 @@ python tools\new_study.py P13 "Paper title" --doi "10.xxxx/xxxxx"
 
 This creates a **DRAFT** study scaffold only. It does not claim reproduction or validation.
 
-## GitHub
-
-For a fast repository launch, read `docs/GITHUB_RELEASE.md`. If GitHub CLI (`gh`) is installed, `03_PUBLISH_GITHUB_WINDOWS.bat` can create and push a repository after you choose public/private.
-
 ## Source PDFs
 
-Place legally obtained originals in `01_doc/` using the canonical filenames recorded in each `study.json`. PDFs are ignored by Git and are **not** included in this package.
+Place legally obtained originals in `01_doc/` using the canonical filenames recorded in each `study.json`. PDFs are ignored by Git and are **not** included in public releases.
 
 ## Status
 
-v0.1.0 is an engineering research framework prototype with two source-linked study modules and deterministic tests. It is not an engineering qualification certificate and does not replace project-specific design verification.
+v0.1.1 is the first reusable engineering-evidence runtime release. It preserves backward compatibility with P08/P12, adds heterogeneous walking, vibration and local-integrity evidence types through P16/P29/P36, and uses P38 as the first complete evidence-chain showcase. This remains research/verification software, not an engineering qualification certificate or replacement for project-specific design verification.

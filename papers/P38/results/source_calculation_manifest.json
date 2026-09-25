@@ -1,0 +1,11 @@
+{
+  "inputs_and_code_sha256": {
+    "mechanics.py": "f425074740dfbd3969214518d31ed7f2b2f07c4a19c16b82d613453683243a7f",
+    "run_calculation.py": "bc4896dc77a119df1a729136f55f9c6300fb4c10b69fdb4f8e5490723230c9e5",
+    "inputs/table1_case.json": "9d78fecfd59cea3b25fdf98295b59c77742447f08d62e24015ffb43be32a422b",
+    "reference/extraction_contract.json": "7aedb06aec54039bc32ffc0077e8be54ff5a2a5b8e4c9f5cb9a4cd428305680c",
+    "reference/pixel_points.csv": "e58fd2671e278fb5de1d768e909449b668aafee998b52ae6d99272fdd38ef103"
+  },
+  "python": "3.13.5",
+  "numpy": "2.3.5"
+}
