@@ -1,0 +1,20 @@
+{
+  "schema_version": "engiproof.verification/1.0",
+  "paper_id": "P16",
+  "status": "COMPARED",
+  "source_pdf_external": true,
+  "comparison": {
+    "cycles": 6,
+    "maximum_absolute_discrepancy_mm": 0.9172453015465294,
+    "mean_absolute_discrepancy_mm": 0.317672216897049,
+    "final_table_cumulative_mm": 406.4,
+    "evidence_boundary": "Published figure/table consistency only; no independent walking solver."
+  },
+  "inherited_result_sha256": "4a93957828061f5c9036e1f60c2db13ca44ef72158c8b92066681fbe2673fcab",
+  "reference_curve_points": 261,
+  "qualification": "NOT_GRANTED",
+  "limitations": [
+    "Figure values are graphical vector-curve references, not raw solver output.",
+    "No independent pipeline-walking solver is implemented."
+  ]
+}

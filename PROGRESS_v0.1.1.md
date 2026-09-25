@@ -34,3 +34,32 @@ Checkpoint: 25 September 2026
 1. Run this batch on the user's Windows develop branch and confirm CI.
 2. Integrate the next source-ready study, preferably P16/P29/P36, without weakening evidence boundaries.
 3. Only after several heterogeneous studies use the contracts, stabilize schema naming for v0.2.0.
+
+
+## Source-ready heterogeneous study batch
+
+Integrated from `PiP_Library_PublicationRepair_2026-09-25.zip`
+(SHA-256 `36550d395a323af6788ae4bc59c6e1725cdd5711e862048ab312bf424dac8a15`) without redistributing source PDFs/raster figures.
+
+- **P16** `COMPARED`: Figure 5 vector curve vs cumulative Table 2 walking increments.
+  - 261 source-curve vertices retained.
+  - six printed cycle increments retained.
+  - maximum graph-minus-table endpoint difference: 0.917245 mm.
+  - no independent walking solver claimed.
+- **P29** `CONDITIONAL`: independent Eq. (1)/(16)-(18) response evaluation.
+  - 7,442 surface points retained.
+  - state-space covariance and direct transfer quadrature cross-check at six cases.
+  - inherited maximum cross-check relative difference: 1.070e-13.
+  - factor-of-two positive-frequency/two-sided source convention remains `OPEN`.
+- **P36** `COMPARED`: Eq. (8) against 27 extracted Figure 14 FE symbol centres.
+  - mean absolute graphical residual: 1.748597%.
+  - maximum absolute graphical residual: 3.585742%.
+  - in-sample source fit audit only; no new FE prediction.
+
+Local regression after this batch: **28 tests PASS** and `verify-all = PASS`.
+
+## Next
+
+1. Clean accidental shell-output files (`Current`, `Detected`, `Downloading`, `Future`, `Resolved`, `Updating`) from `develop` if still tracked.
+2. Push the P16/P29/P36 batch and confirm GitHub CI.
+3. Select the next source-ready heterogeneous study only after checking source availability and evidence boundary.

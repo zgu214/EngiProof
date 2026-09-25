@@ -1,0 +1,99 @@
+{
+  "schema_version": "engiproof.evidence_graph/1.0",
+  "paper_id": "P36",
+  "qualification": "NOT_GRANTED",
+  "nodes": [
+    {
+      "id": "S-P36",
+      "kind": "source",
+      "label": "Gong and Li (2015)",
+      "evidence_class": "PUBLISHED",
+      "status": "SOURCE_READY",
+      "source_refs": [
+        "10.1016/j.engstruct.2014.11.032"
+      ]
+    },
+    {
+      "id": "T-E8",
+      "kind": "target",
+      "label": "Equation (8) empirical pressure-ratio fit",
+      "evidence_class": "PUBLISHED",
+      "status": "COMPARED",
+      "source_refs": [
+        "Eq. (8)"
+      ]
+    },
+    {
+      "id": "T-F14",
+      "kind": "target",
+      "label": "Figure 14 FE-marker centres",
+      "evidence_class": "PUBLISHED",
+      "status": "COMPARED",
+      "source_refs": [
+        "Figure 14"
+      ]
+    },
+    {
+      "id": "I-P36",
+      "kind": "implementation",
+      "label": "Eq. (8) evaluator + residual audit",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "papers/P36/tool_api.py"
+      ]
+    },
+    {
+      "id": "C-P36",
+      "kind": "comparison",
+      "label": "Eq. (8) vs 27 graphical FE markers",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P36-C001"
+      ]
+    },
+    {
+      "id": "D-P36",
+      "kind": "discrepancy",
+      "label": "graphical marker residual envelope",
+      "evidence_class": "INDEPENDENT",
+      "status": "BOUNDED",
+      "source_refs": [
+        "P36-D001"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "S-P36",
+      "to": "T-E8",
+      "relation": "contains"
+    },
+    {
+      "from": "S-P36",
+      "to": "T-F14",
+      "relation": "contains"
+    },
+    {
+      "from": "T-E8",
+      "to": "I-P36",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "T-F14",
+      "to": "C-P36",
+      "relation": "reference_for"
+    },
+    {
+      "from": "I-P36",
+      "to": "C-P36",
+      "relation": "produces"
+    },
+    {
+      "from": "C-P36",
+      "to": "D-P36",
+      "relation": "bounds"
+    }
+  ]
+}

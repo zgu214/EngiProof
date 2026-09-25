@@ -1,0 +1,99 @@
+{
+  "schema_version": "engiproof.evidence_graph/1.0",
+  "paper_id": "P16",
+  "qualification": "NOT_GRANTED",
+  "nodes": [
+    {
+      "id": "S-P16",
+      "kind": "source",
+      "label": "Chen and Chia (2010)",
+      "evidence_class": "PUBLISHED",
+      "status": "SOURCE_READY",
+      "source_refs": [
+        "10.1115/OMAE2010-20058"
+      ]
+    },
+    {
+      "id": "T-F5",
+      "kind": "target",
+      "label": "Figure 5 walking-displacement curve",
+      "evidence_class": "PUBLISHED",
+      "status": "COMPARED",
+      "source_refs": [
+        "Figure 5"
+      ]
+    },
+    {
+      "id": "T-T2",
+      "kind": "target",
+      "label": "Table 2 cycle increments",
+      "evidence_class": "PUBLISHED",
+      "status": "COMPARED",
+      "source_refs": [
+        "Table 2"
+      ]
+    },
+    {
+      "id": "I-P16",
+      "kind": "implementation",
+      "label": "vector-curve interpolation + cumulative arithmetic",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "papers/P16/tool_api.py"
+      ]
+    },
+    {
+      "id": "C-P16",
+      "kind": "comparison",
+      "label": "Figure 5 vs Table 2 endpoint consistency",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P16-C001"
+      ]
+    },
+    {
+      "id": "D-P16",
+      "kind": "discrepancy",
+      "label": "finite graph/table precision envelope",
+      "evidence_class": "INDEPENDENT",
+      "status": "BOUNDED",
+      "source_refs": [
+        "P16-D001"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "S-P16",
+      "to": "T-F5",
+      "relation": "contains"
+    },
+    {
+      "from": "S-P16",
+      "to": "T-T2",
+      "relation": "contains"
+    },
+    {
+      "from": "T-F5",
+      "to": "I-P16",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "T-T2",
+      "to": "I-P16",
+      "relation": "implemented_by"
+    },
+    {
+      "from": "I-P16",
+      "to": "C-P16",
+      "relation": "produces"
+    },
+    {
+      "from": "C-P16",
+      "to": "D-P16",
+      "relation": "bounds"
+    }
+  ]
+}

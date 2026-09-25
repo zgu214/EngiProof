@@ -1,0 +1,15 @@
+{
+  "schema_version": "engiproof.verification/1.0",
+  "paper_id": "P29",
+  "status": "CONDITIONAL",
+  "source_pdf_external": true,
+  "surface_points": 7442,
+  "max_surface_relative_difference": 5.335044602067651e-13,
+  "max_state_space_reference_relative_difference": 1.0735657594794953e-13,
+  "max_direct_quadrature_reference_relative_difference": 9.872504580736674e-13,
+  "spectral_convention_factor": 2.0,
+  "open_discrepancy": "The source figure display and printed two-sided integral differ by a factor of two for the same numerical S0; exact PSD convention remains unclosed.",
+  "inherited_surface_sha256": "96aad22acdaeab93fb5a37bf2881cbe32b28be340b9a2e0c2d17f517963cce66",
+  "inherited_independent_checks_sha256": "6c686dd6d24f99438f2dbe6b6952cdf50de0d4f42c74893c7aea60a8b5993db2",
+  "qualification": "NOT_GRANTED"
+}

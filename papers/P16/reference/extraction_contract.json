@@ -1,0 +1,19 @@
+{
+  "source_sha256": "9fed9062ddbeb777e82e32197e9c0f4f67c60a326f8ac5be39238672495575e0",
+  "pdf_page_1based": 3,
+  "figure": "5",
+  "axes": {
+    "x0_pt": 338.82000732421875,
+    "x1_pt": 547.739990234375,
+    "y0_pt": 333.7799987792969,
+    "y1_pt": 223.08001708984375,
+    "step_min": 0,
+    "step_max": 50,
+    "displacement_min_mm": 0,
+    "displacement_max_mm": 500
+  },
+  "method": "original blue stroked line segments; unique ordered vertices",
+  "comparison": "linear interpolation of source drawing at the printed Table 2 end steps",
+  "uncertainty_note": "PDF coordinates are a drawing, not unrounded source solver outputs; discrepancies retain table/plot precision effects.",
+  "prior_raster_digitization_reused": false
+}

@@ -1,0 +1,19 @@
+{
+  "omega_s_rad_per_s": 11.142,
+  "zeta_s": 0.05,
+  "mass_ratios": [
+    0.853,
+    0.01
+  ],
+  "gamma_min": 0.01,
+  "gamma_max": 1.0,
+  "zeta_t_min": 0.01,
+  "zeta_t_max": 1.0,
+  "grid_points_each_axis": 61,
+  "S0": 1.0,
+  "displayed_spectral_convention": "positive-frequency integral",
+  "printed_equation_16_convention": "two-sided integral; twice the displayed surface for the same numerical S0",
+  "boundary": "Zero-frequency and zero-damping edges excluded; the source sampling and spectral convention are not reconstructed by fitting.",
+  "source_sha256": "9b5d340943f6884990afef08fa8adaf1b4fa7cb6a9b70b9924062cdc53241eba",
+  "locators": "Eqs. (1)-(5) p.77; omega_s and zeta_s p.78; Eqs. (16)-(18), Fig.16 p.83"
+}

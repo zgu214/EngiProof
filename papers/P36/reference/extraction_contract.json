@@ -1,0 +1,58 @@
+{
+  "source_sha256": "4beea2728973052e8c6a021336dee7a6142d7e3adb159f4f0bd2862c56110200",
+  "pdf_page_1based": 8,
+  "printed_page": 214,
+  "figure": "14",
+  "axes": {
+    "x0_pt": 343.575,
+    "x1_pt": 535.309,
+    "y0_pt": 212.835,
+    "y1_pt": 72.514,
+    "xrange": [
+      0,
+      1
+    ],
+    "yrange": [
+      1,
+      3.5
+    ]
+  },
+  "groups": {
+    "15": [
+      67,
+      69,
+      71,
+      73,
+      75,
+      77,
+      79,
+      81,
+      83
+    ],
+    "20": [
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93
+    ],
+    "25": [
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102
+    ]
+  },
+  "method": "reviewed marker paths, centre of each bounding rectangle; triangles use bounding-box centre, not inferred FE anchor",
+  "uncertainty_note": "Half-symbol sizes retained; these are graphical reading envelopes, not FE uncertainty.",
+  "prior_raster_digitization_reused": false
+}

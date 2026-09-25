@@ -1,0 +1,2 @@
+[console_scripts]
+engiproof = engiproof.cli:main
