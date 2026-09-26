@@ -19,7 +19,7 @@ from engiproof.ingestion import (
     load_structure_candidates,
     load_target_dossiers,
     pipeline_status,
-    target_dossier,
+    target_dossier, audit_source_identity, recover_equation_candidates, selected_target_readiness, update_intake_metadata,
 )
 
 SAMPLE = """Engineering study\nFigure 3 Comparison with experimental results\nTable 2 Test parameters\nEquation (7) analytical model\nFig. 5 numerical validation\n"""
@@ -31,7 +31,7 @@ class IngestionTests(unittest.TestCase):
         (root / 'engiproof').mkdir()
         (root / 'papers').mkdir()
         (root / 'engiproof' / 'registry.json').write_text(json.dumps({
-            'schema_version':'engiproof.registry/1.0','framework':'EngiProof','version':'0.2.0.dev1','studies':[]
+            'schema_version':'engiproof.registry/1.0','framework':'EngiProof','version':'0.2.0.dev2','studies':[]
         }))
         return root
 
@@ -89,7 +89,7 @@ class IngestionTests(unittest.TestCase):
             self.assertEqual(len(plan['targets']),2)
             status=pipeline_status('P92',root=root)
             self.assertTrue(status['stages'][0]['complete'])
-            self.assertEqual(status['next_stage'],'source_enrichment')
+            self.assertEqual(status['next_stage'],'source_identity')
 
 
     def test_source_enrichment_builds_locators_without_full_text(self):
@@ -179,5 +179,56 @@ class IngestionTests(unittest.TestCase):
             enrich_source('P98',src,root=root)
             with self.assertRaises(ValueError):
                 extract_structures('P98',wrong,root=root)
+
+    def test_grouped_equation_recovery_preserves_existing_ids(self):
+        sample="Study title\nEqs. ( 2), (3), ( 6), and (9) are compared.\nX = a + b ( 9 )\n"
+        with tempfile.TemporaryDirectory() as td:
+            root=self._root(td); src=root/'paper.txt'; src.write_text(sample)
+            ingest_source(src,'P81',title='Study title',root=root)
+            data=load_intake('P81',root=root)['targets']; labels={x['label'] for x in data['candidates']}
+            self.assertTrue({'Equation (2)','Equation (3)','Equation (6)','Equation (9)'}.issubset(labels))
+            ids={x['label']:x['candidate_id'] for x in data['candidates']}
+            out=recover_equation_candidates('P81',src,root=root)
+            data2=load_intake('P81',root=root)['targets']; ids2={x['label']:x['candidate_id'] for x in data2['candidates']}
+            self.assertEqual(ids['Equation (9)'],ids2['Equation (9)'])
+            self.assertEqual(out['added_count'],0)
+
+    def test_type1_equation_number_reconstructs_multiline_block(self):
+        sample="Study title\nEquation (9) is proposed.\nPp2 =\n3*pi*sigma\n* (t/D)^2\nð9Þ\nTable 1. Inputs\nCase 1 2 3\n"
+        with tempfile.TemporaryDirectory() as td:
+            root=self._root(td); src=root/'paper.txt'; src.write_text(sample)
+            ingest_source(src,'P82',title='Study title',root=root); enrich_source('P82',src,root=root); extract_structures('P82',src,root=root)
+            st=load_structure_candidates('P82',root=root); eq=next(x for x in st['equations'] if x['label']=='Equation (9)')
+            self.assertTrue(eq['blocks']); self.assertIn('Pp2',eq['blocks'][0]['text'])
+
+    def test_table_block_extracts_data_rows_and_readiness(self):
+        sample="Study title\nTable 1. Properties\nIdentifier A B C\nPIP-1 80 2 40\nPIP-2 60 2 40\nEquation (9) model\nP = k * x (9)\n"
+        with tempfile.TemporaryDirectory() as td:
+            root=self._root(td); src=root/'paper.txt'; src.write_text(sample)
+            ingest_source(src,'P83',title='Study title',root=root); enrich_source('P83',src,root=root)
+            data=load_intake('P83',root=root)['targets']; wanted=[x['candidate_id'] for x in data['candidates'] if x['label'] in {'Table 1','Equation (9)'}]
+            scaffold_from_intake('P83',target_ids=wanted,root=root); extract_structures('P83',src,root=root)
+            ready=selected_target_readiness('P83',root=root); self.assertEqual(ready['status'],'READY')
+
+    def test_source_identity_conflict_blocks_promotion(self):
+        sample="Propagation Buckling in Subsea Pipe-in-Pipe Systems\nDOI: 10.1061/(ASCE)EM.1943-7889.0001337\n© 2017 ASCE\nEquation (9) model\nP = k*x (9)\n"
+        with tempfile.TemporaryDirectory() as td:
+            root=self._root(td); src=root/'paper.txt'; src.write_text(sample)
+            ingest_source(src,'P84',title='Propagation Buckling in Subsea Pipe-in-Pipe Systems',doi='10.1016/j.tws.2013.07.003',year=2013,root=root)
+            audit=audit_source_identity('P84',src,root=root); self.assertEqual(audit['status'],'CONFLICT'); self.assertEqual(audit['checks']['doi'],'CONFLICT')
+            scaffold_from_intake('P84',root=root); gate=promotion_gate('P84',root=root); self.assertFalse(gate['ready']); self.assertIn('source identity conflict',gate['issues'])
+
+    def test_metadata_repair_requires_reaudit_and_syncs_scaffold(self):
+        sample="Correct Title\nDOI: 10.1061/test.correct\n© 2017 Publisher\nTable 1. Values\nCase 1 2 3\n"
+        with tempfile.TemporaryDirectory() as td:
+            root=self._root(td); src=root/'paper.txt'; src.write_text(sample)
+            ingest_source(src,'P85',title='Wrong Title',doi='10.1000/wrong',year=2013,root=root); scaffold_from_intake('P85',root=root)
+            self.assertEqual(audit_source_identity('P85',src,root=root)['status'],'CONFLICT')
+            out=update_intake_metadata('P85',title='Correct Title',doi='10.1061/test.correct',year=2017,root=root)
+            self.assertEqual(out['status'],'METADATA_UPDATED_REAUDIT_REQUIRED')
+            self.assertFalse((root/'engiproof/intake/P85/source_identity_audit.json').exists())
+            manifest=json.loads((root/'engiproof/studies/P85/study.json').read_text())
+            self.assertEqual(manifest['source']['doi'],'10.1061/test.correct'); self.assertEqual(manifest['year'],2017)
+            self.assertEqual(audit_source_identity('P85',src,root=root)['status'],'PASS')
 
 if __name__=='__main__': unittest.main()

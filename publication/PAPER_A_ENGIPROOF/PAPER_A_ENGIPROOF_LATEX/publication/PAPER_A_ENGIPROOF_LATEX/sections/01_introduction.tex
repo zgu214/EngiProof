@@ -1,0 +1,22 @@
+\section{Introduction}
+Engineering papers often contain enough information to reproduce part of a method, but not necessarily enough information to reproduce a complete model, resolve every convention, or qualify a result for design use. Reuse therefore requires more than extracting equations or generating executable code. A defensible workflow must preserve the identity of the source, distinguish published reference data from independent calculations, expose assumptions and unavailable inputs, quantify comparisons, and retain unresolved discrepancies.
+
+This distinction becomes important when a paper is internally inconsistent. A conventional paper-to-code workflow may silently select one source value, reinterpret a unit, or tune an input until the generated code reproduces the printed result. Such behavior can produce an apparently successful program while weakening engineering traceability. \engiproof{} instead treats disagreement as evidence that must be classified and preserved.
+
+The framework is motivated by the principle
+\begin{center}
+\textbf{published research $\rightarrow$ engineering evidence $\rightarrow$ callable engineering method,}
+\end{center}
+not by paper-to-code conversion alone. The intended contribution is therefore an evidence progression model: what was published, what was independently reconstructed, what was newly generated, what was compared, what remains unresolved, and what has not been engineering-qualified.
+
+The present manuscript focuses on the architecture and on two real-source development cases. The first is propagation buckling in subsea pipe-in-pipe (PIP) systems \cite{Karampour2017}. The second is global buckling and structural response of PIP systems \cite{Goplen2011}. The cases are intentionally used not only to demonstrate agreement, but also to test whether the framework can detect and preserve source-backed discrepancies.
+
+The current bounded contributions are:
+\begin{enumerate}[leftmargin=1.6em]
+  \item a source-bounded ingestion and provenance workflow;
+  \item explicit separation of extraction candidates, evidence classes, evidence status, and engineering qualification;
+  \item failure-aware equation and table recovery with selected-target readiness gates;
+  \item comparison and discrepancy records that preserve disagreement rather than tune it away;
+  \item append-only human discrepancy decisions and evidence-graph synchronization; and
+  \item development-case evidence showing both successful reproduction and source-backed mismatch detection.
+\end{enumerate}

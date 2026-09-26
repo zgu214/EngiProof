@@ -1,0 +1,38 @@
+{
+  "schema_version": "engiproof.p42.phase3_source_review/1.0",
+  "paper_id": "P42",
+  "source_sha256": "16c33a882da8a036dc7007fedd5b7aab7e0194bf8ea97ae9b9bf423accbc0d2d",
+  "targets": [
+    "Equation (24)",
+    "Equation (25)",
+    "Equation (26)",
+    "Equation (27)",
+    "Equation (28)",
+    "Equation (29)",
+    "Equation (30)",
+    "Equation (41)",
+    "Figure 16"
+  ],
+  "source_facts": [
+    "Eqs. (24)-(25) are axial-force and torsion equilibrium for the armor layers.",
+    "Eq. (26) relates armor stress to pipe axial strain and twist rate.",
+    "Eqs. (27)-(30) define nominal and local contact pressures, evaluated from the outermost layer.",
+    "The comparison cases state that no internal pressure, external pressure or torsional moment is applied.",
+    "Eq. (41) gives the tensile-armor bending-moment contribution.",
+    "Eqs. (42)-(43) provide continuum-layer and total cross-sectional moment contributions.",
+    "Figure 16 compares analytical curves and FP-RUC points for Fz=50 to 3000 kN."
+  ],
+  "literal_reconstruction_boundary": {
+    "outer_nominal_pressures_Pa": 0.0,
+    "applied_torsion_Nm": 0.0,
+    "reason": "The paper states no internal/external pressure and no torsional moment for the comparison analyses. The zero-pressure recursion boundary is retained explicitly rather than hidden.",
+    "status": "EXPLICIT_IMPLEMENTATION_CONVENTION",
+    "warning": "The paper does not spell out enough implementation detail to demonstrate that this literal recursion/mapping is exactly the convention used to generate Figure 16."
+  },
+  "figure16_visual_scale": {
+    "large_curvature_axis_kappa_max_per_m": 0.1,
+    "large_curvature_axis_moment_max_kNm": 35.0,
+    "note": "Axis limit/source-plot observation only; no curve digitization."
+  },
+  "rule": "Do not tune friction coefficient, contact pressure, geometry or source inputs to force Figure 16 agreement. If the source-bounded implementation does not close, retain the gap."
+}

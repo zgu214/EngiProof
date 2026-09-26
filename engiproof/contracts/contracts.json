@@ -1,7 +1,7 @@
 {
   "schema_version": "engiproof.contracts/1.0",
   "framework": "EngiProof",
-  "framework_version": "0.2.0.dev1",
+  "framework_version": "0.2.0.dev3",
   "evidence_classes": [
     "PUBLISHED",
     "INDEPENDENT",
@@ -178,6 +178,28 @@
         "status"
       ],
       "rule": "Comparison templates specify candidate metrics only; metrics require source-backed reproduced/reference populations before evaluation."
+    },
+    "discrepancy_assessment": {
+      "schema": "engiproof.discrepancy_assessment/1.0",
+      "required": [
+        "discrepancy_id",
+        "state",
+        "category",
+        "review_priority",
+        "promotion_effect",
+        "closure_requirements"
+      ],
+      "rule": "Classification controls review/escalation workflow only; it cannot decide physical acceptability or engineering qualification."
+    },
+    "discrepancy_gate": {
+      "schema": "engiproof.discrepancy_gate/1.0",
+      "required": [
+        "paper_id",
+        "ready",
+        "blocking_discrepancy_ids",
+        "assessments"
+      ],
+      "rule": "Unresolved high-priority evidence conflicts block new-study promotion until resolved, bounded, or explicitly accepted by documented decision."
     }
   }
 }

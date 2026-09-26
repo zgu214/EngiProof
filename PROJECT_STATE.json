@@ -1,0 +1,36 @@
+{
+  "schema_version": "engiproof.project_state/1.0",
+  "framework": "EngiProof",
+  "framework_version": "0.2.0.dev8",
+  "primary_branch": "develop",
+  "development_line": "v0.2.0",
+  "objective": "Paper Ingestion & Evidence Automation",
+  "current_study": "P42",
+  "current_study_state": "FROZEN_CONDITIONAL_EVIDENCE_CASE",
+  "current_checkpoint": "P42_PHASE3_FROZEN",
+  "last_green_verification": "22_VERIFY_P42_PHASE3_WINDOWS.bat",
+  "last_green_status": "PASS",
+  "next_study": "P43",
+  "next_action": "Verify dev8 continuity architecture, create a checkpoint bundle, commit/push, then select and ingest P43 with materially different mechanics.",
+  "qualification": "NOT_GRANTED",
+  "open_evidence_items": [
+    "P40-D001",
+    "P41-D001",
+    "P41-D002",
+    "P42-D001",
+    "P42-D002"
+  ],
+  "continuity_files": [
+    "AGENTS.md",
+    "PROJECT_STATE.json",
+    "HANDOVER_CURRENT.md",
+    "CHAT_COMPACT_CURRENT.md",
+    "WORK_QUEUE.md",
+    "BLOCKERS.md",
+    "DECISIONS.md",
+    "NEW_CHAT_BOOTSTRAP.md"
+  ],
+  "source_of_truth": "Git repository",
+  "private_source_policy": "Copyrighted PDFs remain outside the public repository; preserve canonical basename, DOI and SHA-256.",
+  "last_confirmed_local_date": "2026-09-26"
+}

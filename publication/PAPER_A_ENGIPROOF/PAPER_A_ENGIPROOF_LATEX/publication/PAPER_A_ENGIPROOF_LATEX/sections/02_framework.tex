@@ -1,0 +1,41 @@
+\section{Evidence model and framework architecture}
+
+\subsection{Evidence classes}
+\engiproof{} distinguishes the origin of a result from its maturity. Current evidence classes are:
+\begin{itemize}[leftmargin=1.5em]
+  \item \eclass{PUBLISHED}: directly traceable to a published source or source-derived reference data;
+  \item \eclass{INDEPENDENT}: a calculation or check implemented independently from the published result being tested; and
+  \item \eclass{SOLVER\_NEW}: newly generated solver evidence, used only where justified.
+\end{itemize}
+
+Evidence status is tracked separately using states including \estatus{DRAFT}, \estatus{SOURCE\_READY}, \estatus{REPRODUCED}, \estatus{COMPARED}, \estatus{VERIFIED}, \estatus{CONDITIONAL}, and \estatus{BLOCKED}. Execution alone does not advance status. Similarly, verification does not grant engineering qualification.
+
+\subsection{Qualification boundary}
+Engineering qualification is intentionally orthogonal to numerical execution and evidence status. A study can be reproducible, independently checked, and compared while remaining \estatus{NOT\_GRANTED} for engineering qualification. This prevents successful execution from being misrepresented as acceptance for project-specific design.
+
+\subsection{End-to-end evidence flow}
+Figure~\ref{fig:architecture} summarizes the current workflow.
+
+\begin{figure}[htbp]
+\centering
+\fbox{\parbox{0.93\linewidth}{\centering
+\texttt{paper source} $\rightarrow$
+\texttt{fingerprint} $\rightarrow$
+\texttt{identity audit} $\rightarrow$
+\texttt{target discovery} $\rightarrow$
+\texttt{structure recovery} $\rightarrow$\\[0.4em]
+\texttt{selected-target readiness} $\rightarrow$
+\texttt{reproduction} $\rightarrow$
+\texttt{independent check} $\rightarrow$
+\texttt{comparison} $\rightarrow$\\[0.4em]
+\texttt{discrepancy} $\rightarrow$
+\texttt{human decision} $\rightarrow$
+\texttt{evidence graph} $\rightarrow$
+\texttt{callable method} $\rightarrow$
+\texttt{promotion gate}
+}}
+\caption{Current EngiProof evidence-automation workflow. Each arrow represents a controlled transition rather than an automatic promotion of evidence status.}
+\label{fig:architecture}
+\end{figure}
+
+A key invariant is that a candidate extracted from a PDF is not evidence merely because it has been recognized. Likewise, a callable method is not qualified engineering merely because it returns a number.

@@ -1,0 +1,61 @@
+{
+  "nominal_geometry": {
+    "inner_armor_mid_radius_mm": 132.0,
+    "outer_armor_mid_radius_mm": 137.0,
+    "inner_lay_angle_deg": 24.90915425803111,
+    "outer_lay_angle_deg": 24.940498991073344
+  },
+  "analytical_amplitudes_at_kappa_0p06": {
+    "inner_transverse_MPa": 84.09462415575558,
+    "outer_transverse_MPa": 84.10310644651963,
+    "inner_normal_MPa": 21.31548104332173,
+    "outer_normal_MPa": 21.2938160012673
+  },
+  "figure21_23_model_form_check": {
+    "analytical_Fz_dependence": "NONE_IN_EQS_36_39",
+    "published_FP_RUC_Fz_dependence": "PRESENT",
+    "classification": "MODEL_FORM_KINEMATICS_DIFFERENCE",
+    "source_interpretation": "The paper attributes the difference to sliding interaction and wire-path/kinematic assumptions."
+  },
+  "source_review": {
+    "schema_version": "engiproof.p42.phase2_source_review/1.0",
+    "paper_id": "P42",
+    "targets": [
+      "Equation (31)",
+      "Equation (32)",
+      "Equation (33)",
+      "Equation (34)",
+      "Equation (35)",
+      "Equation (36)",
+      "Equation (37)",
+      "Equation (38)",
+      "Equation (39)",
+      "Figure 20",
+      "Figure 21",
+      "Figure 22",
+      "Figure 23"
+    ],
+    "figure20": {
+      "status": "PUBLISHED_SOURCE_REVIEWED",
+      "configuration": "Fz=500 kN; multiple kappa_G values",
+      "observation": "Analytical transverse bending stress follows Eqs. (36) and (38); FP-RUC points vary with curvature."
+    },
+    "figure21": {
+      "status": "PUBLISHED_SOURCE_REVIEWED",
+      "configuration": "kappa_G=0.06 1/m; Fz=50,100,500,1000,1500,2000 kN",
+      "observation": "Analytical transverse bending stress is independent of Fz under the loxodromic assumption, while FP-RUC stress varies with Fz."
+    },
+    "figure22": {
+      "status": "PUBLISHED_SOURCE_REVIEWED",
+      "configuration": "Fz=500 kN; multiple kappa_G values",
+      "observation": "Analytical normal bending stress follows Eqs. (37) and (39); FP-RUC points vary with curvature."
+    },
+    "figure23": {
+      "status": "PUBLISHED_SOURCE_REVIEWED",
+      "configuration": "kappa_G=0.06 1/m; multiple Fz values",
+      "observation": "Analytical normal bending stress is independent of Fz, while FP-RUC varies with Fz; the paper attributes the deviation to sliding interaction and different wire-path kinematics."
+    },
+    "evidence_boundary": "Analytical solid-line families are regenerated from published equations and source geometry. FP-RUC point clouds are not digitized or reproduced."
+  },
+  "evidence_boundary": "Analytical curves are regenerated from PUBLISHED Eqs. (36)-(39) using source geometry/materials plus an INDEPENDENT helix-angle calculation. Eqs. (31)-(35) are callable with explicit contact-pressure inputs. FP-RUC curves are not digitized or reproduced."
+}

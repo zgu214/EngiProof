@@ -1,0 +1,360 @@
+{
+  "schema_version": "engiproof.study/1.1",
+  "framework": "EngiProof",
+  "framework_version": "0.2.0.dev6",
+  "paper_id": "P41",
+  "title": "Global Buckling of Pipe-in-Pipe: Structural Response and Design Criteria",
+  "year": 2011,
+  "evidence_status": "CONDITIONAL",
+  "category": "Pipe-in-pipe global buckling / axial load sharing",
+  "source": {
+    "canonical_pdf": "p41-goplen2011.pdf",
+    "sha256": "21c3765eb4e9bd16b5bf36b1a58f3c5f72bf4a08058fc7b7ca5241c045ee619d",
+    "doi": "10.1115/OMAE2011-49960"
+  },
+  "selected_targets": [
+    "Table 1",
+    "Table 2",
+    "Equation (6)",
+    "Equation (7)",
+    "Equation (8)"
+  ],
+  "runner": "papers/P41/run_calculation.py",
+  "source_contract": "papers/P41/SOURCE.md",
+  "evidence_graph": "engiproof/studies/P41/evidence_graph.json",
+  "result_files": [
+    "papers/P41/results/table2_reproduction.csv",
+    "papers/P41/results/engiproof_verification.json",
+    "papers/P41/results/discrepancy_assessment.json",
+    "papers/P41/results/phase3_global_buckling_summary.json"
+  ],
+  "verification_tests": [
+    "tests.test_p41_engiproof.P41EngiProofTests.test_geometry_reproduces_table2_area_and_EA",
+    "tests.test_p41_engiproof.P41EngiProofTests.test_equation8_force_identity",
+    "tests.test_p41_engiproof.P41EngiProofTests.test_outer_force_rounding_agreement",
+    "tests.test_p41_engiproof.P41EngiProofTests.test_inner_force_is_source_review_not_confirmed_paper_discrepancy",
+    "tests.test_p41_engiproof.P41EngiProofTests.test_runner",
+    "tests.test_p41_engiproof.P41EngiProofTests.test_source_transcription_uncertainty_blocks_promotion",
+    "tests.test_p41_phase3.P41Phase3Tests.test_outer_bending_stiffness_exceeds_inner",
+    "tests.test_p41_phase3.P41Phase3Tests.test_equation14_scaling",
+    "tests.test_p41_phase3.P41Phase3Tests.test_figure10_unit_mismatch_is_recorded",
+    "tests.test_p41_phase3.P41Phase3Tests.test_source_global_buckle_observations"
+  ],
+  "tools": [
+    {
+      "name": "steel_area_m2",
+      "module": "papers/P41/tool_api.py",
+      "function": "steel_area_m2",
+      "arguments": {
+        "D_mm": "outside diameter in mm",
+        "t_mm": "wall thickness in mm"
+      },
+      "returns": "independent steel annulus area in m2",
+      "evidence": "independent geometry check against P41 Tables 1-2",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "axial_stiffness_N",
+      "module": "papers/P41/tool_api.py",
+      "function": "axial_stiffness_N",
+      "arguments": {
+        "D_mm": "outside diameter in mm",
+        "t_mm": "wall thickness in mm",
+        "E_Pa": "Young's modulus in Pa"
+      },
+      "returns": "independent EA in N",
+      "evidence": "independent Table 1 -> Table 2 stiffness check",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "equation6_deltaS_inner_N_per_m",
+      "module": "papers/P41/tool_api.py",
+      "function": "equation6_deltaS_inner_N_per_m",
+      "arguments": {
+        "fS_N_per_m": "soil friction N/m",
+        "EA_inner_N": "inner EA N",
+        "EA_outer_N": "outer EA N"
+      },
+      "returns": "published Eq. (6) inner effective-force increment in N/m",
+      "evidence": "P41 Eq. (6)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "equation7_deltaS_outer_N_per_m",
+      "module": "papers/P41/tool_api.py",
+      "function": "equation7_deltaS_outer_N_per_m",
+      "arguments": {
+        "fS_N_per_m": "soil friction N/m",
+        "EA_inner_N": "inner EA N",
+        "EA_outer_N": "outer EA N"
+      },
+      "returns": "published Eq. (7) outer effective-force increment in N/m",
+      "evidence": "P41 Eq. (7)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "equation8_total_deltaS_N_per_m",
+      "module": "papers/P41/tool_api.py",
+      "function": "equation8_total_deltaS_N_per_m",
+      "arguments": {
+        "deltaS_inner_N_per_m": "inner increment N/m",
+        "deltaS_outer_N_per_m": "outer increment N/m"
+      },
+      "returns": "published Eq. (8) total force increment in N/m",
+      "evidence": "P41 Eq. (8)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "independent_table1_to_table2_summary",
+      "module": "papers/P41/tool_api.py",
+      "function": "independent_table1_to_table2_summary",
+      "arguments": {},
+      "returns": "independent Table 1 -> Table 2 geometry/stiffness/load-sharing audit",
+      "evidence": "independent arithmetic and mechanics audit of P41 Tables 1-2 and Eqs. (6)-(8)",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "equation9_required_internal_friction_N_per_m",
+      "module": "papers/P41/tool_api.py",
+      "function": "equation9_required_internal_friction_N_per_m",
+      "arguments": {
+        "fS_N_per_m": "soil friction N/m",
+        "EA_inner_N": "inner EA N",
+        "EA_outer_N": "outer EA N",
+        "gamma_f": "friction safety factor"
+      },
+      "returns": "required internal friction N/m for full axial bonding",
+      "evidence": "P41 Eq. (9)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "classify_axial_bonding",
+      "module": "papers/P41/tool_api.py",
+      "function": "classify_axial_bonding",
+      "arguments": {
+        "fI_N_per_m": "internal friction N/m",
+        "f_required_N_per_m": "Eq. (9) requirement N/m"
+      },
+      "returns": "NO_FRICTION / PARTIAL_BONDING / FULL_BONDING",
+      "evidence": "independent application of P41 Eq. (9) to Table 3",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "equation10_end_expansion_m",
+      "module": "papers/P41/tool_api.py",
+      "function": "equation10_end_expansion_m",
+      "arguments": {
+        "S0_total_N": "restrained total effective axial force N",
+        "fS_N_per_m": "soil friction N/m",
+        "EA_inner_N": "inner EA N",
+        "EA_outer_N": "outer EA N"
+      },
+      "returns": "full-bonding end expansion m",
+      "evidence": "P41 Eq. (10), input-conditional",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "table3_bonding_summary",
+      "module": "papers/P41/tool_api.py",
+      "function": "table3_bonding_summary",
+      "arguments": {
+        "gamma_f": "friction safety factor, default 1.0 for paper case classification"
+      },
+      "returns": "Table 3 bonding classification audit + dry-friction check + Eq.10 input limitation",
+      "evidence": "P41 Table 3 / Eqs. (9)-(10) audit",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "second_moment_annulus_m4",
+      "module": "papers/P41/tool_api.py",
+      "function": "second_moment_annulus_m4",
+      "arguments": {
+        "D_mm": "outside diameter mm",
+        "t_mm": "wall thickness mm"
+      },
+      "returns": "annulus second moment m4",
+      "evidence": "independent geometry check",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "bending_stiffness_Nm2",
+      "module": "papers/P41/tool_api.py",
+      "function": "bending_stiffness_Nm2",
+      "arguments": {
+        "D_mm": "outside diameter mm",
+        "t_mm": "wall thickness mm",
+        "E_Pa": "Young modulus Pa"
+      },
+      "returns": "elastic EI N m2",
+      "evidence": "independent Table 1 check",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "equation14_design_moment",
+      "module": "papers/P41/tool_api.py",
+      "function": "equation14_design_moment",
+      "arguments": {
+        "M_f": "moment before gamma factors",
+        "gamma_f": "load factor",
+        "gamma_C": "load-effect factor"
+      },
+      "returns": "M_D in same units as M_f",
+      "evidence": "P41 Eq. (14)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "phase3_global_buckling_summary",
+      "module": "papers/P41/tool_api.py",
+      "function": "phase3_global_buckling_summary",
+      "arguments": {},
+      "returns": "Figures 8-10 source observations + EI audit + Eq14 check",
+      "evidence": "P41 Figures 8-10 / Eq.14",
+      "evidence_class": "INDEPENDENT"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "P41-C001",
+      "target": "Table 1 geometry -> Table 2 steel area",
+      "status": "COMPARED",
+      "reference": "P41 Table 2",
+      "metrics": {
+        "maximum_expected_relative_difference_percent": 0.01
+      }
+    },
+    {
+      "id": "P41-C002",
+      "target": "Table 1 geometry/E -> Table 2 axial stiffness",
+      "status": "COMPARED",
+      "reference": "P41 Table 2",
+      "metrics": {
+        "maximum_expected_relative_difference_percent": 0.02
+      }
+    },
+    {
+      "id": "P41-C003",
+      "target": "Eqs. (6)-(8) load sharing -> Table 2 force increments",
+      "status": "CONDITIONAL",
+      "reference": "P41 Table 2 visually confirmed",
+      "metrics": {
+        "fS_N_per_m": 471,
+        "calculated_inner_N_per_m": 158.78448922208514,
+        "extracted_inner_N_per_m": 153,
+        "calculated_outer_N_per_m": 312.21551077791486,
+        "extracted_outer_N_per_m": 312
+      }
+    },
+    {
+      "id": "P41-C004",
+      "target": "Eq. (9) bonding criterion -> Table 3 case classifications",
+      "status": "COMPARED",
+      "reference": "P41 Table 3",
+      "metrics": {
+        "gamma_f_for_case_classification": 1.0
+      }
+    },
+    {
+      "id": "P41-C005",
+      "target": "Table 1 geometry/E -> elastic bending-stiffness ratio",
+      "status": "COMPARED",
+      "reference": "P41 qualitative outer-pipe bending-stiffness statement",
+      "metrics": {
+        "EI_inner_Nm2": 25640078.501787547,
+        "EI_outer_Nm2": 87088789.57818338,
+        "outer_to_inner_ratio": 3.396588258187736
+      }
+    },
+    {
+      "id": "P41-C006",
+      "target": "Eq. (14) gamma_C scaling",
+      "status": "REPRODUCED",
+      "reference": "P41 Eq. (14)",
+      "metrics": {
+        "gamma_f": 1.0,
+        "gamma_C_example": 0.8,
+        "design_moment_factor": 0.8
+      }
+    }
+  ],
+  "discrepancies": [
+    {
+      "id": "P41-D001",
+      "target": "Table 2 inner effective-force increment versus Eqs. (6)-(8)",
+      "status": "OPEN",
+      "classification_hint": "PUBLISHED_REFERENCE_MISMATCH",
+      "observation": "The original Table 2 visibly reports fS=471 N/m, inner ΔS=153 N/m and outer ΔS=312 N/m. The published component values sum to 465 N/m, while Eqs. (6)-(8) with the published stiffnesses reproduce about 158.8 N/m and 312.2 N/m and close exactly to 471 N/m.",
+      "engineering_interpretation": "This is a source-confirmed internal published-reference mismatch. A typographical error of 153 versus 159 N/m is plausible because 159+312=471 and Eq. (6) gives 158.8 N/m, but that explanation remains unconfirmed without an erratum or author clarification.",
+      "metrics": {
+        "reference_value": 153,
+        "reproduced_value": 158.78448922208514,
+        "absolute_difference": 5.78448922208514,
+        "relative_difference_percent": 3.78071190985957,
+        "reference_decimals": 0,
+        "published_total_fS_N_per_m": 471,
+        "published_component_sum_N_per_m": 465
+      },
+      "automation": {
+        "independent_support": "CORROBORATES_REPRODUCTION",
+        "promotion_effect": "BLOCK_PROMOTION"
+      },
+      "closure_requirements": [
+        "Retain the visually confirmed Table 2 values exactly as published.",
+        "Retain the independent Eqs. (6)-(8) reproduction separately.",
+        "Seek an erratum, author clarification, or other provenance before asserting that 153 is a typographical error.",
+        "Do not tune source inputs to force the published component value."
+      ]
+    },
+    {
+      "id": "P41-D002",
+      "target": "Figure 10 moment units in source paragraph versus plotted axis",
+      "status": "OPEN",
+      "classification_hint": "PUBLISHED_REFERENCE_MISMATCH",
+      "observation": "The source paragraph states approximately 300 MNm for the inner pipe and 850 MNm for the outer pipe, while Figure 10 labels the y-axis as Moment [kNm] and displays corresponding numerical levels on a 0-1000 scale.",
+      "engineering_interpretation": "This is a source-internal unit mismatch of three orders of magnitude if the paragraph units are interpreted literally. The figure axis and plotted scale are consistent with kNm, but EngiProof does not silently correct the paragraph without an erratum or author clarification.",
+      "metrics": {
+        "paragraph_inner_numeric_value": 300,
+        "paragraph_outer_numeric_value": 850,
+        "paragraph_unit": "MNm",
+        "figure_axis_unit": "kNm",
+        "literal_unit_scale_factor": 1000
+      },
+      "automation": {
+        "independent_support": "SOURCE_INTERNAL_CORROBORATION",
+        "promotion_effect": "BLOCK_PROMOTION"
+      },
+      "closure_requirements": [
+        "Retain the paragraph and axis units exactly as published.",
+        "Do not silently relabel MNm as kNm.",
+        "Seek an erratum, author clarification, or other provenance before closure."
+      ]
+    }
+  ],
+  "limitations": [
+    "Table 2 contains a source-confirmed internal mismatch: 153+312=465 N/m whereas fS=471 N/m and Eqs. (6)-(8) reproduce the total 471 N/m.",
+    "Figure 10 contains a source-internal unit mismatch: the paragraph reports approximately 300/850 MNm while the plotted axis is Moment [kNm].",
+    "DOI is externally confirmed but was not found in extracted PDF text; source-identity audit remains REVIEW_REQUIRED rather than conflict.",
+    "This reproduction covers axial stiffness/load-sharing mechanics only; no global-buckling FE model is reproduced.",
+    "Engineering qualification is NOT_GRANTED.",
+    "Eq. (10) is callable, but direct reproduction of the 1.305 m full-bonding end expansion is conditional because S0_total cannot be independently reconstructed from explicit numerical source inputs without added assumptions.",
+    "Figures 8-10 are source observations only; no curve digitization, global-buckling FE recreation or nonlinear local FE reproduction is claimed."
+  ],
+  "next_actions": [
+    "Retain P41-D001 and P41-D002 as OPEN published-reference mismatches; do not tune or silently correct.",
+    "Freeze P41 after Phase 3 as the second ingestion-generated case.",
+    "Move next to a third paper with materially different mechanics."
+  ],
+  "qualification": "NOT_GRANTED",
+  "ingestion_record": "engiproof/intake/P41/ingestion.json",
+  "provenance_note": "Second real ingestion-generated EngiProof case. P41 exposed and validated publisher-style extraction generalization before reproduction.",
+  "phase2_targets": [
+    "Table 3",
+    "Equation (9)",
+    "Equation (10)"
+  ],
+  "phase3_targets": [
+    "Figure 8",
+    "Figure 9",
+    "Figure 10",
+    "Equation (14)"
+  ]
+}

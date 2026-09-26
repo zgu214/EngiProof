@@ -1,0 +1,23 @@
+{
+  "schema_version": "engiproof.p42.table3/1.0",
+  "source": "P42 Table 3, page 408",
+  "core": {
+    "E11_MPa": 210000.0,
+    "E22_MPa": 210000.0,
+    "E33_MPa": 900.0,
+    "G12_MPa": 42000.0,
+    "G13_MPa": 42000.0,
+    "G23_MPa": 500.0,
+    "nu12": 0.3,
+    "nu13": 0.0,
+    "nu23": 0.0
+  },
+  "tensile_armor": {
+    "E_MPa": 210000.0,
+    "nu": 0.3
+  },
+  "outer_sheath": {
+    "E_MPa": 400.0,
+    "nu": 0.4
+  }
+}

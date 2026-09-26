@@ -1,0 +1,45 @@
+{
+  "schema_version": "engiproof.p41_phase3_source/1.0",
+  "paper_id": "P41",
+  "source_sha256": "21c3765eb4e9bd16b5bf36b1a58f3c5f72bf4a08058fc7b7ca5241c045ee619d",
+  "targets": [
+    "Figure 8",
+    "Figure 9",
+    "Figure 10",
+    "Equation (14)"
+  ],
+  "figure8": {
+    "source_status": "PUBLISHED_SOURCE_REVIEWED",
+    "observations": [
+      "Global buckling is initiated when the total effective axial force exceeds the buckling capacity.",
+      "Two horizontal imperfections are introduced at 1500 m and 3500 m.",
+      "At initiation the total effective axial force drops; after initiation it approaches a nearly constant post-buckling level.",
+      "The outer pipe goes into tension while the inner pipe continues to increase compression."
+    ]
+  },
+  "figure9": {
+    "source_status": "PUBLISHED_SOURCE_REVIEWED",
+    "observations": [
+      "Two global buckles occur near the introduced imperfection locations.",
+      "The outer pipe is in tension along the whole model length and the inner pipe is in compression.",
+      "The total effective-force slopes show feed-in toward the buckles."
+    ]
+  },
+  "figure10": {
+    "source_status": "PUBLISHED_SOURCE_REVIEWED",
+    "axis_unit": "kNm",
+    "source_text_inner_value": 300.0,
+    "source_text_inner_unit": "MNm",
+    "source_text_outer_value": 850.0,
+    "source_text_outer_unit": "MNm",
+    "gamma_C_inner_discussion": 1.0,
+    "gamma_C_outer_example": 0.8,
+    "interpretation": "The paragraph states approximately 300 MNm and 850 MNm, while Figure 10 uses Moment [kNm] with values on a 0-1000 scale. This is retained as an open source-internal unit mismatch."
+  },
+  "equation14": {
+    "source_status": "PUBLISHED_SOURCE_REVIEWED",
+    "formula": "M_D = M_f * gamma_f * gamma_C",
+    "note": "gamma_C below 1.0 is described as allowing acceptable deformation further into the plastic region."
+  },
+  "copyright_boundary": "No publisher figure raster is redistributed."
+}

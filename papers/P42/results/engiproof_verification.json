@@ -1,0 +1,17 @@
+{
+  "paper_id": "P42",
+  "evidence_status": "COMPARED",
+  "checks": {
+    "pitch_balance_relative_abs_percent": 0.002946810078087787,
+    "pitch_balance_within_0p01_percent": true,
+    "continuum_moment_linear": true,
+    "table4_mu": 0.12,
+    "figure16_curve_digitized": false,
+    "fp_ruc_reproduced": false,
+    "phase2_analytical_curves_regenerated": true,
+    "model_form_kinematics_difference_recorded": true,
+    "phase3_axisymmetric_force_torsion_closure": true,
+    "figure16_literal_probe_not_promoted": true
+  },
+  "qualification": "NOT_GRANTED"
+}

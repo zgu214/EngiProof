@@ -1,0 +1,29 @@
+{
+  "schema_version": "engiproof.p42.table1/1.0",
+  "source": "P42 Table 1, page 403",
+  "bore_diameter_mm": 235.0,
+  "layers": {
+    "core": {
+      "layer_number": 0,
+      "thickness_mm": 12.0
+    },
+    "tensile_armor_1": {
+      "layer_number": 1,
+      "wire_thickness_mm": 5.0,
+      "wire_width_mm": 12.5,
+      "pitch_length_mm": 1786.0,
+      "wire_count": 55
+    },
+    "tensile_armor_2": {
+      "layer_number": 2,
+      "wire_thickness_mm": 5.0,
+      "wire_width_mm": 12.5,
+      "pitch_length_mm": 1851.0,
+      "wire_count": 57
+    },
+    "outer_sheath": {
+      "layer_number": 3,
+      "thickness_mm": 8.0
+    }
+  }
+}

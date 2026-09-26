@@ -1,0 +1,112 @@
+{
+  "schema_version": "engiproof.patch_manifest/1.0",
+  "patch": "P40_REPRODUCTION_DEV2",
+  "file_count": 21,
+  "files": [
+    {
+      "path": "11_VERIFY_P40_REPRODUCTION_WINDOWS.bat",
+      "sha256": "739eb5ea6ba059333f7d8da17a61b6f7d192c404b73b74386e806da721d51346",
+      "size_bytes": 484
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "b15ce708dc2519ad7f0276ccf31f075f5a4b2e1ffd9cf008094c4f05ebe68500",
+      "size_bytes": 2037
+    },
+    {
+      "path": "CHAT_COMPACT_CURRENT.md",
+      "sha256": "ddf92bc8c32afea4b53581b08c4eff7a9660075a69fd52bcccf47292bd257e2f",
+      "size_bytes": 4940
+    },
+    {
+      "path": "HANDOVER_CURRENT.md",
+      "sha256": "7431edd45ec076aae2d2cf2d1d28360cc696b6925bebac8db9237f19b2523c36",
+      "size_bytes": 9975
+    },
+    {
+      "path": "P40_REPRODUCTION_CHECKPOINT.md",
+      "sha256": "f52d3c532aa006f4c841f699155948fa9bbf9cd3810fc14b21be9af650b073fc",
+      "size_bytes": 1379
+    },
+    {
+      "path": "PATCH_NOTES_P40_REPRODUCTION.md",
+      "sha256": "8c528fa25849081d379f08e049c9c396bb101e776841df46bda4d4b56a31d5c2",
+      "size_bytes": 1513
+    },
+    {
+      "path": "PROGRESS_v0.2.0.md",
+      "sha256": "a5337f98ae56fa081d60aa72a8ace6906fba59da17aac15b1152ab22ecd093e2",
+      "size_bytes": 3426
+    },
+    {
+      "path": "ROADMAP_v0.2.0.md",
+      "sha256": "b8fd59dc34f6d8c62ce247a8e34cc3b46a956ce2a657912b16def5ae5598178e",
+      "size_bytes": 3796
+    },
+    {
+      "path": "engiproof/studies/P40/evidence_graph.json",
+      "sha256": "b84b27a899f8aad6db4678d1f9f74b1d5424ba46c93c93ab96a59152d95eb7b6",
+      "size_bytes": 2314
+    },
+    {
+      "path": "engiproof/studies/P40/study.json",
+      "sha256": "69b124e58c74ea5cdb04e6c7d56108c51617b840257b84452dc50c85fcbab02e",
+      "size_bytes": 6690
+    },
+    {
+      "path": "papers/P40/README.md",
+      "sha256": "ea30373f2d7e4b3a8bab6785e423a8d65d6295f457c05bab68ed10db949b6f91",
+      "size_bytes": 1286
+    },
+    {
+      "path": "papers/P40/SOURCE.md",
+      "sha256": "75b4f41db1269221aae26680db2bbd7febeed716068b567dcbbb3c7cafdd7b29",
+      "size_bytes": 1562
+    },
+    {
+      "path": "papers/P40/inputs/table1.json",
+      "sha256": "a6b3b1f340aef5a9d176d48fc02889a3b64b136a70423c2f99a2d280a39971f1",
+      "size_bytes": 1479
+    },
+    {
+      "path": "papers/P40/mechanics.py",
+      "sha256": "bbbb3eecdf9a91b9d6d115daf6a55a79905cbb64d81c840751d9a0e2309072ff",
+      "size_bytes": 3390
+    },
+    {
+      "path": "papers/P40/reference/source_review.json",
+      "sha256": "826942e1031357248f7c128940ca97ae85e871975da21239e7de5332d7f70cad",
+      "size_bytes": 1088
+    },
+    {
+      "path": "papers/P40/reference/table2.csv",
+      "sha256": "cef45769bf0771249533c1355a4bb4c9d3368f0630790a6cd6f5e0ed0eff58eb",
+      "size_bytes": 338
+    },
+    {
+      "path": "papers/P40/results/engiproof_verification.json",
+      "sha256": "1732221697758e1d45ddd0cb0d58419e5dfbb8531d985b5935d968e6ebd4063c",
+      "size_bytes": 983
+    },
+    {
+      "path": "papers/P40/results/table2_reproduction.csv",
+      "sha256": "dc396a60268f861347cd18618800a91dd53ba7a8e93f11cc5f5421e246be6a50",
+      "size_bytes": 698
+    },
+    {
+      "path": "papers/P40/run_calculation.py",
+      "sha256": "171cdebf016ea5ca4ecdb3a3f5801174f80a3d4f1f96fc80c8658db232bccac1",
+      "size_bytes": 2072
+    },
+    {
+      "path": "papers/P40/tool_api.py",
+      "sha256": "2513c0e516d360a83df16a49e4e8e1e94c9c80bcbfc899a790eeca9f29d15319",
+      "size_bytes": 3738
+    },
+    {
+      "path": "tests/test_p40_engiproof.py",
+      "sha256": "9a0018f7f20aba04f7d5d49877c4218ca5be8e648d698e33e7c5a0fbe3ef8992",
+      "size_bytes": 2820
+    }
+  ]
+}

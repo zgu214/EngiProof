@@ -1,0 +1,158 @@
+{
+  "paper_id": "P41",
+  "status": "CONDITIONAL",
+  "selected_chain": "Table 1 -> Table 2 -> Eqs. (6)-(8)",
+  "summary": {
+    "calculated": {
+      "A_inner_m2": 0.012725217392906319,
+      "A_outer_m2": 0.024054389550373638,
+      "EA_inner_N": 2532318261.1883574,
+      "EA_outer_N": 4979258636.927343,
+      "deltaS_inner_N_per_m": 158.78448922208514,
+      "deltaS_outer_N_per_m": 312.21551077791486,
+      "deltaS_total_N_per_m": 471.0
+    },
+    "published_extracted": {
+      "A_inner_m2": 0.012725,
+      "A_outer_m2": 0.024054,
+      "EA_inner_N": 2532000000.0,
+      "EA_outer_N": 4979000000.0,
+      "deltaS_inner_extracted_N_per_m": 153.0,
+      "deltaS_outer_N_per_m": 312.0,
+      "fS_N_per_m": 471.0
+    },
+    "comparisons": {
+      "A_inner_relative_percent": 0.0017083921911109155,
+      "A_outer_relative_percent": 0.0016194827207074475,
+      "EA_inner_relative_percent": 0.012569557202107156,
+      "EA_outer_relative_percent": 0.005194555680726421,
+      "deltaS_inner_minus_extracted_N_per_m": 5.784489222085142,
+      "deltaS_outer_minus_published_N_per_m": 0.21551077791485795
+    },
+    "source_review": {
+      "table2_inner_deltaS": "VISUALLY_CONFIRMED_153_N_PER_M",
+      "interpretation": "The original PDF visibly reports 153 N/m. Eqs. (6)-(8) and the published stiffnesses give about 158.8 N/m; the published components 153+312 sum to 465 N/m rather than fS=471 N/m. This is retained as a published-reference mismatch without tuning."
+    },
+    "evidence_boundary": "Geometry/EA arithmetic is INDEPENDENT. Eqs. (6)-(8) are PUBLISHED methods reconstructed from the selected source targets. No FE reproduction is claimed."
+  },
+  "phase2_bonding": {
+    "gamma_f": 1.0,
+    "equation9_required_internal_friction_N_per_m": 158.77672746638265,
+    "cases": [
+      {
+        "case": 1,
+        "fI_N_per_m": 0.0,
+        "published_type": "NO_FRICTION",
+        "predicted_type": "NO_FRICTION",
+        "published_end_expansion_m": 1.355,
+        "classification_matches": true
+      },
+      {
+        "case": 2,
+        "fI_N_per_m": 87.5,
+        "published_type": "PARTIAL_BONDING",
+        "predicted_type": "PARTIAL_BONDING",
+        "published_end_expansion_m": 1.311,
+        "classification_matches": true
+      },
+      {
+        "case": 3,
+        "fI_N_per_m": 175.0,
+        "published_type": "FULL_BONDING",
+        "predicted_type": "FULL_BONDING",
+        "published_end_expansion_m": 1.305,
+        "classification_matches": true
+      },
+      {
+        "case": 4,
+        "fI_N_per_m": 358.0,
+        "published_type": "FULL_BONDING",
+        "predicted_type": "FULL_BONDING",
+        "published_end_expansion_m": 1.305,
+        "classification_matches": true
+      }
+    ],
+    "dry_weight_model": {
+      "dry_weight_N_per_m": 1195.0,
+      "friction_coefficient": 0.3,
+      "calculated_fI_N_per_m": 358.5,
+      "published_rounded_fI_N_per_m": 358.0
+    },
+    "equation10": {
+      "status": "CONDITIONAL_INPUT_INCOMPLETE",
+      "published_full_bond_end_expansion_m": 1.305,
+      "inferred_S0_total_N_from_published_delta": 3038642.362964092,
+      "note": "Eq. (10) is implemented, but S0_total cannot be independently recreated from explicit numerical source inputs without assumptions. The inferred S0 value is an inversion, not an independent validation."
+    },
+    "evidence_boundary": "Eq. (9) and Eq. (10) are PUBLISHED methods. Table 3 bonding classification is an INDEPENDENT check. No FE reproduction is claimed."
+  },
+  "phase3_global_buckling": {
+    "independent_bending_stiffness": {
+      "EI_inner_Nm2": 25640078.501787588,
+      "EI_outer_Nm2": 87088789.57818328,
+      "outer_to_inner_ratio": 3.3965882581877267,
+      "engineering_interpretation": "Outer elastic EI exceeds inner EI, independently supporting the qualitative larger outer bending share. This does not reproduce nonlinear Figure 10 curves."
+    },
+    "equation14_examples": {
+      "gamma_f": 1.0,
+      "gamma_C_1p0_factor": 1.0,
+      "gamma_C_0p8_factor": 0.8
+    },
+    "published_source_observations": {
+      "schema_version": "engiproof.p41_phase3_source/1.0",
+      "paper_id": "P41",
+      "source_sha256": "21c3765eb4e9bd16b5bf36b1a58f3c5f72bf4a08058fc7b7ca5241c045ee619d",
+      "targets": [
+        "Figure 8",
+        "Figure 9",
+        "Figure 10",
+        "Equation (14)"
+      ],
+      "figure8": {
+        "source_status": "PUBLISHED_SOURCE_REVIEWED",
+        "observations": [
+          "Global buckling is initiated when the total effective axial force exceeds the buckling capacity.",
+          "Two horizontal imperfections are introduced at 1500 m and 3500 m.",
+          "At initiation the total effective axial force drops; after initiation it approaches a nearly constant post-buckling level.",
+          "The outer pipe goes into tension while the inner pipe continues to increase compression."
+        ]
+      },
+      "figure9": {
+        "source_status": "PUBLISHED_SOURCE_REVIEWED",
+        "observations": [
+          "Two global buckles occur near the introduced imperfection locations.",
+          "The outer pipe is in tension along the whole model length and the inner pipe is in compression.",
+          "The total effective-force slopes show feed-in toward the buckles."
+        ]
+      },
+      "figure10": {
+        "source_status": "PUBLISHED_SOURCE_REVIEWED",
+        "axis_unit": "kNm",
+        "source_text_inner_value": 300.0,
+        "source_text_inner_unit": "MNm",
+        "source_text_outer_value": 850.0,
+        "source_text_outer_unit": "MNm",
+        "gamma_C_inner_discussion": 1.0,
+        "gamma_C_outer_example": 0.8,
+        "interpretation": "The paragraph states approximately 300 MNm and 850 MNm, while Figure 10 uses Moment [kNm] with values on a 0-1000 scale. This is retained as an open source-internal unit mismatch."
+      },
+      "equation14": {
+        "source_status": "PUBLISHED_SOURCE_REVIEWED",
+        "formula": "M_D = M_f * gamma_f * gamma_C",
+        "note": "gamma_C below 1.0 is described as allowing acceptable deformation further into the plastic region."
+      },
+      "copyright_boundary": "No publisher figure raster is redistributed."
+    },
+    "evidence_boundary": "Figures 8-10 are source-observation evidence only; no curve digitization or FE reproduction is claimed. EI is an INDEPENDENT elastic check. Eq. (14) is PUBLISHED."
+  },
+  "checks": {
+    "area_geometry_matches_table2": true,
+    "EA_geometry_matches_table2": true,
+    "eq8_total_matches_fS": true,
+    "outer_force_rounds_to_table2_integer": true,
+    "inner_force_published_mismatch_confirmed": true,
+    "outer_elastic_bending_stiffness_exceeds_inner": true,
+    "figure10_unit_mismatch_recorded": true
+  },
+  "qualification": "NOT_GRANTED"
+}

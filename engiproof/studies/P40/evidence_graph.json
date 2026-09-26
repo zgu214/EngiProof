@@ -1,0 +1,248 @@
+{
+  "schema_version": "engiproof.evidence_graph/1.1",
+  "paper_id": "P40",
+  "nodes": [
+    {
+      "id": "SOURCE-P40",
+      "kind": "source",
+      "label": "Propagation Buckling in Subsea Pipe-in-Pipe Systems",
+      "evidence_class": "PUBLISHED",
+      "status": "SOURCE_READY",
+      "source_refs": [
+        "doi:10.1061/(ASCE)EM.1943-7889.0001337",
+        "sha256:e83902ba46b8e713ddf2f11f5953bdf318ac539f6701ff303651e28d3d5e28bb"
+      ]
+    },
+    {
+      "id": "TARGET-TABLE1",
+      "kind": "table",
+      "label": "Table 1 Properties of PIP Systems",
+      "evidence_class": "PUBLISHED",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P40 Table 1"
+      ]
+    },
+    {
+      "id": "TARGET-EQ9",
+      "kind": "equation",
+      "label": "Equation (9) PIP propagation pressure",
+      "evidence_class": "PUBLISHED",
+      "status": "COMPARED",
+      "source_refs": [
+        "P40 Eq. (9)"
+      ]
+    },
+    {
+      "id": "TARGET-TABLE2",
+      "kind": "table",
+      "label": "Table 2 comparison",
+      "evidence_class": "PUBLISHED",
+      "status": "COMPARED",
+      "source_refs": [
+        "P40 Table 2"
+      ]
+    },
+    {
+      "id": "CHECK-EQ8-WORK",
+      "kind": "independent_check",
+      "label": "Independent reconstruction from Eqs. (8a-d)",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P40 Eqs. (8a-d)"
+      ]
+    },
+    {
+      "id": "DISC-P40-001",
+      "kind": "discrepancy",
+      "label": "PIP-3 Eq. (9) versus Table 2 normalized ratio",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P40 Table 1",
+        "P40 Eq. (9)",
+        "P40 Table 2"
+      ]
+    },
+    {
+      "id": "ASSESS-P40-D001",
+      "kind": "discrepancy_assessment",
+      "label": "Generic discrepancy classification and escalation",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P40-D001",
+        "P40-C002",
+        "P40-C003",
+        "Independent algebraic work balance",
+        "P40 Table 2"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-TOOL-EQUATION2-PRESSURE-KPA",
+      "kind": "implementation",
+      "label": "equation2_pressure_kPa",
+      "evidence_class": "PUBLISHED",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "tool:equation2_pressure_kPa",
+        "P40 Eq. (2)",
+        "papers/P40/tool_api.py",
+        "tool:equation3_pressure_kPa",
+        "P40 Eq. (3)",
+        "tool:equation6_pressure_kPa",
+        "P40 Eq. (6)",
+        "tool:equation9_pressure_kPa",
+        "source-reviewed P40 Eq. (9)",
+        "tool:independent_work_balance_pressure_kPa",
+        "independent algebraic reconstruction from P40 Eqs. (8a-d)",
+        "tool:table2_reproduction_summary",
+        "independent arithmetic audit using source-bounded Table 1/Table 2 values"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P40-C001",
+      "kind": "comparison",
+      "label": "Eqs. (2), (3), (6) versus Table 2 normalized ratios",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P40-C001",
+        "P40 Table 2"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P40-D001",
+      "kind": "discrepancy_assessment",
+      "label": "PUBLISHED_REFERENCE_MISMATCH assessment for P40-D001",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P40-D001",
+        "assessment:P40-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DECISION-P40-D001-DEC-001",
+      "kind": "discrepancy_decision",
+      "label": "DEFERRED decision for P40-D001",
+      "evidence_class": "INDEPENDENT",
+      "status": "DEFERRED",
+      "source_refs": [
+        "P40-D001-DEC-001",
+        "P40-D001"
+      ],
+      "reviewer": "Zhiqiang Gu",
+      "qualification_effect": "NONE",
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "SOURCE-P40",
+      "to": "TARGET-TABLE1",
+      "relation": "contains"
+    },
+    {
+      "from": "SOURCE-P40",
+      "to": "TARGET-EQ9",
+      "relation": "contains"
+    },
+    {
+      "from": "SOURCE-P40",
+      "to": "TARGET-TABLE2",
+      "relation": "contains"
+    },
+    {
+      "from": "TARGET-TABLE1",
+      "to": "TARGET-EQ9",
+      "relation": "provides_inputs"
+    },
+    {
+      "from": "TARGET-EQ9",
+      "to": "TARGET-TABLE2",
+      "relation": "compared_against"
+    },
+    {
+      "from": "CHECK-EQ8-WORK",
+      "to": "TARGET-EQ9",
+      "relation": "independently_checks"
+    },
+    {
+      "from": "TARGET-EQ9",
+      "to": "DISC-P40-001",
+      "relation": "contributes_to"
+    },
+    {
+      "from": "TARGET-TABLE2",
+      "to": "DISC-P40-001",
+      "relation": "contributes_to"
+    },
+    {
+      "from": "DISC-P40-001",
+      "to": "ASSESS-P40-D001",
+      "relation": "classified_by"
+    },
+    {
+      "from": "SOURCE-P40",
+      "to": "AUTO-TOOL-EQUATION2-PRESSURE-KPA",
+      "relation": "supports_implementation"
+    },
+    {
+      "from": "SOURCE-P40",
+      "to": "AUTO-COMPARISON-P40-C001",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P40",
+      "to": "ASSESS-P40-D001",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P40",
+      "to": "ASSESS-P40-D001",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "ASSESS-P40-D001",
+      "to": "AUTO-ASSESSMENT-P40-D001",
+      "relation": "classified_by"
+    },
+    {
+      "from": "ASSESS-P40-D001",
+      "to": "AUTO-DECISION-P40-D001-DEC-001",
+      "relation": "reviewed_by"
+    },
+    {
+      "from": "AUTO-ASSESSMENT-P40-D001",
+      "to": "AUTO-DECISION-P40-D001-DEC-001",
+      "relation": "informs_decision"
+    }
+  ],
+  "qualification": "NOT_GRANTED",
+  "sync": {
+    "schema_version": "engiproof.evidence_graph_sync/1.0",
+    "added_nodes": 0,
+    "added_edges": 0,
+    "tool_count": 6,
+    "comparison_count": 3,
+    "discrepancy_count": 1,
+    "decision_count": 1,
+    "rule": "Synchronization is additive: existing hand-authored nodes/edges are preserved and qualification is never promoted."
+  }
+}

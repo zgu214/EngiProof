@@ -1,0 +1,17 @@
+{
+  "schema_version": "engiproof.discrepancy_decisions/1.0",
+  "paper_id": "P40",
+  "decisions": [
+    {
+      "decision_id": "P40-D001-DEC-001",
+      "discrepancy_id": "P40-D001",
+      "disposition": "DEFERRED",
+      "rationale": "Awaiting additional provenance or source-author clarification.",
+      "reviewer": "Zhiqiang Gu",
+      "evidence_refs": [],
+      "effective_promotion_effect": "BLOCK_PROMOTION",
+      "qualification_effect": "NONE",
+      "rule": "Human discrepancy decisions may resolve/bound/accept a review item but never grant engineering qualification."
+    }
+  ]
+}

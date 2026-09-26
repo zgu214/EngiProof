@@ -1,0 +1,84 @@
+{
+  "table1_pitch_balance": {
+    "published_L2_mm": 1851.0,
+    "calculated_L2_mm": 1850.9454545454546,
+    "difference_mm": -0.05454545454540494,
+    "relative_difference_percent": -0.002946810078087787
+  },
+  "equation42_continuum": {
+    "core_mid_radius_mm": 123.5,
+    "outer_sheath_mid_radius_mm": 143.50000000000003,
+    "I_core_m4": 7.117965065941388e-05,
+    "I_outer_sheath_m4": 7.432465037023656e-05,
+    "EI_core_Nm2": 64061.685593472495,
+    "EI_outer_sheath_Nm2": 29729.860148094624,
+    "EI_total_Nm2": 93791.54574156713,
+    "curve": [
+      {
+        "kappa_per_m": 0.0,
+        "M0_cont_kNm": 0.0,
+        "M3_cont_kNm": 0.0,
+        "M_cont_total_kNm": 0.0
+      },
+      {
+        "kappa_per_m": 0.02,
+        "M0_cont_kNm": 1.28123371186945,
+        "M3_cont_kNm": 0.5945972029618926,
+        "M_cont_total_kNm": 1.8758309148313423
+      },
+      {
+        "kappa_per_m": 0.04,
+        "M0_cont_kNm": 2.5624674237389,
+        "M3_cont_kNm": 1.1891944059237851,
+        "M_cont_total_kNm": 3.7516618296626847
+      },
+      {
+        "kappa_per_m": 0.06,
+        "M0_cont_kNm": 3.8437011356083497,
+        "M3_cont_kNm": 1.7837916088856776,
+        "M_cont_total_kNm": 5.6274927444940275
+      },
+      {
+        "kappa_per_m": 0.08,
+        "M0_cont_kNm": 5.1249348474778,
+        "M3_cont_kNm": 2.3783888118475702,
+        "M_cont_total_kNm": 7.503323659325369
+      },
+      {
+        "kappa_per_m": 0.1,
+        "M0_cont_kNm": 6.4061685593472495,
+        "M3_cont_kNm": 2.9729860148094627,
+        "M_cont_total_kNm": 9.379154574156711
+      }
+    ]
+  },
+  "table4_contact": {
+    "schema_version": "engiproof.p42.table4/1.0",
+    "source": "P42 Table 4, page 409",
+    "contact_formulation": "surface-to-surface",
+    "sliding_formulation": "finite sliding",
+    "surface_smoothing": "automatic",
+    "friction_formulation": "penalty",
+    "coulomb_friction_coefficient": 0.12,
+    "absolute_elastic_slip_mm": 0.005,
+    "normal_pressure_overclosure": "linear penalty stiffness",
+    "contact_stiffness_N_per_mm3": 2000.0,
+    "contact_stabilization_step": 1,
+    "contact_stabilization_factor": 1.0,
+    "tangent_fraction": 1.0,
+    "fraction_damping_end_step": 0.0
+  },
+  "figure16_source_review": {
+    "schema_version": "engiproof.p42.figure16_source_review/1.0",
+    "source": "P42 Figure 16 and Section 4.2, pages 414-415",
+    "status": "PUBLISHED_SOURCE_REVIEWED",
+    "observations": [
+      "Figure 16 plots pipe cross-section bending moment versus global pipe curvature for various axial tension levels.",
+      "The paper reports good correlation between analytical and FP-RUC moment-curvature response at small curvature.",
+      "At larger curvature in the full-slip phase, FP-RUC and analytical results deviate.",
+      "The FP-RUC full-slip response is nonlinear, whereas the analytical total moment remains linear because it is governed by continuum-layer moment contributions."
+    ],
+    "evidence_boundary": "No graphical curve digitization or FP-RUC recreation is claimed in Phase 1."
+  },
+  "evidence_boundary": "Table 1 pitch balance and nominal radii/EI arithmetic are INDEPENDENT. Eqs. (42)-(43) are PUBLISHED methods. Figure 16 is source-reviewed only; no graphical digitization or FE reproduction is claimed."
+}

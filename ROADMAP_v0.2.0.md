@@ -2,91 +2,134 @@
 
 ## Objective
 
-Scale EngiProof from manually assembled evidence studies into a conservative automation pipeline:
+Scale EngiProof from manually assembled evidence studies into a conservative paper-to-engineering-evidence automation pipeline while preserving source traceability and explicit human/verification gates.
 
-```text
-PDF / paper source
-        ↓
-source fingerprint
-        ↓
-target discovery
-        ↓
-equation / table / figure candidate extraction
-        ↓
-DRAFT study scaffold
-        ↓
-reproduction
-        ↓
-independent check
-        ↓
-comparison
-        ↓
-discrepancy
-        ↓
-evidence graph
-        ↓
-callable engineering method
-```
+## Invariants
 
-## v0.2.0 invariants
+1. Automatic extraction creates **candidates**, not verified evidence.
+2. Source identity (fingerprint + bibliographic metadata) must be internally consistent before reproduction.
+3. Copyrighted source PDFs remain external by default; absolute machine paths are never persisted.
+4. DRAFT/BLOCKED studies cannot enter the live registry.
+5. Missing inputs and source inconsistencies remain visible; never tune unknowns to force agreement.
+6. `PUBLISHED`, `INDEPENDENT`, and `SOLVER_NEW` evidence remain distinct.
+7. Execution/tests do not automatically grant `VERIFIED` status or engineering qualification.
+8. `HANDOVER_CURRENT.md` is updated at every meaningful development checkpoint.
 
-1. Automatic discovery produces **candidates**, never verified evidence.
-2. Original copyrighted PDFs remain external by default.
-3. Absolute machine paths are never persisted in public metadata.
-4. A DRAFT/BLOCKED study cannot enter the live registry.
-5. Promotion requires source-bounded targets, result files, verification tests and callable tools.
-6. Execution alone never grants `VERIFIED` status or engineering qualification.
-7. Existing v0.1.1 studies remain backward compatible.
+## Phase A — dev0 complete
 
-## Phase A — implemented in 0.2.0-dev0
+- source fingerprinting;
+- PDF/TXT/MD/RST ingestion;
+- lexical Figure/Table/Equation/Appendix discovery;
+- intake queue;
+- DRAFT study scaffolding;
+- basic promotion gate.
 
-- source fingerprinting (SHA-256, size, MIME, PDF metadata/page count)
-- PDF/TXT/MD/RST text extraction
-- lexical Figure/Table/Equation/Appendix candidate discovery
-- evidence-oriented candidate scoring
-- persistent intake queue separated from live registry
-- DRAFT study/evidence-graph scaffolding
-- promotion gate that blocks incomplete studies
-- CLI commands for ingestion/intake/scaffold/promotion gate
+## Phase B — dev1 complete
 
-## Phase B — implemented in 0.2.0-dev1
+- fingerprint-matched source re-opening;
+- bounded page/line source dossiers;
+- unit/symbol candidates;
+- heuristic equation/table/figure/definition structures;
+- reproduction task bundles;
+- comparison templates;
+- pipeline status.
 
-- fingerprint-matched source re-opening and enrichment
-- page/line source locators with page-text hashes
-- bounded target dossiers for Figure/Table/Equation/Appendix candidates
-- equation-block text candidates for review
-- local unit/symbol inventories around targets
-- kind-specific reproduction task bundles
-- pipeline stages for enrichment and generated task bundles
+## Phase B robustness — dev2 complete
 
-## Phase B2 — next
+- source identity audit (title/DOI/year + SHA-256 boundary);
+- metadata repair without changing source fingerprint or candidate IDs;
+- plural/cross-reference equation recovery;
+- Type1/CFF printed-equation-number recovery (`ð...Þ`);
+- multiline equation-block reconstruction candidates;
+- candidate-ID-preserving missing-equation append;
+- true-caption table block extraction with header/data/footnote candidates;
+- selected-target readiness (`READY` / `PARTIAL` / `BLOCKED`);
+- promotion gate blocks identity conflicts and structurally unready selected targets;
+- pipeline distinguishes generated structure artifacts from engineering-ready selected targets.
 
-- table row/header structure candidates with bounded source excerpts
-- figure caption candidates
-- equation-block candidates and symbol-definition mapping
-- target-type comparison metric templates
+## Phase C — next: evidence automation
 
-## Phase B3 — next
+- verify dev2 on P40 exact source;
+- P40 Table 1 -> Eq. (9) -> Table 2 source-bounded reproduction;
+- independent limiting-case/dimensional/arithmetic checks;
+- deterministic comparison execution;
+- discrepancy classification/escalation;
+- evidence-graph expansion from approved artifacts;
+- callable-tool generation after verification gates.
 
-- robust table column/header parsing with units and merged-cell handling
-- figure axis/series/legend metadata extraction
-- stronger equation transcription and symbol-definition association
-- DOI/bibliographic metadata reconciliation
-- section-heading/source-location contracts
-- deterministic comparison execution templates
+## Later
 
-## Phase C — evidence automation
-
-- independent-calculation candidate generation
-- comparison metric templates by target type
-- discrepancy classification and escalation
-- evidence-graph expansion from generated artifacts
-- callable-tool generation only after verification gates
+- stronger table column typing/merged-cell handling;
+- figure axis/series/legend metadata and digitization contracts;
+- DOI/title metadata reconciliation against optional external bibliographic services;
+- section-heading/source-location contracts;
+- batch intake only after single-paper evidence quality is reliable.
 
 ## Non-goals
 
-- automatic engineering qualification
-- silent parameter tuning
-- bulk paper counts without evidence
-- redistributing copyrighted source PDFs
-- pretending lexical extraction equals reproduction
+- automatic engineering qualification;
+- silent parameter tuning;
+- maximizing paper count;
+- redistributing copyrighted sources;
+- treating extraction confidence as engineering confidence.
+
+## First Phase C case — P40 in progress
+
+P40 is the first ingestion-generated study to reach deterministic reproduction and an independent mechanics comparison. It remains `CONDITIONAL` because the source Table 2 PIP-3 Eq. (9) normalized value (`0.66`) does not agree with direct Eq. (9) evaluation from Table 1 (`~0.7057`). The mismatch is retained as an open discrepancy.
+
+Next Phase C priorities:
+
+1. accept/review P40 local verification and decide whether to promote the conditional study;
+2. add discrepancy classification/escalation support to the generic runtime;
+3. automate evidence-graph expansion from approved reproduction/comparison artifacts;
+4. only then use another heterogeneous paper to test generality.
+
+## Phase C1 — implemented in 0.2.0-dev3
+
+Generic discrepancy classification/escalation, rounding-band assessment, independent-check corroboration metadata, persisted assessment artifacts, and a discrepancy promotion gate are implemented. Next: documented human decision/acceptance workflow, evidence-graph auto-expansion, and multi-case comparison/discrepancy execution.
+
+## Phase C2 — implemented in 0.2.0-dev4
+
+- append-only human discrepancy decisions;
+- RESOLVED / BOUNDED / ACCEPTED_WITH_RATIONALE / DEFERRED dispositions;
+- evidence-reference requirement for unblocking decisions;
+- decision-aware promotion gate;
+- explicit no-qualification effect from discrepancy decisions.
+
+## Phase C3 — implemented in 0.2.0-dev5
+
+- additive/idempotent evidence-graph synchronization;
+- provenance nodes for tools, comparisons, discrepancies, automated assessments and human decisions;
+- evidence-graph coverage audit;
+- preservation of hand-authored graph content and qualification boundary.
+
+## Phase B4 — implemented in 0.2.0-dev6
+
+- punctuation-free publisher table captions;
+- hyphenated publisher figure captions;
+- rejection of obvious caption-like cross-references;
+- table-block termination at the next recognized publisher caption;
+- engineering property rows with parameter/unit/value layout;
+- P41 used as the second real-format generalization stress test.
+
+## P41 next engineering phase
+
+After visual closure of the Table 2 inner `ΔS` cell, continue with:
+
+- Table 3 case matrix;
+- Eq. (9) axial-bonding criterion;
+- partial/full bonding transition;
+- end-expansion reproduction for Cases 1-4;
+- independent criterion check and discrepancy assessment;
+- evidence-graph expansion and promotion gate review.
+
+## Phase B5 — implemented in 0.2.0-dev7
+
+- publication-year vs received/accepted/copyright-year semantics;
+- source-identity evidence contexts;
+- no false year conflict when only administrative dates differ;
+- split/multiline table and figure caption recognition;
+- contextual table-block termination at split captions.
+
+## Phase C1 — continuity architecture (dev8)
+Machine-readable state; bootstrap/queue/blockers/decisions; continuity audit; source-PDF-free checkpoint bundle; private-cloud backup; P43 next.

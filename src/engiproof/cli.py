@@ -5,10 +5,13 @@ import json
 from typing import Any
 
 from . import __version__
+from .checkpoint import build_checkpoint, continuity_audit
 from .core import (comparison_snapshot,contract_schema,discrepancy_snapshot,doctor,evidence_snapshot,invoke_tool,list_studies,load_manifest,provenance_snapshot,result_snapshot,run_study,verify_all,verify_study)
+from .discrepancy import assess_discrepancies, discrepancy_audit, discrepancy_audit_all, discrepancy_gate, discrepancy_decision_summary, record_discrepancy_decision
+from .evidence_graph import audit_evidence_graph, sync_evidence_graph
 from .ingestion import (
-    build_comparison_templates, build_reproduction_plan, build_task_bundle, enrich_source, extract_structures, ingest_source,
-    list_intakes, load_intake, load_structure_candidates, load_target_dossiers, pipeline_status,
+    audit_source_identity, build_comparison_templates, build_reproduction_plan, build_task_bundle, enrich_source, extract_structures, ingest_source,
+    list_intakes, load_intake, load_selected_target_readiness, load_source_identity_audit, load_structure_candidates, load_target_dossiers, pipeline_status, recover_equation_candidates, update_intake_metadata,
     scaffold_from_intake, promotion_gate, promote_study, target_dossier,
 )
 
@@ -53,6 +56,23 @@ def main(argv: list[str]|None=None) -> int:
     p=sub.add_parser("extract-structures",help="Extract conservative equation/table/figure/definition structure candidates from the exact fingerprint-matched source."); p.add_argument("paper_id"); p.add_argument("source")
     p=sub.add_parser("structures",help="Show extracted structure candidates for an intake."); p.add_argument("paper_id")
     p=sub.add_parser("comparison-templates",help="Generate target-type comparison metric templates from selected source structures."); p.add_argument("paper_id")
+    p=sub.add_parser("audit-source",help="Audit fingerprint-matched source identity against configured title/DOI/year."); p.add_argument("paper_id"); p.add_argument("source")
+    p=sub.add_parser("source-identity",help="Show the persisted source-identity audit."); p.add_argument("paper_id")
+    p=sub.add_parser("recover-equations",help="Recover missing equation candidates from grouped references and printed equation numbers while preserving existing target IDs."); p.add_argument("paper_id"); p.add_argument("source")
+    p=sub.add_parser("readiness",help="Show selected-target structural readiness gate."); p.add_argument("paper_id")
+    p=sub.add_parser("set-metadata",help="Update intake title/DOI/year without changing the source fingerprint or target IDs; re-audit is required."); p.add_argument("paper_id"); p.add_argument("--title"); p.add_argument("--doi"); p.add_argument("--year",type=int)
+    p=sub.add_parser("discrepancy-audit",help="Classify discrepancy review/escalation state without changing engineering evidence."); p.add_argument("paper_id")
+    p=sub.add_parser("assess-discrepancies",help="Classify discrepancies and persist a machine-readable assessment artifact."); p.add_argument("paper_id")
+    p=sub.add_parser("discrepancy-gate",help="Check whether unresolved discrepancy assessments block promotion."); p.add_argument("paper_id")
+    sub.add_parser("discrepancy-audit-all",help="Audit discrepancy escalation state across all study manifests, including non-live studies.")
+    p=sub.add_parser("discrepancy-decide",help="Record an append-only human decision for one discrepancy; does not grant qualification.")
+    p.add_argument("paper_id"); p.add_argument("discrepancy_id"); p.add_argument("--disposition",required=True,choices=["RESOLVED","BOUNDED","ACCEPTED_WITH_RATIONALE","DEFERRED"])
+    p.add_argument("--rationale",required=True); p.add_argument("--reviewer",required=True); p.add_argument("--evidence-ref",action="append",default=[],help="Repeatable evidence/provenance reference.")
+    p=sub.add_parser("discrepancy-decisions",help="Show append-only discrepancy decisions and latest effective decision per discrepancy."); p.add_argument("paper_id")
+    p=sub.add_parser("graph-sync",help="Add missing tool/comparison/discrepancy/assessment/decision provenance to a study evidence graph without deleting hand-authored graph content."); p.add_argument("paper_id")
+    p=sub.add_parser("graph-audit",help="Audit evidence-graph provenance coverage for one study."); p.add_argument("paper_id")
+    sub.add_parser("continuity-audit",help="Audit durable continuity controls and current project state.")
+    p=sub.add_parser("checkpoint",help="Write a resumable checkpoint; optionally create a source-PDF-free bundle."); p.add_argument("--bundle",action="store_true"); p.add_argument("--output-dir",default="checkpoints/current")
     ns=parser.parse_args(argv)
     try:
         if ns.cmd=="doctor": out=doctor()
@@ -85,6 +105,21 @@ def main(argv: list[str]|None=None) -> int:
         elif ns.cmd=="extract-structures": out=extract_structures(ns.paper_id,ns.source)
         elif ns.cmd=="structures": out=load_structure_candidates(ns.paper_id)
         elif ns.cmd=="comparison-templates": out=build_comparison_templates(ns.paper_id)
+        elif ns.cmd=="audit-source": out=audit_source_identity(ns.paper_id,ns.source)
+        elif ns.cmd=="source-identity": out=load_source_identity_audit(ns.paper_id)
+        elif ns.cmd=="recover-equations": out=recover_equation_candidates(ns.paper_id,ns.source)
+        elif ns.cmd=="readiness": out=load_selected_target_readiness(ns.paper_id)
+        elif ns.cmd=="set-metadata": out=update_intake_metadata(ns.paper_id,title=ns.title,doi=ns.doi,year=ns.year)
+        elif ns.cmd=="discrepancy-audit": out=discrepancy_audit(ns.paper_id)
+        elif ns.cmd=="assess-discrepancies": out=assess_discrepancies(ns.paper_id,persist=True)
+        elif ns.cmd=="discrepancy-gate": out=discrepancy_gate(ns.paper_id)
+        elif ns.cmd=="discrepancy-audit-all": out=discrepancy_audit_all()
+        elif ns.cmd=="discrepancy-decide": out=record_discrepancy_decision(ns.paper_id,ns.discrepancy_id,ns.disposition,ns.rationale,ns.reviewer,ns.evidence_ref)
+        elif ns.cmd=="discrepancy-decisions": out=discrepancy_decision_summary(ns.paper_id)
+        elif ns.cmd=="graph-sync": out=sync_evidence_graph(ns.paper_id,persist=True)
+        elif ns.cmd=="graph-audit": out=audit_evidence_graph(ns.paper_id)
+        elif ns.cmd=="continuity-audit": out=continuity_audit()
+        elif ns.cmd=="checkpoint": out=build_checkpoint(output_dir=ns.output_dir,bundle=ns.bundle)
         else: raise AssertionError(ns.cmd)
         _print(out,ns.json)
         return 0 if not isinstance(out,dict) or out.get("status")!="FAIL" else 1

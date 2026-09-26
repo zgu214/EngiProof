@@ -1,0 +1,78 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{references.bib}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue,
+  pdftitle={EngiProof: From Published Research to Verified Engineering through Source-Bounded Evidence Automation},
+  pdfauthor={Zhiqiang Gu}
+}
+
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{EngiProof journal manuscript draft}
+\rhead{Draft v0.1 -- 26 September 2026}
+\cfoot{\thepage}
+
+\newcommand{\engiproof}{\textsc{EngiProof}}
+\newcommand{\eclass}[1]{\texttt{#1}}
+\newcommand{\estatus}[1]{\texttt{#1}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\title{\textbf{EngiProof: From Published Research to Verified Engineering through Source-Bounded Evidence Automation}\\[0.6em]
+\large Living journal manuscript draft -- methods first, results not final}
+\author{Zhiqiang Gu\\\texttt{Zhiqiang.gu214@gmail.com}}
+\date{Draft v0.1 -- 26 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fbox{\parbox{0.92\linewidth}{\textbf{Draft status.} This manuscript is an evidence-capture draft, not a submission-ready paper. Claims are deliberately bounded by the current EngiProof evidence state. Generalization, extraction-accuracy, and performance claims remain provisional until additional heterogeneous end-to-end cases are complete.}}
+\end{center}
+
+\input{sections/00_abstract}
+\input{sections/01_introduction}
+\input{sections/02_framework}
+\input{sections/03_ingestion}
+\input{sections/04_case_studies}
+\input{sections/05_discrepancies}
+\input{sections/06_evaluation}
+\input{sections/07_discussion}
+\input{sections/08_limitations}
+\input{sections/09_conclusion}
+
+\section*{Data, software and source boundary}
+The EngiProof software repository is cited as software in this draft. Copyrighted source PDFs and publisher raster figures are intentionally not redistributed by EngiProof. Source fingerprints, bibliographic identifiers, bounded source locators, independently generated calculations, and machine-readable evidence records are used instead. The manuscript will be synchronized with the repository evidence graph before submission.
+
+\section*{Acknowledgements}
+\todo{Add acknowledgements only when finalized.}
+
+\printbibliography
+
+\appendix
+\input{sections/a_claim_evidence}
+\input{sections/b_reproducibility}
+
+\end{document}

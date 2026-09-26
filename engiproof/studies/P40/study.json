@@ -1,0 +1,198 @@
+{
+  "schema_version": "engiproof.study/1.1",
+  "framework": "EngiProof",
+  "framework_version": "0.2.0.dev3",
+  "paper_id": "P40",
+  "title": "Propagation Buckling in Subsea Pipe-in-Pipe Systems",
+  "year": 2017,
+  "evidence_status": "CONDITIONAL",
+  "category": "Collapse / local integrity / propagation buckling",
+  "source": {
+    "canonical_pdf": "p40-karampour2017.pdf",
+    "sha256": "e83902ba46b8e713ddf2f11f5953bdf318ac539f6701ff303651e28d3d5e28bb",
+    "doi": "10.1061/(ASCE)EM.1943-7889.0001337"
+  },
+  "selected_targets": [
+    "Table 2",
+    "Table 1",
+    "Equation (9)"
+  ],
+  "runner": "papers/P40/run_calculation.py",
+  "source_contract": "papers/P40/SOURCE.md",
+  "evidence_graph": "engiproof/studies/P40/evidence_graph.json",
+  "result_files": [
+    "papers/P40/results/table2_reproduction.csv",
+    "papers/P40/results/engiproof_verification.json",
+    "papers/P40/results/discrepancy_assessment.json"
+  ],
+  "verification_tests": [
+    "tests.test_p40_engiproof.P40EngiProofTests.test_runner_and_open_discrepancy",
+    "tests.test_p40_engiproof.P40EngiProofTests.test_equation9_limit_to_equation6",
+    "tests.test_p40_engiproof.P40EngiProofTests.test_table2_supporting_equations",
+    "tests.test_p40_engiproof.P40EngiProofTests.test_independent_work_balance",
+    "tests.test_p40_engiproof.P40EngiProofTests.test_evidence_boundary",
+    "tests.test_p40_engiproof.P40EngiProofTests.test_generic_discrepancy_assessment_blocks_promotion"
+  ],
+  "tools": [
+    {
+      "name": "equation2_pressure_kPa",
+      "module": "papers/P40/tool_api.py",
+      "function": "equation2_pressure_kPa",
+      "arguments": {
+        "Do": "outer diameter",
+        "to": "outer thickness",
+        "sigma_Yo_MPa": "outer yield stress MPa"
+      },
+      "returns": "published Eq. (2) pressure in kPa",
+      "evidence": "P40 Eq. (2)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "equation3_pressure_kPa",
+      "module": "papers/P40/tool_api.py",
+      "function": "equation3_pressure_kPa",
+      "arguments": {
+        "Do": "outer diameter",
+        "to": "outer thickness",
+        "ti": "inner thickness",
+        "sigma_Yo_MPa": "outer yield stress MPa",
+        "sigma_Yi_over_sigma_Yo": "yield-stress ratio"
+      },
+      "returns": "published Eq. (3) pressure in kPa",
+      "evidence": "P40 Eq. (3)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "equation6_pressure_kPa",
+      "module": "papers/P40/tool_api.py",
+      "function": "equation6_pressure_kPa",
+      "arguments": {
+        "D": "pipe diameter",
+        "t": "wall thickness",
+        "sigma_Y_MPa": "yield stress MPa"
+      },
+      "returns": "published Eq. (6) pressure in kPa",
+      "evidence": "P40 Eq. (6)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "equation9_pressure_kPa",
+      "module": "papers/P40/tool_api.py",
+      "function": "equation9_pressure_kPa",
+      "arguments": {
+        "Do": "outer diameter",
+        "to": "outer thickness",
+        "Di": "inner diameter",
+        "ti": "inner thickness",
+        "sigma_Yo_MPa": "outer yield stress MPa",
+        "sigma_Yi_over_sigma_Yo": "yield-stress ratio"
+      },
+      "returns": "published Eq. (9) PIP propagation pressure in kPa",
+      "evidence": "source-reviewed P40 Eq. (9)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "independent_work_balance_pressure_kPa",
+      "module": "papers/P40/tool_api.py",
+      "function": "independent_work_balance_pressure_kPa",
+      "arguments": {
+        "Do": "outer diameter",
+        "to": "outer thickness",
+        "Di": "inner diameter",
+        "ti": "inner thickness",
+        "sigma_Yo_MPa": "outer yield stress MPa",
+        "sigma_Yi_over_sigma_Yo": "yield-stress ratio"
+      },
+      "returns": "independent Eq. (8a-d) work-balance reconstruction in kPa",
+      "evidence": "independent algebraic reconstruction from P40 Eqs. (8a-d)",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "table2_reproduction_summary",
+      "module": "papers/P40/tool_api.py",
+      "function": "table2_reproduction_summary",
+      "arguments": {},
+      "returns": "recomputed Table 2 analytical ratios and discrepancy summary",
+      "evidence": "independent arithmetic audit using source-bounded Table 1/Table 2 values",
+      "evidence_class": "INDEPENDENT"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "P40-C001",
+      "target": "Eqs. (2), (3), (6) versus Table 2 normalized ratios",
+      "status": "COMPARED",
+      "reference": "P40 Table 2",
+      "metrics": {
+        "cases": 3,
+        "maximum_absolute_ratio_difference": 0.005459910313130201
+      }
+    },
+    {
+      "id": "P40-C002",
+      "target": "Eq. (9) versus independent Eq. (8a-d) work-balance reconstruction",
+      "status": "COMPARED",
+      "reference": "Independent algebraic work balance",
+      "metrics": {
+        "cases": 3,
+        "maximum_relative_difference_percent": 0.08118231763489275
+      }
+    },
+    {
+      "id": "P40-C003",
+      "target": "Eq. (9) versus Table 2 normalized ratios",
+      "status": "CONDITIONAL",
+      "reference": "P40 Table 2",
+      "metrics": {
+        "PIP-1_calculated": 0.863473715216484,
+        "PIP-1_published": 0.86,
+        "PIP-2_calculated": 0.6900215293497636,
+        "PIP-2_published": 0.69,
+        "PIP-3_calculated": 0.7056664056684557,
+        "PIP-3_published": 0.66
+      }
+    }
+  ],
+  "discrepancies": [
+    {
+      "id": "P40-D001",
+      "target": "PIP-3 Eq. (9) normalized ratio in Table 2",
+      "status": "OPEN",
+      "observation": "Direct Eq. (9) evaluation with Table 1 inputs gives 0.705666, while Table 2 reports 0.66. PIP-1 and PIP-2 agree with Table 2 to rounding.",
+      "engineering_interpretation": "The mismatch exceeds the two-decimal table rounding band. The independent Eq. (8a-d) work-balance reconstruction also gives approximately 0.7053, supporting the Eq. (9) calculation. The discrepancy is retained without tuning and requires source-author clarification or additional provenance before closure.",
+      "classification_hint": "PUBLISHED_REFERENCE_MISMATCH",
+      "metrics": {
+        "reference_value": 0.66,
+        "reproduced_value": 0.7056664056684557,
+        "absolute_difference": 0.0456664056684557,
+        "relative_difference_percent": 6.919152374008439,
+        "reference_decimals": 2,
+        "independent_value": 0.7053
+      },
+      "automation": {
+        "independent_support": "CORROBORATES_REPRODUCTION",
+        "promotion_effect": "BLOCK_PROMOTION"
+      },
+      "closure_requirements": [
+        "Confirm Table 1 and Table 2 source transcription against the fingerprinted original.",
+        "Confirm the printed Eq. (9) form and normalization.",
+        "Obtain an additional provenance explanation, erratum, or documented engineering acceptance of the unresolved published-reference mismatch.",
+        "Do not tune source inputs to force the Table 2 value."
+      ]
+    }
+  ],
+  "limitations": [
+    "PIP-3 Eq. (9) / Table 2 discrepancy remains OPEN and is not tuned away.",
+    "Table 1 and Table 2 machine-readable values are source-bounded transcriptions; the original copyrighted PDF remains external.",
+    "The independent check is an analytical work-balance reconstruction, not an FE reproduction.",
+    "No source FE model is reproduced.",
+    "Engineering qualification is NOT_GRANTED."
+  ],
+  "next_actions": [
+    "Run local verification against the exact fingerprinted source PDF.",
+    "Seek an independent explanation or source-author clarification for PIP-3 Table 2 ratio 0.66 before closing P40-D001.",
+    "Only promote P40 to the live registry after local tests and review are accepted."
+  ],
+  "qualification": "NOT_GRANTED",
+  "provenance_note": "First EngiProof study developed through the v0.2.0 ingestion/readiness pipeline from a fingerprinted local source. Published Eq. (9) and Tables 1-2 were cross-checked against the public accepted-manuscript source text."
+}

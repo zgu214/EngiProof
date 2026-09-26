@@ -1,0 +1,410 @@
+{
+  "schema_version": "engiproof.evidence_graph/1.1",
+  "paper_id": "P41",
+  "nodes": [
+    {
+      "id": "SOURCE-P41",
+      "kind": "source",
+      "label": "Global Buckling of Pipe-in-Pipe: Structural Response and Design Criteria",
+      "evidence_class": "PUBLISHED",
+      "status": "SOURCE_READY",
+      "source_refs": [
+        "10.1115/OMAE2011-49960",
+        "21c3765eb4e9bd16b5bf36b1a58f3c5f72bf4a08058fc7b7ca5241c045ee619d"
+      ]
+    },
+    {
+      "id": "TARGET-T001",
+      "kind": "table",
+      "label": "Table 1",
+      "evidence_class": "PUBLISHED",
+      "status": "SOURCE_READY",
+      "source_refs": [
+        "P41 Table 1"
+      ]
+    },
+    {
+      "id": "TARGET-T002",
+      "kind": "table",
+      "label": "Table 2",
+      "evidence_class": "PUBLISHED",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P41 Table 2"
+      ]
+    },
+    {
+      "id": "TARGET-T024",
+      "kind": "equation",
+      "label": "Equation (6)",
+      "evidence_class": "PUBLISHED",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P41 Eq. (6)",
+        "tool:equation6_deltaS_inner_N_per_m",
+        "papers/P41/tool_api.py"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "TARGET-T025",
+      "kind": "equation",
+      "label": "Equation (7)",
+      "evidence_class": "PUBLISHED",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P41 Eq. (7)",
+        "tool:equation7_deltaS_outer_N_per_m",
+        "papers/P41/tool_api.py"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "TARGET-T026",
+      "kind": "equation",
+      "label": "Equation (8)",
+      "evidence_class": "PUBLISHED",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P41 Eq. (8)",
+        "tool:equation8_total_deltaS_N_per_m",
+        "papers/P41/tool_api.py"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "CHECK-P41-GEOMETRY",
+      "kind": "independent_check",
+      "label": "Geometry and EA reconstruction",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P41 Table 1",
+        "P41 Table 2"
+      ]
+    },
+    {
+      "id": "DISC-P41-D001",
+      "kind": "discrepancy",
+      "label": "Table 2 inner force-increment transcription review",
+      "evidence_class": "PUBLISHED",
+      "status": "OPEN",
+      "source_refs": [
+        "P41 Table 2"
+      ]
+    },
+    {
+      "id": "AUTO-TOOL-STEEL-AREA-M2",
+      "kind": "implementation",
+      "label": "steel_area_m2",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "tool:steel_area_m2",
+        "independent geometry check against P41 Tables 1-2",
+        "papers/P41/tool_api.py",
+        "tool:axial_stiffness_N",
+        "independent Table 1 -> Table 2 stiffness check",
+        "tool:independent_table1_to_table2_summary",
+        "independent arithmetic and mechanics audit of P41 Tables 1-2 and Eqs. (6)-(8)",
+        "tool:equation9_required_internal_friction_N_per_m",
+        "P41 Eq. (9)",
+        "tool:classify_axial_bonding",
+        "independent application of P41 Eq. (9) to Table 3",
+        "tool:equation10_end_expansion_m",
+        "P41 Eq. (10), input-conditional",
+        "tool:table3_bonding_summary",
+        "P41 Table 3 / Eqs. (9)-(10) audit",
+        "tool:second_moment_annulus_m4",
+        "independent geometry check",
+        "tool:bending_stiffness_Nm2",
+        "independent Table 1 check",
+        "tool:equation14_design_moment",
+        "P41 Eq. (14)",
+        "tool:phase3_global_buckling_summary",
+        "P41 Figures 8-10 / Eq.14"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P41-C001",
+      "kind": "comparison",
+      "label": "Table 1 geometry -> Table 2 steel area",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P41-C001",
+        "P41 Table 2"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P41-C002",
+      "kind": "comparison",
+      "label": "Table 1 geometry/E -> Table 2 axial stiffness",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P41-C002",
+        "P41 Table 2"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P41-C003",
+      "kind": "comparison",
+      "label": "Eqs. (6)-(8) load sharing -> Table 2 force increments",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P41-C003",
+        "P41 Table 2 extracted text",
+        "P41 Table 2 visually confirmed"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DISCREPANCY-P41-D001",
+      "kind": "discrepancy",
+      "label": "Table 2 inner effective-force increment source transcription",
+      "evidence_class": "INDEPENDENT",
+      "status": "OPEN",
+      "source_refs": [
+        "P41-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P41-D001",
+      "kind": "discrepancy_assessment",
+      "label": "SOURCE_TRANSCRIPTION_UNCERTAINTY assessment for P41-D001",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P41-D001",
+        "assessment:P41-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P41-C004",
+      "kind": "comparison",
+      "label": "Eq. (9) bonding criterion -> Table 3 case classifications",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P41-C004",
+        "P41 Table 3"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P41-C005",
+      "kind": "comparison",
+      "label": "Table 1 geometry/E -> elastic bending-stiffness ratio",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P41-C005",
+        "P41 qualitative outer-pipe bending-stiffness statement"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P41-C006",
+      "kind": "comparison",
+      "label": "Eq. (14) gamma_C scaling",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P41-C006",
+        "P41 Eq. (14)"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DISCREPANCY-P41-D002",
+      "kind": "discrepancy",
+      "label": "Figure 10 moment units in source paragraph versus plotted axis",
+      "evidence_class": "INDEPENDENT",
+      "status": "OPEN",
+      "source_refs": [
+        "P41-D002"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P41-D002",
+      "kind": "discrepancy_assessment",
+      "label": "PUBLISHED_REFERENCE_MISMATCH assessment for P41-D002",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P41-D002",
+        "assessment:P41-D002"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "SOURCE-P41",
+      "to": "TARGET-T001",
+      "relation": "contains"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "TARGET-T002",
+      "relation": "contains"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "TARGET-T024",
+      "relation": "contains"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "TARGET-T025",
+      "relation": "contains"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "TARGET-T026",
+      "relation": "contains"
+    },
+    {
+      "from": "TARGET-T001",
+      "to": "CHECK-P41-GEOMETRY",
+      "relation": "input_to"
+    },
+    {
+      "from": "CHECK-P41-GEOMETRY",
+      "to": "TARGET-T002",
+      "relation": "compares_to"
+    },
+    {
+      "from": "TARGET-T024",
+      "to": "TARGET-T002",
+      "relation": "compares_to"
+    },
+    {
+      "from": "TARGET-T025",
+      "to": "TARGET-T002",
+      "relation": "compares_to"
+    },
+    {
+      "from": "TARGET-T002",
+      "to": "DISC-P41-D001",
+      "relation": "source_review_issue"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "AUTO-TOOL-STEEL-AREA-M2",
+      "relation": "supports_implementation"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "TARGET-T024",
+      "relation": "supports_implementation"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "TARGET-T025",
+      "relation": "supports_implementation"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "TARGET-T026",
+      "relation": "supports_implementation"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "AUTO-COMPARISON-P41-C001",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "AUTO-COMPARISON-P41-C002",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "AUTO-COMPARISON-P41-C003",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "AUTO-DISCREPANCY-P41-D001",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P41-D001",
+      "to": "AUTO-ASSESSMENT-P41-D001",
+      "relation": "classified_by"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "AUTO-COMPARISON-P41-C004",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "AUTO-COMPARISON-P41-C005",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "AUTO-COMPARISON-P41-C006",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P41",
+      "to": "AUTO-DISCREPANCY-P41-D002",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P41-D002",
+      "to": "AUTO-ASSESSMENT-P41-D002",
+      "relation": "classified_by"
+    }
+  ],
+  "qualification": "NOT_GRANTED",
+  "sync": {
+    "schema_version": "engiproof.evidence_graph_sync/1.0",
+    "added_nodes": 0,
+    "added_edges": 0,
+    "tool_count": 14,
+    "comparison_count": 6,
+    "discrepancy_count": 2,
+    "decision_count": 0,
+    "rule": "Synchronization is additive: existing hand-authored nodes/edges are preserved and qualification is never promoted."
+  }
+}

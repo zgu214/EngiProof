@@ -1,0 +1,17 @@
+\section{Paper ingestion and failure-aware structure recovery}
+
+\subsection{Source fingerprint and identity}
+The ingestion layer records a SHA-256 content fingerprint and bibliographic metadata while avoiding persistence of machine-specific absolute paths. Copyrighted PDFs remain external by default. A source can be re-opened for enrichment only when its content fingerprint matches the original intake record.
+
+A separate identity audit compares configured title, year, and DOI against information recoverable from the source. Importantly, a DOI that is not present in extractable PDF text is distinguished from a conflicting DOI. The second case study demonstrates this distinction: title and year were recoverable, while the DOI required external bibliographic confirmation rather than being silently inferred from the PDF text.
+
+\subsection{Target discovery and recovery}
+Figures, tables, equations, and appendices are initially lexical candidates. Real engineering PDFs frequently split equation bodies from their printed numbers, encode characters through Type1/CFF fonts, or refer to multiple equations in grouped text. The development process therefore added grouped cross-reference recovery, printed-equation-number recovery, and multiline equation-body reconstruction.
+
+The first real automation case exposed the limitation of a simple lexical pass: only a small subset of relevant equations was initially represented. A later recovery pass substantially expanded the equation set for the same source. This before/after result is treated as a case-specific demonstration of failure-aware recovery, not as a general extraction-accuracy statistic.
+
+\subsection{Publisher-style table extraction}
+The second case study used ASME conference formatting and exposed a different generalization problem. Clear captions such as ``Table 1 Pipeline data'' did not contain the punctuation pattern expected by the earlier extractor. The subsequent implementation broadened caption recognition to punctuation-free and hyphenated publisher styles, rejected obvious cross-references, terminated table blocks at subsequent captions, and recognized parameter/unit/value rows such as diameter, thickness, area, and axial stiffness.
+
+\subsection{Selected-target readiness}
+For selected targets, structure generation and readiness are different states. A table is considered structurally ready only when a publisher caption and candidate data rows are available. An equation is structurally ready only when an equation-body candidate has been recovered. Readiness permits reproduction work to begin; it does not convert extracted text into verified evidence.

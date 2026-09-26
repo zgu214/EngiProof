@@ -22,3 +22,5 @@ engiproof/intake/*/
 # Local release/patch archives are GitHub assets, not repository source.
 *.zip
 *.zip.sha256
+# Generated continuity checkpoint snapshots/bundles are private backup artifacts.
+checkpoints/

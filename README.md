@@ -98,6 +98,24 @@ engiproof pipeline P40
 
 The enrichment layer records page/line locators, short target-bounded excerpts, unit/symbol candidates, page text hashes, equation/table/figure/definition structure candidates, kind-specific reproduction tasks and target-type comparison templates. Full extracted source text is not persisted by default. Generated structures/tasks/templates remain review/planning artifacts and cannot promote evidence automatically.
 
+
+## v0.2.0-dev2 robust source/structure gates
+
+Dev2 adds identity and structural-readiness checks before reproduction:
+
+```bat
+engiproof audit-source P40 "D:\papers\p40.pdf"
+engiproof recover-equations P40 "D:\papers\p40.pdf"
+engiproof enrich P40 "D:\papers\p40.pdf"
+engiproof extract-structures P40 "D:\papers\p40.pdf"
+engiproof readiness P40
+engiproof pipeline P40
+```
+
+If title/DOI/year metadata is wrong, use `engiproof set-metadata ...` and re-run `audit-source`. Missing-equation recovery preserves existing candidate IDs. A generated structure file no longer implies that selected targets are structurally ready for reproduction.
+
+Project continuity is recorded in `HANDOVER_CURRENT.md`, which must be updated at every meaningful development checkpoint.
+
 ## Evidence contract
 
 Every callable result carries:
@@ -125,3 +143,7 @@ Place legally obtained originals in `01_doc/` using the canonical filenames reco
 ## Status
 
 v0.2.0 development builds paper-ingestion and evidence automation on top of the v0.1.1 engineering-evidence runtime. It preserves backward compatibility with P08/P12, adds heterogeneous walking, vibration and local-integrity evidence types through P16/P29/P36, and uses P38 as the first complete evidence-chain showcase. This remains research/verification software, not an engineering qualification certificate or replacement for project-specific design verification.
+
+## v0.2.0-dev3 discrepancy automation
+
+Use `engiproof discrepancy-audit P40`, `engiproof assess-discrepancies P40`, `engiproof discrepancy-gate P40`, and `engiproof discrepancy-audit-all`. The engine classifies review/escalation without deciding physical acceptability. P40-D001 is the first real blocking case.

@@ -1,0 +1,363 @@
+{
+  "schema_version": "engiproof.study/1.1",
+  "framework": "EngiProof",
+  "framework_version": "0.2.0.dev7",
+  "paper_id": "P42",
+  "title": "Tension-bending analysis of flexible pipe by a repeated unit cell finite element model",
+  "year": 2019,
+  "evidence_status": "CONDITIONAL",
+  "category": "Unbonded flexible pipe / tension-bending / repeated unit cell",
+  "source": {
+    "canonical_pdf": "p42-lukassen2019.pdf",
+    "sha256": "16c33a882da8a036dc7007fedd5b7aab7e0194bf8ea97ae9b9bf423accbc0d2d",
+    "doi": "10.1016/j.marstruc.2018.09.010"
+  },
+  "selected_targets": [
+    "Table 1",
+    "Table 3",
+    "Table 4",
+    "Equation (42)",
+    "Equation (43)"
+  ],
+  "runner": "papers/P42/run_calculation.py",
+  "source_contract": "papers/P42/SOURCE.md",
+  "evidence_graph": "engiproof/studies/P42/evidence_graph.json",
+  "result_files": [
+    "papers/P42/results/phase1_summary.json",
+    "papers/P42/results/equation42_continuum_curve.csv",
+    "papers/P42/results/engiproof_verification.json",
+    "papers/P42/results/phase2_analytical_stress_summary.json",
+    "papers/P42/results/phase2_analytical_stress_curves.csv",
+    "papers/P42/results/phase3_axisymmetric_moment_summary.json",
+    "papers/P42/results/phase3_figure16_literal_probe.csv"
+  ],
+  "verification_tests": [
+    "tests.test_p42_phase1.P42Phase1Tests.test_pitch_balance",
+    "tests.test_p42_phase1.P42Phase1Tests.test_equation42_linearity",
+    "tests.test_p42_phase1.P42Phase1Tests.test_equation43_sum",
+    "tests.test_p42_phase1.P42Phase1Tests.test_contact_properties",
+    "tests.test_p42_phase1.P42Phase1Tests.test_runner"
+  ],
+  "tools": [
+    {
+      "name": "balanced_pitch_L2_mm",
+      "module": "papers/P42/tool_api.py",
+      "function": "balanced_pitch_L2_mm",
+      "arguments": {
+        "L1_mm": "inner armor pitch mm",
+        "n1": "inner wire count",
+        "n2": "outer wire count"
+      },
+      "returns": "balanced outer pitch mm",
+      "evidence": "independent Table 1 consistency check",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "equation42_continuum_moment_kNm",
+      "module": "papers/P42/tool_api.py",
+      "function": "equation42_continuum_moment_kNm",
+      "arguments": {
+        "kappa_per_m": "global curvature 1/m",
+        "E_MPa": "axial Young modulus MPa",
+        "r_mid_mm": "layer mid-radius mm",
+        "t_mm": "layer thickness mm"
+      },
+      "returns": "continuum-layer moment kNm",
+      "evidence": "P42 Eq. (42)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "equation43_total_moment_kNm",
+      "module": "papers/P42/tool_api.py",
+      "function": "equation43_total_moment_kNm",
+      "arguments": {
+        "M0_cont_kNm": "core continuum moment",
+        "M1_f_kNm": "inner armor moment",
+        "M2_f_kNm": "outer armor moment",
+        "M3_cont_kNm": "outer sheath moment"
+      },
+      "returns": "total pipe moment kNm",
+      "evidence": "P42 Eq. (43)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "contact_properties",
+      "module": "papers/P42/tool_api.py",
+      "function": "contact_properties",
+      "arguments": {},
+      "returns": "Table 4 contact settings",
+      "evidence": "P42 Table 4",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "phase1_continuum_summary",
+      "module": "papers/P42/tool_api.py",
+      "function": "phase1_continuum_summary",
+      "arguments": {},
+      "returns": "Table 1/3/4 audit + Eq42 continuum curve + Figure16 source review",
+      "evidence": "P42 Phase-1 evidence chain",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "equation31_preslip_stress_MPa",
+      "module": "papers/P42/tool_api.py",
+      "function": "equation31_preslip_stress_MPa",
+      "arguments": {
+        "nu_deg": "circumferential angle deg",
+        "E_MPa": "wire modulus MPa",
+        "r_mm": "wire-layer radius mm",
+        "alpha_deg": "lay angle deg",
+        "kappa_G_per_m": "pipe curvature 1/m"
+      },
+      "returns": "pre-slip friction stress MPa",
+      "evidence": "P42 Eq. (31)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "equation32_critical_curvature_per_m",
+      "module": "papers/P42/tool_api.py",
+      "function": "equation32_critical_curvature_per_m",
+      "arguments": {
+        "nu_deg": "angle deg",
+        "mu_i": "inner friction coefficient",
+        "p_i_MPa": "inner contact pressure MPa",
+        "mu_o": "outer friction coefficient",
+        "p_o_MPa": "outer contact pressure MPa",
+        "E_MPa": "wire modulus MPa",
+        "t_mm": "wire thickness mm",
+        "alpha_deg": "lay angle deg"
+      },
+      "returns": "critical curvature 1/m",
+      "evidence": "P42 Eq. (32)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "equation33_transition_angle_deg",
+      "module": "papers/P42/tool_api.py",
+      "function": "equation33_transition_angle_deg",
+      "arguments": {
+        "kappa_G_per_m": "pipe curvature 1/m",
+        "mu_i": "inner friction coefficient",
+        "p_i_MPa": "inner pressure MPa",
+        "mu_o": "outer friction coefficient",
+        "p_o_MPa": "outer pressure MPa",
+        "E_MPa": "wire modulus MPa",
+        "t_mm": "wire thickness mm",
+        "alpha_deg": "lay angle deg"
+      },
+      "returns": "transition angle deg",
+      "evidence": "P42 Eq. (33)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "equation34_slip_stress_MPa",
+      "module": "papers/P42/tool_api.py",
+      "function": "equation34_slip_stress_MPa",
+      "arguments": {
+        "nu_deg": "angle deg",
+        "mu_i": "inner friction coefficient",
+        "p_i_MPa": "inner pressure MPa",
+        "mu_o": "outer friction coefficient",
+        "p_o_MPa": "outer pressure MPa",
+        "r_mm": "radius mm",
+        "t_mm": "wire thickness mm",
+        "alpha_deg": "lay angle deg"
+      },
+      "returns": "slip-region friction stress MPa",
+      "evidence": "P42 Eq. (34)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "equation35_stick_stress_MPa",
+      "module": "papers/P42/tool_api.py",
+      "function": "equation35_stick_stress_MPa",
+      "arguments": {
+        "nu_deg": "angle deg",
+        "nu_star_deg": "transition angle deg",
+        "E_MPa": "modulus MPa",
+        "r_mm": "radius mm",
+        "alpha_deg": "lay angle deg",
+        "kappa_G_per_m": "curvature 1/m",
+        "mu_i": "inner friction coefficient",
+        "p_i_MPa": "inner pressure MPa",
+        "mu_o": "outer friction coefficient",
+        "p_o_MPa": "outer pressure MPa",
+        "t_mm": "thickness mm"
+      },
+      "returns": "stick-region friction stress MPa",
+      "evidence": "P42 Eq. (35)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "phase2_analytical_stress_summary",
+      "module": "papers/P42/tool_api.py",
+      "function": "phase2_analytical_stress_summary",
+      "arguments": {},
+      "returns": "regenerated analytical stress families + model-form audit",
+      "evidence": "P42 Eqs. (36)-(39), Figs.20-23",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "phase3_axisymmetric_and_moment_summary",
+      "module": "papers/P42/tool_api.py",
+      "function": "phase3_axisymmetric_and_moment_summary",
+      "arguments": {},
+      "returns": "Eqs24-30 axisymmetric/contact chain + Eq41/Figure16 literal reconstruction probe",
+      "evidence": "P42 Eqs.24-30,41-43 / Figs.12-16",
+      "evidence_class": "INDEPENDENT"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "P42-C001",
+      "target": "Table 1 armor pitch balance",
+      "status": "COMPARED",
+      "reference": "P42 Table 1",
+      "metrics": {
+        "published_L2_mm": 1851.0,
+        "calculated_L2_mm": 1850.9454545454546
+      }
+    },
+    {
+      "id": "P42-C002",
+      "target": "Eq. (42) continuum-layer bending line",
+      "status": "REPRODUCED",
+      "reference": "P42 Eq. (42)",
+      "metrics": {
+        "kappa_max_per_m": 0.1
+      }
+    },
+    {
+      "id": "P42-C003",
+      "target": "Eq. (42) continuum mechanism versus Figure 16 full-slip description",
+      "status": "COMPARED",
+      "reference": "P42 Figure 16 / Section 4.2",
+      "metrics": {
+        "comparison_type": "qualitative_source-mechanics"
+      }
+    },
+    {
+      "id": "P42-C004",
+      "target": "Eqs. (36)-(39) -> analytical solid-line families in Figures 20-23",
+      "status": "REPRODUCED",
+      "reference": "P42 Figures 20-23",
+      "metrics": {
+        "curve_type": "analytical_regeneration",
+        "fp_ruc_digitized": false
+      }
+    },
+    {
+      "id": "P42-C005",
+      "target": "Analytical versus FP-RUC axial-tension dependence in Figures 21 and 23",
+      "status": "COMPARED",
+      "reference": "P42 Sections 4.2.1 / Figures 21 and 23",
+      "metrics": {
+        "analytical_Fz_dependence": "none",
+        "FP_RUC_Fz_dependence": "present"
+      }
+    },
+    {
+      "id": "P42-C006",
+      "target": "Eqs. (24)-(26) axisymmetric force/torsion closure",
+      "status": "REPRODUCED",
+      "reference": "P42 Eqs. (24)-(26), Figures 12-14",
+      "metrics": {
+        "closure": "machine_precision",
+        "point_digitization": false
+      }
+    },
+    {
+      "id": "P42-C007",
+      "target": "Literal Eqs. (27)-(30)+(41)-(43) implementation versus Figure 16 scale",
+      "status": "CONDITIONAL",
+      "reference": "P42 Figure 16",
+      "metrics": {
+        "comparison_type": "source-scale boundary check",
+        "curve_digitization": false
+      }
+    }
+  ],
+  "discrepancies": [
+    {
+      "id": "P42-D001",
+      "target": "Axial-tension dependence of tensile-armor bending stress in Figures 21 and 23",
+      "status": "OBSERVED",
+      "classification_hint": "MODEL_FORM_KINEMATICS_DIFFERENCE",
+      "observation": "The published analytical model gives transverse and normal wire-bending stresses independent of axial tension Fz through Eqs. (36)-(39), whereas the published FP-RUC results vary with Fz.",
+      "engineering_interpretation": "This is a documented model-form/kinematic difference, not a source error. The paper attributes the deviation to sliding interaction and differences between the assumed loxodromic analytical wire path and the FP-RUC wire kinematics.",
+      "metrics": {
+        "analytical_Fz_dependence": 0,
+        "FP_RUC_Fz_dependence": "nonzero"
+      },
+      "automation": {
+        "independent_support": "SOURCE_EXPLAINS_MODEL_FORM_DIFFERENCE",
+        "promotion_effect": "REVIEW_REQUIRED"
+      },
+      "closure_requirements": [
+        "Preserve the analytical loxodromic-path assumption explicitly.",
+        "Preserve the FP-RUC tension dependence as published.",
+        "Do not tune the analytical model to mimic FP-RUC without changing the model assumptions.",
+        "If numerical residuals are later required, digitize or reproduce the FP-RUC curves with explicit provenance."
+      ]
+    },
+    {
+      "id": "P42-D002",
+      "target": "Reconstruction of Figure 16 from Eqs. (27)-(30) and Eq. (41)",
+      "status": "OPEN",
+      "classification_hint": "SOURCE_IMPLEMENTATION_PROVENANCE_GAP",
+      "observation": "Eqs. (24)-(26) close exactly and reproduce the published axisymmetric response trends. A literal Eqs. (27)-(30) recursion with explicit zero outer nominal-pressure boundary, followed by Eq. (41), does not reconcile with the published Figure 16 high-tension moment scale.",
+      "engineering_interpretation": "This is not classified as a paper error. It shows that the printed equations and stated no-pressure/no-torsion load case are insufficient, on their own, to establish the exact contact-pressure/interface convention used for the published analytical Figure 16 curves. EngiProof retains the implementation gap and does not tune friction or pressures.",
+      "automation": {
+        "independent_support": "AXISYMMETRIC_CHAIN_CLOSES_BUT_MOMENT_CHAIN_DOES_NOT",
+        "promotion_effect": "REVIEW_REQUIRED"
+      },
+      "closure_requirements": [
+        "Obtain source code, author clarification, theory-manual detail, or an independently documented implementation of the Eqs. (27)-(30) pressure recursion/interface convention.",
+        "Do not tune mu, pressure, radii, or source geometry to force Figure 16 agreement.",
+        "Do not label the literal-probe curve as a reproduced published curve."
+      ]
+    }
+  ],
+  "limitations": [
+    "The complete Figure 16 analytical curves are NOT claimed reproduced: a literal Eqs.27-30 contact-pressure recursion plus Eq.41 does not close against the published high-tension moment scale without additional implementation provenance.",
+    "Figures 20-23 analytical solid-line families are regenerated, but FP-RUC point sets are not digitized; no pointwise FE residuals are claimed.",
+    "Figure 16 curves are source-reviewed but not digitized; no graphical residuals are claimed.",
+    "The FP-RUC finite-element model is not reproduced in Phase 1.",
+    "Nominal continuum-layer mid-radii are reconstructed from the published layer stack while the source model omits nonstructural interlayers.",
+    "Engineering qualification is NOT_GRANTED."
+  ],
+  "next_actions": [
+    "Freeze P42 after local Phase-3 verification; retain P42-D001 and P42-D002 without tuning.",
+    "Use P42-D001 in the journal paper as a model-form/kinematic discrepancy example.",
+    "Use P42-D002 as a reproducibility/provenance-gap example only if clearly distinguished from a source error.",
+    "Move to P43 with a materially different mechanics/evidence class."
+  ],
+  "qualification": "NOT_GRANTED",
+  "ingestion_record": "engiproof/intake/P42/ingestion.json",
+  "phase2_targets": [
+    "Equation (31)",
+    "Equation (32)",
+    "Equation (33)",
+    "Equation (34)",
+    "Equation (35)",
+    "Equation (36)",
+    "Equation (37)",
+    "Equation (38)",
+    "Equation (39)",
+    "Figure 20",
+    "Figure 21",
+    "Figure 22",
+    "Figure 23"
+  ],
+  "phase3_targets": [
+    "Equation (24)",
+    "Equation (25)",
+    "Equation (26)",
+    "Equation (27)",
+    "Equation (28)",
+    "Equation (29)",
+    "Equation (30)",
+    "Equation (41)",
+    "Figure 16"
+  ]
+}

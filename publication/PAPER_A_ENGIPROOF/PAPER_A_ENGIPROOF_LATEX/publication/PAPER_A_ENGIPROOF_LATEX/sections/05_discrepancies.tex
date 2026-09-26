@@ -1,0 +1,27 @@
+\section{Source-backed discrepancy detection}
+
+One purpose of \engiproof{} is to treat disagreement as engineering evidence rather than as an obstacle to be hidden. Table~\ref{tab:discrepancies} summarizes the current source-backed examples.
+
+\begin{table}[htbp]
+\centering
+\caption{Current discrepancy examples retained by EngiProof.}
+\label{tab:discrepancies}
+\begin{tabular}{p{0.10\linewidth}p{0.25\linewidth}p{0.24\linewidth}p{0.30\linewidth}}
+\toprule
+Case & Published reference & Independent/reproduced evidence & EngiProof treatment \\
+\midrule
+P40 & Eq. (9) normalized ratio 0.66 for PIP-3 & direct $\approx0.7057$; independent work-balance $\approx0.7053$ & \estatus{OPEN}; published-reference mismatch; no tuning \\
+\addlinespace
+P41-D001 & Table 2: $f_S=471$~N/m, $\Delta S_{\rm inner}=153$~N/m, $\Delta S_{\rm outer}=312$~N/m & published components sum to 465~N/m; Eqs. (6)--(8) reproduce $\approx158.8+312.2=471$~N/m & \estatus{OPEN}; source-backed numerical mismatch; possible 153$\rightarrow$159 typo remains unconfirmed \\
+\addlinespace
+P41-D002 & paragraph reports approximately 300/850~MNm & Figure 10 axis is labeled kNm with corresponding values on a 0--1000 scale & \estatus{OPEN}; source-internal unit mismatch; no silent unit correction \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Why the distinction matters}
+For P41-D001, interpreting 153~N/m as a typographical 159~N/m would make the table sum consistent with the published total and is numerically close to the independent 158.8~N/m result. However, this remains an inference until supported by an erratum, author clarification, or other provenance. The framework therefore stores the printed value and the reproduced value separately.
+
+Similarly, the P41 Figure 10 paragraph is naturally read as if kNm were intended, because the plot axis itself uses kNm. Nevertheless, the framework retains the paragraph's printed MNm unit and records the mismatch instead of silently normalizing it.
+
+These cases illustrate a broader methodological point: successful evidence automation should not be judged only by how often it reproduces a printed number. Its ability to expose irreconcilable or ambiguous source information is also an important engineering output.
