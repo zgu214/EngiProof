@@ -1,0 +1,129 @@
+{
+  "project": "EngiProof",
+  "version": "0.2.0.dev1",
+  "baseline": "v0.1.1",
+  "scope": "cumulative ingestion/source-enrichment/structure-automation development patch",
+  "tests_passed": 39,
+  "verify_all": "PASS",
+  "real_pdf_smoke": {
+    "pages": 8,
+    "candidates": 17,
+    "located": 17,
+    "equations": 4,
+    "tables": 3,
+    "figures": 10,
+    "definitions": 19
+  },
+  "files": [
+    {
+      "path": ".agents/skills/engiproof-ingestion/SKILL.md",
+      "sha256": "a559bf8bdcc21871d43e5709e7bc4a4d44cb85a9e3e2598022b608d8834b97a4",
+      "size_bytes": 1719
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "1ba69926b0ac9a70e20632960ab421b1dfc0018970abf1bb50c3876bdcbd6eee",
+      "size_bytes": 468
+    },
+    {
+      "path": "07_VERIFY_V020_INGESTION_WINDOWS.bat",
+      "sha256": "2fd4d1fa019d494b3af80910390c69f30d2eafc3098cbcd938495293b664e441",
+      "size_bytes": 395
+    },
+    {
+      "path": "08_VERIFY_V020_ENRICHMENT_WINDOWS.bat",
+      "sha256": "c356f79780201ab70b97ded2740f746c9f0bd1201b2859b1cb978d6d8312bcdc",
+      "size_bytes": 589
+    },
+    {
+      "path": "09_VERIFY_V020_DEV1_WINDOWS.bat",
+      "sha256": "613bc42dbf04030e8f19f03ee2e0c517426f712a4045c964c5d4b0527f9e6087",
+      "size_bytes": 568
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "0e22ba040089b5dd9ccb88c1de0a97c1e8f4303a75e0b4cd90b39de86db938c4",
+      "size_bytes": 1380
+    },
+    {
+      "path": "PATCH_NOTES_v0.2.0_DEV1.md",
+      "sha256": "19116a1bcd745af29cab03f83e2ca433afc64198c99264e04710fca1b09401bd",
+      "size_bytes": 1316
+    },
+    {
+      "path": "PROGRESS_v0.2.0.md",
+      "sha256": "57c48a8fe9ee081de00692fbf6f076924a9c101a805eadcdf5fa6172b800aaea",
+      "size_bytes": 2791
+    },
+    {
+      "path": "README.md",
+      "sha256": "affbe2ca4a1e9f01e303ecfc4f54e3401d3aa2923cc0923bfb3399e95c10252b",
+      "size_bytes": 6408
+    },
+    {
+      "path": "ROADMAP_v0.2.0.md",
+      "sha256": "91c444bda147e9b37a610101b53b5a0a014c39e9fa6c4e072d9d93e88f37753f",
+      "size_bytes": 2958
+    },
+    {
+      "path": "VERSION",
+      "sha256": "05cd5a051a494dd2c10320825ad157f86844561261715c3c717cbbf1e0ffdb0a",
+      "size_bytes": 11
+    },
+    {
+      "path": "docs/INGESTION_AUTOMATION.md",
+      "sha256": "3bc0d70d979f58e955554f5a1a5f88e07dc7320c998653073c36713319b885d7",
+      "size_bytes": 2094
+    },
+    {
+      "path": "docs/REAL_PDF_SMOKE_TEST_v0.2.0.md",
+      "sha256": "c85b28ea197c67e7926f568adcf4609329f2c829ac17282cb02f7a1d8595bd0d",
+      "size_bytes": 1146
+    },
+    {
+      "path": "engiproof/contracts/contracts.json",
+      "sha256": "5e6eb1a8468513861217821d2676a102e58710e65c2ab914290d362b8abe5720",
+      "size_bytes": 5017
+    },
+    {
+      "path": "engiproof/intake/README.md",
+      "sha256": "8007f183dd8304a4493b89f9076aa172600b595ee3c13461827e052ade9c4977",
+      "size_bytes": 796
+    },
+    {
+      "path": "engiproof/registry.json",
+      "sha256": "eb784f609a2fd7870f72b418064ea82e796a17624e0930cfc8ba982df1c72a77",
+      "size_bytes": 253
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "97511137ccc8db46028abd014422f00d462affcb117ce63a7d424dda4d8928d3",
+      "size_bytes": 607
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "97ee6b2896b8cc8cebe1e9bbde16699763edef21d1a80e9eaba6aaee2ddd38b8",
+      "size_bytes": 27
+    },
+    {
+      "path": "src/engiproof/__init__.py",
+      "sha256": "08b88f17eb3f9b8dc01f1e4b5ed5f2eb66dfb46d8874d5bb100f3a6b3484a3ee",
+      "size_bytes": 93
+    },
+    {
+      "path": "src/engiproof/cli.py",
+      "sha256": "fa9300df44886a76b15dd807a9aa46c1888456ac9b91de4f51d7e8d463cd2b64",
+      "size_bytes": 7287
+    },
+    {
+      "path": "src/engiproof/ingestion.py",
+      "sha256": "1f7972b8fe3f17658ef405d4f8bab1edef5adc398aef3f2a322fa0086b41f246",
+      "size_bytes": 43765
+    },
+    {
+      "path": "tests/test_ingestion.py",
+      "sha256": "83ab6efc83bb5c2be821e38caa23a51f128414237df1ee325d46e41607dc1f3e",
+      "size_bytes": 8905
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": "engiproof.contracts/1.0",
   "framework": "EngiProof",
-  "framework_version": "0.1.1.dev0",
+  "framework_version": "0.2.0.dev1",
   "evidence_classes": [
     "PUBLISHED",
     "INDEPENDENT",
@@ -83,6 +83,101 @@
         "contract_check"
       ],
       "rule": "Computational verification is not engineering qualification."
+    },
+    "ingestion": {
+      "schema": "engiproof.ingestion/1.0",
+      "required": [
+        "paper_id",
+        "source_fingerprint",
+        "target_candidates",
+        "status"
+      ],
+      "rule": "Ingestion discovers candidates only; no candidate becomes engineering evidence without review and reproduction."
+    },
+    "source_fingerprint": {
+      "schema": "engiproof.source_fingerprint/1.0",
+      "required": [
+        "canonical_filename",
+        "sha256",
+        "size_bytes",
+        "mime_type"
+      ],
+      "rule": "Persist basename/hash/metadata only; never persist machine-specific absolute source paths."
+    },
+    "target_candidates": {
+      "schema": "engiproof.target_candidates/1.0",
+      "required": [
+        "candidate_count",
+        "review_required",
+        "candidates"
+      ],
+      "rule": "Lexical figure/table/equation discovery is a review queue, not evidence."
+    },
+    "promotion_gate": {
+      "schema": "engiproof.promotion_gate/1.0",
+      "required": [
+        "paper_id",
+        "ready",
+        "issues"
+      ],
+      "rule": "A study cannot enter the live registry while DRAFT/BLOCKED or without targets, results, tests and callable tools."
+    },
+    "source_map": {
+      "schema": "engiproof.source_map/1.0",
+      "required": [
+        "paper_id",
+        "source_filename",
+        "source_sha256",
+        "page_count",
+        "pages",
+        "raw_text_persisted"
+      ],
+      "rule": "Persist page-level hashes/counts and bounded target excerpts only; never persist full extracted source text by default."
+    },
+    "target_dossiers": {
+      "schema": "engiproof.target_dossiers/1.0",
+      "required": [
+        "paper_id",
+        "source_sha256",
+        "dossier_count",
+        "located_count",
+        "dossiers"
+      ],
+      "rule": "Target dossiers are source-location aids. Automated excerpts/symbol/unit candidates require review before evidence promotion."
+    },
+    "reproduction_tasks": {
+      "schema": "engiproof.reproduction_tasks/1.0",
+      "required": [
+        "paper_id",
+        "status",
+        "task_count",
+        "tasks",
+        "global_gates"
+      ],
+      "rule": "Generated tasks are plans, not completed reproduction or verification evidence."
+    },
+    "structure_candidates": {
+      "schema": "engiproof.structure_candidates/1.0",
+      "required": [
+        "paper_id",
+        "source_sha256",
+        "equations",
+        "tables",
+        "figures",
+        "definitions",
+        "review_required"
+      ],
+      "rule": "Structure extraction is heuristic review material; extracted blocks/rows/captions do not become engineering evidence automatically."
+    },
+    "comparison_templates": {
+      "schema": "engiproof.comparison_templates/1.0",
+      "required": [
+        "paper_id",
+        "template_count",
+        "templates",
+        "status"
+      ],
+      "rule": "Comparison templates specify candidate metrics only; metrics require source-backed reproduced/reference populations before evaluation."
     }
   }
 }

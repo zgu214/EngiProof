@@ -16,3 +16,9 @@ private_sources/
 client_data/
 *.odb
 *.sim
+# Paper intake artifacts may contain source-bounded excerpts; keep them local by default.
+engiproof/intake/*/
+!engiproof/intake/README.md
+# Local release/patch archives are GitHub assets, not repository source.
+*.zip
+*.zip.sha256
