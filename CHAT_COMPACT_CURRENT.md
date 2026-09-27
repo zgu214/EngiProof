@@ -220,3 +220,12 @@ Bueno & Morooka 1994 SPE28723 contact case. Table1 area/I independently checked;
 ## P44 frozen / low-budget hold
 
 P44 Phase1 local PASS. Freeze CONDITIONAL/NOT_GRANTED; preserve P44-D001; no full nonlinear contact-profile claim. Weekly model budget nearly exhausted: checkpoint, private archive, commit/push, then pause heavy research. Resume at P45 after reset from PROJECT_STATE/HANDOVER/NEW_CHAT_BOOTSTRAP.
+
+
+## Runtime since dev8 (PR #2–#4)
+
+MCP server (read-only default; run/verify opt-in via `ENGIPROOF_MCP_ALLOW_RUN`; regenerate never). Non-mutating verification: frozen evidence is compared in a sandbox, never rewritten; `engiproof regenerate` is explicit. egg-info untracked.
+
+## P45 Phase 1
+
+Safai 1983 nonlinear dynamic risers. Table2 geometry/offset reproduce; tables = SI of round imperial values; Appendix1 k-functions pass identity/continuity/Euler/independent-FE/rigid-body checks; Eq7 = Wilson-θ, θ not given (θ=1 limit Δt/T=0.5513). OPEN: D001 buoyed w_p rises; D002 Table1 cases 3–6 tensions 10× implausible; D003 1200 m tension unit missing; D004 '/g' typo; D005 head 'amplitude' is peak-to-peak per Figs 4a–9a; D006 '~15%' only as peak |stress|. Dynamic responses BLOCKED; no SOLVER_NEW; NOT_GRANTED. Next: local `28_VERIFY_P45_PHASE1_WINDOWS.bat`, freeze, then Paper A readiness review.

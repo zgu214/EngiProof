@@ -16,4 +16,8 @@ Parallel/secondary. Keep evidence capture synchronized without displacing engine
 
 ## Q5 — P45
 
-**State:** ready after model-budget reset. Resume from `PROJECT_STATE.json` and `HANDOVER_CURRENT.md`.
+**State:** Phase 1 implemented (CONDITIONAL). Pending local `28_VERIFY_P45_PHASE1_WINDOWS.bat`, then freeze.
+
+## Q6 — Paper A readiness review
+
+**State:** next after P45 freeze. Review P40–P45 as the evidence matrix; decide whether P46 is needed to fill a defined gap.

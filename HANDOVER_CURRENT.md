@@ -432,3 +432,16 @@ Weekly model budget is nearly exhausted. Before pausing:
 4. commit/push the freeze/control-file changes.
 
 After reset, resume directly at P45 using `NEW_CHAT_BOOTSTRAP.md`, `PROJECT_STATE.json`, and this handover.
+
+
+## Checkpoint — post-dev8 runtime changes (PR #2–#4)
+
+- PR #2: read-only MCP server (`engiproof-mcp`); tool-level `evidence_boundary` passed through `invoke_tool`; durable continuity-test invariants.
+- PR #3: non-mutating verification (D-005). `verify`, `verify-all`, `run` recompute in a sandbox and classify regenerated artifacts (IDENTICAL, BYTE_ONLY, ENVIRONMENT_METADATA, NUMERICAL_NONMATERIAL pass; NUMERICAL_MATERIAL, MATERIAL_NON_NUMERIC fail). `engiproof regenerate Pxx` is the only evidence-rewriting operation and is not exposed through MCP. P43 declares a recomputation tolerance with a 3-decimal Table 1 guard. P41 verification-contract drift fixed.
+- PR #4: generated `*.egg-info` untracked.
+
+## Checkpoint — P45 Phase 1 nonlinear dynamic riser evidence
+
+Safai (1983), Applied Ocean Research 5(4) 215–225. Ingestion ran on the 1983 scan: 32 candidates, readiness PARTIAL (4/16); all figures/appendices reviewed manually from page images. Source-bounded checks of Tables 1–3, Appendix 1 (stiffness functions, K, K_G), Eq. (7), Appendix 2, Airy regime; head-end envelopes of Figures 4(a)–9(a) digitized (numbers only). Six OPEN discrepancies P45-D001…D006 preserved without tuning. Nonlinear dynamic responses BLOCKED (source insufficient). No SOLVER_NEW. CONDITIONAL / NOT_GRANTED / outside live registry. Details: `P45_PHASE1_NONLINEAR_DYNAMICS_CHECKPOINT.md`.
+
+Next: run `28_VERIFY_P45_PHASE1_WINDOWS.bat` locally; on PASS record it as `last_green_verification` and freeze P45. Then the Paper A readiness review (P40–P45) decides whether P46 exists.
