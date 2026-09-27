@@ -10,6 +10,7 @@ from .core import (comparison_snapshot,contract_schema,discrepancy_snapshot,doct
 from .discrepancy import assess_discrepancies, discrepancy_audit, discrepancy_audit_all, discrepancy_gate, discrepancy_decision_summary, record_discrepancy_decision
 from .evidence_graph import audit_evidence_graph, sync_evidence_graph
 from .taxonomy import record_taxonomy_review, taxonomy_audit
+from .environment_record import compact_line, environment_record, write_record
 from .ingestion_summary import build_ingestion_summary, ingestion_summary_audit, write_ingestion_summary
 from .ingestion import (
     audit_source_identity, build_comparison_templates, build_reproduction_plan, build_task_bundle, enrich_source, extract_structures, ingest_source,
@@ -80,6 +81,8 @@ def main(argv: list[str]|None=None) -> int:
     p.add_argument("--source-pdf",help="Local PDF for automatic born-digital/scan detection (default 01_doc/<canonical_pdf>); nothing from it is persisted but counts.")
     p.add_argument("--source-format",choices=["BORN_DIGITAL","SCANNED_WITH_TEXT_LAYER","SCANNED_IMAGE_ONLY","NOT_RECORDED"]); p.add_argument("--source-format-basis")
     p=sub.add_parser("ingestion-summary-audit",help="Check tracked ingestion summaries for the Paper A studies (or the given IDs)."); p.add_argument("paper_ids",nargs="*")
+    p=sub.add_parser("environment-record",help="Verify every study (non-mutating) and emit a compact cross-environment record (Python/NumPy/OS + comparator classes).")
+    p.add_argument("--out",help="Write the full record to this path (keep it outside the repository in CI)."); p.add_argument("--compact",action="store_true",help="Print a one-line JSON summary.")
     p=sub.add_parser("discrepancy-decisions",help="Show append-only discrepancy decisions and latest effective decision per discrepancy."); p.add_argument("paper_id")
     p=sub.add_parser("graph-sync",help="Add missing tool/comparison/discrepancy/assessment/decision provenance to a study evidence graph without deleting hand-authored graph content."); p.add_argument("paper_id")
     p=sub.add_parser("graph-audit",help="Audit evidence-graph provenance coverage for one study."); p.add_argument("paper_id")
@@ -134,6 +137,11 @@ def main(argv: list[str]|None=None) -> int:
             out=build_ingestion_summary(ns.paper_id,source_pdf=ns.source_pdf,source_format=ns.source_format,source_format_basis=ns.source_format_basis)
             if ns.write: out={"written":write_ingestion_summary(out),"summary":out}
         elif ns.cmd=="ingestion-summary-audit": out=ingestion_summary_audit(ns.paper_ids or None)
+        elif ns.cmd=="environment-record":
+            rec=environment_record()
+            if ns.out: write_record(rec,ns.out)
+            if ns.compact: print(compact_line(rec)); return 0 if rec["status"]!="FAIL" else 1
+            out=rec
         elif ns.cmd=="discrepancy-decisions": out=discrepancy_decision_summary(ns.paper_id)
         elif ns.cmd=="graph-sync": out=sync_evidence_graph(ns.paper_id,persist=True)
         elif ns.cmd=="graph-audit": out=audit_evidence_graph(ns.paper_id)

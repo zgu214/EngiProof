@@ -311,6 +311,48 @@ def _in_result_dir(rel: str, dirs: set[str]) -> bool:
     return any(rel.startswith(d) for d in dirs)
 
 
+def runtime_environment() -> dict[str, Any]:
+    """The Python/NumPy/platform of the running verification (ENVIRONMENT_METADATA, never material)."""
+    import platform
+    try:
+        import numpy
+        numpy_version = numpy.__version__
+    except Exception:  # pragma: no cover - numpy is a hard dependency
+        numpy_version = None
+    return {"python_version": platform.python_version(), "python_implementation": platform.python_implementation(),
+            "numpy_version": numpy_version, "os": platform.system(), "os_release": platform.release(),
+            "machine": platform.machine()}
+
+
+def declared_environment(paths: list[Path], root: Path) -> dict[str, dict[str, Any]]:
+    """Environment keys that frozen JSON artifacts themselves declare (empty when none do)."""
+    out: dict[str, dict[str, Any]] = {}
+
+    def walk(node: Any, found: dict[str, Any]) -> None:
+        if isinstance(node, dict):
+            for k, v in node.items():
+                if k in ENVIRONMENT_KEYS and not isinstance(v, (dict, list)):
+                    found.setdefault(k, v)
+                else:
+                    walk(v, found)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v, found)
+
+    for path in paths:
+        if path.suffix.lower() != ".json" or not path.is_file():
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        found: dict[str, Any] = {}
+        walk(data, found)
+        if found:
+            out[path.relative_to(root).as_posix()] = found
+    return out
+
+
 def reproduce_against_frozen(root: Path, manifest: dict[str, Any], box: Path) -> dict[str, Any]:
     """Run the study runner inside ``box`` and compare every artifact it writes with ``root``."""
     runner = manifest.get("runner")
@@ -370,6 +412,8 @@ def reproduce_against_frozen(root: Path, manifest: dict[str, Any], box: Path) ->
         "max_abs_diff": max_abs,
         "max_rel_diff": max_rel,
         "non_evidence_file_changes": new_files,
+        "verification_environment": runtime_environment(),
+        "frozen_environment_declared": declared_environment([root / rel for rel in sorted(written)], root),
         "artifacts": compared,
         "rule": ("Frozen evidence is compared, never overwritten. Tolerances here define recomputation "
                  "equivalence only; they are not engineering acceptance or validation tolerances."),
