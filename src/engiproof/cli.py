@@ -10,7 +10,7 @@ from .core import (comparison_snapshot,contract_schema,discrepancy_snapshot,doct
 from .discrepancy import assess_discrepancies, discrepancy_audit, discrepancy_audit_all, discrepancy_gate, discrepancy_decision_summary, record_discrepancy_decision
 from .evidence_graph import audit_evidence_graph, sync_evidence_graph
 from .taxonomy import record_taxonomy_review, taxonomy_audit
-from .environment_record import compact_line, environment_record, write_record
+from .environment_record import compact_line, environment_record, failure_lines, write_record
 from .ingestion_summary import build_ingestion_summary, ingestion_summary_audit, write_ingestion_summary
 from .ingestion import (
     audit_source_identity, build_comparison_templates, build_reproduction_plan, build_task_bundle, enrich_source, extract_structures, ingest_source,
@@ -140,7 +140,10 @@ def main(argv: list[str]|None=None) -> int:
         elif ns.cmd=="environment-record":
             rec=environment_record()
             if ns.out: write_record(rec,ns.out)
-            if ns.compact: print(compact_line(rec)); return 0 if rec["status"]!="FAIL" else 1
+            if ns.compact:
+                print(compact_line(rec))
+                for line in failure_lines(rec): print(line)
+                return 0 if rec["status"]!="FAIL" else 1
             out=rec
         elif ns.cmd=="discrepancy-decisions": out=discrepancy_decision_summary(ns.paper_id)
         elif ns.cmd=="graph-sync": out=sync_evidence_graph(ns.paper_id,persist=True)

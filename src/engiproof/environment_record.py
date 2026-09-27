@@ -44,8 +44,31 @@ def environment_record() -> dict[str, Any]:
             "max_rel_diff": rep.get("max_rel_diff"), "max_abs_diff": rep.get("max_abs_diff"),
             "frozen_environment_declared": sorted({k for d in (rep.get("frozen_environment_declared") or {}).values() for k in d}),
         })
+        if item["status"] not in good:
+            studies[-1]["failure"] = _failure_detail(item)
     return {"schema_version": SCHEMA, "status": result["status"], "environment": runtime_environment(),
             "study_count": len(studies), "classification_totals": totals, "studies": studies, "rule": RULE}
+
+
+def _failure_detail(item: dict[str, Any]) -> dict[str, Any]:
+    """Machine-readable reason for a failing verification (paths, classes, test names; no source text)."""
+    rep = item.get("reproduction") or {}
+    material = [{"path": a.get("path"), "class": a.get("classification"),
+                 "max_rel": a.get("max_rel_diff"), "max_abs": a.get("max_abs_diff"),
+                 "structure": a.get("structure")}
+                for a in rep.get("artifacts", []) if a.get("material")][:8]
+    failed_tests = [t["test"] for t in item.get("tests", []) if not t.get("passed")]
+    tails = {t["test"]: t.get("output", "")[-600:] for t in item.get("tests", []) if not t.get("passed")}
+    return {"reproduction_status": rep.get("status"), "runner_returncode": rep.get("runner_returncode"),
+            "runner_stderr_tail": (rep.get("runner_stderr") or "")[-600:], "material": material,
+            "failed_tests": failed_tests, "failed_test_output_tail": tails,
+            "missing_required_files": item.get("missing_required_files"), "contract_issues": item.get("contract_issues"),
+            "source_check": item.get("source_check")}
+
+
+def failure_lines(record: dict[str, Any]) -> list[str]:
+    return [json.dumps({"paper_id": s["paper_id"], "status": s["status"], **s["failure"]}, separators=(",", ":"))
+            for s in record["studies"] if s.get("failure")]
 
 
 def compact_line(record: dict[str, Any]) -> str:

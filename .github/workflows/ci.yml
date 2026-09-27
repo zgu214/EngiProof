@@ -31,11 +31,17 @@ jobs:
       - name: Snapshot tracked files
         run: git ls-files -z | xargs -0 sha256sum > "$RUNNER_TEMP/tracked.sha256"
       - run: engiproof doctor
-      - run: engiproof verify-all
       - name: Cross-environment record (all studies, non-mutating)
         run: |
-          engiproof environment-record --out "$RUNNER_TEMP/environment_record.json" --compact > "$RUNNER_TEMP/environment_record.line"
-          echo "::notice title=engiproof-environment-record::$(cat "$RUNNER_TEMP/environment_record.line")"
+          set +e
+          engiproof environment-record --out "$RUNNER_TEMP/environment_record.json" --compact > "$RUNNER_TEMP/environment_record.lines"
+          rc=$?
+          set -e
+          head -n 1 "$RUNNER_TEMP/environment_record.lines" | sed 's/^/::notice title=engiproof-environment-record::/'
+          tail -n +2 "$RUNNER_TEMP/environment_record.lines" | cut -c1-3500 | sed 's/^/::error title=engiproof-verification-failure::/'
+          exit $rc
+      - run: engiproof verify-all
+        if: ${{ !cancelled() }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -43,5 +49,7 @@ jobs:
           path: ${{ runner.temp }}/environment_record.json
           if-no-files-found: warn
       - run: python -m unittest discover -s tests -v
+        if: ${{ !cancelled() }}
       - name: Verification and tests left tracked files unchanged
+        if: ${{ !cancelled() }}
         run: sha256sum --quiet -c "$RUNNER_TEMP/tracked.sha256"
