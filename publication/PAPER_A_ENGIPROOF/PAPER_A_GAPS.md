@@ -6,6 +6,16 @@ Categories: **a** no new paper (work or decisions on existing records) · **b** 
 
 **Result: five gaps; none is category d. P46 is not required.**
 
+## Status after the evidence-hardening PR (27 September 2026)
+
+| Gap | Status | What remains |
+|---|---|---|
+| G1 | Candidates prepared (`G1_DECISION_CANDIDATES.md`) with evidence, rationale options and dry-run gate effects | Owner decisions. The agent records none. |
+| G2 | Vocabulary, validation, CLI and a proposed mapping for all 19 records (`docs/DISCREPANCY_TAXONOMY.md`) | Owner review (`engiproof taxonomy-review`) |
+| G3 | Tracked text-free summaries for P40–P45. P45 is machine-generated; P40–P43 are explicit pending records; P44 has no ingestion record. | Run `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` where the intakes are |
+| G4 | CI on Linux, Windows and macOS verifies all 12 studies and records each environment (`docs/CROSS_ENVIRONMENT_VERIFICATION.md`). Findings F20/F21. | Owner approval of D-007 (comparator rules and scoped P45 tolerance) |
+| G5 | Reassessed: optional. P38-D002 already instantiates MODEL_VS_EXPERIMENT_GAP, and P40 Table 2 ratios are analytical / experiment by construction. | Nothing required for Paper A |
+
 ---
 
 ## G1 — Human decision boundary exercised only once
@@ -41,7 +51,7 @@ Categories: **a** no new paper (work or decisions on existing records) · **b** 
 - **Missing claim (PA-04, and the audit part of PA-02):** ingestion, extraction and source-audit outcomes are traceable in the repository for every case.
 - **Resolved on 27 September 2026 (no longer part of this gap):** P43/P44 source identity. The DOIs `10.2118/5620-PA` and `10.2118/28723-MS` (historical alias `10.2523/28723-MS`) were confirmed by the study owner from publisher records, and the P43 SPE number, previously recorded as 5820 in error, was corrected to 5620. The correction itself is recorded as failure F18.
 - **Why P40–P45 are still insufficient:**
-  - P40 and P44 have no `ingestion_record`.
+  - P40 and P44 have no `ingestion_record` pointer in the manifest. Correction: P40 did go through the pipeline (dev1/dev2, readiness READY 3/3, `HANDOVER_CURRENT.md`); for P44 no ingestion is recorded.
   - Candidate counts, readiness results and source-audit statuses exist only in prose (handover, dev notes), because intake directories are local and gitignored by design (they can hold source excerpts).
   - Source format (born-digital vs scan) is not recorded for P43/P44.
 - **Category:** b — a tracked, text-free ingestion summary per study: fingerprint, audit checks, candidate/readiness counts, source format; no excerpts.
@@ -67,13 +77,13 @@ Categories: **a** no new paper (work or decisions on existing records) · **b** 
 ## G5 — Experimental data never handled as a distinct evidence population
 
 - **Missing claim (PA-26):** EngiProof distinguishes model-versus-experiment evidence from reproduction and from source inconsistency.
-- **Why P40–P45 are insufficient:** P40 Table 2 already contains hyperbaric-chamber propagation pressures (`papers/P40/reference/table2.csv`, `Pp_kPa`), but they are used only as the published normalisation of the analytical ratios. The MODEL_VS_EXPERIMENT_GAP category exists in `src/engiproof/discrepancy.py` and has never been instantiated.
+- **Why P40–P45 are insufficient:** P40 Table 2 already contains hyperbaric-chamber propagation pressures (`papers/P40/reference/table2.csv`, `Pp_kPa`), but they are used only as the published normalisation of the analytical ratios. Correction (27 September 2026): MODEL_VS_EXPERIMENT_GAP *is* instantiated in the repository, as P38-D002 (OBSERVED), outside the six-case population.
 - **Category:** c — deeper use of P40; no new source.
 - **Work:**
   - record the hyperbaric values as a PUBLISHED experimental population;
   - compare Eqs. (2), (3), (6), (9) against it as COMPARED;
   - record the model-versus-experiment gaps as OBSERVED MODEL_VS_EXPERIMENT_GAP. Do not re-open P40-D001, and do not tune.
-- **Blocks submission:** optional. Needed only if Paper A claims experimental-evidence handling; recommended because the evidence model already defines it.
+- **Blocks submission:** no. Given P38-D002, G5 would add a second, within-population instance, but no new capability. It is left optional.
 
 ---
 
@@ -93,3 +103,5 @@ Categories: **a** no new paper (work or decisions on existing records) · **b** 
 - **H2:** record the non-reproduced targets of P41/P42/P44 as BLOCKED comparisons, as P45 does. This adds records only; no evidence changes.
 - **H3:** flatten the nested `PAPER_A_ENGIPROOF_LATEX/publication/PAPER_A_ENGIPROOF_LATEX/` manuscript path.
 - **H4:** manuscript Draft v0.1 covers P40–P41 only; the synthesis should follow `PAPER_A_OUTLINE.md`.
+- **H5:** the P38 runner writes OS-dependent path keys (`str(Path)`). Fix it with `.as_posix()` at the next approved P38 regeneration; until then the comparator treats the separator as a rendering difference (F21).
+- **H6:** `verify-all` covers only live studies. CI now also runs `environment-record` over every study (F20).

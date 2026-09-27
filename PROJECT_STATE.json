@@ -7,11 +7,11 @@
   "objective": "Paper Ingestion & Evidence Automation",
   "current_study": "P45",
   "current_study_state": "FROZEN_CONDITIONAL_EVIDENCE_CASE",
-  "current_checkpoint": "P45_PHASE1_FROZEN",
+  "current_checkpoint": "PAPER_A_EVIDENCE_HARDENING",
   "last_green_verification": "28_VERIFY_P45_PHASE1_WINDOWS.bat",
   "last_green_status": "PASS",
-  "next_study": "PAPER_A_READINESS_REVIEW",
-  "next_action": "Perform the Paper A readiness review across P40-P45 and create P46 only if a specific evidence gap is demonstrated.",
+  "next_study": "PAPER_A_MANUSCRIPT_SYNTHESIS",
+  "next_action": "Owner: approve D-007, review taxonomy labels, record G1 decisions, run 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat. Then Paper A manuscript synthesis from PAPER_A_OUTLINE.md. No P46.",
   "qualification": "NOT_GRANTED",
   "open_evidence_items": [
     "P40-D001",
@@ -42,5 +42,10 @@
   "source_of_truth": "Git repository",
   "private_source_policy": "Copyrighted PDFs remain outside the public repository; preserve canonical basename, DOI and SHA-256.",
   "last_confirmed_local_date": "2026-09-27",
-  "pending_verification": null
+  "pending_verification": null,
+  "pending_owner_decisions": [
+    "D-007 cross-environment recomputation equivalence",
+    "G2 taxonomy label review (19 PROPOSED)",
+    "G1 discrepancy decisions (publication/PAPER_A_ENGIPROOF/G1_DECISION_CANDIDATES.md)"
+  ]
 }

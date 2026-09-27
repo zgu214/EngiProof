@@ -233,3 +233,5 @@ Safai 1983 nonlinear dynamic risers. Table2 geometry/offset reproduce; tables = 
 ## P45 frozen / Paper A next
 
 P45 local Windows verify PASS; frozen CONDITIONAL/NOT_GRANTED (D-006), D001–D006 OPEN, dynamics BLOCKED. Active: Paper A readiness review over P40–P45 (Q6); no automatic P46. Low priority: make graph-sync file-idempotent (Q7).
+
+PR #7 merged (eeb84fc). Hardening PR: G2 taxonomy (19 proposed labels), G3 ingestion summaries, G4 cross-OS CI + environment records, G1 candidates. D-007 PROPOSED (hash inheritance, path-separator rendering, scoped P45 FE tolerance) awaits owner approval. Owner actions: approve D-007, taxonomy review, G1 decisions, run 29_ batch. No P46.

@@ -451,3 +451,15 @@ Next: run `28_VERIFY_P45_PHASE1_WINDOWS.bat` locally; on PASS record it as `last
 Local Windows `28_VERIFY_P45_PHASE1_WINDOWS.bat` PASS after PR #5 merged (`cb2a595`); continuity-audit PASS; checkpoint bundle PASS. P45 frozen CONDITIONAL / NOT_GRANTED (D-006); P45-D001…D006 OPEN; dynamic responses BLOCKED; no tuning.
 
 Active task: Paper A readiness review across P40–P45 (WORK_QUEUE Q6). Create P46 only if the review demonstrates a specific evidence gap. Low-priority runtime item: graph-sync persists per-run counters, so repeated syncs rewrite the tracked graph without changing evidence (Q7).
+
+## Checkpoint — Paper A evidence hardening (27 September 2026)
+
+- PR #7 (Paper A readiness package, P43/P44 source identity) merged into `develop` (`eeb84fc`).
+- Branch `feature/paper-a-evidence-hardening`:
+  - **G2:** controlled discrepancy taxonomy (`contracts.discrepancy_taxonomy`), proposed mapping for all 19 records (none approved).
+  - **G3:** tracked text-free `ingestion_summary.json` for P40–P45 (P45 machine-generated; P40–P43 pending local intakes; P44 none recorded).
+  - **G4:** CI on Linux/Windows/macOS, verifying every study and recording its environment.
+  - **G1:** decision candidates prepared.
+- Cross-OS findings F20 (P45 FE-check recomputation noise) and F21 (P38 platform-dependent provenance) are handled by D-007, **proposed**, which needs owner approval.
+- Qualification remains NOT_GRANTED everywhere, and all discrepancies keep their status. No P46.
+

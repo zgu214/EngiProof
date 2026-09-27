@@ -42,3 +42,14 @@ Local Windows verification `28_VERIFY_P45_PHASE1_WINDOWS.bat` reported `=== P45 
 - Reproduction of the nonlinear dynamic riser responses (Figures 4-9, 11) remains `BLOCKED`: the paper does not give theta/beta/lambda, the iteration tolerance, structural damping, the discretisation of the comparison cases, the float properties or the tension unit.
 - No tuning and no inferred completion of missing inputs. No `SOLVER_NEW` evidence.
 - Qualification remains `NOT_GRANTED`. P45 stays outside the live registry.
+
+
+## D-007 — Cross-environment recomputation equivalence (PROPOSED, awaiting owner approval)
+
+The first CI run on Windows and macOS, and the first CI run of the frozen non-live studies, found the following (failure register F20/F21 in `publication/PAPER_A_ENGIPROOF/PAPER_A_READINESS_REVIEW.md`). None of it changes engineering evidence.
+
+- **Provenance-hash inheritance.** A SHA-256 field that identifies another regenerated artifact of the same study inherits that artifact's classification. Any other hash change remains `MATERIAL_NON_NUMERIC` unless it is a line-ending rendering of the same file. Case: P38 manifest hashes of CSVs that changed non-materially.
+- **Path-separator rendering.** Dictionary key sets that differ only by `\` vs `/` are `ENVIRONMENT_METADATA`, and their values are still compared. Case: the P38 runner uses `str(Path)` keys (runner fix deferred to the next approved regeneration, WORK_QUEUE Q9).
+- **P45 scoped tolerance.** A path-scoped recomputation tolerance (`rel 1e-6`, `abs 1e-7`) applies only to `.appendix1_checks.independent_fe_comparison` in `phase1_summary.json`. The study-wide default (`1e-9`/`1e-12`) is unchanged, and the engineering statement `appendix1_matches_independent_fe` (residual < 1e-6) is compared exactly. Measured variation: ≤ 2.9e-7 abs on FE outputs; ≤ 1e-8 abs on the ~3e-8 residual.
+- Environment fields (`verification_environment`, `frozen_environment_declared`) are verification output only. `ENVIRONMENT_KEYS` is not broadened, and frozen evidence is untouched.
+- None of these is an engineering acceptance or validation tolerance.

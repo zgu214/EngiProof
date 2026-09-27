@@ -14,8 +14,8 @@ What can EngiProof now support as a publishable methods/evidence paper, given th
 |---|---|
 | Claims tested | 30 (`CLAIM_EVIDENCE_MATRIX.md`) |
 | SUPPORTED | 16 |
-| PARTIALLY_SUPPORTED | 7 |
-| NOT_SUPPORTED_YET | 4 |
+| PARTIALLY_SUPPORTED | 8 |
+| NOT_SUPPORTED_YET | 3 |
 | OUT_OF_SCOPE | 3 |
 | Genuine evidence gaps | 5 (G1–G5, `PAPER_A_GAPS.md`) |
 | Gaps requiring a new source (category d) | **0** |
@@ -40,13 +40,13 @@ What the set stress-tests well:
 - **Eras and formats:** 1976–2019, four publishers/societies (ASCE, ASME, Elsevier, SPE), born-digital sources with font artefacts and a scanned 1983 source.
 - **Mechanics:** static collapse, axial load sharing, helical-armour bending, an eigenproblem, quasi-static nonlinear contact and nonlinear time integration. The formulations are genuinely different, not variations of one equation.
 - **Independent-check types:** analytical reconstruction (P40), numerical re-formulation (P43, P45), matrix-property checks (P45), graphical measurement against boundary conditions (P45).
-- **Discrepancy types:** ten distinct labels over 14 records, including several found only by cross-checking tables against equations (P41, P43) or against physics (P45-D001, D002).
+- **Discrepancy types:** ten distinct legacy labels over 14 records (seven proposed taxonomy categories), including several found only by cross-checking tables against equations (P41, P43) or against physics (P45-D001, D002).
 - **Incomplete reproduction:** four of six studies have a major target that is legitimately not reproducible from source detail.
 - **Runtime behaviour:** a real mutation defect was found, inventoried and fixed; recomputation noise across NumPy builds is quantified and classified.
 
 What it does not stress-test:
 - **Domain:** a single domain (offshore/subsea structural mechanics), so generality beyond it is out of scope (PA-27).
-- **Experimental evidence:** none handled as a population (G5).
+- **Experimental evidence:** not handled as a separate population within P40–P45. The repository has one MODEL_VS_EXPERIMENT_GAP record (P38-D002), outside the six cases (G5 optional).
 - **SOLVER_NEW evidence:** none (PA-25).
 - **Extraction accuracy:** not measured (PA-05).
 - **Organisational independence:** the checks are methodologically independent only (PA-10).
@@ -74,6 +74,8 @@ What it does not stress-test:
 | F17 | graph-sync persists per-run counters | runtime | Recorded as low-priority hardening | WORK_QUEUE Q7 |
 | F18 | Source identity recorded incompletely or wrongly (P43/P44 DOI PENDING; P43 SPE number 5820 instead of 5620); ingestion records missing | P43, P44 (P40) | Identity corrected from publisher records (27 Sep 2026); tracked ingestion summaries still missing — gap G3 | `S(P43)`, `S(P44)`, `papers/P43/SOURCE.md` |
 | F19 | Generated packaging metadata tracked in Git | runtime | Untracked | PR #4 |
+| F20 | Frozen P45 evidence was not recomputation-equivalent across NumPy/BLAS builds under the default tolerance: the ill-conditioned independent FE check changes by ≤ 2.9e-7 abs. CI missed this because `verify-all` covers only live studies, and the earlier “NUMERICAL_NONMATERIAL under NumPy 2.5.3” statement was wrong. | P45 (cross-OS CI) | CI verifies every study (`environment-record`); path-scoped recomputation tolerance on the FE block only, with the engineering boolean still compared exactly (D-007, proposed) | `docs/CROSS_ENVIRONMENT_VERIFICATION.md` |
+| F21 | Provenance manifests are platform-dependent: hashes of non-materially changed CSVs, and OS path separators in keys, made P38 fail on Windows/macOS | P38 (cross-OS CI) | Provenance-hash inheritance and separator-rendering rules (D-007, proposed); runner fix deferred to the next approved regeneration | same |
 
 These failures are themselves Paper A evidence: each was surfaced by the evidence process, recorded, and either corrected or left visible.
 
@@ -117,11 +119,12 @@ G5 is a C-type item (deeper use of P40). It is recommended but not blocking.
 
 ## 8. Next highest-value action
 
-A single “Paper A evidence hardening” runtime PR:
-- **G2:** a controlled discrepancy vocabulary with definitions and validation, plus a proposed mapping of the 14 existing records for human review. No evidence values change.
-- **G3:** tracked, text-free ingestion summaries per study (fingerprint, audit checks, candidate/readiness counts, source format).
-- **G4:** Windows in the CI matrix, and the producing environment recorded as ENVIRONMENT_METADATA in verification records.
+Update, 27 September 2026: the “Paper A evidence hardening” PR implements G2–G4 and prepares G1 (status table in `PAPER_A_GAPS.md`). What remains are owner actions:
+- **G1:** record decisions from `G1_DECISION_CANDIDATES.md`.
+- **G2:** review the proposed taxonomy labels.
+- **G4:** approve D-007 (two comparator rules and the scoped P45 tolerance).
+- **G3:** run `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` where the P40–P43 intakes are.
 
-In parallel, the human reviewer records G1 decisions. Then G5 on P40. Then manuscript synthesis from `PAPER_A_OUTLINE.md`.
+Then synthesise the manuscript from `PAPER_A_OUTLINE.md`. G5 is optional.
 
 Contextual literature, including the ScientistTwo / Chain-of-Evidence direction, belongs in related work as architectural context only. It is not engineering validation evidence and does not replace P40–P45.
