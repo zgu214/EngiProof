@@ -123,7 +123,10 @@ def invoke_tool(paper_id: str,tool_name: str,params: dict[str,Any]|None=None) ->
         raise KeyError(f"Tool {tool_name!r} is not exposed by {manifest['paper_id']}.")
     fn=_load_function(tool["module"],tool["function"])
     value=fn(**(params or {}))
-    return {"engiproof_schema":manifest["schema_version"],"paper_id":manifest["paper_id"],"tool":tool_name,"result":_jsonable(value),"returns":tool.get("returns"),"evidence":tool.get("evidence"),"evidence_class":tool.get("evidence_class"),"evidence_status":manifest.get("evidence_status"),"limitations":manifest.get("limitations",[])}
+    out={"engiproof_schema":manifest["schema_version"],"paper_id":manifest["paper_id"],"tool":tool_name,"result":_jsonable(value),"returns":tool.get("returns"),"evidence":tool.get("evidence"),"evidence_class":tool.get("evidence_class"),"evidence_status":manifest.get("evidence_status"),"limitations":manifest.get("limitations",[])}
+    if tool.get("evidence_boundary"):
+        out["evidence_boundary"]=tool["evidence_boundary"]
+    return out
 
 
 def run_study(paper_id: str) -> dict[str,Any]:

@@ -91,6 +91,23 @@ class EngiProofMCPTests(unittest.TestCase):
                 self.assertIn(key, out)
         self.assertEqual(p38["evidence_status"], "CONDITIONAL")
 
+    def test_p12_fit_stays_independent_with_explicit_boundary(self):
+        server = _load_server(allow_run=False)
+
+        async def go():
+            async with create_connected_server_and_client_session(server._mcp_server) as s:
+                return _json(await s.call_tool("call_method", {
+                    "paper_id": "P12", "method": "table4_fit_force_MN",
+                    "params": {"beta": 0.6, "clearance_mm": 12.0}}))
+
+        out = _run(go())
+        self.assertAlmostEqual(out["result"], 1.6243216727, places=8)
+        self.assertEqual(out["evidence_class"], "INDEPENDENT")
+        boundary = out["evidence_boundary"]
+        self.assertIn("independently performed by EngiProof", boundary)
+        self.assertIn("published P12 Table 4", boundary)
+        self.assertIn("not independent physical or FE validation", boundary)
+
     def test_bad_method_is_an_error_not_a_number(self):
         server = _load_server(allow_run=False)
 

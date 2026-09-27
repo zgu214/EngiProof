@@ -51,7 +51,8 @@
       },
       "returns": "independently fitted Table-4 regression force [MN]",
       "evidence": "regression on printed P12 Table 4 source values",
-      "evidence_class": "INDEPENDENT"
+      "evidence_class": "INDEPENDENT",
+      "evidence_boundary": "The regression is independently performed by EngiProof, but it is fitted to published P12 Table 4 FE-derived source data. It is not independent physical or FE validation, and agreement with Table 4 is an in-sample check."
     },
     {
       "name": "eq22_scaled_force_MN",
