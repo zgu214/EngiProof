@@ -126,11 +126,54 @@ class FrozenComparatorTests(unittest.TestCase):
         a2, b2 = self._pair("m.json", json.dumps({"input_sha256": crlf}).encode(), json.dumps({"input_sha256": "0" * 64}).encode())
         self.assertEqual(compare_artifact(a2, b2, hash_index=build_hash_index([src]))["classification"], "MATERIAL_NON_NUMERIC")
 
+    def test_platform_is_engineering_content_not_environment(self):
+        # In offshore engineering "platform" is physical system data (TLP, drillship, ...).
+        a, b = self._pair("m.json", b'{"platform": "TLP", "v": 1.0}', b'{"platform": "drillship", "v": 1.0}')
+        r = compare_artifact(a, b)
+        self.assertEqual((r["classification"], r["material"]), ("MATERIAL_NON_NUMERIC", True))
+        self.assertEqual(r["material_findings"][0]["at"], ".platform")
+
     def test_environment_fields_are_environment_metadata(self):
         a, b = self._pair("m.json", b'{"python": "3.13.5", "numpy": "2.3.5", "v": 1.0}',
                           b'{"python": "3.11.15", "numpy": "2.4.4", "v": 1.0}')
         r = compare_artifact(a, b)
         self.assertEqual((r["classification"], len(r["environment_fields"])), ("ENVIRONMENT_METADATA", 2))
+
+
+class ResultArtifactStructureTests(unittest.TestCase):
+    """Creating or deleting a result artifact is a structural evidence change: material by default."""
+
+    def _study(self, runner_body: str, manifest_extra=None):
+        from engiproof.isolation import reproduce_against_frozen, sandbox
+        root = Path(tempfile.mkdtemp()); self.addCleanup(shutil.rmtree, root, True)
+        res = root / "papers/PX/results"; res.mkdir(parents=True)
+        (res / "a.csv").write_text("v\n1.0\n", encoding="utf-8")
+        (root / "papers/PX/run.py").write_text(runner_body, encoding="utf-8")
+        manifest = {"paper_id": "PX", "runner": "papers/PX/run.py", "result_files": ["papers/PX/results/a.csv"], **(manifest_extra or {})}
+        with sandbox(root) as box:
+            return reproduce_against_frozen(root, manifest, box)
+
+    def test_unchanged_rewrite_passes(self):
+        rep = self._study("from pathlib import Path\nPath(__file__).parent.joinpath('results/a.csv').write_text('v\\n1.0\\n')\n")
+        self.assertEqual((rep["status"], rep["material_artifacts"]), ("PASS", 0))
+
+    def test_created_result_artifact_is_material(self):
+        rep = self._study("from pathlib import Path\nPath(__file__).parent.joinpath('results/b.csv').write_text('v\\n2.0\\n')\n")
+        self.assertEqual(rep["status"], "FAIL")
+        self.assertEqual(rep["result_artifacts_created"], ["papers/PX/results/b.csv"])
+        self.assertEqual(rep["classification_counts"]["MATERIAL_NON_NUMERIC"], 1)
+
+    def test_deleted_result_artifact_is_material(self):
+        rep = self._study("from pathlib import Path\nPath(__file__).parent.joinpath('results/a.csv').unlink()\n")
+        self.assertEqual(rep["status"], "FAIL")
+        self.assertEqual(rep["result_artifacts_deleted"], ["papers/PX/results/a.csv"])
+        self.assertEqual(rep["classification_counts"]["MATERIAL_NON_NUMERIC"], 1)
+
+    def test_explicitly_allowed_artifact_change_is_not_material(self):
+        rep = self._study("from pathlib import Path\nPath(__file__).parent.joinpath('results/b.csv').write_text('x')\n",
+                          {"verification_allowed_artifact_changes": ["papers/PX/results/b.csv"]})
+        self.assertEqual((rep["status"], rep["material_artifacts"]), ("PASS", 0))
+        self.assertIn("papers/PX/results/b.csv", rep["non_evidence_file_changes"])
 
 
 class P43ToleranceContractTests(unittest.TestCase):

@@ -144,10 +144,10 @@ Committed result artifacts under `papers/*/results/` are **frozen evidence**. `e
 |---|---|---|
 | `IDENTICAL` | Same bytes | pass |
 | `BYTE_ONLY` | Same content; line endings, BOM or serialisation differ | pass |
-| `ENVIRONMENT_METADATA` | Only environment records (`python`, `numpy`) or a provenance hash taken over the other line-ending rendering of the same file | pass |
+| `ENVIRONMENT_METADATA` | Only environment records (`python`, `numpy` and their `_version` forms) or a provenance hash taken over the other line-ending rendering of the same file. `platform` is deliberately not an environment field: in offshore engineering it is physical system data | pass |
 | `NUMERICAL_NONMATERIAL` | Numbers differ within the declared recomputation tolerance and rounding guards | pass |
 | `NUMERICAL_MATERIAL` | A number crosses the declared tolerance, or a rounding guard at published precision | **fail** |
-| `MATERIAL_NON_NUMERIC` | Evidence status, discrepancy, classification, qualification, interpretation text or structure changes | **fail** |
+| `MATERIAL_NON_NUMERIC` | Evidence status, discrepancy, classification, qualification, interpretation text or structure changes, including a result artifact created or deleted by the runner (unless listed in the study's `verification_allowed_artifact_changes`) | **fail** |
 
 The default recomputation tolerance (relative 1e-9, absolute 1e-12) absorbs floating-point serialisation noise only. A study whose recomputation is legitimately platform-sensitive declares `verification_tolerance` in its `study.json`, with a rationale and optional rounding guards (P43: relative 1e-6, absolute 1e-5, and every Table 1 eigenvalue must keep its 3-decimal value). **These are recomputation-equivalence tolerances, not engineering acceptance or validation tolerances.**
 

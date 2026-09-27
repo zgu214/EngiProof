@@ -40,7 +40,10 @@ DEFAULT_TOLERANCE = {"rel": 1e-9, "abs": 1e-12}
 
 # Fields that describe the execution environment, not the evidence. They are
 # reported when they differ but never compared.
-ENVIRONMENT_KEYS = frozenset({"python", "numpy", "platform", "python_version", "numpy_version"})
+ENVIRONMENT_KEYS = frozenset({"python", "numpy", "python_version", "numpy_version"})
+# Deliberately NOT included: "platform". In offshore engineering a platform (TLP,
+# semisubmersible, drillship, ...) is physical system data, and a change to it is
+# material evidence content.
 
 _SANDBOX_IGNORE = shutil.ignore_patterns(
     ".git", ".venv", "venv", "__pycache__", "*.pyc", ".pytest_cache", "checkpoints", "*.egg-info"
@@ -294,6 +297,20 @@ def _guards_for(tol: dict[str, Any], rel: str) -> list[dict[str, Any]]:
     return [g for g in tol.get("rounding_guards", []) if rel in g.get("artifacts", [])]
 
 
+def _result_dirs(manifest: dict[str, Any]) -> set[str]:
+    """Result directories of a study: papers/<id>/results/ plus the directories of declared result files."""
+    dirs = {f"papers/{manifest['paper_id']}/results/"}
+    for rel in manifest.get("result_files", []):
+        parent = Path(rel).parent.as_posix()
+        if parent not in ("", "."):
+            dirs.add(parent + "/")
+    return dirs
+
+
+def _in_result_dir(rel: str, dirs: set[str]) -> bool:
+    return any(rel.startswith(d) for d in dirs)
+
+
 def reproduce_against_frozen(root: Path, manifest: dict[str, Any], box: Path) -> dict[str, Any]:
     """Run the study runner inside ``box`` and compare every artifact it writes with ``root``."""
     runner = manifest.get("runner")
@@ -303,18 +320,35 @@ def reproduce_against_frozen(root: Path, manifest: dict[str, Any], box: Path) ->
     before = _file_states(box)
     proc = run_python(box, [runner])
     after = _file_states(box)
-    written = sorted(p for p, h in after.items() if before.get(p) != h)
+    # Union of the pre- and post-run file sets, so deletions are visible too.
+    written = sorted(p for p in after if p in before and before[p] != after[p])
+    created = sorted(p for p in after if p not in before)
+    deleted = sorted(p for p in before if p not in after)
+    result_dirs = _result_dirs(manifest)
+    allowed = set(manifest.get("verification_allowed_artifact_changes", []))
     study_dir = box / "papers" / manifest["paper_id"]
     index = build_hash_index([p for p in study_dir.rglob("*") if p.is_file()])
     compared, new_files = [], []
     counts = {c: 0 for c in SEVERITY}
     max_abs = max_rel = 0.0
-    for rel in written:
-        frozen = root / rel
-        if not frozen.is_file():
+    for rel in created:
+        if (root / rel).is_file():
+            written.append(rel)  # absent in the sandbox before the run but frozen in the tree
+        elif _in_result_dir(rel, result_dirs) and rel not in allowed:
+            counts[MATERIAL_NON_NUMERIC] += 1
+            compared.append({"path": rel, "classification": MATERIAL_NON_NUMERIC, "material": True,
+                             "structure": "result artifact created that is not in the frozen evidence"})
+        else:
             new_files.append(rel)
-            continue
-        res = compare_artifact(frozen, box / rel, tol, index, _guards_for(tol, rel))
+    for rel in deleted:
+        if _in_result_dir(rel, result_dirs) and rel not in allowed:
+            counts[MATERIAL_NON_NUMERIC] += 1
+            compared.append({"path": rel, "classification": MATERIAL_NON_NUMERIC, "material": True,
+                             "structure": "frozen result artifact deleted by the runner"})
+        else:
+            new_files.append(f"(deleted) {rel}")
+    for rel in sorted(written):
+        res = compare_artifact(root / rel, box / rel, tol, index, _guards_for(tol, rel))
         counts[res["classification"]] += 1
         max_abs = max(max_abs, res.get("max_abs_diff", 0.0))
         max_rel = max(max_rel, res.get("max_rel_diff", 0.0))
@@ -329,11 +363,13 @@ def reproduce_against_frozen(root: Path, manifest: dict[str, Any], box: Path) ->
         "runner_stderr": proc.stderr.strip()[-2000:] if proc.returncode else "",
         "tolerance": tol,
         "artifacts_regenerated": len(written),
+        "result_artifacts_created": [a["path"] for a in compared if a.get("structure", "").startswith("result artifact created")],
+        "result_artifacts_deleted": [a["path"] for a in compared if a.get("structure", "").startswith("frozen result artifact deleted")],
         "classification_counts": counts,
         "material_artifacts": material,
         "max_abs_diff": max_abs,
         "max_rel_diff": max_rel,
-        "generated_not_frozen": new_files,
+        "non_evidence_file_changes": new_files,
         "artifacts": compared,
         "rule": ("Frozen evidence is compared, never overwritten. Tolerances here define recomputation "
                  "equivalence only; they are not engineering acceptance or validation tolerances."),
