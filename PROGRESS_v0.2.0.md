@@ -103,3 +103,19 @@ P42 correctly configured 2019 as publication year but dev6 selected 2018 from re
 
 ## dev8 — continuity architecture
 P42 Phase3 is locally green/frozen. Continuity now uses Git source of truth + repository control plane + replaceable chat/session context.
+
+
+## Checkpoint — 27 September 2026 (`0.2.0.dev8`)
+
+Runtime (PR #2–#4):
+- read-only MCP server `engiproof-mcp`; tool-level `evidence_boundary` in every result envelope;
+- non-mutating verification (D-005): sandboxed recomputation, semantic comparison against frozen evidence with classes IDENTICAL / BYTE_ONLY / ENVIRONMENT_METADATA / NUMERICAL_NONMATERIAL / NUMERICAL_MATERIAL / MATERIAL_NON_NUMERIC; explicit `engiproof regenerate`; CI gate that fails if verification or tests change any tracked file; canonical text provenance `text/lf-v1`;
+- mutation inventory of the pre-fix baseline (`docs/MUTATION_INVENTORY_v0.2.0.md`); P41 verification-contract drift fixed;
+- generated `*.egg-info` untracked.
+
+Studies:
+- P45 Safai (1983) Phase 1 implemented (PR #5) and frozen (D-006): CONDITIONAL, six OPEN discrepancies, dynamic-response reproduction BLOCKED, NOT_GRANTED.
+
+Validation: 179 tests PASS on Python 3.10/3.12/3.13 in CI with the non-mutation gate; local Windows `28_VERIFY_P45_PHASE1_WINDOWS.bat` PASS; `continuity-audit` PASS; `checkpoint --bundle` PASS.
+
+Next: Paper A readiness review (WORK_QUEUE Q6). Low priority: file-idempotent graph-sync (Q7).

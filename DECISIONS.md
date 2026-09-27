@@ -31,3 +31,14 @@ Adopted after the v0.2.0 mutation inventory (`docs/MUTATION_INVENTORY_v0.2.0.md`
 - A numeric change is material when it crosses a declared study/comparison tolerance, changes a value at published precision where that is the applicable source boundary, or changes any evidence status, discrepancy, classification, qualification or engineering interpretation.
 - P43 declares `rtol=1e-6`, `atol=1e-5` for cross-platform recomputation equivalence, with a hard guard that every Table 1 eigenvalue keeps its 3-decimal rounded value. This is not an engineering acceptance or validation tolerance.
 - Historical byte hashes are preserved as recorded. New text provenance uses the checkout-independent canonical identity `text/lf-v1`.
+
+
+## D-006 — P45 Phase 1 freeze
+
+Local Windows verification `28_VERIFY_P45_PHASE1_WINDOWS.bat` reported `=== P45 PHASE1 VERIFY PASS ===` after PR #5 was merged into `develop` (`cb2a595`); `continuity-audit` PASS on a clean `develop`; `checkpoint --bundle` PASS (bundle SHA-256 `40175f054d444a018e8954ecb8a5c8e57c9a0d793a1e0441aa214af091f14557`).
+
+- P45 (Safai 1983) is frozen as `CONDITIONAL` evidence at Phase 1.
+- P45-D001 through P45-D006 remain `OPEN`; none is closed or corrected.
+- Reproduction of the nonlinear dynamic riser responses (Figures 4-9, 11) remains `BLOCKED`: the paper does not give theta/beta/lambda, the iteration tolerance, structural damping, the discretisation of the comparison cases, the float properties or the tension unit.
+- No tuning and no inferred completion of missing inputs. No `SOLVER_NEW` evidence.
+- Qualification remains `NOT_GRANTED`. P45 stays outside the live registry.
