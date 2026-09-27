@@ -116,6 +116,26 @@ If title/DOI/year metadata is wrong, use `engiproof set-metadata ...` and re-run
 
 Project continuity is recorded in `HANDOVER_CURRENT.md`, which must be updated at every meaningful development checkpoint.
 
+
+## Use EngiProof from an AI agent (MCP)
+
+EngiProof ships an MCP server so Claude Code, Codex, Gemini CLI or any MCP client can call the live studies directly, with the evidence envelope attached to every result.
+
+```bat
+pip install -e .[mcp]
+claude mcp add engiproof -- engiproof-mcp
+```
+
+Exposed to the agent:
+
+- **Tools:** `list_studies`, `describe_study`, `call_method`, `get_evidence_graph`, `get_comparisons`, `get_discrepancies`, `get_provenance`, `get_contract`
+- **Resources:** `engiproof://registry`, `engiproof://studies/{id}/manifest`, `.../source`, `.../evidence-graph`
+- **Prompt:** `apply_method` — answer a question with a study's methods, staying inside argument ranges and reporting evidence class, status, discrepancies and limitations
+
+The server is read-only by default. `run_study` and `verify_study` remain **disabled by default** because the current legacy verification paths may rewrite tracked result artifacts (committed CSV/JSON evidence files). Setting `ENGIPROOF_MCP_ALLOW_RUN=1` is an explicit opt-in to those mutating paths, and remains the only way to expose them until non-mutating verification is implemented.
+
+The MCP adapter never upgrades evidence status and never grants qualification.
+
 ## Evidence contract
 
 Every callable result carries:
