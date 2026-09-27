@@ -20,6 +20,7 @@ from typing import Any
 SCHEMA = "engiproof.ingestion_summary/1.0"
 SOURCE_FORMATS = {"BORN_DIGITAL", "SCANNED_WITH_TEXT_LAYER", "SCANNED_IMAGE_ONLY", "NOT_RECORDED"}
 STATUSES = {"SUMMARISED_FROM_LOCAL_INTAKE", "PENDING_LOCAL_SUMMARY", "NO_INGESTION_RECORD"}
+ROUTES = {"ENGIPROOF_PIPELINE_V0_2", "NOT_RECORDED"}
 RULE = ("Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion "
         "pipeline produced; it is not evidence, and candidate extraction is not reproduction.")
 EXCLUDED = ["source text", "excerpts", "captions", "definitions", "line locators", "free-text readiness reasons"]
@@ -150,6 +151,7 @@ def build_ingestion_summary(paper_id: str, root: Path | None = None, source_form
     summary = {
         **base,
         "ingestion_status": "SUMMARISED_FROM_LOCAL_INTAKE",
+        "ingestion_route": "ENGIPROOF_PIPELINE_V0_2",
         "recorded_from": f"engiproof/intake/{pid}/ (local, gitignored)",
         "intake_status": ingestion.get("status"),
         "raw_source_copied": ingestion.get("raw_source_copied"),
@@ -186,26 +188,42 @@ def build_ingestion_summary(paper_id: str, root: Path | None = None, source_form
             "targets": [{"label": t.get("label"), "kind": t.get("kind"), "status": t.get("status")} for t in targets],
         },
         "manual_review": {
+            "required": ready.get("status") != "READY" or audit.get("status") != "PASS",
+            "reasons": [r for r, c in (("selected-target readiness not READY", ready.get("status") != "READY"),
+                                        ("source-identity audit not PASS", audit.get("status") != "PASS")) if c],
             "target_review_in_study_manifest": "target_review" in manifest,
-            "note": "Where automated readiness was PARTIAL, the manual page-image review is recorded in the study manifest, not here.",
+            "note": "Manual page-image review, where performed, is recorded in the study manifest, not here.",
         },
     }
     return summary
 
 
 def pending_summary(paper_id: str, status: str, note: str, documented_in: list[str] | None = None,
-                    root: Path | None = None, today: str | None = None) -> dict[str, Any]:
-    """Explicit record for a study whose intake is not available to summarise."""
+                    root: Path | None = None, today: str | None = None, ingestion_route: str = "NOT_RECORDED",
+                    identity: dict[str, Any] | None = None, documented_outcomes: dict[str, Any] | None = None,
+                    manual_review: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Explicit record for a study whose intake is not available to summarise.
+
+    ``documented_outcomes`` may carry only outcomes already written in tracked project records
+    (each with its reference); nothing is reconstructed or estimated.
+    """
     if status not in {"PENDING_LOCAL_SUMMARY", "NO_INGESTION_RECORD"}:
         raise ValueError("status must be PENDING_LOCAL_SUMMARY or NO_INGESTION_RECORD")
+    if ingestion_route not in ROUTES:
+        raise ValueError(f"ingestion_route must be one of {sorted(ROUTES)}")
     pid = paper_id.upper()
     manifest = _load(_root(root) / "engiproof" / "studies" / pid / "study.json") or {}
+    src = manifest.get("source") or {}
     return {"schema_version": SCHEMA, "paper_id": pid, "recorded_on": today or date.today().isoformat(),
-            "ingestion_status": status, "note": note,
+            "ingestion_status": status, "ingestion_route": ingestion_route, "note": note,
             "manifest_ingestion_record": manifest.get("ingestion_record"),
-            "source_sha256_in_study_manifest": (manifest.get("source") or {}).get("sha256"),
+            "source": {"sha256_in_study_manifest": src.get("sha256"), "doi": src.get("doi"),
+                       "format": {"source_format": "NOT_RECORDED", "basis": None}},
+            "identity": identity or {"status": "NOT_RECORDED"},
+            "documented_outcomes": documented_outcomes or {},
+            "manual_review": manual_review or {"required": "NOT_RECORDED"},
             "documented_in": documented_in or [],
-            "not_backfilled": "Counts and audit outcomes are not reconstructed from prose.",
+            "not_backfilled": "Candidate counts, readiness and audit outcomes are not reconstructed or estimated; only outcomes already written in tracked records are listed, with their reference.",
             "rule": RULE}
 
 
@@ -230,7 +248,9 @@ def ingestion_summary_audit(paper_ids: list[str] | None = None, root: Path | Non
             continue
         if s.get("schema_version") != SCHEMA or s.get("ingestion_status") not in STATUSES:
             issues.append(f"{pid}: invalid schema or status")
-        row = {"paper_id": pid, "ingestion_status": s.get("ingestion_status")}
+        row = {"paper_id": pid, "ingestion_status": s.get("ingestion_status"), "ingestion_route": s.get("ingestion_route")}
+        if s.get("ingestion_route") not in ROUTES:
+            issues.append(f"{pid}: ingestion_route missing or unknown")
         if s.get("ingestion_status") == "SUMMARISED_FROM_LOCAL_INTAKE":
             row.update(identity_audit=(s.get("identity_audit") or {}).get("status"),
                        readiness=(s.get("selected_targets") or {}).get("readiness_status"),

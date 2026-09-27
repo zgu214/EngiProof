@@ -3,12 +3,39 @@
   "paper_id": "P41",
   "recorded_on": "2026-09-27",
   "ingestion_status": "PENDING_LOCAL_SUMMARY",
-  "note": "Ingested through the pipeline (manifest ingestion_record). The intake is on the study owner's machine. Run 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat to replace this record.",
+  "ingestion_route": "ENGIPROOF_PIPELINE_V0_2",
+  "note": "Ingested through the pipeline (manifest ingestion_record). The intake is on the study owner's machine. 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat replaces this record.",
   "manifest_ingestion_record": "engiproof/intake/P41/ingestion.json",
-  "source_sha256_in_study_manifest": "21c3765eb4e9bd16b5bf36b1a58f3c5f72bf4a08058fc7b7ca5241c045ee619d",
+  "source": {
+    "sha256_in_study_manifest": "21c3765eb4e9bd16b5bf36b1a58f3c5f72bf4a08058fc7b7ca5241c045ee619d",
+    "doi": "10.1115/OMAE2011-49960",
+    "format": {
+      "source_format": "NOT_RECORDED",
+      "basis": null
+    }
+  },
+  "identity": {
+    "status": "NOT_RECORDED_IN_TRACKED_FILES"
+  },
+  "documented_outcomes": {
+    "basis": "PROSE_RECORD",
+    "ref": "PROGRESS_v0.2.0.md (P41 26/26 target localization); PUBLISHER_STYLE_EXTRACTION_v0.2.0-dev6.md",
+    "targets_localized": {
+      "located": 26,
+      "total": 26
+    }
+  },
+  "manual_review": {
+    "required": true,
+    "reasons": [
+      "punctuation-free ASME captions not anchored in dev5 (failure F4)",
+      "Table 2 value held as transcription uncertainty until visual confirmation (failure F5)"
+    ]
+  },
   "documented_in": [
-    "HANDOVER_CURRENT.md (P41 26/26 target localization; dev6 caption anchors)"
+    "PROGRESS_v0.2.0.md",
+    "PUBLISHER_STYLE_EXTRACTION_v0.2.0-dev6.md"
   ],
-  "not_backfilled": "Counts and audit outcomes are not reconstructed from prose.",
+  "not_backfilled": "Candidate counts, readiness and audit outcomes are not reconstructed or estimated; only outcomes already written in tracked records are listed, with their reference.",
   "rule": "Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion pipeline produced; it is not evidence, and candidate extraction is not reproduction."
 }

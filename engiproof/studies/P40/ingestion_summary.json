@@ -3,13 +3,52 @@
   "paper_id": "P40",
   "recorded_on": "2026-09-27",
   "ingestion_status": "PENDING_LOCAL_SUMMARY",
-  "note": "Ingested through the v0.2.0 pipeline (dev2: fingerprint, identity audit after metadata repair, equation recovery, readiness READY for the selected targets). The intake is on the study owner's machine and is not available in this environment; the study manifest has no ingestion_record pointer. Run 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat to replace this record.",
+  "ingestion_route": "ENGIPROOF_PIPELINE_V0_2",
+  "note": "Ingested through the v0.2.0 pipeline (dev1/dev2). The intake is on the study owner's machine; the manifest has no ingestion_record pointer. 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat replaces this record with a machine-generated summary.",
   "manifest_ingestion_record": null,
-  "source_sha256_in_study_manifest": "e83902ba46b8e713ddf2f11f5953bdf318ac539f6701ff303651e28d3d5e28bb",
+  "source": {
+    "sha256_in_study_manifest": "e83902ba46b8e713ddf2f11f5953bdf318ac539f6701ff303651e28d3d5e28bb",
+    "doi": "10.1061/(ASCE)EM.1943-7889.0001337",
+    "format": {
+      "source_format": "NOT_RECORDED",
+      "basis": null
+    }
+  },
+  "identity": {
+    "status": "CORRECTED_AFTER_AUDIT",
+    "detail": "Incorrect DOI/year entered at intake; repaired and re-audited (failure F1).",
+    "ref": "PROGRESS_v0.2.0.md (P40 real-source findings); HANDOVER_CURRENT.md (Critical source-identity blocker)"
+  },
+  "documented_outcomes": {
+    "basis": "PROSE_RECORD",
+    "ref": "HANDOVER_CURRENT.md#checkpoint--p40-selected-target-readiness-achieved",
+    "structure_counts": {
+      "equations": 21,
+      "tables": 3,
+      "figures": 33,
+      "definitions": 4
+    },
+    "selected_targets": {
+      "labels": [
+        "Table 1",
+        "Table 2",
+        "Equation (9)"
+      ],
+      "readiness_status": "READY",
+      "ready_count": 3,
+      "count": 3
+    }
+  },
+  "manual_review": {
+    "required": true,
+    "reasons": [
+      "Type1/CFF glyph placeholders in extracted equation text: visual source review required before PUBLISHED implementation (failure F2)"
+    ]
+  },
   "documented_in": [
     "HANDOVER_CURRENT.md#checkpoint--p40-selected-target-readiness-achieved",
     "PROGRESS_v0.2.0.md#dev2-p40-ingestion-generated-reproduction-checkpoint"
   ],
-  "not_backfilled": "Counts and audit outcomes are not reconstructed from prose.",
+  "not_backfilled": "Candidate counts, readiness and audit outcomes are not reconstructed or estimated; only outcomes already written in tracked records are listed, with their reference.",
   "rule": "Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion pipeline produced; it is not evidence, and candidate extraction is not reproduction."
 }

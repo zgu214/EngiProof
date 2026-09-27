@@ -12,6 +12,7 @@
     "free-text readiness reasons"
   ],
   "ingestion_status": "SUMMARISED_FROM_LOCAL_INTAKE",
+  "ingestion_route": "ENGIPROOF_PIPELINE_V0_2",
   "recorded_from": "engiproof/intake/P45/ (local, gitignored)",
   "intake_status": "DRAFT_SCAFFOLDED",
   "raw_source_copied": false,
@@ -176,7 +177,12 @@
     ]
   },
   "manual_review": {
+    "required": true,
+    "reasons": [
+      "selected-target readiness not READY",
+      "source-identity audit not PASS"
+    ],
     "target_review_in_study_manifest": true,
-    "note": "Where automated readiness was PARTIAL, the manual page-image review is recorded in the study manifest, not here."
+    "note": "Manual page-image review, where performed, is recorded in the study manifest, not here."
   }
 }

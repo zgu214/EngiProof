@@ -7,7 +7,7 @@ from pathlib import Path
 
 from engiproof.core import load_contracts, project_root, validate_study_manifest
 from engiproof.discrepancy import discrepancy_gate
-from engiproof.taxonomy import load_mapping, record_taxonomy_review, taxonomy_audit
+from engiproof.taxonomy import load_mapping, record_taxonomy_review, taxonomy_audit, taxonomy_markdown
 
 ROOT = project_root()
 PAPER_A = {"P40", "P41", "P42", "P43", "P44", "P45"}
@@ -36,10 +36,11 @@ class TaxonomyContractTests(unittest.TestCase):
                 if d.get("classification_hint"):
                     self.assertIn(d["classification_hint"], allowed, d["id"])
 
-    def test_mapping_covers_exactly_the_paper_a_records(self):
-        expected = {d["id"] for pid, m in _studies() if pid in PAPER_A for d in m.get("discrepancies", [])}
+    def test_mapping_covers_every_discrepancy_record(self):
+        expected = {d["id"] for pid, m in _studies() for d in m.get("discrepancies", [])}
+        paper_a = {d["id"] for pid, m in _studies() if pid in PAPER_A for d in m.get("discrepancies", [])}
         mapped = {r["discrepancy_id"] for r in load_mapping()["records"]}
-        self.assertEqual(len(expected), 14)
+        self.assertEqual(len(paper_a), 14)
         self.assertEqual(mapped, expected)
 
     def test_repository_audit_passes_and_nothing_is_approved_by_the_agent(self):
@@ -47,7 +48,12 @@ class TaxonomyContractTests(unittest.TestCase):
         self.assertEqual(audit["status"], "PASS", audit["issues"])
         for r in audit["records"]:
             self.assertIsNone(r["effective"], r["discrepancy_id"])
-        self.assertEqual(audit["review_status_counts"].get("PROPOSED"), 14)
+        self.assertEqual(audit["review_status_counts"], {"PROPOSED": 19})
+
+
+    def test_reviewer_document_is_current(self):
+        doc = (ROOT / "docs" / "DISCREPANCY_TAXONOMY.md").read_text(encoding="utf-8").replace("\r\n", "\n")
+        self.assertEqual(doc, taxonomy_markdown(), "regenerate with: engiproof discrepancy-taxonomy --markdown")
 
 
 class TaxonomyValidationTests(unittest.TestCase):

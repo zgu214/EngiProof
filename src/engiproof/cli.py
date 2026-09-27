@@ -9,7 +9,7 @@ from .checkpoint import build_checkpoint, continuity_audit
 from .core import (comparison_snapshot,contract_schema,discrepancy_snapshot,doctor,evidence_snapshot,invoke_tool,list_studies,load_manifest,provenance_snapshot,regenerate_study,result_snapshot,run_study,verify_all,verify_study)
 from .discrepancy import assess_discrepancies, discrepancy_audit, discrepancy_audit_all, discrepancy_gate, discrepancy_decision_summary, record_discrepancy_decision
 from .evidence_graph import audit_evidence_graph, sync_evidence_graph
-from .taxonomy import record_taxonomy_review, taxonomy_audit
+from .taxonomy import record_taxonomy_review, taxonomy_audit, taxonomy_markdown
 from .environment_record import compact_line, environment_record, failure_lines, write_record
 from .ingestion_summary import build_ingestion_summary, ingestion_summary_audit, write_ingestion_summary
 from .ingestion import (
@@ -72,7 +72,7 @@ def main(argv: list[str]|None=None) -> int:
     p=sub.add_parser("discrepancy-decide",help="Record an append-only human decision for one discrepancy; does not grant qualification.")
     p.add_argument("paper_id"); p.add_argument("discrepancy_id"); p.add_argument("--disposition",required=True,choices=["RESOLVED","BOUNDED","ACCEPTED_WITH_RATIONALE","DEFERRED"])
     p.add_argument("--rationale",required=True); p.add_argument("--reviewer",required=True); p.add_argument("--evidence-ref",action="append",default=[],help="Repeatable evidence/provenance reference.")
-    p=sub.add_parser("discrepancy-taxonomy",help="Audit legacy, proposed and approved controlled-taxonomy labels for discrepancies (labels only)."); p.add_argument("paper_id",nargs="?")
+    p=sub.add_parser("discrepancy-taxonomy",help="Audit legacy, proposed and approved controlled-taxonomy labels for discrepancies (labels only)."); p.add_argument("paper_id",nargs="?"); p.add_argument("--markdown",action="store_true",help="Render the reviewer document instead of JSON.")
     p=sub.add_parser("taxonomy-review",help="Record an append-only human review of a proposed discrepancy taxonomy label; labels only.")
     p.add_argument("paper_id"); p.add_argument("discrepancy_id"); p.add_argument("--decision",required=True,choices=["APPROVED","REJECTED"])
     p.add_argument("--reviewer",required=True); p.add_argument("--note",required=True); p.add_argument("--category"); p.add_argument("--locus",action="append",default=[],help="Repeatable; replaces the proposed loci when given.")
@@ -131,7 +131,9 @@ def main(argv: list[str]|None=None) -> int:
         elif ns.cmd=="discrepancy-gate": out=discrepancy_gate(ns.paper_id)
         elif ns.cmd=="discrepancy-audit-all": out=discrepancy_audit_all()
         elif ns.cmd=="discrepancy-decide": out=record_discrepancy_decision(ns.paper_id,ns.discrepancy_id,ns.disposition,ns.rationale,ns.reviewer,ns.evidence_ref)
-        elif ns.cmd=="discrepancy-taxonomy": out=taxonomy_audit(ns.paper_id)
+        elif ns.cmd=="discrepancy-taxonomy":
+            if ns.markdown: print(taxonomy_markdown(), end=""); return 0
+            out=taxonomy_audit(ns.paper_id)
         elif ns.cmd=="taxonomy-review": out=record_taxonomy_review(ns.paper_id,ns.discrepancy_id,ns.decision,ns.reviewer,ns.note,category=ns.category,loci=ns.locus or None)
         elif ns.cmd=="ingestion-summary":
             out=build_ingestion_summary(ns.paper_id,source_pdf=ns.source_pdf,source_format=ns.source_format,source_format_basis=ns.source_format_basis)

@@ -3,13 +3,30 @@
   "paper_id": "P44",
   "recorded_on": "2026-09-27",
   "ingestion_status": "NO_INGESTION_RECORD",
-  "note": "Neither the study manifest nor the handover records a pipeline ingestion for P44. Whether the pipeline was run is not recorded, so none is claimed. If a local intake exists, 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat replaces this record; otherwise this record stands.",
+  "ingestion_route": "NOT_RECORDED",
+  "note": "Neither the study manifest nor the handover records a pipeline ingestion for P44, so none is claimed. If a local intake exists, 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat replaces this record; otherwise this record stands.",
   "manifest_ingestion_record": null,
-  "source_sha256_in_study_manifest": "ca8b476b5f6c54f8a2a3c55c7836770ef55bc27d3cf05b8c6f4a953ca896b80b",
+  "source": {
+    "sha256_in_study_manifest": "ca8b476b5f6c54f8a2a3c55c7836770ef55bc27d3cf05b8c6f4a953ca896b80b",
+    "doi": "10.2118/28723-MS",
+    "format": {
+      "source_format": "NOT_RECORDED",
+      "basis": null
+    }
+  },
+  "identity": {
+    "status": "CONFIRMED_MANUALLY",
+    "detail": "DOI completed from publisher records on 2026-09-27: 10.2118/28723-MS (historical alias 10.2523/28723-MS) (failure F18).",
+    "ref": "engiproof/studies/P44/study.json#source.identity_basis"
+  },
+  "documented_outcomes": {},
+  "manual_review": {
+    "required": "NOT_RECORDED"
+  },
   "documented_in": [
     "P44_PHASE1_CONTACT_VALIDATION_CHECKPOINT.md",
     "papers/P44/SOURCE.md"
   ],
-  "not_backfilled": "Counts and audit outcomes are not reconstructed from prose.",
+  "not_backfilled": "Candidate counts, readiness and audit outcomes are not reconstructed or estimated; only outcomes already written in tracked records are listed, with their reference.",
   "rule": "Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion pipeline produced; it is not evidence, and candidate extraction is not reproduction."
 }
