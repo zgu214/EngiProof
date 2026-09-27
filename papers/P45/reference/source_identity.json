@@ -1,0 +1,29 @@
+{
+  "schema_version": "engiproof.p45.source_identity/1.0",
+  "paper_id": "P45",
+  "title": "Nonlinear dynamic analysis of deep water risers",
+  "author": "V. Hachemi Safai",
+  "affiliation": "Research Department, Centre Technique Industriel de la Construction Métallique (CTICM), Puteaux, France",
+  "journal": "Applied Ocean Research",
+  "year": 1983,
+  "volume": 5,
+  "issue": 4,
+  "pages": "215-225",
+  "received": "26 July 1982",
+  "doi": "10.1016/0141-1187(83)90036-6",
+  "doi_basis": "The PDF metadata title field carries the Elsevier PII 0141-1187(83)90036-6; the publisher record for PII S0141118783900366 resolves to this DOI. The DOI string itself does not appear in the (1983) source.",
+  "year_basis": "Every page footer reads 'Applied Ocean Research, 1983, Vol. 5, No. 4'; copyright line '© 1983 CML Publications'.",
+  "canonical_pdf": "p45-safai1983.pdf",
+  "sha256": "c10b4938dd3c4de6c027f8494386b43a46fc2c3cb011a69de94612dc52686a0d",
+  "source_format": "11-page 300 dpi bilevel (CCITT) scan with an OCR text layer (Acrobat Capture)",
+  "observations": [
+    "The first-page code line prints '0309-1708/83/040215-11 $02.00'; 0309-1708 is not the Applied Ocean Research ISSN (0141-1187, as in the PII). Recorded as a print-code observation; it does not affect any evidence target.",
+    "OCR artefacts in the text layer (e.g. 'doses' for 'closes', 'Jaurbs' for 'Jaurès'); all evidence values were read from the page images, not the OCR layer."
+  ],
+  "automated_audit": {
+    "title": "MATCH",
+    "doi": "NOT_FOUND_IN_SOURCE",
+    "year": "NOT_CONFIRMED (1983 found only as secondary evidence: page footers, copyright)"
+  },
+  "manual_confirmation": "Title, year (1983), volume/issue/pages and DOI confirmed by source review of the page images and the publisher record."
+}

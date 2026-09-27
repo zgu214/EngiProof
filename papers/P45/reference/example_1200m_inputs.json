@@ -1,0 +1,66 @@
+{
+  "schema_version": "engiproof.p45.example_1200m/1.0",
+  "locator": "p. 222, 'Influence of the nonlinear structural terms'; Figures 10-11",
+  "riser_length_m": 1200,
+  "filled_with": "mud",
+  "floating_tubes": "60 cm diameter floating tubes are distributed along the riser to stabilize it (distribution, length coverage and tube mass not given)",
+  "elements": 40,
+  "element_properties": "identical mechanical characteristics (Table 3)",
+  "boundary_conditions": {
+    "bottom": "hinged",
+    "head": "vertical movement and rotation free; horizontal movement prescribed"
+  },
+  "head_displacement": {
+    "text": "sinusoidal variation with a period of 9 s and an amplitude of 7.70 m",
+    "equation_printed": "Y = 7.70 sin (2πt/g)",
+    "amplitude_m": 7.7,
+    "period_s_text": 9
+  },
+  "head_tension": {
+    "text": "tension at the head has also a sinusoidal variation of same period",
+    "equation_printed": "T = 298 (1 + 0,2 sin 2πt/9)",
+    "mean_printed": 298,
+    "relative_amplitude": 0.2,
+    "period_s": 9,
+    "unit": null
+  },
+  "static_head_displacement_m": 20,
+  "wave": {
+    "text": "An Airy wave (in finite depth) with a period of 9 s and an amplitude (through-to-crest) of 6 m",
+    "period_s": 9,
+    "trough_to_crest_m": 6
+  },
+  "current_profile_figure10_labels": [
+    {
+      "depth_m": 0,
+      "speed_m_per_s": 0.25
+    },
+    {
+      "depth_m": 200,
+      "speed_m_per_s": 0.5
+    },
+    {
+      "depth_m": 600,
+      "speed_m_per_s": 0.5
+    },
+    {
+      "depth_m": 1200,
+      "speed_m_per_s": 0.0
+    }
+  ],
+  "current_profile_reading": "Figure 10 draws straight segments between the labelled points; the bottom value (0 m/s at 1200 m) is read from the figure (the profile meets the vertical axis at the sea bottom), not a printed label.",
+  "integration_step_s": 0.1,
+  "integration_step_text": "an integration step of 0,1 s, which has been found to be optimum for the 'nonlinear structure' case",
+  "analyses": [
+    "'linear structure' (initial tangent stiffness; rotation terms neglected)",
+    "'nonlinear structure'"
+  ],
+  "not_given": [
+    "theta, beta, lambda of Eq. (7)",
+    "iteration tolerance epsilon and limit NL (Appendix 3)",
+    "structural damping matrix C",
+    "float tube mass, coverage and hydrodynamic treatment",
+    "tension unit",
+    "wave phase relative to head motion"
+  ]
+}
