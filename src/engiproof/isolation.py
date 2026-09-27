@@ -114,6 +114,12 @@ def _fmt(x: float, decimals: int) -> str:
     return f"{x:.{decimals}f}"
 
 
+def _separator_normalised(d: dict[str, Any]) -> dict[str, Any] | None:
+    """Keys with backslashes replaced by forward slashes, or None if that would merge two keys."""
+    out = {str(k).replace("\\", "/"): v for k, v in d.items()}
+    return out if len(out) == len(d) else None
+
+
 class _Comparator:
     def __init__(self, tol: dict[str, Any], hash_index: dict[str, tuple[str, str]], guards: list[dict[str, Any]],
                  provenance_index: dict[str, dict[str, str]] | None = None):
@@ -193,6 +199,15 @@ class _Comparator:
     def json_value(self, where: str, a: Any, b: Any, key: str | None = None) -> None:
         if isinstance(a, dict) and isinstance(b, dict):
             if set(a) != set(b):
+                na, nb = _separator_normalised(a), _separator_normalised(b)
+                if na is not None and nb is not None and set(na) == set(nb):
+                    # Relative-path keys rendered with the OS path separator ("results\\x.csv" vs
+                    # "results/x.csv"): a rendering difference, like line endings. Values still compared.
+                    self.classes.add(ENVIRONMENT_METADATA)
+                    self.environment.append(f"{where or '$'}: path-separator rendering of keys")
+                    for k in sorted(na):
+                        self.json_value(f"{where}.{k}", na[k], nb[k], k)
+                    return
                 self._material(MATERIAL_NON_NUMERIC, {"at": where or "$", "structure": "keys differ",
                                                       "only_frozen": sorted(set(a) - set(b)), "only_regenerated": sorted(set(b) - set(a))})
             for k in sorted(set(a) & set(b)):

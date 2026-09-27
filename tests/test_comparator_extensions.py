@@ -70,6 +70,27 @@ class ProvenanceHashInheritanceTests(unittest.TestCase):
             self.assertEqual(compare_artifact(root / "f.json", root / "g.json", provenance_index={})["classification"], "MATERIAL_NON_NUMERIC")
 
 
+class PathSeparatorKeyTests(unittest.TestCase):
+    def _cmp(self, a, b):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / "f.json").write_text(json.dumps(a))
+            (root / "g.json").write_text(json.dumps(b))
+            return compare_artifact(root / "f.json", root / "g.json")
+
+    def test_backslash_keys_are_a_rendering_difference(self):
+        res = self._cmp({"h": {"results/a.csv": 1, "inputs/b.json": 2}}, {"h": {"results\\a.csv": 1, "inputs\\b.json": 2}})
+        self.assertEqual(res["classification"], "ENVIRONMENT_METADATA")
+
+    def test_values_are_still_compared(self):
+        res = self._cmp({"h": {"results/a.csv": 1}}, {"h": {"results\\a.csv": 2}})
+        self.assertEqual(res["classification"], "NUMERICAL_MATERIAL")
+
+    def test_other_key_changes_stay_material(self):
+        res = self._cmp({"h": {"results/a.csv": 1}}, {"h": {"results\\b.csv": 1}})
+        self.assertEqual(res["classification"], "MATERIAL_NON_NUMERIC")
+
+
 class PathScopedToleranceTests(unittest.TestCase):
     def _files(self, td, a, b):
         root = Path(td)

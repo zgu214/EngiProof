@@ -55,7 +55,9 @@ def _failure_detail(item: dict[str, Any]) -> dict[str, Any]:
     rep = item.get("reproduction") or {}
     material = [{"path": a.get("path"), "class": a.get("classification"),
                  "max_rel": a.get("max_rel_diff"), "max_abs": a.get("max_abs_diff"),
-                 "structure": a.get("structure")}
+                 "structure": a.get("structure"),
+                 "findings": [{k: (str(v)[:120] if isinstance(v, str) else v) for k, v in f.items()}
+                              for f in (a.get("material_findings") or [])[:4]]}
                 for a in rep.get("artifacts", []) if a.get("material")][:8]
     failed_tests = [t["test"] for t in item.get("tests", []) if not t.get("passed")]
     tails = {t["test"]: t.get("output", "")[-600:] for t in item.get("tests", []) if not t.get("passed")}
