@@ -2,7 +2,9 @@
 
 ## Canonical source
 
-D. W. Dareing and T. Huang, **Natural Frequencies of Marine Drilling Risers**, Journal of Petroleum Technology, July 1976, SPE 5820.
+D. W. Dareing and T. Huang, **Natural Frequencies of Marine Drilling Risers**, Journal of Petroleum Technology, July 1976, SPE-5620-PA. DOI `10.2118/5620-PA`.
+
+Identity note (2026-09-27): the SPE paper number was previously recorded here as 5820 in error; the SPE number and DOI were confirmed by the study owner from the publisher record. No engineering target, value or discrepancy depends on this field.
 
 Canonical external basename:
 
