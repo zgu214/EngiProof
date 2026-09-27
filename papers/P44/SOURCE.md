@@ -2,7 +2,9 @@
 
 ## Canonical source
 
-R. C. S. Bueno and C. K. Morooka, **Analysis Method for Contact Forces Between Drillstring-Well-Riser**, SPE 28723, presented at the 1994 SPE International Petroleum Conference & Exhibition of Mexico, Veracruz, 10–13 October 1994.
+R. C. S. Bueno and C. K. Morooka, **Analysis Method for Contact Forces Between Drillstring-Well-Riser**, SPE 28723, presented at the 1994 SPE International Petroleum Conference & Exhibition of Mexico, Veracruz, 10–13 October 1994. DOI `10.2118/28723-MS` (canonical).
+
+Identity note (2026-09-27): DOI confirmed by the study owner from the publisher record. Older references may cite the historical alias `10.2523/28723-MS`; `10.2118/28723-MS` is canonical.
 
 Canonical external basename:
 

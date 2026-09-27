@@ -40,7 +40,9 @@
   "source": {
     "canonical_pdf": "p43-dareing1976.pdf",
     "sha256": "4ab7c3b9a8377cc3d5a7f5eecb64712496aa825f969760e47ee17ccba03ffccf",
-    "doi": "PENDING"
+    "doi": "10.2118/5620-PA",
+    "spe_paper_number": "SPE-5620-PA",
+    "identity_basis": "Journal of Petroleum Technology, July 1976. DOI and SPE paper number confirmed by the study owner from the publisher record on 2026-09-27. The earlier source contract recorded the SPE number as 5820 in error."
   },
   "selected_targets": [
     "Table 1",

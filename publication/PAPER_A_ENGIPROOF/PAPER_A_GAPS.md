@@ -36,20 +36,19 @@ Categories: **a** no new paper (work or decisions on existing records) · **b** 
   - propose a mapping of the 14 existing records for reviewer approval. Reclassification changes labels only, never observations, values or status.
 - **Blocks submission:** yes — Table A2 depends on it.
 
-## G3 — Source identity and ingestion records incomplete
+## G3 — Ingestion and audit outcomes not recorded as tracked artifacts
 
-- **Missing claims (PA-02, PA-04):** every case has confirmed source identity, and ingestion/extraction outcomes are traceable in the repository.
-- **Why P40–P45 are insufficient:**
-  - P43 and P44 record `doi: PENDING`. Public search did not confirm them here, and guessing a DOI from the SPE pattern is not identity evidence.
+- **Missing claim (PA-04, and the audit part of PA-02):** ingestion, extraction and source-audit outcomes are traceable in the repository for every case.
+- **Resolved on 27 September 2026 (no longer part of this gap):** P43/P44 source identity. The DOIs `10.2118/5620-PA` and `10.2118/28723-MS` (historical alias `10.2523/28723-MS`) were confirmed by the study owner from publisher records, and the P43 SPE number, previously recorded as 5820 in error, was corrected to 5620. The correction itself is recorded as failure F18.
+- **Why P40–P45 are still insufficient:**
   - P40 and P44 have no `ingestion_record`.
-  - Candidate counts, readiness results and audit statuses exist only in prose (handover, dev notes), because intake directories are local and gitignored by design (they can hold source excerpts).
+  - Candidate counts, readiness results and source-audit statuses exist only in prose (handover, dev notes), because intake directories are local and gitignored by design (they can hold source excerpts).
   - Source format (born-digital vs scan) is not recorded for P43/P44.
-- **Category:** a (obtain the DOIs from the publisher records) + b (a tracked, text-free ingestion summary per study: fingerprint, audit checks, candidate/readiness counts, format — no excerpts).
+- **Category:** b — a tracked, text-free ingestion summary per study: fingerprint, audit checks, candidate/readiness counts, source format; no excerpts.
 - **Work:**
-  - confirm the P43/P44 DOIs from OnePetro or the user's copies;
-  - add `ingestion_summary` to each manifest, or as a small tracked JSON;
-  - for cases that were scaffolded without the pipeline, state so rather than backfilling.
-- **Blocks submission:** yes — provenance is the paper's thesis.
+  - add a small tracked `ingestion_summary` per study;
+  - for cases scaffolded without the pipeline, state so rather than backfilling.
+- **Blocks submission:** yes — the extraction claims otherwise rest on prose.
 
 ## G4 — Cross-OS reproducibility not recorded as artifacts
 

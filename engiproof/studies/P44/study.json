@@ -10,7 +10,10 @@
   "source": {
     "canonical_pdf": "p44-bueno1994.pdf",
     "sha256": "ca8b476b5f6c54f8a2a3c55c7836770ef55bc27d3cf05b8c6f4a953ca896b80b",
-    "doi": "PENDING"
+    "doi": "10.2118/28723-MS",
+    "doi_aliases": ["10.2523/28723-MS"],
+    "spe_paper_number": "SPE-28723-MS",
+    "identity_basis": "Canonical DOI confirmed by the study owner from the publisher record on 2026-09-27. Older references may cite the historical alias 10.2523/28723-MS."
   },
   "selected_targets": [
     "Table 1",

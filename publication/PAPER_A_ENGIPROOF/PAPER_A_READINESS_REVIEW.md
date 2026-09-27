@@ -23,7 +23,7 @@ What can EngiProof now support as a publishable methods/evidence paper, given th
 
 The central thesis is supported: EngiProof keeps source identity, published methods, independent computations, discrepancies, human decisions, evidence graphs, non-mutating verification and the qualification boundary explicitly separated and machine-auditable, and it does so across six heterogeneous published studies without tuning or silent correction.
 
-What is not yet strong enough is narrower: the human decision boundary has been exercised once, the discrepancy vocabulary is not controlled, two sources lack confirmed identity metadata, cross-OS evidence rests on reported local runs, and experimental evidence is never handled as its own population.
+What is not yet strong enough is narrower: the human decision boundary has been exercised once, the discrepancy vocabulary is not controlled, ingestion and audit outcomes are recorded only in prose, cross-OS evidence rests on reported local runs, and experimental evidence is never handled as its own population.
 
 ## 3. Diversity and stress-test value of P40–P45
 
@@ -32,8 +32,8 @@ What is not yet strong enough is narrower: the human decision boundary has been 
 | P40 | 2017, ASCE J. Eng. Mech. | Type1/CFF glyph placeholders in Eq. (9) text | Propagation buckling of pipe-in-pipe (closed form + work balance) | PUBLISHED Eqs. 2/3/6/9; INDEPENDENT work balance | Wrong DOI/year accepted at intake; grouped equation references lost | 1 OPEN (PUBLISHED_REFERENCE_MISMATCH), 1 human DEFERRED decision | Source FE model; RST and FE reference populations not re-derived |
 | P41 | 2011, ASME OMAE | Punctuation-free ASME captions | PiP axial load sharing, bonding, global buckling | PUBLISHED Eqs. 6–10, 14; INDEPENDENT geometry/EA/EI | Captions not anchored (dev5) | 2 OPEN (force balance; paragraph-vs-axis unit) | Global-buckling FE response |
 | P42 | 2019, Elsevier Marine Structures | Split captions | Unbonded flexible pipe, helical armour tension–bending | PUBLISHED analytical families; model-form comparison with FP-RUC | False year conflict from received/copyright dates | 1 OBSERVED (model form), 1 OPEN (implementation provenance) | FP-RUC FE; Figure 16 moment chain |
-| P43 | 1976, J. Petroleum Technology (SPE 5820) | not recorded | Variable-tension riser eigenproblem | PUBLISHED Table 1/2; INDEPENDENT Hermite-FE eigen-solution (175 eigenvalues) | DOI still PENDING | 2 OPEN (printed eigenvalues vs internal consistency) | Source power-series recursion |
-| P44 | 1994, SPE 28723 conference | not recorded | Quasi-static nonlinear drillstring–riser contact | PUBLISHED Eq. 1; INDEPENDENT section properties, penalty scale | DOI PENDING; no ingestion record | 1 OPEN (paragraph vs caption time labels) | Full nonlinear FE contact profiles |
+| P43 | 1976, J. Petroleum Technology (SPE-5620-PA) | not recorded | Variable-tension riser eigenproblem | PUBLISHED Table 1/2; INDEPENDENT Hermite-FE eigen-solution (175 eigenvalues) | DOI recorded PENDING and SPE number recorded as 5820 in error (corrected manually) | 2 OPEN (printed eigenvalues vs internal consistency) | Source power-series recursion |
+| P44 | 1994, SPE 28723 conference | not recorded | Quasi-static nonlinear drillstring–riser contact | PUBLISHED Eq. 1; INDEPENDENT section properties, penalty scale | DOI recorded PENDING (completed manually; historical alias 10.2523/28723-MS); no ingestion record | 1 OPEN (paragraph vs caption time labels) | Full nonlinear FE contact profiles |
 | P45 | 1983, Applied Ocean Research | 300 dpi bilevel scan with OCR layer | Nonlinear dynamic riser analysis (geometric stiffness, θ-Wilson integration, Morison loading) | PUBLISHED Appendix 1/2, Eq. 7; INDEPENDENT FE, rigid-body, stability, graphical measurement | Readiness PARTIAL 4/16; Eq. (11), sub-figures, appendices missed; DOI not in source | 6 OPEN (inconsistency, magnitude, unit, typography, convention, claim definition) | All dynamic responses (BLOCKED) |
 
 What the set stress-tests well:
@@ -72,7 +72,7 @@ What it does not stress-test:
 | F15 | Comparator blind to deleted artifacts; `platform` treated as environment | runtime (review) | Structural changes material; `platform` removed | PR #3 commit `15f0c78` |
 | F16 | Automated readiness PARTIAL on a scanned source | P45 | Manual page-image review, recorded in the manifest | `S(P45).target_review` |
 | F17 | graph-sync persists per-run counters | runtime | Recorded as low-priority hardening | WORK_QUEUE Q7 |
-| F18 | Source identity incomplete (DOI PENDING; missing ingestion records) | P43, P44 (P40) | Open — gap G3 | `S(P43)`, `S(P44)` |
+| F18 | Source identity recorded incompletely or wrongly (P43/P44 DOI PENDING; P43 SPE number 5820 instead of 5620); ingestion records missing | P43, P44 (P40) | Identity corrected from publisher records (27 Sep 2026); tracked ingestion summaries still missing — gap G3 | `S(P43)`, `S(P44)`, `papers/P43/SOURCE.md` |
 | F19 | Generated packaging metadata tracked in Git | runtime | Untracked | PR #4 |
 
 These failures are themselves Paper A evidence: each was surfaced by the evidence process, recorded, and either corrected or left visible.
@@ -83,7 +83,7 @@ These failures are themselves Paper A evidence: each was surfaced by the evidenc
 |---|---|---|---|
 | G1 | Human decision boundary exercised beyond a single DEFERRED decision | a — human decisions on existing records | Recommended |
 | G2 | Controlled discrepancy vocabulary applied consistently | b — runtime/method | Yes (Table A2 depends on it) |
-| G3 | Complete source identity and ingestion records for all six cases | a + b | Yes (provenance is the paper's thesis) |
+| G3 | Tracked, text-free ingestion summaries and source-format / audit-outcome records for all six cases | b | Yes (extraction claims otherwise rest on prose) |
 | G4 | Cross-OS reproducibility recorded as artifacts | b — runtime/CI | Recommended |
 | G5 | Experimental data handled as a distinct evidence population | c — deeper use of P40 | Optional; needed only if the claim is kept |
 
@@ -119,7 +119,7 @@ G5 is a C-type item (deeper use of P40). It is recommended but not blocking.
 
 A single “Paper A evidence hardening” runtime PR:
 - **G2:** a controlled discrepancy vocabulary with definitions and validation, plus a proposed mapping of the 14 existing records for human review. No evidence values change.
-- **G3:** tracked, text-free ingestion summaries per study, and a request for the P43/P44 DOIs from their publisher records.
+- **G3:** tracked, text-free ingestion summaries per study (fingerprint, audit checks, candidate/readiness counts, source format).
 - **G4:** Windows in the CI matrix, and the producing environment recorded as ENVIRONMENT_METADATA in verification records.
 
 In parallel, the human reviewer records G1 decisions. Then G5 on P40. Then manuscript synthesis from `PAPER_A_OUTLINE.md`.
