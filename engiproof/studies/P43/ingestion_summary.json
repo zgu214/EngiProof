@@ -1,0 +1,15 @@
+{
+  "schema_version": "engiproof.ingestion_summary/1.0",
+  "paper_id": "P43",
+  "recorded_on": "2026-09-27",
+  "ingestion_status": "PENDING_LOCAL_SUMMARY",
+  "note": "Ingested through the pipeline (manifest ingestion_record). The intake is on the study owner's machine. Run 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat to replace this record. Source identity (DOI 10.2118/5620-PA) was completed manually after ingestion.",
+  "manifest_ingestion_record": "engiproof/intake/P43/ingestion.json",
+  "source_sha256_in_study_manifest": "4ab7c3b9a8377cc3d5a7f5eecb64712496aa825f969760e47ee17ccba03ffccf",
+  "documented_in": [
+    "engiproof/studies/P43/study.json#source.identity_basis",
+    "papers/P43/SOURCE.md"
+  ],
+  "not_backfilled": "Counts and audit outcomes are not reconstructed from prose.",
+  "rule": "Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion pipeline produced; it is not evidence, and candidate extraction is not reproduction."
+}

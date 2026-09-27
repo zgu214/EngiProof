@@ -10,6 +10,7 @@ from .core import (comparison_snapshot,contract_schema,discrepancy_snapshot,doct
 from .discrepancy import assess_discrepancies, discrepancy_audit, discrepancy_audit_all, discrepancy_gate, discrepancy_decision_summary, record_discrepancy_decision
 from .evidence_graph import audit_evidence_graph, sync_evidence_graph
 from .taxonomy import record_taxonomy_review, taxonomy_audit
+from .ingestion_summary import build_ingestion_summary, ingestion_summary_audit, write_ingestion_summary
 from .ingestion import (
     audit_source_identity, build_comparison_templates, build_reproduction_plan, build_task_bundle, enrich_source, extract_structures, ingest_source,
     list_intakes, load_intake, load_selected_target_readiness, load_source_identity_audit, load_structure_candidates, load_target_dossiers, pipeline_status, recover_equation_candidates, update_intake_metadata,
@@ -74,6 +75,11 @@ def main(argv: list[str]|None=None) -> int:
     p=sub.add_parser("taxonomy-review",help="Record an append-only human review of a proposed discrepancy taxonomy label; labels only.")
     p.add_argument("paper_id"); p.add_argument("discrepancy_id"); p.add_argument("--decision",required=True,choices=["APPROVED","REJECTED"])
     p.add_argument("--reviewer",required=True); p.add_argument("--note",required=True); p.add_argument("--category"); p.add_argument("--locus",action="append",default=[],help="Repeatable; replaces the proposed loci when given.")
+    p=sub.add_parser("ingestion-summary",help="Build a text-free ingestion summary from the local intake (hashes, counts, statuses only).")
+    p.add_argument("paper_id"); p.add_argument("--write",action="store_true",help="Write engiproof/studies/<ID>/ingestion_summary.json (tracked).")
+    p.add_argument("--source-pdf",help="Local PDF for automatic born-digital/scan detection (default 01_doc/<canonical_pdf>); nothing from it is persisted but counts.")
+    p.add_argument("--source-format",choices=["BORN_DIGITAL","SCANNED_WITH_TEXT_LAYER","SCANNED_IMAGE_ONLY","NOT_RECORDED"]); p.add_argument("--source-format-basis")
+    p=sub.add_parser("ingestion-summary-audit",help="Check tracked ingestion summaries for the Paper A studies (or the given IDs)."); p.add_argument("paper_ids",nargs="*")
     p=sub.add_parser("discrepancy-decisions",help="Show append-only discrepancy decisions and latest effective decision per discrepancy."); p.add_argument("paper_id")
     p=sub.add_parser("graph-sync",help="Add missing tool/comparison/discrepancy/assessment/decision provenance to a study evidence graph without deleting hand-authored graph content."); p.add_argument("paper_id")
     p=sub.add_parser("graph-audit",help="Audit evidence-graph provenance coverage for one study."); p.add_argument("paper_id")
@@ -124,6 +130,10 @@ def main(argv: list[str]|None=None) -> int:
         elif ns.cmd=="discrepancy-decide": out=record_discrepancy_decision(ns.paper_id,ns.discrepancy_id,ns.disposition,ns.rationale,ns.reviewer,ns.evidence_ref)
         elif ns.cmd=="discrepancy-taxonomy": out=taxonomy_audit(ns.paper_id)
         elif ns.cmd=="taxonomy-review": out=record_taxonomy_review(ns.paper_id,ns.discrepancy_id,ns.decision,ns.reviewer,ns.note,category=ns.category,loci=ns.locus or None)
+        elif ns.cmd=="ingestion-summary":
+            out=build_ingestion_summary(ns.paper_id,source_pdf=ns.source_pdf,source_format=ns.source_format,source_format_basis=ns.source_format_basis)
+            if ns.write: out={"written":write_ingestion_summary(out),"summary":out}
+        elif ns.cmd=="ingestion-summary-audit": out=ingestion_summary_audit(ns.paper_ids or None)
         elif ns.cmd=="discrepancy-decisions": out=discrepancy_decision_summary(ns.paper_id)
         elif ns.cmd=="graph-sync": out=sync_evidence_graph(ns.paper_id,persist=True)
         elif ns.cmd=="graph-audit": out=audit_evidence_graph(ns.paper_id)
