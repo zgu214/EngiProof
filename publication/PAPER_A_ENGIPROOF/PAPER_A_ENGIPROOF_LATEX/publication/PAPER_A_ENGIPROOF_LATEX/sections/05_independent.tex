@@ -1,0 +1,18 @@
+\section{Independent verification}
+\label{sec:independent}
+
+An \eclass{INDEPENDENT} check computes the same quantity through a different formulation or numerical method. The checks are \emph{methodologically} independent; they were not carried out by other people or teams, which is a limitation (PA-10). Four kinds occur across the cases (PA-08):
+\begin{description}[leftmargin=1.5em, style=nextline]
+  \item[Analytical reconstruction] In P40, an energy (work-balance) reconstruction from Eqs.~(8a--d) matches the closed-form Eq.~(9) to within 0.081\%. For P41, geometry gives $(EI)_{\text{outer}}/(EI)_{\text{inner}} \approx 3.40$, which supports the paper's qualitative statement about bending stiffness without reproducing its FE curves.
+  \item[Numerical re-formulation] In P43, the source's power-series recursion is replaced by a Hermite finite-element solution of the same eigenproblem. In P45, an independent Hermite beam-column FE model is compared with the published Appendix~1 closed-form stiffness terms; the relative residuals are of order $10^{-8}$ in every tested environment, well below the $10^{-6}$ used in the study's engineering statement.
+  \item[Matrix-property checks] For P45: the identity $k_3=k_1+k_2$ holds to $3.6\times10^{-14}$; continuity holds at zero axial force; and the assembled stiffness has exactly six rigid-body modes, a count that drops to four if $k_3$ is perturbed by 1\%.
+  \item[Graphical measurement] P45's head-displacement envelopes, measured from page images against their boundary conditions, have total widths of 1.25--1.54~m. These are consistent with a 1.22~m peak-to-peak amplitude and inconsistent with $\pm1.22$~m (P45-D005).
+\end{description}
+
+The decisive property is that independent checks decide the \emph{direction} of a conflict and are never tuned to it (PA-09). Each record carries an \texttt{independent\_support} basis. Examples:
+\begin{itemize}[leftmargin=1.5em]
+  \item P40-D001: the work balance gives 0.7053 against the printed 0.66, corroborating the reproduction.
+  \item P43-D001/D002: three internal lines of evidence agree with each other and not with the printed values: the FE solution, the published approximation Eq.~(10) and the error column of Table~2.
+  \item P45-D001: buoyancy applied to the Figure~3 geometry contradicts the printed buoyed weight.
+\end{itemize}
+Where no independent check exists, the record says so. P44-D001, for example, has two incompatible printed time pairs and no EngiProof evidence that could arbitrate between them.

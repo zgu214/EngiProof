@@ -35,7 +35,7 @@ Evidence rule: only repository artifacts count. Paper count, test count, file co
 | ID | Candidate claim | Status | Repository evidence | Constraint |
 |---|---|---|---|---|
 | PA-06 | Published methods re-implemented from the source reproduce published values to source precision for bounded targets. | SUPPORTED | P40-C001 (max ratio difference 0.0055); P41-C001/C002/C004/C006; P42-C002/C004/C006; P43-C002…C008 (35-row/175-eigenvalue Table 1, full Table 2); P44-C001…C003; P45-C001 | Report per target, never “paper reproduced”. |
-| PA-07 | Outcomes are recorded per target as REPRODUCED / COMPARED / VERIFIED / CONDITIONAL / BLOCKED. | SUPPORTED | Comparison statuses across P40–P45: 14 REPRODUCED, 24 COMPARED, 2 VERIFIED, 7 CONDITIONAL, 1 BLOCKED (`S(Pxx).comparisons`) | Only P45 records a non-reproduced target as a BLOCKED comparison; P41/P42/P44 record theirs as limitations (housekeeping H2). |
+| PA-07 | Outcomes are recorded per target as REPRODUCED / COMPARED / VERIFIED / CONDITIONAL / BLOCKED. | SUPPORTED | 38 comparison records across P40–P45: 14 REPRODUCED, 19 COMPARED, 4 CONDITIONAL, 1 BLOCKED, none VERIFIED (`S(Pxx).comparisons`; recounted 28 September 2026, correcting the earlier 14/24/2/7/1) | Only P45 records a non-reproduced target as a BLOCKED comparison; P41/P42/P44 record theirs as limitations (housekeeping H2). |
 
 ## 4. Independent checking
 

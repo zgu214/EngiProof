@@ -1,0 +1,37 @@
+\section{Discussion and future work}
+\label{sec:discussion}
+
+\subsection{Paper-to-code is not paper-to-evidence}
+A generated function can be syntactically correct and numerically stable while still using a misread table cell, an assumed unit or an unsupported convention. The cases show that the useful output of evidence automation is often not a match with a printed number. Three examples:
+\begin{itemize}[leftmargin=1.5em]
+  \item a demonstrated internal contradiction, as in P41 and P43;
+  \item a named missing input, as in P44 and P45;
+  \item a documented model-form difference, as in P42.
+\end{itemize}
+A system judged only by how often it reproduces printed numbers would be rewarded for normalising these away.
+
+\subsection{Verification must itself be verifiable}
+The most transferable lesson came from the framework's own verification. A check that recomputes in place destroys the distinction between reproducing evidence and replacing it. Only once verification was isolated and classified did cross-platform recomputation noise become visible. Only when it ran on further operating systems did platform-dependent provenance and an ill-conditioned independent check show up. Each case was then handled without touching frozen evidence. We expect the same pattern in any research-software evidence pipeline that reruns its own analyses.
+
+\subsection{Related work and context}
+Two strands of related work are relevant as context, not as validation evidence:
+\begin{itemize}[leftmargin=1.5em]
+  \item systems that turn published papers into executable agents or tools \todo{cite, e.g.\ Paper2Agent};
+  \item agentic research assistants that organise scientific claims into explicit chains of evidence \todo{cite ScientistTwo / Chain-of-Evidence after checking the reference}.
+\end{itemize}
+They are related to \engiproof{} at the level of architecture. The contribution here differs in three ways:
+\begin{itemize}[leftmargin=1.5em]
+  \item the engineering-specific separation of published, independent and solver evidence;
+  \item preservation of source inconsistencies, with a human decision boundary;
+  \item non-mutating verification with an explicit qualification boundary.
+\end{itemize}
+Neither strand provides engineering validation of the P40--P45 evidence. \todo{Add reproducibility literature in computational science and engineering.}
+
+\subsection{Future work}
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Solver adapters.} External solvers generate \eclass{SOLVER\_NEW} evidence on existing cases. The agent orchestrates the solver runs, and \engiproof{} adjudicates their results.
+  \item \textbf{Extraction benchmark.} A labelled extraction benchmark would make accuracy measurable.
+  \item \textbf{External replication.} Replication of selected studies by independent teams.
+  \item \textbf{Experimental evidence.} Recording experimental reference data as a separate population where the sources contain it.
+  \item \textbf{Environment metadata.} Frozen artifacts that declare the environment that produced them.
+\end{itemize}
