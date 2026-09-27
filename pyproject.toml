@@ -16,6 +16,10 @@ keywords = ["engineering", "reproducibility", "research", "verification", "evide
 
 [project.scripts]
 engiproof = "engiproof.cli:main"
+engiproof-mcp = "engiproof.mcp_server:main"
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.2,<2"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -1,13 +1,29 @@
 import json, zipfile, unittest
+from engiproof import __version__
 from engiproof.checkpoint import build_checkpoint, continuity_audit
 from engiproof.core import project_root
 
 class ContinuityArchitectureTests(unittest.TestCase):
     def test_continuity_audit(self):
+        # Durable invariants: they must hold at every checkpoint, so freezing a
+        # new study or phase does not require editing this test.
         a=continuity_audit()
         self.assertIn(a["status"],{"PASS","WARN"},a)
-        self.assertEqual(a["project_state"]["framework_version"],"0.2.0.dev8")
-        self.assertEqual(a["project_state"]["current_checkpoint"],"P42_PHASE3_FROZEN")
+        state=a["project_state"]
+        self.assertIsNotNone(state,"PROJECT_STATE.json missing or invalid")
+        self.assertEqual(state["framework_version"],__version__)
+        study=state.get("current_study")
+        self.assertRegex(study or "",r"^P\d+$","current_study must be a study id such as P44")
+        self.assertTrue((project_root()/"engiproof"/"studies"/study/"study.json").is_file(),
+                        f"current_study {study} has no study manifest")
+        checkpoint=state.get("current_checkpoint") or ""
+        self.assertTrue(checkpoint.startswith(f"{study}_"),
+                        f"current_checkpoint {checkpoint!r} does not belong to current_study {study}")
+        self.assertEqual(state.get("last_green_status"),"PASS")
+        script=state.get("last_green_verification")
+        self.assertTrue(script,"last_green_verification not recorded")
+        self.assertTrue((project_root()/script).is_file(),
+                        f"recorded verification script missing: {script}")
 
     def test_checkpoint_snapshot(self):
         r=build_checkpoint(bundle=False)
