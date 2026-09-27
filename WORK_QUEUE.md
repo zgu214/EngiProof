@@ -16,8 +16,12 @@ Parallel/secondary. Keep evidence capture synchronized without displacing engine
 
 ## Q5 — P45
 
-**State:** Phase 1 implemented (CONDITIONAL). Pending local `28_VERIFY_P45_PHASE1_WINDOWS.bat`, then freeze.
+**State:** Phase 1 COMPLETED and FROZEN (D-006): local Windows verification PASS; CONDITIONAL / NOT_GRANTED; P45-D001…D006 OPEN.
 
 ## Q6 — Paper A readiness review
 
-**State:** next after P45 freeze. Review P40–P45 as the evidence matrix; decide whether P46 is needed to fill a defined gap.
+**Priority: HIGHEST (active).** Review P40–P45 as the evidence matrix and decide the Paper A path. Do NOT create P46 automatically: a P46 is justified only if the review demonstrates a specific evidence gap that no existing study, runtime work or deeper use of P40–P45 can fill.
+
+## Q7 — Runtime hardening: file-idempotent graph-sync
+
+**Priority: low.** A second `graph-sync P45` changed only the persisted sync counters (`added_nodes: 22 -> 0`, `added_edges: 22 -> 0`); no node, edge, engineering value or evidence changed. graph-sync is evidence-idempotent but not file-idempotent because per-run mutation counts are persisted in the tracked graph (same pattern in P40–P43). Make repeated syncs byte-stable (e.g. report counts without persisting them). Do not reopen P45 for this.

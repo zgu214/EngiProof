@@ -1,7 +1,7 @@
 # EngiProof — Current Handover
 
-Updated: 26 September 2026  
-Development line: `v0.2.0-dev2`  
+Updated: 27 September 2026  
+Development line: `v0.2.0-dev8`  
 Primary branch: `develop`
 
 ## Current objective
@@ -445,3 +445,9 @@ After reset, resume directly at P45 using `NEW_CHAT_BOOTSTRAP.md`, `PROJECT_STAT
 Safai (1983), Applied Ocean Research 5(4) 215–225. Ingestion ran on the 1983 scan: 32 candidates, readiness PARTIAL (4/16); all figures/appendices reviewed manually from page images. Source-bounded checks of Tables 1–3, Appendix 1 (stiffness functions, K, K_G), Eq. (7), Appendix 2, Airy regime; head-end envelopes of Figures 4(a)–9(a) digitized (numbers only). Six OPEN discrepancies P45-D001…D006 preserved without tuning. Nonlinear dynamic responses BLOCKED (source insufficient). No SOLVER_NEW. CONDITIONAL / NOT_GRANTED / outside live registry. Details: `P45_PHASE1_NONLINEAR_DYNAMICS_CHECKPOINT.md`.
 
 Next: run `28_VERIFY_P45_PHASE1_WINDOWS.bat` locally; on PASS record it as `last_green_verification` and freeze P45. Then the Paper A readiness review (P40–P45) decides whether P46 exists.
+
+## Checkpoint — P45 frozen (27 September 2026)
+
+Local Windows `28_VERIFY_P45_PHASE1_WINDOWS.bat` PASS after PR #5 merged (`cb2a595`); continuity-audit PASS; checkpoint bundle PASS. P45 frozen CONDITIONAL / NOT_GRANTED (D-006); P45-D001…D006 OPEN; dynamic responses BLOCKED; no tuning.
+
+Active task: Paper A readiness review across P40–P45 (WORK_QUEUE Q6). Create P46 only if the review demonstrates a specific evidence gap. Low-priority runtime item: graph-sync persists per-run counters, so repeated syncs rewrite the tracked graph without changing evidence (Q7).

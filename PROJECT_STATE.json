@@ -6,12 +6,12 @@
   "development_line": "v0.2.0",
   "objective": "Paper Ingestion & Evidence Automation",
   "current_study": "P45",
-  "current_study_state": "PHASE1_CONDITIONAL_EVIDENCE_CASE",
-  "current_checkpoint": "P45_PHASE1_IMPLEMENTED",
-  "last_green_verification": "26_VERIFY_P44_PHASE1_WINDOWS.bat",
+  "current_study_state": "FROZEN_CONDITIONAL_EVIDENCE_CASE",
+  "current_checkpoint": "P45_PHASE1_FROZEN",
+  "last_green_verification": "28_VERIFY_P45_PHASE1_WINDOWS.bat",
   "last_green_status": "PASS",
   "next_study": "PAPER_A_READINESS_REVIEW",
-  "next_action": "Run 28_VERIFY_P45_PHASE1_WINDOWS.bat locally; on PASS set last_green_verification to it and freeze P45 CONDITIONAL. Then Paper A readiness review with P40-P45 before deciding whether P46 exists.",
+  "next_action": "Perform the Paper A readiness review across P40-P45 and create P46 only if a specific evidence gap is demonstrated.",
   "qualification": "NOT_GRANTED",
   "open_evidence_items": [
     "P40-D001",
@@ -41,6 +41,6 @@
   ],
   "source_of_truth": "Git repository",
   "private_source_policy": "Copyrighted PDFs remain outside the public repository; preserve canonical basename, DOI and SHA-256.",
-  "last_confirmed_local_date": "2026-09-26",
-  "pending_verification": "28_VERIFY_P45_PHASE1_WINDOWS.bat"
+  "last_confirmed_local_date": "2026-09-27",
+  "pending_verification": null
 }
