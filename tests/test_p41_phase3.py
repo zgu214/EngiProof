@@ -1,6 +1,8 @@
 import importlib.util, json, subprocess, sys, unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/"src"))
+from engiproof.isolation import run_runner_for_test
 spec=importlib.util.spec_from_file_location("p41_api_phase3",ROOT/"papers/P41/tool_api.py")
 api=importlib.util.module_from_spec(spec); spec.loader.exec_module(api)
 
@@ -31,9 +33,9 @@ class P41Phase3Tests(unittest.TestCase):
         self.assertTrue(any("feed-in" in x for x in obs["figure9"]["observations"]))
 
     def test_runner_writes_phase3_artifact(self):
-        p=subprocess.run([sys.executable,str(ROOT/"papers/P41/run_calculation.py")],cwd=ROOT,capture_output=True,text=True)
+        p,SB=run_runner_for_test(self,ROOT,"papers/P41/run_calculation.py")
         self.assertEqual(p.returncode,0,p.stderr)
-        q=ROOT/"papers/P41/results/phase3_global_buckling_summary.json"
+        q=SB/"papers/P41/results/phase3_global_buckling_summary.json"
         self.assertTrue(q.is_file())
 
 if __name__=="__main__": unittest.main()

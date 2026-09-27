@@ -3,12 +3,13 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"src"))
 from engiproof.core import evidence_snapshot, invoke_tool, load_manifest, validate_study_manifest
+from engiproof.isolation import run_runner_for_test
 
 class P16EngiProofTests(unittest.TestCase):
     def test_runner_preserves_comparison(self):
-        p=subprocess.run([sys.executable,str(ROOT/"papers/P16/run_calculation.py")],cwd=ROOT,capture_output=True,text=True)
+        p,SB=run_runner_for_test(self,ROOT,"papers/P16/run_calculation.py")
         self.assertEqual(p.returncode,0,p.stderr)
-        v=json.loads((ROOT/"papers/P16/results/engiproof_verification.json").read_text(encoding="utf-8"))
+        v=json.loads((SB/"papers/P16/results/engiproof_verification.json").read_text(encoding="utf-8"))
         self.assertEqual(v["status"],"COMPARED")
         self.assertEqual(v["reference_curve_points"],261)
         self.assertLess(v["comparison"]["maximum_absolute_discrepancy_mm"],1.0)

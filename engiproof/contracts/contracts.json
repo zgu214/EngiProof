@@ -82,7 +82,29 @@
         "source_check",
         "contract_check"
       ],
-      "rule": "Computational verification is not engineering qualification."
+      "rule": "Computational verification is not engineering qualification.",
+      "reproduction": {
+        "schema": "engiproof.frozen_comparison/1.1",
+        "classes": [
+          "IDENTICAL",
+          "BYTE_ONLY",
+          "ENVIRONMENT_METADATA",
+          "NUMERICAL_NONMATERIAL",
+          "NUMERICAL_MATERIAL",
+          "MATERIAL_NON_NUMERIC"
+        ],
+        "material": [
+          "NUMERICAL_MATERIAL",
+          "MATERIAL_NON_NUMERIC"
+        ],
+        "default_tolerance": {
+          "rel": 1e-09,
+          "abs": 1e-12
+        },
+        "study_override": "verification_tolerance {rel, abs, purpose, statement, rationale, rounding_guards}"
+      },
+      "non_mutation_rule": "Verification must not mutate the evidence being verified. Recompute in isolation and compare with frozen evidence; regeneration is a separate explicit operation.",
+      "tolerance_rule": "Verification tolerances define recomputation equivalence only; they are not engineering acceptance or validation tolerances."
     },
     "ingestion": {
       "schema": "engiproof.ingestion/1.0",
