@@ -1,0 +1,13 @@
+{
+  "schema_version": "engiproof.p44.verification/1.0",
+  "paper_id": "P44",
+  "checks": {
+    "table1_geometry_check": true,
+    "equation1_reproduced": true,
+    "time_slice_reproduced": true,
+    "contact_penalty_scale_checked": true,
+    "P44_D001_preserved": true,
+    "full_FE_contact_profiles_reproduced": false
+  },
+  "qualification": "NOT_GRANTED"
+}

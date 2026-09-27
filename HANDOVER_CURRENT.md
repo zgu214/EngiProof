@@ -366,3 +366,69 @@ New controls: PROJECT_STATE, queue, blockers, decisions, bootstrap, architecture
 New commands: `engiproof continuity-audit`, `engiproof checkpoint`, `engiproof checkpoint --bundle`.
 
 After local dev8 verification: commit/push, copy checkpoint bundle to private cloud, then start P43.
+
+## Checkpoint — P43 Phase 1 eigenvalue benchmark implemented
+
+P43 source: Dareing & Huang (1976), `Natural Frequencies of Marine Drilling Risers`, SHA-256 `4ab7c3b9a8377cc3d5a7f5eecb64712496aa825f969760e47ee17ccba03ffccf`.
+
+Phase 1 implements:
+- source dimensionless alpha/beta definitions;
+- independent cubic-Hermite FE weak solution of Eq. (8);
+- Eq. (10) approximate eigenvalue;
+- natural-frequency/period conversion;
+- selected Table 1 and Table 2 comparisons;
+- Figure 6 first-mode inflection-location check.
+
+The independent FE method intentionally differs from the source Eq. (9) power-series implementation, whose coefficient details are referred to earlier papers rather than repeated in P43.
+
+Selected benchmark results:
+- alpha=50, beta=100, lambda1..5 independently reproduce Table 1 to source 3-decimal precision;
+- Eq. (10) errors reproduce Table 2 rounding;
+- worked example reproduces about 0.815 rad/s, 7.71 s exact and 7.68 s approximate;
+- alpha=250, beta=100 first-mode inflection is independently found about 0.09 below the top, consistent with the source's approximately 0.1 statement.
+
+No source figure digitization. Qualification remains NOT_GRANTED.
+
+## Checkpoint — P43 Phase 2 full matrix implemented
+
+P43 Phase 1 local verification PASS.
+
+Phase 2 expands to the complete Table 1 and Table 2 alpha-beta grids: 35 Table 1 rows / 175 eigenvalue cells, the full Eq.10 error matrix, Figures 4-5 parameter families, and independent first three mode shapes for Figure 6.
+
+All ordinary Table1 eigenvalues reproduce to source rounding with the independent Eq8 Hermite-FE solution.
+
+`P43-D001`: Table1 at alpha=0, beta=200 visibly prints lambda5=13.221. Independent Eq8 FE and Eq10 both give approximately 18.221, while Table2 reports zero approximation error at alpha=0. Classified `PUBLISHED_REFERENCE_MISMATCH`, OPEN/BLOCK_PROMOTION. The likely correction 18.221 is inference only and is not substituted into the published record.
+
+After local Phase2 PASS: freeze P43 CONDITIONAL, update checkpoint bundle, then move to P44.
+
+P43-D002: Table 1 alpha=200, beta=100, lambda1 is visibly printed as 6.554. Independent Eq.8 FE gives ~6.654; Eq.10/Table2 internal consistency also supports 6.654. Preserve printed 6.554; inferred correction is not applied.
+
+## Checkpoint — P44 Phase 1 contact validation implemented
+
+P44 source: Bueno & Morooka (1994), SPE 28723, `Analysis Method for Contact Forces Between Drillstring-Well-Riser`, SHA-256 `ca8b476b5f6c54f8a2a3c55c7836770ef55bc27d3cf05b8c6f4a953ca896b80b`.
+
+Phase 1 covers source-bounded drillstring/well/riser contact evidence:
+- Table1 drillpipe geometry independently reconstructs area and second moment;
+- Eq1 equilibrium reproduces the published 429.098 lb arithmetic and independently gives 429.111 lb using exact sin60, matching the published FEM value 429.11 lb;
+- 5.8 s / 10-slice discretization independently gives 0.58 s;
+- K1=1e6 lbf/ft gives ~0.00515 in penetration at the reference 429.11 lb force;
+- Figures7/8 are source-reviewed without digitization.
+
+P44-D001 is OPEN `SOURCE_FIGURE_TEXT_MISMATCH`: the paragraph says Figures7/8 correspond to 4.06 s and 2.32 s, while captions say 0.58 s and 1.74 s; Figure2 also uses 0.58/1.74 s. No intended pair is inferred.
+
+Full nonlinear contact-force profiles are not claimed reproduced because essential wall/riser geometry and implementation data are not fully supplied. Qualification NOT_GRANTED.
+
+## Checkpoint — P44 frozen / low-budget continuity hold
+
+User confirmed local `=== P44 PHASE1 VERIFY PASS ===`.
+
+P44 is frozen as `FROZEN_CONDITIONAL_EVIDENCE_CASE`.
+`P44-D001` remains preserved. Full nonlinear FE contact profiles remain not reproduced because the source is insufficient to reconstruct the full time-dependent contact model without unsupported assumptions.
+
+Weekly model budget is nearly exhausted. Before pausing:
+1. run `engiproof continuity-audit`;
+2. run `engiproof checkpoint --bundle`;
+3. archive the bundle privately;
+4. commit/push the freeze/control-file changes.
+
+After reset, resume directly at P45 using `NEW_CHAT_BOOTSTRAP.md`, `PROJECT_STATE.json`, and this handover.

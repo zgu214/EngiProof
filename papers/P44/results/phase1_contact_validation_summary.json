@@ -1,0 +1,58 @@
+{
+  "table1_independent_geometry_check": {
+    "published_cross_area_ft2": 0.037,
+    "computed_cross_area_ft2": 0.0366291377451424,
+    "cross_area_relative_difference_percent": -1.0023304185340538,
+    "published_I_ft4": 0.000688,
+    "computed_I_ft4": 0.0006881345680941783,
+    "I_relative_difference_percent": 0.019559316014288227
+  },
+  "equation1_validation": {
+    "published_equilibrium_force_lb": 429.098,
+    "printed_arithmetic_reproduction_lb": 429.09867,
+    "printed_arithmetic_difference_lb": 0.0006700000000137152,
+    "exact_sine60_independent_lb": 429.1112574481704,
+    "published_FEM_force_lb": 429.11,
+    "exact_vs_FEM_difference_lb": 0.0012574481704064056,
+    "exact_vs_FEM_relative_difference_percent": 0.00029303632411419115
+  },
+  "time_discretization_check": {
+    "wave_period_s": 5.8,
+    "slice_count": 10,
+    "computed_spacing_s": 0.58,
+    "published_spacing_s": 0.58
+  },
+  "contact_penalty_diagnostic": {
+    "published_K1_lbf_per_ft": 1000000.0,
+    "reference_force_lb": 429.11,
+    "elastic_penetration_in_at_reference_force": 0.005149320000000001,
+    "interpretation": "Independent stiffness-scale diagnostic only; not a reproduction of the unpublished nonlinear contact iteration."
+  },
+  "P44_D001_probe": {
+    "classification": "SOURCE_FIGURE_TEXT_MISMATCH",
+    "paragraph_times_s": [
+      4.06,
+      2.32
+    ],
+    "figure7_caption_time_s": 0.58,
+    "figure8_caption_time_s": 1.74,
+    "figure2_times_s": [
+      0.58,
+      1.74
+    ],
+    "observation": "The paragraph introducing Figures 7 and 8 states 4.06 s and 2.32 s, while the figure captions state 0.58 s and 1.74 s. Figure 2 also uses 0.58 s and 1.74 s. EngiProof preserves both source statements without deciding which is intended."
+  },
+  "source_review": {
+    "schema_version": "engiproof.p44.figure_review/1.0",
+    "source": "P44 Figures 7–9 and accompanying text, printed pages 535–536",
+    "observations": [
+      "Positive contact force denotes contact on the right side and negative force denotes contact on the left.",
+      "For the example, the maximum contact force occurs in the flexible-joint region and is stated to be almost twice the maximum force inside the well.",
+      "Figure 9 is described as sinusoidal-like but low-resolution because only ten time points were used.",
+      "The source states that drillstring stiffness contributes less than 3% of the original contact force inside the well in the gravity-removal check."
+    ],
+    "curve_digitized": false
+  },
+  "evidence_boundary": "Equation (1), table values, K1 and figure labels are PUBLISHED. Section-property arithmetic, exact-trigonometric Eq1 calculation, time-step arithmetic and penalty-penetration scale are INDEPENDENT. Full nonlinear FE contact-force profiles are not reproduced because the paper does not supply the complete well/riser geometry and time-dependent wall-displacement dataset.",
+  "qualification": "NOT_GRANTED"
+}

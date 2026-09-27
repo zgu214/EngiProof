@@ -1,0 +1,10 @@
+{
+  "schema_version": "engiproof.p44.contact_model/1.0",
+  "source": "P44 Figure 3 and finite-element discussion, printed page 533",
+  "K0": "very small / negligible; no numeric value supplied",
+  "K1_lbf_per_ft": 1000000.0,
+  "activation": "contact is reached when node displacement equals the gap; spring stiffness then changes to K1",
+  "contact_points_assumption": "contact points assumed at tool joints; beam length equals drillpipe range",
+  "nonlinear_solution": "large displacement, full Newton-Raphson",
+  "approach": "2D quasi-static for each riser geometry"
+}

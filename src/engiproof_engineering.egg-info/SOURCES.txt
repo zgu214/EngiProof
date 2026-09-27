@@ -34,4 +34,7 @@ tests/test_p41_phase3.py
 tests/test_p42_phase1.py
 tests/test_p42_phase2.py
 tests/test_p42_phase3.py
+tests/test_p43_phase1.py
+tests/test_p43_phase2.py
+tests/test_p44_phase1.py
 tests/test_paper_studies_batch5.py

@@ -1,0 +1,40 @@
+{
+  "schema_version": "engiproof.p43.table1_selected/1.0",
+  "source": "P43 Table 1, printed page 816",
+  "rows": [
+    {
+      "alpha": 0.0,
+      "beta": 0.0,
+      "lambda": [
+        3.142,
+        6.283,
+        9.425,
+        12.566,
+        15.708
+      ]
+    },
+    {
+      "alpha": 50.0,
+      "beta": 100.0,
+      "lambda": [
+        6.029,
+        8.969,
+        11.735,
+        14.536,
+        17.401
+      ]
+    },
+    {
+      "alpha": 250.0,
+      "beta": 100.0,
+      "lambda": [
+        6.816,
+        10.006,
+        12.851,
+        15.636,
+        18.442
+      ]
+    }
+  ],
+  "evidence_boundary": "Only source-reviewed selected rows are transcribed in Phase 1; the complete table is not retyped."
+}

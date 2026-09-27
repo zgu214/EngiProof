@@ -1,0 +1,13 @@
+{
+  "schema_version": "engiproof.p43.figure6_review/1.0",
+  "source": "P43 Figure 6 and accompanying discussion, printed pages 816-817",
+  "alpha": 250.0,
+  "beta": 100.0,
+  "published_observations": [
+    "The first three mode shapes differ from trigonometric modes.",
+    "Nodal distance is greatest in the upper portion where tension is greatest.",
+    "The first mode has a point of inflection approximately 0.1 below the top.",
+    "The bottom slope is greater than the corresponding trigonometric-mode slope."
+  ],
+  "phase1_comparison": "Independent FE mode shape is compared to the source qualitative inflection-location statement; no source curve digitization."
+}

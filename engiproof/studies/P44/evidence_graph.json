@@ -1,0 +1,274 @@
+{
+  "schema_version": "engiproof.evidence_graph/1.1",
+  "paper_id": "P44",
+  "nodes": [
+    {
+      "id": "SOURCE-P44",
+      "kind": "source",
+      "label": "Analysis Method for Contact Forces Between Drillstring-Well-Riser",
+      "evidence_class": "PUBLISHED",
+      "status": "SOURCE_READY",
+      "source_refs": [
+        "PENDING",
+        "ca8b476b5f6c54f8a2a3c55c7836770ef55bc27d3cf05b8c6f4a953ca896b80b"
+      ]
+    },
+    {
+      "id": "TARGET-T001",
+      "kind": "table",
+      "label": "Table 1",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:4"
+      ]
+    },
+    {
+      "id": "TARGET-T002",
+      "kind": "table",
+      "label": "Table 2",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:4"
+      ]
+    },
+    {
+      "id": "TARGET-T003",
+      "kind": "figure",
+      "label": "Figure 3",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:3"
+      ]
+    },
+    {
+      "id": "TARGET-T004",
+      "kind": "figure",
+      "label": "Figure 7",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:5"
+      ]
+    },
+    {
+      "id": "TARGET-T005",
+      "kind": "figure",
+      "label": "Figure 8",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:5"
+      ]
+    },
+    {
+      "id": "TARGET-T006",
+      "kind": "figure",
+      "label": "Figure 9",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:6"
+      ]
+    },
+    {
+      "id": "TARGET-T007",
+      "kind": "equation",
+      "label": "Equation (1)",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:6"
+      ]
+    },
+    {
+      "id": "AUTO-TOOL-DRILLPIPE-SECTION-PROPERTIES",
+      "kind": "implementation",
+      "label": "drillpipe_section_properties",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "tool:drillpipe_section_properties",
+        "P44 Table 1",
+        "papers/P44/tool_api.py",
+        "tool:equation1_contact_force_lbf",
+        "P44 Eq. (1)",
+        "tool:contact_stiffness_state",
+        "P44 Figure 3 / contact-element description",
+        "tool:phase1_contact_validation_summary",
+        "P44 Table1, Figure3, Figures7-9, Eq1"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P44-C001",
+      "kind": "comparison",
+      "label": "Table 1 drillpipe area and second moment from OD/ID",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P44-C001",
+        "P44 Table 1"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P44-C002",
+      "kind": "comparison",
+      "label": "Equation (1) constant-inclination equilibrium force",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P44-C002",
+        "P44 Eq. (1)"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P44-C003",
+      "kind": "comparison",
+      "label": "Wave-period discretization",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P44-C003",
+        "P44 example time slicing"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P44-C004",
+      "kind": "comparison",
+      "label": "Published K1 penalty stiffness scale at reference contact force",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P44-C004",
+        "P44 Figure 3 / contact description"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DISCREPANCY-P44-D001",
+      "kind": "discrepancy",
+      "label": "Figures 7 and 8 time labels",
+      "evidence_class": "INDEPENDENT",
+      "status": "OPEN",
+      "source_refs": [
+        "P44-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P44-D001",
+      "kind": "discrepancy_assessment",
+      "label": "SOURCE_FIGURE_TEXT_MISMATCH assessment for P44-D001",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P44-D001",
+        "assessment:P44-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "SOURCE-P44",
+      "to": "TARGET-T001",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P44",
+      "to": "TARGET-T002",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P44",
+      "to": "TARGET-T003",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P44",
+      "to": "TARGET-T004",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P44",
+      "to": "TARGET-T005",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P44",
+      "to": "TARGET-T006",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P44",
+      "to": "TARGET-T007",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P44",
+      "to": "AUTO-TOOL-DRILLPIPE-SECTION-PROPERTIES",
+      "relation": "supports_implementation"
+    },
+    {
+      "from": "SOURCE-P44",
+      "to": "AUTO-COMPARISON-P44-C001",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P44",
+      "to": "AUTO-COMPARISON-P44-C002",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P44",
+      "to": "AUTO-COMPARISON-P44-C003",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P44",
+      "to": "AUTO-COMPARISON-P44-C004",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P44",
+      "to": "AUTO-DISCREPANCY-P44-D001",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P44-D001",
+      "to": "AUTO-ASSESSMENT-P44-D001",
+      "relation": "classified_by"
+    }
+  ],
+  "qualification": "NOT_CLAIMED",
+  "sync": {
+    "schema_version": "engiproof.evidence_graph_sync/1.0",
+    "added_nodes": 7,
+    "added_edges": 7,
+    "tool_count": 4,
+    "comparison_count": 4,
+    "discrepancy_count": 1,
+    "decision_count": 0,
+    "rule": "Synchronization is additive: existing hand-authored nodes/edges are preserved and qualification is never promoted."
+  }
+}

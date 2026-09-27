@@ -1,0 +1,19 @@
+{
+  "schema_version": "engiproof.p44.time_discretization/1.0",
+  "source": "P44 example and Figures 2, 7, 8, printed pages 532, 534, 535",
+  "wave_height_ft": 5.7,
+  "wave_period_s": 5.8,
+  "time_slice_count": 10,
+  "published_slice_spacing_s": 0.58,
+  "figure2_times_s": [
+    0.58,
+    1.74
+  ],
+  "figure7_caption_time_s": 0.58,
+  "figure8_caption_time_s": 1.74,
+  "paragraph_times_for_figures7_8_s": [
+    4.06,
+    2.32
+  ],
+  "note": "The paragraph and the Figure 7/8 captions give different time labels. Both are preserved verbatim."
+}

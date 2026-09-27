@@ -1,0 +1,384 @@
+{
+  "schema_version": "engiproof.evidence_graph/1.1",
+  "paper_id": "P43",
+  "nodes": [
+    {
+      "id": "SOURCE-P43",
+      "kind": "source",
+      "label": "Natural Frequencies of Marine Drilling Risers",
+      "evidence_class": "PUBLISHED",
+      "status": "SOURCE_READY",
+      "source_refs": [
+        "PENDING",
+        "4ab7c3b9a8377cc3d5a7f5eecb64712496aa825f969760e47ee17ccba03ffccf"
+      ]
+    },
+    {
+      "id": "TARGET-T001",
+      "kind": "table",
+      "label": "Table 1",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:3",
+        "page:4",
+        "page:5"
+      ]
+    },
+    {
+      "id": "TARGET-T008",
+      "kind": "figure",
+      "label": "Figure 6",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:4",
+        "page:5"
+      ]
+    },
+    {
+      "id": "TARGET-T009",
+      "kind": "equation",
+      "label": "Equation (10)",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:4"
+      ]
+    },
+    {
+      "id": "TARGET-T012",
+      "kind": "equation",
+      "label": "Equation (8)",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:3",
+        "page:4"
+      ]
+    },
+    {
+      "id": "TARGET-T013",
+      "kind": "equation",
+      "label": "Equation (9)",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:3"
+      ]
+    },
+    {
+      "id": "AUTO-TOOL-DIMENSIONLESS-PARAMETERS",
+      "kind": "implementation",
+      "label": "dimensionless_parameters",
+      "evidence_class": "PUBLISHED",
+      "status": "COMPARED",
+      "source_refs": [
+        "tool:dimensionless_parameters",
+        "P43 dimensionless definitions following Eq. (7)",
+        "papers/P43/tool_api.py",
+        "tool:independent_eigenvalues",
+        "Independent weak-form solution of P43 Eq. (8)",
+        "tool:equation10_lambda",
+        "P43 Eq. (10)",
+        "tool:natural_period_s",
+        "P43 lambda definition / worked example",
+        "tool:phase1_eigen_benchmark_summary",
+        "P43 Eqs.8-10, Tables1-2, Figure6, worked example",
+        "tool:phase2_full_matrix_summary",
+        "P43 Eq.8/Eq.10, Tables1-2, Figures4-6"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P43-C001",
+      "kind": "comparison",
+      "label": "Worked-example dimensionless alpha/beta from printed source inputs",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P43-C001",
+        "P43 worked example / dimensionless definitions"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P43-C002",
+      "kind": "comparison",
+      "label": "Independent Hermite-FE eigenvalues versus Table 1 at alpha=50, beta=100",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P43-C002",
+        "P43 Eq. (8), Table 1"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P43-C003",
+      "kind": "comparison",
+      "label": "Eq. (10) approximate eigenvalue errors versus Table 2 at alpha=50, beta=100",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P43-C003",
+        "P43 Eq. (10), Table 2"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P43-C004",
+      "kind": "comparison",
+      "label": "Worked-example fundamental natural period",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P43-C004",
+        "P43 worked example"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P43-C005",
+      "kind": "comparison",
+      "label": "Figure 6 first-mode inflection location at alpha=250, beta=100",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P43-C005",
+        "P43 Figure 6 discussion"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P43-C006",
+      "kind": "comparison",
+      "label": "Full Table 1 35-row / 175-scalar eigenvalue matrix",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P43-C006",
+        "P43 Eq.8 / Table1"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P43-C007",
+      "kind": "comparison",
+      "label": "Full Table 2 Eq.10 approximation-error matrix",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P43-C007",
+        "P43 Eq.10 / Table2"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P43-C008",
+      "kind": "comparison",
+      "label": "Figures 4-5 lambda1/lambda2 parameter families",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P43-C008",
+        "P43 Figures4-5 / Table1"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P43-C009",
+      "kind": "comparison",
+      "label": "Figure 6 first three independent mode shapes",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P43-C009",
+        "P43 Figure6"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DISCREPANCY-P43-D001",
+      "kind": "discrepancy",
+      "label": "Table 1 alpha=0, beta=200, fifth eigenvalue lambda5",
+      "evidence_class": "INDEPENDENT",
+      "status": "OPEN",
+      "source_refs": [
+        "P43-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DISCREPANCY-P43-D002",
+      "kind": "discrepancy",
+      "label": "Table 1 alpha=200, beta=100, first eigenvalue lambda1",
+      "evidence_class": "INDEPENDENT",
+      "status": "OPEN",
+      "source_refs": [
+        "P43-D002"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P43-D001",
+      "kind": "discrepancy_assessment",
+      "label": "PUBLISHED_REFERENCE_MISMATCH assessment for P43-D001",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P43-D001",
+        "assessment:P43-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P43-D002",
+      "kind": "discrepancy_assessment",
+      "label": "PUBLISHED_REFERENCE_MISMATCH assessment for P43-D002",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P43-D002",
+        "assessment:P43-D002"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "SOURCE-P43",
+      "to": "TARGET-T001",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "TARGET-T008",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "TARGET-T009",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "TARGET-T012",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "TARGET-T013",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "AUTO-TOOL-DIMENSIONLESS-PARAMETERS",
+      "relation": "supports_implementation"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "AUTO-COMPARISON-P43-C001",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "AUTO-COMPARISON-P43-C002",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "AUTO-COMPARISON-P43-C003",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "AUTO-COMPARISON-P43-C004",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "AUTO-COMPARISON-P43-C005",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "AUTO-COMPARISON-P43-C006",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "AUTO-COMPARISON-P43-C007",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "AUTO-COMPARISON-P43-C008",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "AUTO-COMPARISON-P43-C009",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "AUTO-DISCREPANCY-P43-D001",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "SOURCE-P43",
+      "to": "AUTO-DISCREPANCY-P43-D002",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P43-D001",
+      "to": "AUTO-ASSESSMENT-P43-D001",
+      "relation": "classified_by"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P43-D002",
+      "to": "AUTO-ASSESSMENT-P43-D002",
+      "relation": "classified_by"
+    }
+  ],
+  "qualification": "NOT_GRANTED",
+  "sync": {
+    "schema_version": "engiproof.evidence_graph_sync/1.0",
+    "added_nodes": 8,
+    "added_edges": 8,
+    "tool_count": 6,
+    "comparison_count": 9,
+    "discrepancy_count": 2,
+    "decision_count": 0,
+    "rule": "Synchronization is additive: existing hand-authored nodes/edges are preserved and qualification is never promoted."
+  }
+}

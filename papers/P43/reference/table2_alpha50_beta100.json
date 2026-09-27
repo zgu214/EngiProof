@@ -1,0 +1,14 @@
+{
+  "schema_version": "engiproof.p43.table2_selected/1.0",
+  "source": "P43 Table 2, printed page 816",
+  "alpha": 50.0,
+  "beta": 100.0,
+  "published_relative_error_percent_by_mode": [
+    0.19,
+    0.09,
+    0.04,
+    0.02,
+    0.01
+  ],
+  "definition": "(approximate lambda - true lambda) / true lambda * 100"
+}

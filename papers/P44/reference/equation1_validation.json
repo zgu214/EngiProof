@@ -1,0 +1,12 @@
+{
+  "schema_version": "engiproof.p44.eq1/1.0",
+  "source": "P44 Equation (1) and validation text, printed page 536",
+  "formula": "F = L * f * FF * sin(theta)",
+  "length_ft": 30.0,
+  "unit_weight_lb_per_ft": 19.5,
+  "floating_factor": 0.847,
+  "inclination_deg": 60.0,
+  "published_sin60_used": 0.866,
+  "published_equilibrium_force_lb": 429.098,
+  "published_FEM_force_lb": 429.11
+}

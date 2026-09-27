@@ -1,0 +1,20 @@
+{
+  "schema_version": "engiproof.p43.example_case/1.0",
+  "source": "P43 worked example, printed page 817",
+  "length_ft": 500.0,
+  "bottom_pull_lb": 286000.0,
+  "weight_lb_per_ft": 214.0,
+  "outer_area_ft2": 3.14,
+  "inner_area_ft2": 2.99,
+  "sea_water_weight_density_lb_per_ft3": 64.8,
+  "mud_weight_density_lb_per_ft3": 85.0,
+  "second_moment_in4": 3136.9,
+  "youngs_modulus_psi": 30000000.0,
+  "participating_mass_slug_per_ft": 20.8,
+  "published_alpha": 50.0,
+  "published_beta": 100.0,
+  "published_lambda1": 6.029,
+  "published_omega1_rad_per_s": 0.815,
+  "published_exact_period_s": 7.71,
+  "published_approx_period_s": 7.68
+}

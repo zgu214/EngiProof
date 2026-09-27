@@ -1,0 +1,15 @@
+{
+  "schema_version": "engiproof.p43.verification/1.0",
+  "paper_id": "P43",
+  "checks": {
+    "eq8_independent_FE_vs_table1": true,
+    "eq10_vs_table2": true,
+    "worked_example_period": true,
+    "figure6_inflection_location": true,
+    "phase2_full_table_matrix": true,
+    "phase2_figures4_6_reconstructed": true,
+    "P43_D001_preserved": true,
+    "source_curve_digitized": false
+  },
+  "qualification": "NOT_GRANTED"
+}

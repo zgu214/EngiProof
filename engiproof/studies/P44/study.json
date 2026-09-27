@@ -1,0 +1,155 @@
+{
+  "schema_version": "engiproof.study/1.1",
+  "framework": "EngiProof",
+  "framework_version": "0.2.0.dev8",
+  "paper_id": "P44",
+  "title": "Analysis Method for Contact Forces Between Drillstring-Well-Riser",
+  "year": 1994,
+  "evidence_status": "CONDITIONAL",
+  "category": "DRILLSTRING_WELL_RISER_CONTACT",
+  "source": {
+    "canonical_pdf": "p44-bueno1994.pdf",
+    "sha256": "ca8b476b5f6c54f8a2a3c55c7836770ef55bc27d3cf05b8c6f4a953ca896b80b",
+    "doi": "PENDING"
+  },
+  "selected_targets": [
+    "Table 1",
+    "Table 2",
+    "Figure 3",
+    "Figure 7",
+    "Figure 8",
+    "Figure 9",
+    "Equation (1)"
+  ],
+  "runner": "papers/P44/run_calculation.py",
+  "source_contract": "papers/P44/SOURCE.md",
+  "evidence_graph": "engiproof/studies/P44/evidence_graph.json",
+  "result_files": [
+    "papers/P44/results/phase1_contact_validation_summary.json",
+    "papers/P44/results/engiproof_verification.json"
+  ],
+  "verification_tests": [
+    "tests.test_p44_phase1"
+  ],
+  "tools": [
+    {
+      "name": "drillpipe_section_properties",
+      "module": "papers/P44/tool_api.py",
+      "function": "drillpipe_section_properties",
+      "arguments": {},
+      "returns": "independent drillpipe area and second moment from Table1 OD/ID",
+      "evidence": "P44 Table 1",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "equation1_contact_force_lbf",
+      "module": "papers/P44/tool_api.py",
+      "function": "equation1_contact_force_lbf",
+      "arguments": {
+        "length_ft": "length ft",
+        "unit_weight_lb_per_ft": "weight lb/ft",
+        "floating_factor": "floating factor",
+        "inclination_deg": "inclination degrees"
+      },
+      "returns": "contact/equilibrium force lbf",
+      "evidence": "P44 Eq. (1)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "contact_stiffness_state",
+      "module": "papers/P44/tool_api.py",
+      "function": "contact_stiffness_state",
+      "arguments": {
+        "normal_displacement_ft": "absolute normal displacement ft",
+        "gap_ft": "gap ft",
+        "K1_lbf_per_ft": "contact stiffness"
+      },
+      "returns": "source-bounded contact active state and stiffness",
+      "evidence": "P44 Figure 3 / contact-element description",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "phase1_contact_validation_summary",
+      "module": "papers/P44/tool_api.py",
+      "function": "phase1_contact_validation_summary",
+      "arguments": {},
+      "returns": "Table1, Eq1, time-step, penalty diagnostic, and Figure7/8 label audit",
+      "evidence": "P44 Table1, Figure3, Figures7-9, Eq1",
+      "evidence_class": "INDEPENDENT"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "P44-C001",
+      "target": "Table 1 drillpipe area and second moment from OD/ID",
+      "status": "REPRODUCED",
+      "reference": "P44 Table 1",
+      "metrics": {
+        "published_area_ft2": 0.037,
+        "published_I_ft4": 0.000688
+      }
+    },
+    {
+      "id": "P44-C002",
+      "target": "Equation (1) constant-inclination equilibrium force",
+      "status": "REPRODUCED",
+      "reference": "P44 Eq. (1)",
+      "metrics": {
+        "published_equilibrium_lb": 429.098,
+        "published_FEM_lb": 429.11
+      }
+    },
+    {
+      "id": "P44-C003",
+      "target": "Wave-period discretization",
+      "status": "REPRODUCED",
+      "reference": "P44 example time slicing",
+      "metrics": {
+        "period_s": 5.8,
+        "slices": 10,
+        "spacing_s": 0.58
+      }
+    },
+    {
+      "id": "P44-C004",
+      "target": "Published K1 penalty stiffness scale at reference contact force",
+      "status": "COMPARED",
+      "reference": "P44 Figure 3 / contact description",
+      "metrics": {
+        "K1_lbf_per_ft": 1000000.0
+      }
+    }
+  ],
+  "discrepancies": [
+    {
+      "id": "P44-D001",
+      "target": "Figures 7 and 8 time labels",
+      "status": "OPEN",
+      "classification_hint": "SOURCE_FIGURE_TEXT_MISMATCH",
+      "observation": "The paragraph introducing Figures 7 and 8 states 4.06 s and 2.32 s, while the Figure 7 and Figure 8 captions state 0.58 s and 1.74 s respectively. Figure 2 also uses 0.58 s and 1.74 s.",
+      "engineering_interpretation": "This is retained as a source-internal labeling mismatch. EngiProof does not choose an intended time pair without authoritative clarification.",
+      "automation": {
+        "independent_support": "PARAGRAPH_VS_CAPTION_VS_FIGURE2",
+        "promotion_effect": "BLOCK_PROMOTION"
+      },
+      "closure_requirements": [
+        "Preserve both source time statements.",
+        "Do not relabel Figures 7/8 without authoritative clarification.",
+        "Resolve only with erratum, author clarification, original model output, or equivalent primary evidence."
+      ]
+    }
+  ],
+  "limitations": [
+    "P44-D001 remains open: the paragraph and Figure 7/8 captions give different time labels.",
+    "The full nonlinear FE contact-force profiles are not reproduced because the paper does not provide the complete well trajectory, time-dependent riser/wall geometry, full environmental coefficients/RAOs, or exact contact-node implementation data.",
+    "K0 is described as negligible but no numeric value is supplied; EngiProof does not invent one.",
+    "Figures 7-9 are source-reviewed only; no curve digitization is claimed.",
+    "Engineering qualification is NOT_GRANTED."
+  ],
+  "next_actions": [
+    "Run P44 Phase-1 verification locally and graph-sync/audit.",
+    "Phase 2 only if source-ready: bounded unilateral beam-to-bore contact benchmark and/or digitized Figure7-9 evidence with explicit provenance.",
+    "Do not tune missing wall geometry or contact data to reproduce the published curves.",
+    "Keep qualification NOT_GRANTED."
+  ]
+}

@@ -202,3 +202,21 @@ Apply this rule to all future Windows verification/automation batches.
 ## dev8 continuity architecture / P42 frozen
 
 P42 Phase3 PASS and frozen CONDITIONAL/NOT_GRANTED. dev8 adds Git source-of-truth + durable control plane + replaceable chat context. New PROJECT_STATE/queue/blockers/decisions/bootstrap plus `continuity-audit` and `checkpoint --bundle`. Verify, commit/push, private-backup bundle, then P43.
+
+## P43 Phase 1
+
+Dareing & Huang 1976 natural-frequency benchmark implemented. Independent Hermite-FE solution of Eq8 reproduces selected Table1 eigenvalues; Eq10 reproduces Table2 errors; worked example reproduces 0.815 rad/s, 7.71 s exact / 7.68 s approximate; independent Figure6 mode1 inflection ~0.09 below top vs source ~0.1. No digitization; NOT_GRANTED. Next: local verify then wider Table1/Figs4-6.
+
+## P43 Phase 2
+
+Full Table1/2 matrix implemented: 35 rows, 175 eigenvalues, Figures4-5 parameter families, Figure6 first 3 independent modes. Ordinary values reproduce to source rounding. P43-D001 found: source Table1 alpha=0 beta=200 lambda5 visibly 13.221; independent Eq8 FE + Eq10 ≈18.221 and Table2 says zero error. Preserve as OPEN PUBLISHED_REFERENCE_MISMATCH; inferred 18.221 not silently substituted. Verify then freeze P43 CONDITIONAL and move P44.
+
+P43-D002: Table 1 alpha=200, beta=100, lambda1 is visibly printed as 6.554. Independent Eq.8 FE gives ~6.654; Eq.10/Table2 internal consistency also supports 6.654. Preserve printed 6.554; inferred correction is not applied.
+
+## P44 Phase 1
+
+Bueno & Morooka 1994 SPE28723 contact case. Table1 area/I independently checked; Eq1 reproduces 429.098 lb printed arithmetic and exact sin60 gives 429.111 lb vs published FEM 429.11; 5.8/10=0.58 s; K1 penalty scale ~0.00515 in at 429 lb. P44-D001: paragraph says Fig7/8 times 4.06/2.32 s, captions say 0.58/1.74 s and Fig2 agrees with captions. Preserve mismatch; no full FE curve reproduction; NOT_GRANTED.
+
+## P44 frozen / low-budget hold
+
+P44 Phase1 local PASS. Freeze CONDITIONAL/NOT_GRANTED; preserve P44-D001; no full nonlinear contact-profile claim. Weekly model budget nearly exhausted: checkpoint, private archive, commit/push, then pause heavy research. Resume at P45 after reset from PROJECT_STATE/HANDOVER/NEW_CHAT_BOOTSTRAP.

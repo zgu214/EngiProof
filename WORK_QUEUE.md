@@ -8,3 +8,12 @@ Priority: next. Choose materially different mechanics/evidence from P40–P42, t
 
 ## Q3 — Journal Paper A
 Parallel/secondary. Keep evidence capture synchronized without displacing engineering work.
+
+
+## Q4 — P44 optional depth
+
+**State:** deferred / source-gated. Re-open only if additional source-ready geometry, original model output, or authoritative implementation detail becomes available.
+
+## Q5 — P45
+
+**State:** ready after model-budget reset. Resume from `PROJECT_STATE.json` and `HANDOVER_CURRENT.md`.
