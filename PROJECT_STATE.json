@@ -7,7 +7,7 @@
   "objective": "Paper Ingestion & Evidence Automation",
   "current_study": "P45",
   "current_study_state": "FROZEN_CONDITIONAL_EVIDENCE_CASE",
-  "current_checkpoint": "PAPER_A_EVIDENCE_HARDENING",
+  "current_checkpoint": "P45_PHASE1_FROZEN",
   "last_green_verification": "28_VERIFY_P45_PHASE1_WINDOWS.bat",
   "last_green_status": "PASS",
   "next_study": "PAPER_A_MANUSCRIPT_SYNTHESIS",

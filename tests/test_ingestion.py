@@ -156,7 +156,7 @@ class IngestionTests(unittest.TestCase):
         sample = SAMPLE + "\nTable 3 Results\nCase  A  B\n1  2.0  3.0\nS = Effective axial force\n"
         with tempfile.TemporaryDirectory() as td:
             root=self._root(td)
-            src=root/'local-source.txt'; src.write_text(sample)
+            src=root/'local-source.txt'; src.write_text(sample, encoding='utf-8')
             ingest_source(src,'P97',title='Synthetic source',root=root)
             enrich_source('P97',src,root=root)
             out=extract_structures('P97',src,root=root)
@@ -183,7 +183,7 @@ class IngestionTests(unittest.TestCase):
     def test_grouped_equation_recovery_preserves_existing_ids(self):
         sample="Study title\nEqs. ( 2), (3), ( 6), and (9) are compared.\nX = a + b ( 9 )\n"
         with tempfile.TemporaryDirectory() as td:
-            root=self._root(td); src=root/'paper.txt'; src.write_text(sample)
+            root=self._root(td); src=root/'paper.txt'; src.write_text(sample, encoding='utf-8')
             ingest_source(src,'P81',title='Study title',root=root)
             data=load_intake('P81',root=root)['targets']; labels={x['label'] for x in data['candidates']}
             self.assertTrue({'Equation (2)','Equation (3)','Equation (6)','Equation (9)'}.issubset(labels))
@@ -196,7 +196,7 @@ class IngestionTests(unittest.TestCase):
     def test_type1_equation_number_reconstructs_multiline_block(self):
         sample="Study title\nEquation (9) is proposed.\nPp2 =\n3*pi*sigma\n* (t/D)^2\nð9Þ\nTable 1. Inputs\nCase 1 2 3\n"
         with tempfile.TemporaryDirectory() as td:
-            root=self._root(td); src=root/'paper.txt'; src.write_text(sample)
+            root=self._root(td); src=root/'paper.txt'; src.write_text(sample, encoding='utf-8')
             ingest_source(src,'P82',title='Study title',root=root); enrich_source('P82',src,root=root); extract_structures('P82',src,root=root)
             st=load_structure_candidates('P82',root=root); eq=next(x for x in st['equations'] if x['label']=='Equation (9)')
             self.assertTrue(eq['blocks']); self.assertIn('Pp2',eq['blocks'][0]['text'])
@@ -204,7 +204,7 @@ class IngestionTests(unittest.TestCase):
     def test_table_block_extracts_data_rows_and_readiness(self):
         sample="Study title\nTable 1. Properties\nIdentifier A B C\nPIP-1 80 2 40\nPIP-2 60 2 40\nEquation (9) model\nP = k * x (9)\n"
         with tempfile.TemporaryDirectory() as td:
-            root=self._root(td); src=root/'paper.txt'; src.write_text(sample)
+            root=self._root(td); src=root/'paper.txt'; src.write_text(sample, encoding='utf-8')
             ingest_source(src,'P83',title='Study title',root=root); enrich_source('P83',src,root=root)
             data=load_intake('P83',root=root)['targets']; wanted=[x['candidate_id'] for x in data['candidates'] if x['label'] in {'Table 1','Equation (9)'}]
             scaffold_from_intake('P83',target_ids=wanted,root=root); extract_structures('P83',src,root=root)
@@ -213,7 +213,7 @@ class IngestionTests(unittest.TestCase):
     def test_source_identity_conflict_blocks_promotion(self):
         sample="Propagation Buckling in Subsea Pipe-in-Pipe Systems\nDOI: 10.1061/(ASCE)EM.1943-7889.0001337\n© 2017 ASCE\nEquation (9) model\nP = k*x (9)\n"
         with tempfile.TemporaryDirectory() as td:
-            root=self._root(td); src=root/'paper.txt'; src.write_text(sample)
+            root=self._root(td); src=root/'paper.txt'; src.write_text(sample, encoding='utf-8')
             ingest_source(src,'P84',title='Propagation Buckling in Subsea Pipe-in-Pipe Systems',doi='10.1016/j.tws.2013.07.003',year=2013,root=root)
             audit=audit_source_identity('P84',src,root=root); self.assertEqual(audit['status'],'CONFLICT'); self.assertEqual(audit['checks']['doi'],'CONFLICT')
             scaffold_from_intake('P84',root=root); gate=promotion_gate('P84',root=root); self.assertFalse(gate['ready']); self.assertIn('source identity conflict',gate['issues'])
@@ -221,7 +221,7 @@ class IngestionTests(unittest.TestCase):
     def test_metadata_repair_requires_reaudit_and_syncs_scaffold(self):
         sample="Correct Title\nDOI: 10.1061/test.correct\n© 2017 Publisher\nTable 1. Values\nCase 1 2 3\n"
         with tempfile.TemporaryDirectory() as td:
-            root=self._root(td); src=root/'paper.txt'; src.write_text(sample)
+            root=self._root(td); src=root/'paper.txt'; src.write_text(sample, encoding='utf-8')
             ingest_source(src,'P85',title='Wrong Title',doi='10.1000/wrong',year=2013,root=root); scaffold_from_intake('P85',root=root)
             self.assertEqual(audit_source_identity('P85',src,root=root)['status'],'CONFLICT')
             out=update_intake_metadata('P85',title='Correct Title',doi='10.1061/test.correct',year=2017,root=root)
