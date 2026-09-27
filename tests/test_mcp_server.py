@@ -132,7 +132,17 @@ class EngiProofMCPTests(unittest.TestCase):
         self.assertEqual(json.loads(reg.contents[0].text)["studies"], STUDIES)
         self.assertEqual(json.loads(graph.contents[0].text)["paper_id"], "P38")
         self.assertTrue(src.contents[0].text.strip())
-        self.assertIn("qualification is not granted", prompt.messages[0].content.text)
+        text = prompt.messages[0].content.text
+        self.assertIn("qualification is not granted", text)
+        self.assertIn("evidence_boundary", text)
+        self.assertIn("does not by itself mean independent physical, experimental or FE", text)
+
+    def test_server_instructions_do_not_overclaim_independence(self):
+        server = _load_server(allow_run=False)
+        text = server.instructions
+        self.assertNotIn("independently checked\nengineering methods", text)
+        self.assertIn("evidence_boundary", text)
+        self.assertIn("not\nindependent physical or FE validation", text)
 
 
 if __name__ == "__main__":

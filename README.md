@@ -130,9 +130,9 @@ Exposed to the agent:
 
 - **Tools:** `list_studies`, `describe_study`, `call_method`, `get_evidence_graph`, `get_comparisons`, `get_discrepancies`, `get_provenance`, `get_contract`
 - **Resources:** `engiproof://registry`, `engiproof://studies/{id}/manifest`, `.../source`, `.../evidence-graph`
-- **Prompt:** `apply_method` — answer a question with a study's methods, staying inside argument ranges and reporting evidence class, status, discrepancies and limitations
+- **Prompt:** `apply_method` — answer a question with a study's methods, staying inside argument ranges and reporting evidence class, status, discrepancies, limitations and any `evidence_boundary`. `INDEPENDENT` is not presented as independent physical or FE validation unless the boundary says so
 
-The server is read-only by default. `run_study` and `verify_study` remain **disabled by default** because the current legacy verification paths may rewrite tracked result artifacts (committed CSV/JSON evidence files). Setting `ENGIPROOF_MCP_ALLOW_RUN=1` is an explicit opt-in to those mutating paths, and remains the only way to expose them until non-mutating verification is implemented.
+The server is read-only by default. `run_study` and `verify_study` remain **disabled by default** because the current verification/test paths may rewrite tracked result artifacts (committed CSV/JSON evidence files). Setting `ENGIPROOF_MCP_ALLOW_RUN=1` is an explicit opt-in to those mutating paths, and remains the only way to expose them until non-mutating verification is implemented.
 
 The MCP adapter never upgrades evidence status and never grants qualification.
 

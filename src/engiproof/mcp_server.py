@@ -8,10 +8,11 @@ contracts and evidence rules stay in the studies themselves.
 Design rules
 ------------
 * Every method call returns the full EngiProof envelope (evidence,
-  evidence_class, evidence_status, limitations). The adapter never strips or
+  evidence_class, evidence_status, limitations, and evidence_boundary when
+  the tool declares one). The adapter never strips or
   upgrades evidence information.
 * Read-only by default. ``run_study`` and ``verify_study`` remain disabled by
-  default because the current legacy verification paths may rewrite tracked
+  default because the current verification/test paths may rewrite tracked
   result artifacts. ``ENGIPROOF_MCP_ALLOW_RUN=1`` is an explicit opt-in to
   those mutating paths until non-mutating verification is implemented.
 * Qualification is never granted by this adapter.
@@ -55,11 +56,13 @@ from .core import (
 
 ALLOW_RUN_ENV = "ENGIPROOF_MCP_ALLOW_RUN"
 
-INSTRUCTIONS = f"""EngiProof {__version__}: source-bounded, independently checked
-engineering methods from published papers (subsea pipelines, pipe-in-pipe,
-buckling, vibration). Start with list_studies, then describe_study for the
+INSTRUCTIONS = f"""EngiProof {__version__}: source-bounded engineering methods from
+published papers (subsea pipelines, pipe-in-pipe, buckling, vibration), each
+with an explicit evidence class and independent checks where available. Start with list_studies, then describe_study for the
 argument ranges of a method, then call_method. Always report the returned
-evidence, evidence_class, evidence_status and limitations with any number.
+evidence, evidence_class, evidence_status, limitations and any evidence_boundary
+with a number. INDEPENDENT means EngiProof computed or checked it itself, not
+independent physical or FE validation unless the evidence_boundary says so.
 CONDITIONAL studies carry open discrepancies (see get_discrepancies). No
 result from this server is an engineering qualification."""
 
@@ -151,7 +154,7 @@ def _register_run_tools() -> None:
     @mcp.tool()
     def verify_study(paper_id: str) -> dict[str, Any]:
         """Run contract, file and unit-test verification for a study.
-        Opt-in only: legacy verification paths may rewrite tracked result artifacts."""
+        Opt-in only: current verification/test paths may rewrite tracked result artifacts."""
         return _verify_study(paper_id)
 
 
@@ -203,8 +206,12 @@ def apply_method(paper_id: str, question: str) -> str:
         "3. If evidence_status is CONDITIONAL, call get_discrepancies and state how the open "
         "discrepancy affects this answer.\n"
         "4. Report every number with its evidence reference, evidence_class and limitations. "
-        "Do not describe PUBLISHED fits as independent validation.\n"
-        "5. State that engineering qualification is not granted by EngiProof."
+        "If the result carries an evidence_boundary, quote it with the number.\n"
+        "5. evidence_class INDEPENDENT means EngiProof performed the calculation or check "
+        "itself. It does not by itself mean independent physical, experimental or FE "
+        "validation; claim that only if the evidence_boundary says so. Do not describe "
+        "PUBLISHED methods or fits as independent validation.\n"
+        "6. State that engineering qualification is not granted by EngiProof."
     )
 
 
