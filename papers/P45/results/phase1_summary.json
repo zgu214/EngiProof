@@ -1,0 +1,675 @@
+{
+  "schema_version": "engiproof.p45.phase1/1.0",
+  "paper_id": "P45",
+  "evidence_boundary": "Source-bounded checks of the published tables, formulations and figure statements. The nonlinear dynamic riser responses of Figures 4-9 and 11 are NOT reproduced: the source does not give theta/beta/lambda, the iteration tolerance, structural damping, the discretisation of cases 1-6, or the float properties and tension unit of the 1200 m example.",
+  "table2_geometry_check": {
+    "rows": [
+      {
+        "depth_m": 152.4,
+        "riser_length_printed_m": 158.5,
+        "riser_length_computed_m": 158.496,
+        "static_offset_printed_m": 4.57,
+        "static_offset_computed_m": 4.572,
+        "within_print_rounding": true
+      },
+      {
+        "depth_m": 457.2,
+        "riser_length_printed_m": 463.3,
+        "riser_length_computed_m": 463.296,
+        "static_offset_printed_m": 13.72,
+        "static_offset_computed_m": 13.716,
+        "within_print_rounding": true
+      },
+      {
+        "depth_m": 914.4,
+        "riser_length_printed_m": 920.5,
+        "riser_length_computed_m": 920.496,
+        "static_offset_printed_m": 27.43,
+        "static_offset_computed_m": 27.432,
+        "within_print_rounding": true
+      }
+    ],
+    "all_within_print_rounding": true,
+    "basis": "riser from ball joint (9.144 m above bottom) to head (15.24 m above free surface); offset/depth = 0.03"
+  },
+  "imperial_origin_check": {
+    "table2_and_axes": [
+      {
+        "quantity": "free surface to head",
+        "converted": 50.0,
+        "unit": "ft",
+        "round_value": 50,
+        "relative_deviation": 0.0
+      },
+      {
+        "quantity": "bottom to ball joint",
+        "converted": 30.0,
+        "unit": "ft",
+        "round_value": 30,
+        "relative_deviation": 0.0
+      },
+      {
+        "quantity": "riser OD",
+        "converted": 16.0,
+        "unit": "in",
+        "round_value": 16,
+        "relative_deviation": 0.0
+      },
+      {
+        "quantity": "riser ID",
+        "converted": 14.748031,
+        "unit": "in",
+        "round_value": 14.75,
+        "relative_deviation": 0.00013346
+      },
+      {
+        "quantity": "choke/kill OD",
+        "converted": 4.0,
+        "unit": "in",
+        "round_value": 4,
+        "relative_deviation": 0.0
+      },
+      {
+        "quantity": "choke/kill ID",
+        "converted": 2.700787,
+        "unit": "in",
+        "round_value": 2.7,
+        "relative_deviation": 0.00029163
+      },
+      {
+        "quantity": "buoyant material OD",
+        "converted": 24.0,
+        "unit": "in",
+        "round_value": 24,
+        "relative_deviation": 0.0
+      },
+      {
+        "quantity": "E",
+        "converted": 30.022812,
+        "unit": "Mpsi",
+        "round_value": 30,
+        "relative_deviation": 0.00076039
+      },
+      {
+        "quantity": "wave height",
+        "converted": 20.0,
+        "unit": "ft",
+        "round_value": 20,
+        "relative_deviation": 0.0
+      },
+      {
+        "quantity": "head displacement 'amplitude'",
+        "converted": 4.002625,
+        "unit": "ft",
+        "round_value": 4,
+        "relative_deviation": 0.00065617
+      },
+      {
+        "quantity": "current at surface",
+        "converted": 0.497624,
+        "unit": "knot",
+        "round_value": 0.5,
+        "relative_deviation": 0.00475162
+      },
+      {
+        "quantity": "water depth 1",
+        "converted": 500.0,
+        "unit": "ft",
+        "round_value": 500,
+        "relative_deviation": 0.0
+      },
+      {
+        "quantity": "water depth 2",
+        "converted": 1500.0,
+        "unit": "ft",
+        "round_value": 1500,
+        "relative_deviation": 0.0
+      },
+      {
+        "quantity": "water depth 3",
+        "converted": 3000.0,
+        "unit": "ft",
+        "round_value": 3000,
+        "relative_deviation": 0.0
+      },
+      {
+        "quantity": "bending-stress axis 6.90 dN/mm²",
+        "converted": 10.007604,
+        "unit": "ksi",
+        "round_value": 10,
+        "relative_deviation": 0.00076039
+      }
+    ],
+    "max_relative_deviation": 0.00475162,
+    "table1_tension_in_kips": [
+      {
+        "case": 1,
+        "tension_printed": "53.400 dN",
+        "kips": 120.048
+      },
+      {
+        "case": 2,
+        "tension_printed": "89.000 dN",
+        "kips": 200.08
+      },
+      {
+        "case": 3,
+        "tension_printed": "1.290.500 dN",
+        "kips": 2901.1594
+      },
+      {
+        "case": 4,
+        "tension_printed": "2.225.000 dN",
+        "kips": 5001.999
+      },
+      {
+        "case": 5,
+        "tension_printed": "1.290.500 dN",
+        "kips": 2901.1594
+      },
+      {
+        "case": 6,
+        "tension_printed": "2.225.000 dN",
+        "kips": 5001.999
+      }
+    ]
+  },
+  "P45_D001_buoyancy_probe": {
+    "added_weight_in_air_dN": 350,
+    "change_in_water_weight_dN": 338,
+    "implied_added_buoyancy_dN": 12.0,
+    "implied_displaced_volume_m3": 0.01216361,
+    "implied_density_of_added_material_kg_per_m3": 29341.6667,
+    "geometric_buoyant_volume_m3": 2.22399993,
+    "expected_change_in_water_weight_dN": -1844.0849,
+    "assumption": "Buoyant material fills the annulus from the 40.64 cm riser to the 60.96 cm OD, less the two 10.16 cm choke/kill lines (Figure 3 cross-section), over the 15.24 m element; g = 9.80665 m/s²."
+  },
+  "P45_D002_tension_probe": {
+    "riser_steel_area_m2": 0.0195059917,
+    "rows": [
+      {
+        "case": 1,
+        "tension_printed": "53.400 dN",
+        "head_axial_stress_MPa_riser_pipe": 27.3762,
+        "tension_over_tabulated_submerged_weight": 1.5833,
+        "ten_times_smaller_stress_MPa": 2.7376
+      },
+      {
+        "case": 2,
+        "tension_printed": "89.000 dN",
+        "head_axial_stress_MPa_riser_pipe": 45.627,
+        "tension_over_tabulated_submerged_weight": 2.6388,
+        "ten_times_smaller_stress_MPa": 4.5627
+      },
+      {
+        "case": 3,
+        "tension_printed": "1.290.500 dN",
+        "head_axial_stress_MPa_riser_pipe": 661.5916,
+        "tension_over_tabulated_submerged_weight": 13.0898,
+        "ten_times_smaller_stress_MPa": 66.1592
+      },
+      {
+        "case": 4,
+        "tension_printed": "2.225.000 dN",
+        "head_axial_stress_MPa_riser_pipe": 1140.6751,
+        "tension_over_tabulated_submerged_weight": 22.5687,
+        "ten_times_smaller_stress_MPa": 114.0675
+      },
+      {
+        "case": 5,
+        "tension_printed": "1.290.500 dN",
+        "head_axial_stress_MPa_riser_pipe": 661.5916,
+        "tension_over_tabulated_submerged_weight": 5.9664,
+        "ten_times_smaller_stress_MPa": 66.1592
+      },
+      {
+        "case": 6,
+        "tension_printed": "2.225.000 dN",
+        "head_axial_stress_MPa_riser_pipe": 1140.6751,
+        "tension_over_tabulated_submerged_weight": 10.287,
+        "ten_times_smaller_stress_MPa": 114.0675
+      }
+    ],
+    "note": "Stress uses the 40.64/37.46 cm riser pipe only (choke/kill lines do not contribute to stiffness per Table 2). Submerged weight uses the tabulated w_p over the riser length, without internal mud."
+  },
+  "P45_D003_tension_unit_probe": {
+    "mass_per_m_kg": {
+      "steel": 241.274316,
+      "mud": 249.285377,
+      "displaced_water": 196.349541,
+      "net": 294.210152
+    },
+    "effective_weight_MN_without_floats": 3.46225918,
+    "ideal_float_net_buoyancy_kg_per_m": 86.393798,
+    "effective_weight_MN_with_ideal_floats": 2.4455787,
+    "candidate_units": [
+      {
+        "unit": "N",
+        "mean_tension_MN": 0.000298,
+        "min_tension_MN": 0.0002384,
+        "mean_over_weight_without_floats": 8.6e-05,
+        "mean_over_weight_with_ideal_floats": 0.000122,
+        "min_over_weight_with_ideal_floats": 9.7e-05
+      },
+      {
+        "unit": "dN",
+        "mean_tension_MN": 0.00298,
+        "min_tension_MN": 0.002384,
+        "mean_over_weight_without_floats": 0.000861,
+        "mean_over_weight_with_ideal_floats": 0.001219,
+        "min_over_weight_with_ideal_floats": 0.000975
+      },
+      {
+        "unit": "kN",
+        "mean_tension_MN": 0.298,
+        "min_tension_MN": 0.2384,
+        "mean_over_weight_without_floats": 0.086071,
+        "mean_over_weight_with_ideal_floats": 0.121853,
+        "min_over_weight_with_ideal_floats": 0.097482
+      },
+      {
+        "unit": "tonne-force",
+        "mean_tension_MN": 2.9223817,
+        "min_tension_MN": 2.33790536,
+        "mean_over_weight_without_floats": 0.844068,
+        "mean_over_weight_with_ideal_floats": 1.194965,
+        "min_over_weight_with_ideal_floats": 0.955972
+      },
+      {
+        "unit": "10 kN",
+        "mean_tension_MN": 2.98,
+        "min_tension_MN": 2.384,
+        "mean_over_weight_without_floats": 0.86071,
+        "mean_over_weight_with_ideal_floats": 1.218525,
+        "min_over_weight_with_ideal_floats": 0.97482
+      }
+    ],
+    "assumptions": "Mud-filled riser (text); 'ideal floats' = massless 60 cm floats over the full length (an upper bound on float benefit; coverage and mass are not given); g = 9.80665 m/s²."
+  },
+  "P45_D005_head_amplitude_probe": {
+    "rows": [
+      {
+        "figure": "4(a)",
+        "case": 1,
+        "static_offset_m": 4.57,
+        "measured_min_m": 4.069,
+        "measured_max_m": 5.322,
+        "uncertainty_m": 0.059,
+        "measured_centre_m": 4.6955,
+        "centre_minus_offset_m": 0.1255,
+        "measured_width_m": 1.253,
+        "width_if_single_amplitude_m": 2.44,
+        "width_if_peak_to_peak_m": 1.22,
+        "consistent_with_peak_to_peak": true,
+        "consistent_with_single_amplitude": false
+      },
+      {
+        "figure": "5(a)",
+        "case": 2,
+        "static_offset_m": 4.57,
+        "measured_min_m": 3.984,
+        "measured_max_m": 5.239,
+        "uncertainty_m": 0.054,
+        "measured_centre_m": 4.6115,
+        "centre_minus_offset_m": 0.0415,
+        "measured_width_m": 1.255,
+        "width_if_single_amplitude_m": 2.44,
+        "width_if_peak_to_peak_m": 1.22,
+        "consistent_with_peak_to_peak": true,
+        "consistent_with_single_amplitude": false
+      },
+      {
+        "figure": "6(a)",
+        "case": 3,
+        "static_offset_m": 13.72,
+        "measured_min_m": 13.033,
+        "measured_max_m": 14.322,
+        "uncertainty_m": 0.13,
+        "measured_centre_m": 13.6775,
+        "centre_minus_offset_m": -0.0425,
+        "measured_width_m": 1.289,
+        "width_if_single_amplitude_m": 2.44,
+        "width_if_peak_to_peak_m": 1.22,
+        "consistent_with_peak_to_peak": true,
+        "consistent_with_single_amplitude": false
+      },
+      {
+        "figure": "7(a)",
+        "case": 4,
+        "static_offset_m": 13.72,
+        "measured_min_m": 12.845,
+        "measured_max_m": 14.19,
+        "uncertainty_m": 0.15,
+        "measured_centre_m": 13.5175,
+        "centre_minus_offset_m": -0.2025,
+        "measured_width_m": 1.345,
+        "width_if_single_amplitude_m": 2.44,
+        "width_if_peak_to_peak_m": 1.22,
+        "consistent_with_peak_to_peak": true,
+        "consistent_with_single_amplitude": false
+      },
+      {
+        "figure": "8(a)",
+        "case": 5,
+        "static_offset_m": 27.43,
+        "measured_min_m": 26.7,
+        "measured_max_m": 28.243,
+        "uncertainty_m": 0.304,
+        "measured_centre_m": 27.4715,
+        "centre_minus_offset_m": 0.0415,
+        "measured_width_m": 1.543,
+        "width_if_single_amplitude_m": 2.44,
+        "width_if_peak_to_peak_m": 1.22,
+        "consistent_with_peak_to_peak": true,
+        "consistent_with_single_amplitude": false
+      },
+      {
+        "figure": "9(a)",
+        "case": 6,
+        "static_offset_m": 27.43,
+        "measured_min_m": 26.882,
+        "measured_max_m": 28.251,
+        "uncertainty_m": 0.328,
+        "measured_centre_m": 27.5665,
+        "centre_minus_offset_m": 0.1365,
+        "measured_width_m": 1.369,
+        "width_if_single_amplitude_m": 2.44,
+        "width_if_peak_to_peak_m": 1.22,
+        "consistent_with_peak_to_peak": true,
+        "consistent_with_single_amplitude": false
+      }
+    ],
+    "all_peak_to_peak": true,
+    "any_single_amplitude": false,
+    "acceptance": "width within 2 x (tick residual + line width) + 0.1 m reading allowance"
+  },
+  "P45_D006_figure11_probe": {
+    "attribution_as_recorded": {
+      "max_envelope_linear_vs_nonlinear_percent": 3.658537,
+      "min_envelope_linear_vs_nonlinear_percent": -28.503185,
+      "peak_abs_linear_dN_per_mm2": 27.2,
+      "peak_abs_nonlinear_dN_per_mm2": 31.4,
+      "peak_abs_underestimate_relative_to_nonlinear_percent": 13.375796,
+      "peak_abs_nonlinear_excess_relative_to_linear_percent": 15.441176,
+      "range_underestimate_relative_to_nonlinear_percent": 13.861901
+    },
+    "alternative_max_attribution": {
+      "max_envelope_linear_vs_nonlinear_percent": -3.529412,
+      "min_envelope_linear_vs_nonlinear_percent": -28.503185,
+      "peak_abs_linear_dN_per_mm2": 26.24,
+      "peak_abs_nonlinear_dN_per_mm2": 31.4,
+      "peak_abs_underestimate_relative_to_nonlinear_percent": 16.433121,
+      "peak_abs_nonlinear_excess_relative_to_linear_percent": 19.664634,
+      "range_underestimate_relative_to_nonlinear_percent": 16.911263
+    },
+    "attribution_confidence": {
+      "minimum_envelope": "HIGH",
+      "maximum_envelope": "MEDIUM"
+    },
+    "claim": "about 15% underestimate near the riser head",
+    "unit_note": "1 dN/mm² = 10 MPa; the peak |stress| of 31.40 dN/mm² is 314 MPa"
+  },
+  "airy_depth_regime": {
+    "deep_water_wavelength_m": 126.42292264,
+    "rows": [
+      {
+        "depth_m": 152.4,
+        "wavelength_m": 126.42285596,
+        "kh": 7.57424307,
+        "one_minus_tanh_kh": 5.273827741181236e-07,
+        "depth_over_wavelength": 1.20547822
+      },
+      {
+        "depth_m": 457.2,
+        "wavelength_m": 126.42292264,
+        "kh": 22.72271723,
+        "one_minus_tanh_kh": 0.0,
+        "depth_over_wavelength": 3.61643277
+      },
+      {
+        "depth_m": 914.4,
+        "wavelength_m": 126.42292264,
+        "kh": 45.44543446,
+        "one_minus_tanh_kh": 0.0,
+        "depth_over_wavelength": 7.23286554
+      },
+      {
+        "depth_m": 1200.0,
+        "wavelength_m": 126.42292264,
+        "kh": 59.63967777,
+        "one_minus_tanh_kh": 0.0,
+        "depth_over_wavelength": 9.49194952
+      }
+    ],
+    "surface_orbital_velocity_amplitude_m_per_s": {
+      "cases_H_6.096m": 2.127905424,
+      "example_1200m_H_6m": 2.0943951024
+    },
+    "infinite_depth_error_max": 5.273827741181236e-07
+  },
+  "appendix1_checks": {
+    "k3_equals_k1_plus_k2_max_relative_residual": 3.579452249103325e-14,
+    "continuity_at_zero_axial_force": [
+      {
+        "delta": 0.0,
+        "branch": "compression",
+        "zero_branch_k1": 4.0,
+        "k1_difference_at_alphaL_0.2_0.1_0.05": [
+          0.005336129356905861,
+          0.0013335079212333234,
+          0.00033334368803172865
+        ],
+        "convergence_ratios": [
+          4.001573048003065,
+          4.000399494909279
+        ]
+      },
+      {
+        "delta": 0.0,
+        "branch": "tension",
+        "zero_branch_k1": 4.0,
+        "k1_difference_at_alphaL_0.2_0.1_0.05": [
+          0.005330542053305187,
+          0.001333158675738133,
+          0.000333323063198776
+        ],
+        "convergence_ratios": [
+          3.998430307145407,
+          3.9995992564820173
+        ]
+      },
+      {
+        "delta": 0.05,
+        "branch": "compression",
+        "zero_branch_k1": 2.875,
+        "k1_difference_at_alphaL_0.2_0.1_0.05": [
+          0.004117226460790047,
+          0.0010288108938323326,
+          0.0002571715241388439
+        ],
+        "convergence_ratios": [
+          4.0019273565944955,
+          4.000485268644632
+        ]
+      },
+      {
+        "delta": 0.05,
+        "branch": "tension",
+        "zero_branch_k1": 2.875,
+        "k1_difference_at_alphaL_0.2_0.1_0.05": [
+          0.00411194495929168,
+          0.0010284807824620934,
+          0.0002571514320988122
+        ],
+        "convergence_ratios": [
+          3.998076609120534,
+          3.9995141153516602
+        ]
+      }
+    ],
+    "euler_pinned_pinned_x_pi": {
+      "k1": 2.46740110027234,
+      "k2": 2.46740110027234,
+      "k1_minus_k2": 0.0
+    },
+    "fixed_fixed_approach_x_2pi_minus_1e-4": {
+      "k1": -62830.8529,
+      "note": "stiffness grows without bound as the denominator -x sin x + 2(1 - cos x) -> 0 at x = 2 pi"
+    },
+    "independent_fe_comparison": [
+      {
+        "F_over_EI_per_L2": -9.0,
+        "k1_published": 2.624199226760741,
+        "k1_fe": 2.6241991527076607,
+        "k2_published": 2.4114546938527837,
+        "k2_fe": 2.4114546760078834,
+        "k3_over_L_published": 5.035653920613524,
+        "fe_transverse_reaction": 5.035654016304761,
+        "max_relative_difference": 2.8219305667521553e-08
+      },
+      {
+        "F_over_EI_per_L2": -2.0,
+        "k1_published": 3.726038196945818,
+        "k1_fe": 3.726038256416814,
+        "k2_published": 2.0710396043046395,
+        "k2_fe": 2.0710396051554083,
+        "k3_over_L_published": 5.797077801250458,
+        "fe_transverse_reaction": 5.797077788738534,
+        "max_relative_difference": 1.5960919610656112e-08
+      },
+      {
+        "F_over_EI_per_L2": 3.0,
+        "k1_published": 4.3852197407342945,
+        "k1_fe": 4.385219599922948,
+        "k2_published": 1.908558524949635,
+        "k2_fe": 1.9085585245599939,
+        "k3_over_L_published": 6.2937782656839305,
+        "fe_transverse_reaction": 6.293778245104477,
+        "max_relative_difference": 3.2110442556581653e-08
+      },
+      {
+        "F_over_EI_per_L2": 25.0,
+        "k1_published": 6.608450864547658,
+        "k1_fe": 6.608450796316902,
+        "k2_published": 1.5406143154846141,
+        "k2_fe": 1.5406143088822128,
+        "k3_over_L_published": 8.149065180032272,
+        "fe_transverse_reaction": 8.149065315257758,
+        "max_relative_difference": 1.6593987522799083e-08
+      }
+    ],
+    "rigid_body_nullity_of_K": 6,
+    "rigid_body_residual": 8.881784197001252e-16,
+    "rigid_body_nullity_if_k3_perturbed_1pct": 4,
+    "K_symmetric": true
+  },
+  "eq7_checks": {
+    "linear_acceleration_reduction_max_deviation": 0.0,
+    "average_acceleration_reduction_max_deviation": 0.0,
+    "spectral_radius_dt_over_T_grid": [
+      0.01,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      0.55,
+      0.6,
+      1.0,
+      2.0,
+      5.0,
+      10.0,
+      100.0
+    ],
+    "spectral_radius_by_theta": {
+      "1.0": [
+        0.9999999999999998,
+        0.9999999999999994,
+        1.0000000000000002,
+        1.0000000000000007,
+        1.0000000000000007,
+        0.9999999999999997,
+        1.000000000000001,
+        1.5899492967947417,
+        2.8585933217612665,
+        3.494182193373634,
+        3.692959228035025,
+        3.722239459196549,
+        3.7319525662979003
+      ],
+      "1.2": [
+        0.9999995650043259,
+        0.9997476347133709,
+        0.9967179785633266,
+        0.9714522799084976,
+        0.9259389182248816,
+        0.8306774265235215,
+        0.8106219633323334,
+        0.79237004013084,
+        1.4563866348423593,
+        1.8654311257373855,
+        1.9814441579102988,
+        1.9981829600289054,
+        2.0037170376093836
+      ],
+      "1.37": [
+        0.9999988605221145,
+        0.9993683717272652,
+        0.9925874129917754,
+        0.946914834311394,
+        0.8789730931053497,
+        0.7591924226565581,
+        0.736292868274773,
+        0.7159886884046263,
+        0.6173447090355398,
+        0.8270055044430765,
+        0.9543391064222791,
+        0.9706500458846637,
+        0.9759644741950816
+      ],
+      "1.4": [
+        0.9999986982911997,
+        0.9992847573512956,
+        0.9917584264447197,
+        0.9428015118314279,
+        0.8721753468349555,
+        0.7511691195304842,
+        0.7284456649236581,
+        0.7084033259703967,
+        0.612546611890082,
+        0.5474026922705091,
+        0.7492986195226761,
+        0.7713942948090021,
+        0.7783724372443409
+      ],
+      "2.0": [
+        0.999992338281508,
+        0.9965884242091374,
+        0.9722436496276092,
+        0.8827030257220578,
+        0.8044498602677176,
+        0.7193324643030986,
+        0.7073916155889792,
+        0.6976583354559699,
+        0.6598643878552017,
+        0.6410459897062081,
+        0.6354032345374713,
+        0.6345826800488857,
+        0.6343110877527832
+      ]
+    },
+    "theta_1_critical_dt_over_T": 0.5513288954217921,
+    "theta_1.37_unconditionally_stable_on_grid": true,
+    "free_vibration_one_period_error_theta_1.4_dt_T_over_200": 1.677117552534302e-05,
+    "reconstruction_note": "The t+tau -> t+dt step is not printed in the source; standard Wilson-theta/Newmark relations are used.",
+    "example_1200m_dt_over_excitation_period": 0.0111111111
+  },
+  "appendix2_checks": {
+    "C1_plus_C3": 0.0,
+    "hermite_translation_partition": 2.220446049250313e-16,
+    "hermite_shape_match": 3.0531133177191805e-16,
+    "Bi_equals_transverse_projector_max_deviation": 2.220446049250313e-16,
+    "dimension_note": "S(i,q) is printed 3x6 (translations only) and Q(i,q) 12x3, so M_ma as written maps the 6 translational accelerations to 12 element forces; rotational accelerations carry no added mass."
+  },
+  "qualification": "NOT_GRANTED"
+}

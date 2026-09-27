@@ -1,0 +1,49 @@
+{
+  "schema_version": "engiproof.p45.table1/1.0",
+  "locator": "p. 218, Table 1",
+  "number_format": "Printed with '.' as thousands separator (e.g. '53.400 dN' = 53 400 dN). 1 dN = 10 N.",
+  "cases": [
+    {
+      "case": 1,
+      "depth_m": 152.4,
+      "tension_printed": "53.400 dN",
+      "tension_dN": 53400
+    },
+    {
+      "case": 2,
+      "depth_m": 152.4,
+      "tension_printed": "89.000 dN",
+      "tension_dN": 89000
+    },
+    {
+      "case": 3,
+      "depth_m": 457.2,
+      "tension_printed": "1.290.500 dN",
+      "tension_dN": 1290500
+    },
+    {
+      "case": 4,
+      "depth_m": 457.2,
+      "tension_printed": "2.225.000 dN",
+      "tension_dN": 2225000
+    },
+    {
+      "case": 5,
+      "depth_m": 914.4,
+      "tension_printed": "1.290.500 dN",
+      "tension_dN": 1290500
+    },
+    {
+      "case": 6,
+      "depth_m": 914.4,
+      "tension_printed": "2.225.000 dN",
+      "tension_dN": 2225000
+    }
+  ],
+  "text_statements": [
+    "p. 220: results of the RISER program are compared with results from eight other programs for six riser examples (reference 2: API Bulletin 2J, 1977).",
+    "p. 220: all examples use a 40.64 cm (16 in) riser with a ball joint at the base and an expansion joint at the head.",
+    "p. 220: 'Only the riser of 914.40 m has buoyant material attached.'",
+    "p. 220: the tension at the head is assumed constant during the dynamic calculation; choke and kill lines are 'broadside' to waves and current and do not contribute to riser stiffness; the problem is two dimensional."
+  ]
+}

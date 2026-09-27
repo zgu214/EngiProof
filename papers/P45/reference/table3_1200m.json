@@ -1,0 +1,13 @@
+{
+  "schema_version": "engiproof.p45.table3/1.0",
+  "locator": "p. 221, Table 3",
+  "D_cm": 50,
+  "e_wall_cm": 2,
+  "E_dN_per_m2": 21000000000.0,
+  "rho_riser_kg_per_m3": 8000,
+  "rho_mud_kg_per_m3": 1500,
+  "rho_water_kg_per_m3": 1000,
+  "CD": 0.7,
+  "Cm": 1,
+  "De_effective_current_wave_cm": 60
+}

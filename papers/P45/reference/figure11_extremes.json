@@ -1,0 +1,32 @@
+{
+  "schema_version": "engiproof.p45.figure11/1.0",
+  "locator": "p. 222, Figure 11 'Envelopes of minimum and maximum of normal stresses due to bending moments'",
+  "unit": "dN/mm² (1 dN/mm² = 10 MPa)",
+  "legend": {
+    "dashed": "'Linear structure' assumption",
+    "solid": "'Nonlinear structure' assumption"
+  },
+  "printed_extreme_labels": [
+    27.2,
+    26.24,
+    -22.45,
+    -31.4
+  ],
+  "extremes_height_m": "near 1170 m (labelled height of the envelope spikes); the riser head is at 1200 m",
+  "attribution": {
+    "linear": {
+      "max": 27.2,
+      "min": -22.45
+    },
+    "nonlinear": {
+      "max": 26.24,
+      "min": -31.4
+    },
+    "basis": "Visual line-style reading of the 300 dpi scan. Right side (minimum envelope): the solid spike reaches the -31.40 label and the dashed spike ends at the -22.45 label - clear. Left side (maximum envelope): the dashed spike extends furthest, to the +27.20 label, and +26.24 sits at the solid spike - less certain because the two spikes overlap.",
+    "confidence": {
+      "minimum_envelope": "HIGH",
+      "maximum_envelope": "MEDIUM"
+    }
+  },
+  "text_claim": "p. 222: 'As can be seen in Fig. 11 the linear-structure analysis underestimates the stresses near the riser head by about 15% as compared to the nonlinear structure analysis.'"
+}

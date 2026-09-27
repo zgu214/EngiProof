@@ -1,0 +1,59 @@
+{
+  "schema_version": "engiproof.p45.table2/1.0",
+  "locator": "p. 218, Table 2 (and footnotes)",
+  "A_depth_independent": {
+    "1_free_surface_to_riser_head_m": 15.24,
+    "2_sea_bottom_to_ball_joint_m": 9.144,
+    "3_riser_OD_cm": 40.64,
+    "4_riser_ID_cm": 37.46,
+    "5_choke_OD_cm": 10.16,
+    "6_choke_ID_cm": 6.86,
+    "7_kill_OD_cm": 10.16,
+    "8_kill_ID_cm": 6.86,
+    "9_buoyant_material_OD_cm": 60.96,
+    "10_E_dN_per_m2": 20700000000.0,
+    "11_water_density_kg_per_m3": 1006,
+    "12_mud_density_kg_per_m3": 1411.2,
+    "13_CD": 0.7,
+    "14_Cm_printed": "C_m = C_M - 1 = 0.5",
+    "15_effective_diameter_current_wave_cm": 66.94,
+    "16_element_weight_per_15.24m_dN": {
+      "wa_in_air": {
+        "unbuoyed": 3836,
+        "buoyed": 4186
+      },
+      "wp_in_water": {
+        "unbuoyed": 3243,
+        "buoyed": 3581
+      }
+    },
+    "17_current_profile": "The velocity of the current varies linearly between 0.256 m/s at the free surface level and zero at the ball joint",
+    "18_wave_height_m": 6.096,
+    "19_wave_period_s": 9,
+    "20_amplitude_of_prescribed_head_displacement_m": 1.22,
+    "21_phase_angle_of_prescribed_displacement_deg": 15
+  },
+  "B_depth_dependent": {
+    "water_depth_m": [
+      152.4,
+      457.2,
+      914.4
+    ],
+    "riser_length_m": [
+      158.5,
+      463.3,
+      920.5
+    ],
+    "static_offset_m": [
+      4.57,
+      13.72,
+      27.43
+    ]
+  },
+  "footnotes": {
+    "*": "Both coke [sic] and kill lines have no effect on the stiffness of the riser",
+    "†": "Note that the wave model used in our RISER program is the Airy wave for infinite depth",
+    "‡": "Phase angle between the crest of the prescribed displacement and the crest of the wave"
+  },
+  "related_text": "p. 220: '...by applying a wave of 6.096 m (20 ft) of amplitude and a period of 9 s' (Table 2 item 18 calls the same value 'Wave height'); 'The prescribed horizontal displacement at the head of the riser varies sinusoidally with the same period as the wave.'"
+}
