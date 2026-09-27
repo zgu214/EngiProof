@@ -1,5 +1,7 @@
 # EngiProof Paper A — Readiness Checkpoint
 
+> **Superseded for the post-P45 decision (27 September 2026):** see `PAPER_A_READINESS_REVIEW.md`, `CLAIM_EVIDENCE_MATRIX.md`, `PAPER_A_GAPS.md` and `PAPER_A_OUTLINE.md`. Result: decision gate B — runtime/method work, no P46. This file is kept as the pre-P45 checkpoint.
+
 **Status:** Pre-submission engineering-evidence review  
 **Framework:** EngiProof v0.2.0-dev8  
 **Primary repository state:** P44 frozen, P45 next  
