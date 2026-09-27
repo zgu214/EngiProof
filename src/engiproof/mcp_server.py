@@ -11,10 +11,11 @@ Design rules
   evidence_class, evidence_status, limitations, and evidence_boundary when
   the tool declares one). The adapter never strips or
   upgrades evidence information.
-* Read-only by default. ``run_study`` and ``verify_study`` remain disabled by
-  default because the current verification/test paths may rewrite tracked
-  result artifacts. ``ENGIPROOF_MCP_ALLOW_RUN=1`` is an explicit opt-in to
-  those mutating paths until non-mutating verification is implemented.
+* Read-only by default. ``run_study`` and ``verify_study`` recompute inside a
+  disposable sandbox and compare against the frozen evidence, so they no longer
+  mutate the repository. They are still registered only with
+  ``ENGIPROOF_MCP_ALLOW_RUN=1`` until exposing them by default is decided.
+* Regeneration (rewriting committed evidence) is never exposed through MCP.
 * Qualification is never granted by this adapter.
 
 Start (stdio transport)::
@@ -148,13 +149,14 @@ def get_contract(name: str | None = None) -> dict[str, Any]:
 def _register_run_tools() -> None:
     @mcp.tool()
     def run_study(paper_id: str) -> dict[str, Any]:
-        """Execute a study's runner. Opt-in only: may rewrite tracked result artifacts."""
+        """Recompute a study in an isolated sandbox and compare with its frozen evidence.
+        Non-mutating: committed result artifacts are never written."""
         return _run_study(paper_id)
 
     @mcp.tool()
     def verify_study(paper_id: str) -> dict[str, Any]:
-        """Run contract, file and unit-test verification for a study.
-        Opt-in only: current verification/test paths may rewrite tracked result artifacts."""
+        """Contract, file, frozen-evidence comparison and unit-test verification for a study.
+        Non-mutating: runs inside a disposable sandbox."""
         return _verify_study(paper_id)
 
 

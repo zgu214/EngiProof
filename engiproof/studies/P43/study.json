@@ -6,6 +6,36 @@
   "title": "Natural Frequencies of Marine Drilling Risers",
   "year": 1976,
   "evidence_status": "CONDITIONAL",
+  "verification_tolerance": {
+    "purpose": "cross-platform recomputation equivalence",
+    "rel": 1e-06,
+    "abs": 1e-05,
+    "statement": "Recomputation-equivalence tolerance only. It decides whether a regenerated P43 artifact is the same evidence as the frozen artifact across Python/NumPy/BLAS builds. It is NOT an engineering acceptance or validation tolerance and does not relax any comparison with the published source.",
+    "rationale": "The independent Hermite-FE eigen-solution (numpy.linalg cholesky/eigh) differs across NumPy/BLAS builds. Measured against the frozen evidence under Python 3.10-3.13 with NumPy 2.2.6-2.5.3: eigenvalue changes <= 3.8e-8 absolute; largest change in any percentage column 1.2e-6 percentage points; no text, status or structure change (docs/MUTATION_INVENTORY_v0.2.0.md).",
+    "rounding_guards": [
+      {
+        "field": "independent_FE_lambda",
+        "decimals": 3,
+        "artifacts": [
+          "papers/P43/results/table1_full_matrix_comparison.csv",
+          "papers/P43/results/table1_alpha50_beta100_comparison.csv",
+          "papers/P43/results/phase1_eigen_benchmark_summary.json",
+          "papers/P43/results/phase2_full_matrix_summary.json"
+        ],
+        "rule": "Every recomputed eigenvalue compared with published Table 1 must keep the same 3-decimal rounded value (Table 1 printed precision)."
+      },
+      {
+        "field": "published_lambda",
+        "decimals": 3,
+        "artifacts": [
+          "papers/P43/results/table1_full_matrix_comparison.csv",
+          "papers/P43/results/table1_alpha50_beta100_comparison.csv",
+          "papers/P43/results/phase1_eigen_benchmark_summary.json"
+        ],
+        "rule": "Published Table 1 eigenvalues must keep the same 3-decimal value."
+      }
+    ]
+  },
   "category": "MARINE_RISER_NATURAL_FREQUENCY",
   "source": {
     "canonical_pdf": "p43-dareing1976.pdf",

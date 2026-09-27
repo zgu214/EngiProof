@@ -15,6 +15,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: python -m pip install --upgrade pip
       - run: pip install -e .[mcp]
+      - name: Snapshot tracked files
+        run: git ls-files -z | xargs -0 sha256sum > "$RUNNER_TEMP/tracked.sha256"
       - run: engiproof doctor
       - run: engiproof verify-all
       - run: python -m unittest discover -s tests -v
+      - name: Verification and tests left tracked files unchanged
+        run: sha256sum --quiet -c "$RUNNER_TEMP/tracked.sha256"

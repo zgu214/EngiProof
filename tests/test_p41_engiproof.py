@@ -7,6 +7,8 @@ import unittest
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/"src"))
+from engiproof.isolation import run_runner_for_test
 
 def _load(rel,name):
     p=ROOT/rel
@@ -50,9 +52,9 @@ class P41EngiProofTests(unittest.TestCase):
         self.assertEqual(gate["assessments"][0]["category"],"PUBLISHED_REFERENCE_MISMATCH")
 
     def test_runner(self):
-        p=subprocess.run([sys.executable,str(ROOT/"papers/P41/run_calculation.py")],cwd=ROOT,capture_output=True,text=True)
+        p,SB=run_runner_for_test(self,ROOT,"papers/P41/run_calculation.py")
         self.assertEqual(p.returncode,0,p.stderr)
-        out=json.loads((ROOT/"papers/P41/results/engiproof_verification.json").read_text(encoding="utf-8"))
+        out=json.loads((SB/"papers/P41/results/engiproof_verification.json").read_text(encoding="utf-8"))
         self.assertEqual(out["status"],"CONDITIONAL")
         self.assertTrue(out["checks"]["eq8_total_matches_fS"])
 

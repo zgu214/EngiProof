@@ -1,6 +1,8 @@
 import importlib.util, json, subprocess, sys, unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/"src"))
+from engiproof.isolation import run_runner_for_test
 spec=importlib.util.spec_from_file_location("p42_api",ROOT/"papers/P42/tool_api.py")
 api=importlib.util.module_from_spec(spec); spec.loader.exec_module(api)
 
@@ -25,9 +27,9 @@ class P42Phase1Tests(unittest.TestCase):
         self.assertAlmostEqual(c["contact_stiffness_N_per_mm3"],2000.0)
 
     def test_runner(self):
-        p=subprocess.run([sys.executable,str(ROOT/"papers/P42/run_calculation.py")],cwd=ROOT,capture_output=True,text=True)
+        p,SB=run_runner_for_test(self,ROOT,"papers/P42/run_calculation.py")
         self.assertEqual(p.returncode,0,p.stderr)
-        v=json.loads((ROOT/"papers/P42/results/engiproof_verification.json").read_text())
+        v=json.loads((SB/"papers/P42/results/engiproof_verification.json").read_text())
         self.assertEqual(v["evidence_status"],"COMPARED")
         self.assertFalse(v["checks"]["fp_ruc_reproduced"])
 

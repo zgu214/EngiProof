@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
 from engiproof.core import evidence_snapshot, load_manifest, validate_study_manifest
+from engiproof.isolation import run_runner_for_test
 P=ROOT/'papers/P38'
 spec=importlib.util.spec_from_file_location('p38mechanics',P/'mechanics.py')
 m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
@@ -16,17 +17,17 @@ m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
 
 class P38EngiProofTests(unittest.TestCase):
     def test_runner_reproduces_key_evidence(self):
-        p=subprocess.run([sys.executable,str(P/'run_calculation.py')],cwd=ROOT,capture_output=True,text=True)
+        p,SB=run_runner_for_test(self,ROOT,"papers/P38/run_calculation.py")
         self.assertEqual(p.returncode,0,p.stderr)
-        s=json.loads((P/'results/summary.json').read_text(encoding='utf-8'))
+        s=json.loads((SB/'papers/P38/results/summary.json').read_text(encoding='utf-8'))
         self.assertEqual(s['targets']['Fig10a'],'COMPARED')
         self.assertEqual(s['targets']['Fig11a'],'CONDITIONAL')
         self.assertAlmostEqual(s['table2'][0]['calculated'],578769.223126549,places=6)
         self.assertAlmostEqual(s['work_check']['max_rounding_difference_percent'],0.06464990760955018,places=10)
         self.assertEqual(s['qualification'],'NOT_GRANTED')
-        with (P/'results/reference_comparisons.csv').open(encoding='utf-8') as f: rows=list(csv.DictReader(f))
+        with (SB/'papers/P38/results/reference_comparisons.csv').open(encoding='utf-8') as f: rows=list(csv.DictReader(f))
         self.assertEqual(len(rows),46)
-        with (P/'results/calculated_curves.csv').open(encoding='utf-8') as f: curves=list(csv.DictReader(f))
+        with (SB/'papers/P38/results/calculated_curves.csv').open(encoding='utf-8') as f: curves=list(csv.DictReader(f))
         self.assertEqual(len(curves),644)
 
     def test_source_issue_is_preserved(self):

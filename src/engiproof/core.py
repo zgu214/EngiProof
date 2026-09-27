@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any
 
 from . import __version__
+from .provenance_identity import file_identity
 
 
 ALLOWED_EVIDENCE_CLASSES={"PUBLISHED","INDEPENDENT","SOLVER_NEW"}
@@ -130,11 +131,28 @@ def invoke_tool(paper_id: str,tool_name: str,params: dict[str,Any]|None=None) ->
 
 
 def run_study(paper_id: str) -> dict[str,Any]:
-    root=project_root(); manifest=load_manifest(paper_id); runner=root/manifest["runner"]
-    if not runner.is_file():
+    """Run a study's runner in an isolated sandbox and compare its output with the frozen evidence.
+
+    Non-mutating: the committed result artifacts are never written. Use
+    ``regenerate_study`` to deliberately replace committed evidence.
+    """
+    from .isolation import reproduce_against_frozen, sandbox
+    root=project_root(); manifest=load_manifest(paper_id)
+    if not (root/manifest["runner"]).is_file():
         return {"paper_id":manifest["paper_id"],"status":"FAIL","reason":f"Missing runner: {manifest['runner']}"}
-    proc=subprocess.run([sys.executable,str(runner)],cwd=root,capture_output=True,text=True)
-    return {"paper_id":manifest["paper_id"],"status":"PASS" if proc.returncode==0 else "FAIL","returncode":proc.returncode,"stdout":proc.stdout.strip(),"stderr":proc.stderr.strip(),"result_files":manifest.get("result_files",[]),"evidence_status":manifest.get("evidence_status")}
+    with sandbox(root) as box:
+        rep=reproduce_against_frozen(root,manifest,box)
+    return {"paper_id":manifest["paper_id"],"status":rep["status"],"isolated":True,"returncode":rep.get("runner_returncode"),"stderr":rep.get("runner_stderr",""),"reproduction":rep,"result_files":manifest.get("result_files",[]),"evidence_status":manifest.get("evidence_status")}
+
+
+def regenerate_study(paper_id: str) -> dict[str,Any]:
+    """Explicitly rewrite a study's committed evidence by running its runner in place.
+
+    The only operation that mutates frozen evidence. Never called by verification,
+    never exposed through MCP. Review the listed changes before committing.
+    """
+    from .isolation import regenerate_in_place
+    return regenerate_in_place(project_root(),load_manifest(paper_id))
 
 
 def _source_check(manifest: dict[str,Any]) -> dict[str,Any]:
@@ -153,15 +171,20 @@ def verify_study(paper_id: str) -> dict[str,Any]:
     if manifest.get("evidence_graph"): required.append(manifest["evidence_graph"])
     missing=[rel for rel in required if not (root/rel).is_file()]
     contract_issues=validate_study_manifest(manifest)
+    # Non-mutating: recompute and run the verification tests inside a disposable
+    # sandbox, then compare regenerated artifacts with the frozen evidence.
+    from .isolation import reproduce_against_frozen, run_python, sandbox
     tests=[]
-    for test in manifest.get("verification_tests",[]):
-        proc=subprocess.run([sys.executable,"-m","unittest",test,"-v"],cwd=root,env={**os.environ,"PYTHONPATH":str(root/"src")},capture_output=True,text=True)
-        tests.append({"test":test,"returncode":proc.returncode,"passed":proc.returncode==0,"output":(proc.stdout+proc.stderr).strip()})
+    with sandbox(root) as box:
+        reproduction=reproduce_against_frozen(root,manifest,box) if not missing else {"status":"SKIPPED","reason":"missing required files"}
+        for test in manifest.get("verification_tests",[]):
+            proc=run_python(box,["-m","unittest",test,"-v"])
+            tests.append({"test":test,"returncode":proc.returncode,"passed":proc.returncode==0,"output":(proc.stdout+proc.stderr).strip()})
     source_check=_source_check(manifest); all_tests=all(t["passed"] for t in tests)
-    if missing or contract_issues or not all_tests or (source_check.get("present") and source_check.get("matches") is False): status="FAIL"
+    if missing or contract_issues or not all_tests or reproduction.get("status")=="FAIL" or (source_check.get("present") and source_check.get("matches") is False): status="FAIL"
     elif not source_check.get("present"): status="PASS_SOURCE_EXTERNAL"
     else: status="PASS"
-    return {"paper_id":manifest["paper_id"],"status":status,"evidence_status":manifest.get("evidence_status"),"contract_issues":contract_issues,"missing_required_files":missing,"source_check":source_check,"tests":tests,"limitations":manifest.get("limitations",[]),"qualification":manifest.get("qualification","NOT_CLAIMED")}
+    return {"paper_id":manifest["paper_id"],"status":status,"evidence_status":manifest.get("evidence_status"),"contract_issues":contract_issues,"missing_required_files":missing,"source_check":source_check,"reproduction":reproduction,"tests":tests,"limitations":manifest.get("limitations",[]),"qualification":manifest.get("qualification","NOT_CLAIMED")}
 
 
 def verify_all() -> dict[str,Any]:
@@ -174,7 +197,7 @@ def result_snapshot(paper_id: str) -> dict[str,Any]:
     for rel in manifest.get("result_files",[]):
         path=root/rel; item={"path":rel,"present":path.is_file()}
         if path.is_file():
-            item["sha256"]=_sha256(path)
+            item.update(file_identity(path))
             if path.suffix.lower()==".json": item["data"]=_load_json(path)
         items.append(item)
     return {"paper_id":manifest["paper_id"],"evidence_status":manifest.get("evidence_status"),"results":items}
@@ -208,7 +231,7 @@ def provenance_snapshot(paper_id: str) -> dict[str,Any]:
     for rel in rels:
         if not rel or rel in seen: continue
         seen.add(rel); path=root/rel
-        files.append({"path":rel,"present":path.is_file(),**({"sha256":_sha256(path)} if path.is_file() else {})})
+        files.append({"path":rel,"present":path.is_file(),**(file_identity(path) if path.is_file() else {})})
     return {"schema_version":"engiproof.provenance/1.0","paper_id":manifest["paper_id"],"framework_version":manifest.get("framework_version",__version__),"source":manifest.get("source",{}),"source_check":_source_check(manifest),"files":files,"qualification":manifest.get("qualification","NOT_CLAIMED"),"provenance_note":manifest.get("provenance_note")}
 
 

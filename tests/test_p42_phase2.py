@@ -2,6 +2,8 @@ import importlib.util, json, math, subprocess, sys, unittest
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/"src"))
+from engiproof.isolation import run_runner_for_test
 spec=importlib.util.spec_from_file_location("p42_api_phase2",ROOT/"papers/P42/tool_api.py")
 api=importlib.util.module_from_spec(spec); spec.loader.exec_module(api)
 
@@ -46,10 +48,10 @@ class P42Phase2Tests(unittest.TestCase):
         self.assertEqual(d["status"],"OBSERVED")
 
     def test_runner_writes_phase2_artifacts(self):
-        p=subprocess.run([sys.executable,str(ROOT/"papers/P42/run_calculation.py")],cwd=ROOT,capture_output=True,text=True)
+        p,SB=run_runner_for_test(self,ROOT,"papers/P42/run_calculation.py")
         self.assertEqual(p.returncode,0,p.stderr)
-        self.assertTrue((ROOT/"papers/P42/results/phase2_analytical_stress_curves.csv").is_file())
-        v=json.loads((ROOT/"papers/P42/results/engiproof_verification.json").read_text())
+        self.assertTrue((SB/"papers/P42/results/phase2_analytical_stress_curves.csv").is_file())
+        v=json.loads((SB/"papers/P42/results/engiproof_verification.json").read_text())
         self.assertTrue(v["checks"]["phase2_analytical_curves_regenerated"])
 
 if __name__=="__main__": unittest.main()

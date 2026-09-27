@@ -132,9 +132,38 @@ Exposed to the agent:
 - **Resources:** `engiproof://registry`, `engiproof://studies/{id}/manifest`, `.../source`, `.../evidence-graph`
 - **Prompt:** `apply_method` — answer a question with a study's methods, staying inside argument ranges and reporting evidence class, status, discrepancies, limitations and any `evidence_boundary`. `INDEPENDENT` is not presented as independent physical or FE validation unless the boundary says so
 
-The server is read-only by default. `run_study` and `verify_study` remain **disabled by default** because the current verification/test paths may rewrite tracked result artifacts (committed CSV/JSON evidence files). Setting `ENGIPROOF_MCP_ALLOW_RUN=1` is an explicit opt-in to those mutating paths, and remains the only way to expose them until non-mutating verification is implemented.
+The server is read-only by default. `run_study` and `verify_study` are non-mutating (see *Verification does not mutate evidence* below) but are still exposed only with `ENGIPROOF_MCP_ALLOW_RUN=1` until exposing them by default is decided. Regeneration of committed evidence is never exposed through MCP.
 
 The MCP adapter never upgrades evidence status and never grants qualification.
+
+## Verification does not mutate evidence
+
+Committed result artifacts under `papers/*/results/` are **frozen evidence**. `engiproof verify`, `engiproof verify-all`, `engiproof run` and the unit-test suite never write them. Runners and verification tests execute inside a disposable copy of the project, and every artifact a runner regenerates is compared semantically with its frozen counterpart and classified:
+
+| Class | Meaning | Verification |
+|---|---|---|
+| `IDENTICAL` | Same bytes | pass |
+| `BYTE_ONLY` | Same content; line endings, BOM or serialisation differ | pass |
+| `ENVIRONMENT_METADATA` | Only environment records (`python`, `numpy` and their `_version` forms) or a provenance hash taken over the other line-ending rendering of the same file. `platform` is deliberately not an environment field: in offshore engineering it is physical system data | pass |
+| `NUMERICAL_NONMATERIAL` | Numbers differ within the declared recomputation tolerance and rounding guards | pass |
+| `NUMERICAL_MATERIAL` | A number crosses the declared tolerance, or a rounding guard at published precision | **fail** |
+| `MATERIAL_NON_NUMERIC` | Evidence status, discrepancy, classification, qualification, interpretation text or structure changes, including a result artifact created or deleted by the runner (unless listed in the study's `verification_allowed_artifact_changes`) | **fail** |
+
+The default recomputation tolerance (relative 1e-9, absolute 1e-12) absorbs floating-point serialisation noise only. A study whose recomputation is legitimately platform-sensitive declares `verification_tolerance` in its `study.json`, with a rationale and optional rounding guards (P43: relative 1e-6, absolute 1e-5, and every Table 1 eigenvalue must keep its 3-decimal value). **These are recomputation-equivalence tolerances, not engineering acceptance or validation tolerances.**
+
+This keeps four things distinct: byte reproducibility (`IDENTICAL`), numerical reproducibility (`NUMERICAL_NONMATERIAL` within tolerance), engineering equivalence (no material class), and engineering verification (the study's tests, comparisons and discrepancy records). None of them is qualification.
+
+Replacing committed evidence is a separate, explicit operation, never exposed through MCP:
+
+```bat
+engiproof regenerate P38
+```
+
+It runs the study in place and lists every tracked file it changed with before/after SHA-256.
+
+**Text provenance.** Historical provenance hashes are raw-byte SHA-256 of the checkout that produced them and are preserved as recorded. For text files those bytes depend on line endings, so `provenance` and `results` now also report a checkout-independent `canonical_sha256` (`text/lf-v1`: UTF-8, BOM dropped, LF line endings). New text provenance should use `engiproof.provenance_identity.canonical_text_sha256`.
+
+`tests/test_non_mutation.py` hashes every tracked file before and after `verify-all`, every study's `verify` and `run`, and the complete unit-test suite. The pre-fix baseline is `docs/MUTATION_INVENTORY_v0.2.0.md`.
 
 ## Evidence contract
 

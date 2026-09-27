@@ -6,7 +6,7 @@ from typing import Any
 
 from . import __version__
 from .checkpoint import build_checkpoint, continuity_audit
-from .core import (comparison_snapshot,contract_schema,discrepancy_snapshot,doctor,evidence_snapshot,invoke_tool,list_studies,load_manifest,provenance_snapshot,result_snapshot,run_study,verify_all,verify_study)
+from .core import (comparison_snapshot,contract_schema,discrepancy_snapshot,doctor,evidence_snapshot,invoke_tool,list_studies,load_manifest,provenance_snapshot,regenerate_study,result_snapshot,run_study,verify_all,verify_study)
 from .discrepancy import assess_discrepancies, discrepancy_audit, discrepancy_audit_all, discrepancy_gate, discrepancy_decision_summary, record_discrepancy_decision
 from .evidence_graph import audit_evidence_graph, sync_evidence_graph
 from .ingestion import (
@@ -37,6 +37,7 @@ def main(argv: list[str]|None=None) -> int:
     sub.add_parser("list",help="List live studies and callable tools.")
     sub.add_parser("verify-all",help="Verify every live study.")
     p=sub.add_parser("schema",help="Show versioned EngiProof contracts."); p.add_argument("contract",nargs="?",help="study/source/evidence/comparison/discrepancy/verification")
+    p=sub.add_parser("regenerate",help="Explicitly REWRITE a study's committed result artifacts in place (not part of verification)."); p.add_argument("paper_id")
     for name in ("show","run","verify","results","evidence","compare","provenance","discrepancy"):
         p=sub.add_parser(name); p.add_argument("paper_id")
     p=sub.add_parser("tool"); p.add_argument("paper_id"); p.add_argument("tool_name"); p.add_argument("--params",default="{}",help="JSON object of keyword arguments")
@@ -81,6 +82,7 @@ def main(argv: list[str]|None=None) -> int:
         elif ns.cmd=="schema": out=contract_schema(ns.contract)
         elif ns.cmd=="show": out=load_manifest(ns.paper_id)
         elif ns.cmd=="run": out=run_study(ns.paper_id)
+        elif ns.cmd=="regenerate": out=regenerate_study(ns.paper_id)
         elif ns.cmd=="verify": out=verify_study(ns.paper_id)
         elif ns.cmd=="results": out=result_snapshot(ns.paper_id)
         elif ns.cmd=="evidence": out=evidence_snapshot(ns.paper_id)
