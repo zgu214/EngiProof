@@ -1,0 +1,235 @@
+{
+  "schema_version": "engiproof.discrepancy_taxonomy_mapping/1.0",
+  "taxonomy": "engiproof/contracts/contracts.json#contracts.discrepancy_taxonomy",
+  "scope": "Paper A population P40-P45 (14 records). Discrepancies in other studies are not mapped.",
+  "proposed_by": "agent proposal, 27 September 2026",
+  "rule": "Labels only. A mapping never changes an observation, value, discrepancy status, decision, promotion effect or qualification. Legacy classification_hint values stay in the study manifests until a reviewer approves the mapping; the legacy hint is read from the manifest, not copied here.",
+  "records": [
+    {
+      "paper_id": "P40",
+      "discrepancy_id": "P40-D001",
+      "proposed_category": "NUMERICAL_VALUE_CONFLICT",
+      "proposed_loci": [
+        "SOURCE_VS_REPRODUCTION",
+        "SOURCE_VS_INDEPENDENT"
+      ],
+      "compared_elements": [
+        "Table 2 PIP-3 ratio",
+        "Eq. (9) with Table 1 inputs",
+        "Eq. (8a-d) work balance"
+      ],
+      "rationale": "The same quantity has a printed value (0.66) and a recomputed value (0.7057) beyond the two-decimal rounding band; the independent work balance agrees with the recomputation.",
+      "review_status": "PROPOSED",
+      "reviews": []
+    },
+    {
+      "paper_id": "P41",
+      "discrepancy_id": "P41-D001",
+      "proposed_category": "NUMERICAL_VALUE_CONFLICT",
+      "proposed_loci": [
+        "WITHIN_SOURCE",
+        "SOURCE_VS_REPRODUCTION"
+      ],
+      "compared_elements": [
+        "Table 2 component increments",
+        "Table 2 total fS",
+        "Eqs. (6)-(8)"
+      ],
+      "rationale": "Printed components (153 + 312) do not sum to the printed total (471); Eqs. (6)-(8) give a different inner increment (158.8).",
+      "review_status": "PROPOSED",
+      "reviews": []
+    },
+    {
+      "paper_id": "P41",
+      "discrepancy_id": "P41-D002",
+      "proposed_category": "UNIT_OR_DIMENSION",
+      "proposed_loci": [
+        "WITHIN_SOURCE"
+      ],
+      "compared_elements": [
+        "paragraph (MNm)",
+        "Figure 10 axis (kNm)"
+      ],
+      "rationale": "The magnitudes (300, 850) are consistent with the plotted scale; the conflict is resolved by the unit alone, which is the UNIT_OR_DIMENSION rule and takes precedence over NUMERICAL_VALUE_CONFLICT.",
+      "review_status": "PROPOSED",
+      "reviews": []
+    },
+    {
+      "paper_id": "P42",
+      "discrepancy_id": "P42-D001",
+      "proposed_category": "MODEL_FORM_DIFFERENCE",
+      "proposed_loci": [
+        "MODEL_VS_MODEL"
+      ],
+      "compared_elements": [
+        "analytical Eqs. (36)-(39)",
+        "published FP-RUC results"
+      ],
+      "rationale": "Both models are as published; the source attributes the Fz dependence to model kinematics. No printed value is contradicted.",
+      "review_status": "PROPOSED",
+      "reviews": []
+    },
+    {
+      "paper_id": "P42",
+      "discrepancy_id": "P42-D002",
+      "proposed_category": "MISSING_OR_INSUFFICIENT_SOURCE_INFORMATION",
+      "proposed_loci": [
+        "SOURCE_VS_REPRODUCTION",
+        "SOURCE_INCOMPLETE"
+      ],
+      "compared_elements": [
+        "literal Eqs. (27)-(30) and (41)",
+        "Figure 16"
+      ],
+      "rationale": "A literal implementation does not reconcile with Figure 16; the printed equations and load case do not fix the contact-pressure/interface convention. The legacy label is already of this kind.",
+      "review_status": "PROPOSED",
+      "reviews": []
+    },
+    {
+      "paper_id": "P43",
+      "discrepancy_id": "P43-D001",
+      "proposed_category": "NUMERICAL_VALUE_CONFLICT",
+      "proposed_loci": [
+        "WITHIN_SOURCE",
+        "SOURCE_VS_REPRODUCTION",
+        "SOURCE_VS_INDEPENDENT"
+      ],
+      "compared_elements": [
+        "Table 1 lambda5 (13.221)",
+        "Table 2 zero error for alpha=0",
+        "Eq. (10)",
+        "Eq. (8) Hermite FE"
+      ],
+      "rationale": "Printed eigenvalue vs recomputed 18.221 (published Eq. (10) and independent FE) and vs Table 2.",
+      "review_status": "PROPOSED",
+      "reviews": []
+    },
+    {
+      "paper_id": "P43",
+      "discrepancy_id": "P43-D002",
+      "proposed_category": "NUMERICAL_VALUE_CONFLICT",
+      "proposed_loci": [
+        "WITHIN_SOURCE",
+        "SOURCE_VS_INDEPENDENT"
+      ],
+      "compared_elements": [
+        "Table 1 lambda1 (6.554)",
+        "Table 2 error 1.39%",
+        "Eq. (8) Hermite FE"
+      ],
+      "rationale": "Printed eigenvalue vs independent FE 6.654; Table 2 error is consistent only with 6.654.",
+      "review_status": "PROPOSED",
+      "reviews": []
+    },
+    {
+      "paper_id": "P44",
+      "discrepancy_id": "P44-D001",
+      "proposed_category": "NUMERICAL_VALUE_CONFLICT",
+      "proposed_loci": [
+        "WITHIN_SOURCE"
+      ],
+      "compared_elements": [
+        "paragraph (4.06 s, 2.32 s)",
+        "Figure 7/8 captions (0.58 s, 1.74 s)",
+        "Figure 2"
+      ],
+      "rationale": "The same time labels have two incompatible printed values. The legacy label SOURCE_FIGURE_TEXT_MISMATCH described the locus, not the kind.",
+      "review_status": "PROPOSED",
+      "reviews": []
+    },
+    {
+      "paper_id": "P45",
+      "discrepancy_id": "P45-D001",
+      "proposed_category": "PHYSICAL_IMPLAUSIBILITY",
+      "proposed_loci": [
+        "SOURCE_VS_PHYSICAL_BOUNDS",
+        "WITHIN_SOURCE"
+      ],
+      "compared_elements": [
+        "Table 2 item 16 weights",
+        "Figure 3 buoyancy geometry"
+      ],
+      "rationale": "No other printed value of the buoyed weight exists; the conflict is established by buoyancy applied to the source geometry.",
+      "review_status": "PROPOSED",
+      "reviews": []
+    },
+    {
+      "paper_id": "P45",
+      "discrepancy_id": "P45-D002",
+      "proposed_category": "PHYSICAL_IMPLAUSIBILITY",
+      "proposed_loci": [
+        "SOURCE_VS_PHYSICAL_BOUNDS"
+      ],
+      "compared_elements": [
+        "Table 1 head tensions cases 3-6",
+        "riser section and submerged weight"
+      ],
+      "rationale": "The printed tensions imply 662/1141 MPa axial stress and 6-23 times the submerged weight; no other printed value of these tensions exists. The decimal-grouping explanation is not asserted.",
+      "review_status": "PROPOSED",
+      "reviews": []
+    },
+    {
+      "paper_id": "P45",
+      "discrepancy_id": "P45-D003",
+      "proposed_category": "UNIT_OR_DIMENSION",
+      "proposed_loci": [
+        "SOURCE_INCOMPLETE",
+        "SOURCE_VS_PHYSICAL_BOUNDS"
+      ],
+      "compared_elements": [
+        "T = 298 (1 + 0.2 sin 2 pi t/9)",
+        "Table 3 effective weight"
+      ],
+      "rationale": "No unit is printed; only a unit of order 10 kN supports the riser weight. No unit is asserted.",
+      "review_status": "PROPOSED",
+      "reviews": []
+    },
+    {
+      "paper_id": "P45",
+      "discrepancy_id": "P45-D004",
+      "proposed_category": "NOTATION_OR_TYPOGRAPHY",
+      "proposed_loci": [
+        "WITHIN_SOURCE"
+      ],
+      "compared_elements": [
+        "printed Y = 7.70 sin(2 pi t/g)",
+        "text period 9 s",
+        "tension equation 2 pi t/9"
+      ],
+      "rationale": "Notation contradicts the stated period; no printed numerical value is in conflict. No cause is asserted.",
+      "review_status": "PROPOSED",
+      "reviews": []
+    },
+    {
+      "paper_id": "P45",
+      "discrepancy_id": "P45-D005",
+      "proposed_category": "QUANTITY_DEFINITION_OR_CONVENTION",
+      "proposed_loci": [
+        "WITHIN_SOURCE",
+        "SOURCE_VS_INDEPENDENT"
+      ],
+      "compared_elements": [
+        "Table 2 item 20 amplitude 1.22 m",
+        "Figures 4(a)-9(a) envelope widths (graphical measurement)"
+      ],
+      "rationale": "The figures reconcile with peak-to-peak and not with single amplitude; the source uses both readings of 'amplitude'.",
+      "review_status": "PROPOSED",
+      "reviews": []
+    },
+    {
+      "paper_id": "P45",
+      "discrepancy_id": "P45-D006",
+      "proposed_category": "QUANTITY_DEFINITION_OR_CONVENTION",
+      "proposed_loci": [
+        "WITHIN_SOURCE"
+      ],
+      "compared_elements": [
+        "text claim '~15%'",
+        "Figure 11 stress labels"
+      ],
+      "rationale": "The claim is reproduced only when read as peak absolute stress, not per envelope.",
+      "review_status": "PROPOSED",
+      "reviews": []
+    }
+  ]
+}
