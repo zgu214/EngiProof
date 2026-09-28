@@ -32,7 +32,8 @@ The package assumes single-anonymized review (owner decision, 28 September 2026)
 
 ## Before submitting (author)
 
-- [ ] Read and sign the cover letter. It states that the manuscript is original, not published before and not under consideration elsewhere; confirm that this is true.
+- [x] Originality: the author confirmed on 28 September 2026 that the manuscript has not been published previously and is not under consideration elsewhere, as the cover letter states.
+- [ ] Read and sign the cover letter.
 - [ ] Article type in Editorial Manager: research article.
 - [ ] Copy the title, abstract and keywords from the manuscript into the submission form.
 - [ ] Upload the files in the table above, with the file types shown.
