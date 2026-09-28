@@ -114,11 +114,24 @@ def _fmt(x: float, decimals: int) -> str:
     return f"{x:.{decimals}f}"
 
 
+def _separator_normalised(d: dict[str, Any]) -> dict[str, Any] | None:
+    """Keys with backslashes replaced by forward slashes, or None if that would merge two keys."""
+    out = {str(k).replace("\\", "/"): v for k, v in d.items()}
+    return out if len(out) == len(d) else None
+
+
 class _Comparator:
-    def __init__(self, tol: dict[str, Any], hash_index: dict[str, tuple[str, str]], guards: list[dict[str, Any]]):
+    def __init__(self, tol: dict[str, Any], hash_index: dict[str, tuple[str, str]], guards: list[dict[str, Any]],
+                 provenance_index: dict[str, dict[str, str]] | None = None):
         self.rel = float(tol.get("rel", DEFAULT_TOLERANCE["rel"]))
         self.abs = float(tol.get("abs", DEFAULT_TOLERANCE["abs"]))
+        # Declared path-scoped recomputation tolerances, longest prefix first.
+        self.paths = sorted(((str(p["path_prefix"]), float(p["rel"]), float(p["abs"])) for p in tol.get("path_tolerances", [])),
+                            key=lambda x: -len(x[0]))
+        self.path_scoped_values = 0
         self.hash_index = hash_index
+        self.provenance_index = provenance_index or {}
+        self.derived_refs: set[str] = set()
         self.guards = {g["field"]: int(g["decimals"]) for g in guards}
         self.classes: set[str] = set()
         self.numbers = 0
@@ -145,12 +158,18 @@ class _Comparator:
                 return
         if a == b or (math.isnan(a) and math.isnan(b)):
             return
+        rel_tol, abs_tol = self.rel, self.abs
+        for prefix, prel, pabs in self.paths:
+            if where.startswith(prefix):
+                rel_tol, abs_tol = prel, pabs
+                self.path_scoped_values += 1
+                break
         self.numbers_changed += 1
         d = abs(a - b)
         r = d / max(abs(a), abs(b)) if max(abs(a), abs(b)) > 0 else 0.0
         self.max_abs = max(self.max_abs, d)
         self.max_rel = max(self.max_rel, r)
-        if math.isclose(a, b, rel_tol=self.rel, abs_tol=self.abs):
+        if math.isclose(a, b, rel_tol=rel_tol, abs_tol=abs_tol):
             self.classes.add(NUMERICAL_NONMATERIAL)
         else:
             self._material(NUMERICAL_MATERIAL, {"at": where, "rule": "declared tolerance", "frozen": a,
@@ -169,11 +188,26 @@ class _Comparator:
                 self.classes.add(ENVIRONMENT_METADATA)
                 self.hash_line_endings.append(f"{where}: {fa[0]} ({fa[1]} vs {fb[1]} rendering)")
                 return
+            pa, pb = self.provenance_index.get(a), self.provenance_index.get(b)
+            if pa and pb and pa.get("frozen") and pb.get("regenerated") and pa["frozen"] == pb["regenerated"]:
+                # Provenance hash of a regenerated artifact: it changes exactly when that artifact
+                # changes, so it inherits that artifact's own classification (resolved by the caller).
+                self.derived_refs.add(pa["frozen"])
+                return
         self._material(MATERIAL_NON_NUMERIC, {"at": where, "frozen": a, "regenerated": b})
 
     def json_value(self, where: str, a: Any, b: Any, key: str | None = None) -> None:
         if isinstance(a, dict) and isinstance(b, dict):
             if set(a) != set(b):
+                na, nb = _separator_normalised(a), _separator_normalised(b)
+                if na is not None and nb is not None and set(na) == set(nb):
+                    # Relative-path keys rendered with the OS path separator ("results\\x.csv" vs
+                    # "results/x.csv"): a rendering difference, like line endings. Values still compared.
+                    self.classes.add(ENVIRONMENT_METADATA)
+                    self.environment.append(f"{where or '$'}: path-separator rendering of keys")
+                    for k in sorted(na):
+                        self.json_value(f"{where}.{k}", na[k], nb[k], k)
+                    return
                 self._material(MATERIAL_NON_NUMERIC, {"at": where or "$", "structure": "keys differ",
                                                       "only_frozen": sorted(set(a) - set(b)), "only_regenerated": sorted(set(b) - set(a))})
             for k in sorted(set(a) & set(b)):
@@ -224,7 +258,8 @@ def build_hash_index(files: list[Path]) -> dict[str, tuple[str, str]]:
 
 def compare_artifact(frozen: Path, regenerated: Path, tolerance: dict[str, Any] | None = None,
                      hash_index: dict[str, tuple[str, str]] | None = None,
-                     rounding_guards: list[dict[str, Any]] | None = None) -> dict[str, Any]:
+                     rounding_guards: list[dict[str, Any]] | None = None,
+                     provenance_index: dict[str, dict[str, str]] | None = None) -> dict[str, Any]:
     """Compare one regenerated artifact with its frozen counterpart and classify the difference.
 
     ``classification`` is the most severe of the component classes found. It is
@@ -235,7 +270,7 @@ def compare_artifact(frozen: Path, regenerated: Path, tolerance: dict[str, Any] 
     a, b = frozen.read_bytes(), regenerated.read_bytes()
     if a == b:
         return {"classification": IDENTICAL, "material": False}
-    cmp = _Comparator(tolerance or DEFAULT_TOLERANCE, hash_index or {}, rounding_guards or [])
+    cmp = _Comparator(tolerance or DEFAULT_TOLERANCE, hash_index or {}, rounding_guards or [], provenance_index)
     try:
         ta, tb = canonical_text_bytes(a).decode("utf-8"), canonical_text_bytes(b).decode("utf-8")
     except UnicodeDecodeError:
@@ -272,6 +307,10 @@ def compare_artifact(frozen: Path, regenerated: Path, tolerance: dict[str, Any] 
     }
     if cmp.guarded_values:
         out["rounding_guarded_values"] = cmp.guarded_values
+    if cmp.path_scoped_values:
+        out["path_scoped_tolerance_values"] = cmp.path_scoped_values
+    if cmp.derived_refs:
+        out["derived_hash_refs"] = sorted(cmp.derived_refs)
     if cmp.environment:
         out["environment_fields"] = cmp.environment
     if cmp.hash_line_endings:
@@ -288,9 +327,37 @@ def study_tolerance(manifest: dict[str, Any]) -> dict[str, Any]:
     if declared:
         return {"rel": float(declared["rel"]), "abs": float(declared["abs"]), "source": "study manifest",
                 "purpose": declared.get("purpose"), "not_an_acceptance_tolerance": True,
-                "rounding_guards": declared.get("rounding_guards", [])}
+                "rounding_guards": declared.get("rounding_guards", []),
+                "path_tolerances": declared.get("path_tolerances", [])}
     return {**DEFAULT_TOLERANCE, "source": "default (floating-point serialisation noise only)",
             "not_an_acceptance_tolerance": True, "rounding_guards": []}
+
+
+def _tol_for(tol: dict[str, Any], rel: str) -> dict[str, Any]:
+    """Tolerance for one artifact: path-scoped entries apply only to the artifacts they list."""
+    return {**tol, "path_tolerances": [p for p in tol.get("path_tolerances", []) if rel in p.get("artifacts", [])]}
+
+
+def provenance_hash_index(root: Path, box: Path, study_rel: str) -> dict[str, dict[str, str]]:
+    """Map SHA-256 renderings of study files to their relative path, for frozen and regenerated trees."""
+    index: dict[str, dict[str, str]] = {}
+    for label, base in (("frozen", root), ("regenerated", box)):
+        d = base / study_rel
+        if not d.is_dir():
+            continue
+        for p in d.rglob("*"):
+            if not p.is_file():
+                continue
+            rel = p.relative_to(base).as_posix()
+            hashes = {hashlib.sha256(p.read_bytes()).hexdigest()}
+            if is_text_path(p):
+                try:
+                    hashes |= set(byte_variants(p).values())
+                except UnicodeDecodeError:
+                    pass
+            for h in hashes:
+                index.setdefault(h, {})[label] = rel
+    return index
 
 
 def _guards_for(tol: dict[str, Any], rel: str) -> list[dict[str, Any]]:
@@ -309,6 +376,48 @@ def _result_dirs(manifest: dict[str, Any]) -> set[str]:
 
 def _in_result_dir(rel: str, dirs: set[str]) -> bool:
     return any(rel.startswith(d) for d in dirs)
+
+
+def runtime_environment() -> dict[str, Any]:
+    """The Python/NumPy/platform of the running verification (ENVIRONMENT_METADATA, never material)."""
+    import platform
+    try:
+        import numpy
+        numpy_version = numpy.__version__
+    except Exception:  # pragma: no cover - numpy is a hard dependency
+        numpy_version = None
+    return {"python_version": platform.python_version(), "python_implementation": platform.python_implementation(),
+            "numpy_version": numpy_version, "os": platform.system(), "os_release": platform.release(),
+            "machine": platform.machine()}
+
+
+def declared_environment(paths: list[Path], root: Path) -> dict[str, dict[str, Any]]:
+    """Environment keys that frozen JSON artifacts themselves declare (empty when none do)."""
+    out: dict[str, dict[str, Any]] = {}
+
+    def walk(node: Any, found: dict[str, Any]) -> None:
+        if isinstance(node, dict):
+            for k, v in node.items():
+                if k in ENVIRONMENT_KEYS and not isinstance(v, (dict, list)):
+                    found.setdefault(k, v)
+                else:
+                    walk(v, found)
+        elif isinstance(node, list):
+            for v in node:
+                walk(v, found)
+
+    for path in paths:
+        if path.suffix.lower() != ".json" or not path.is_file():
+            continue
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        found: dict[str, Any] = {}
+        walk(data, found)
+        if found:
+            out[path.relative_to(root).as_posix()] = found
+    return out
 
 
 def reproduce_against_frozen(root: Path, manifest: dict[str, Any], box: Path) -> dict[str, Any]:
@@ -347,12 +456,30 @@ def reproduce_against_frozen(root: Path, manifest: dict[str, Any], box: Path) ->
                              "structure": "frozen result artifact deleted by the runner"})
         else:
             new_files.append(f"(deleted) {rel}")
+    prov = provenance_hash_index(root, box, f"papers/{manifest['paper_id']}")
+    regenerated: dict[str, dict[str, Any]] = {}
     for rel in sorted(written):
-        res = compare_artifact(root / rel, box / rel, tol, index, _guards_for(tol, rel))
+        regenerated[rel] = {"path": rel, **compare_artifact(root / rel, box / rel, _tol_for(tol, rel), index, _guards_for(tol, rel), prov)}
+    # A provenance hash inherits the classification of the artifact it identifies.
+    for res in regenerated.values():
+        refs = res.get("derived_hash_refs") or []
+        if not refs:
+            continue
+        inherited = []
+        for ref in refs:
+            target = regenerated.get(ref)
+            inherited.append(target["classification"] if target else MATERIAL_NON_NUMERIC)
+        worst = max([res["classification"], *inherited], key=SEVERITY.index)
+        res["derived_hash_inherited"] = dict(zip(refs, inherited))
+        if worst != res["classification"]:
+            res["classification"], res["material"] = worst, worst in MATERIAL
+            res["components"] = sorted(set(res.get("components", [])) | {worst}, key=SEVERITY.index)
+    for rel in sorted(regenerated):
+        res = regenerated[rel]
         counts[res["classification"]] += 1
         max_abs = max(max_abs, res.get("max_abs_diff", 0.0))
         max_rel = max(max_rel, res.get("max_rel_diff", 0.0))
-        compared.append({"path": rel, **res})
+        compared.append(res)
     material = counts[NUMERICAL_MATERIAL] + counts[MATERIAL_NON_NUMERIC]
     status = "FAIL" if proc.returncode != 0 or material else "PASS"
     return {
@@ -370,6 +497,8 @@ def reproduce_against_frozen(root: Path, manifest: dict[str, Any], box: Path) ->
         "max_abs_diff": max_abs,
         "max_rel_diff": max_rel,
         "non_evidence_file_changes": new_files,
+        "verification_environment": runtime_environment(),
+        "frozen_environment_declared": declared_environment([root / rel for rel in sorted(written)], root),
         "artifacts": compared,
         "rule": ("Frozen evidence is compared, never overwritten. Tolerances here define recomputation "
                  "equivalence only; they are not engineering acceptance or validation tolerances."),

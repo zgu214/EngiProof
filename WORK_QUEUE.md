@@ -25,3 +25,20 @@ Parallel/secondary. Keep evidence capture synchronized without displacing engine
 ## Q7 — Runtime hardening: file-idempotent graph-sync
 
 **Priority: low.** A second `graph-sync P45` changed only the persisted sync counters (`added_nodes: 22 -> 0`, `added_edges: 22 -> 0`); no node, edge, engineering value or evidence changed. graph-sync is evidence-idempotent but not file-idempotent because per-run mutation counts are persisted in the tracked graph (same pattern in P40–P43). Make repeated syncs byte-stable (e.g. report counts without persisting them). Do not reopen P45 for this.
+
+## Q8 — Paper A evidence hardening (G1–G5)
+
+**Priority: HIGHEST (active).**
+- **Done:** D-007 approved; taxonomy approved; G1 decisions recorded (D-008).
+- **Done (28 Sep 2026):** machine-generated ingestion summaries for P40–P44 from the owner's local intakes (G3 closed). PR #8 is ready to merge on the owner's yes.
+- **After PR #8 merges:** finalise the manuscript in PR #9 (Appendix A, related-work references, P42 author list, rebuild).
+- G5 optional. No P46.
+
+## Q9 — Runtime hardening: portable P38 runner
+
+**Priority: low.** `papers/P38/run_calculation.py` writes `str(Path.relative_to())` keys, which gives backslashes on Windows. Use `.as_posix()` at the next explicitly approved P38 regeneration: the code hash is recorded in the frozen manifest, so fixing it now would itself be a material change.
+
+## Q10 — Windows dispatcher exit codes (F22)
+
+**Fixed in PR #8.** `engiproof.cmd` returned 0 for every command. Windows CI now asserts that exit codes propagate. After pulling, re-run any local Windows batch whose PASS mattered. Verification of P40–P45 on Windows is covered by CI.
+

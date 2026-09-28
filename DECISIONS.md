@@ -42,3 +42,49 @@ Local Windows verification `28_VERIFY_P45_PHASE1_WINDOWS.bat` reported `=== P45 
 - Reproduction of the nonlinear dynamic riser responses (Figures 4-9, 11) remains `BLOCKED`: the paper does not give theta/beta/lambda, the iteration tolerance, structural damping, the discretisation of the comparison cases, the float properties or the tension unit.
 - No tuning and no inferred completion of missing inputs. No `SOLVER_NEW` evidence.
 - Qualification remains `NOT_GRANTED`. P45 stays outside the live registry.
+- **Addendum, 28 September 2026 (after F22).** The original PASS banner is no longer treated as authoritative evidence. At the time, `engiproof.cmd` swallowed exit codes (F22), so that banner certified only the `python -m unittest` steps, not `engiproof verify P45`. After the dispatcher fix (`c62f038`), the owner re-ran `28_VERIFY_P45_PHASE1_WINDOWS.bat` on the PR #8 branch (`bab6764`), and it reported `=== P45 PHASE1 VERIFY PASS ===` with every `call engiproof` step's exit code checked. Environment: Windows 10 AMD64, CPython 3.12.10, NumPy 2.5.3. Result: `verify P45` = PASS_SOURCE_EXTERNAL; reproduction classes BYTE_ONLY 1, NUMERICAL_NONMATERIAL 1, 0 material. The only file modified was `engiproof/studies/P45/evidence_graph.json`, from graph-sync per-run counters (Q7); it was not committed. Windows CI also verifies P45 on Python 3.10 and 3.13. This post-F22 run is the authoritative local P45 Windows verification, alongside CI. P45 engineering evidence, discrepancies, decisions and qualification are unchanged.
+
+
+## D-007 — Cross-environment recomputation equivalence (APPROVED by Zhiqiang Gu, 28 September 2026)
+
+The first CI run on Windows and macOS, and the first CI run of the frozen non-live studies, found the following (failure register F20/F21 in `publication/PAPER_A_ENGIPROOF/PAPER_A_READINESS_REVIEW.md`). None of it changes engineering evidence.
+
+- **Provenance-hash inheritance.** A SHA-256 field that identifies another regenerated artifact of the same study inherits that artifact's classification. Any other hash change remains `MATERIAL_NON_NUMERIC` unless it is a line-ending rendering of the same file. Case: P38 manifest hashes of CSVs that changed non-materially.
+- **Path-separator rendering.** Dictionary key sets that differ only by `\` vs `/` are `ENVIRONMENT_METADATA`, and their values are still compared. Case: the P38 runner uses `str(Path)` keys (runner fix deferred to the next approved regeneration, WORK_QUEUE Q9).
+- **P45 scoped tolerance.** A path-scoped recomputation tolerance (`rel 1e-6`, `abs 1e-7`) applies only to `.appendix1_checks.independent_fe_comparison` in `phase1_summary.json`. The study-wide default (`1e-9`/`1e-12`) is unchanged, and the engineering statement `appendix1_matches_independent_fe` (residual < 1e-6) is compared exactly. Measured variation: ≤ 2.9e-7 abs on FE outputs; ≤ 1e-8 abs on the ~3e-8 residual.
+- Environment fields (`verification_environment`, `frozen_environment_declared`) are verification output only. `ENVIRONMENT_KEYS` is not broadened, and frozen evidence is untouched.
+- None of these is an engineering acceptance or validation tolerance.
+
+Approval conditions, as stated by the owner:
+- D-007 covers cross-environment recomputation equivalence only.
+- No frozen engineering result changes, no discrepancy is closed, and qualification is unchanged.
+- **Scoped P45 tolerance.** Accepted for the Appendix-1 independent FE comparison only; the study default is unchanged, and `appendix1_matches_independent_fe` is still checked exactly.
+- **Hash inheritance.** Accepted provided the referenced artifact's own classification controls the inherited one.
+- **Path-separator keys.** Treated as `ENVIRONMENT_METADATA` only when the normalised keys match and all corresponding values are still compared.
+- **P38 runner cleanup.** Stays as WORK_QUEUE Q9; no silent regeneration now.
+
+
+## D-008 — Taxonomy approval and first human discrepancy decisions (G1/G2)
+
+Approved by Zhiqiang Gu on 28 September 2026.
+
+- **Taxonomy (G2).** The controlled taxonomy and the proposed mapping of all 19 records are approved as documented. Approvals are recorded append-only (`engiproof/contracts/discrepancy_taxonomy_mapping.json`, one `*-TAX-001` review per record). No observation, value, status, qualification or frozen assessment was rewritten to apply the labels, and legacy `classification_hint` values stay unchanged.
+- **Decisions (G1).** Recorded in `engiproof/studies/<ID>/discrepancy_decisions.json`, each with reviewer, rationale and evidence references:
+
+  | Record | Decision | Effect |
+  |---|---|---|
+  | P45-D004 | ACCEPTED_WITH_RATIONALE | Unblocks |
+  | P41-D002 | ACCEPTED_WITH_RATIONALE | Unblocks |
+  | P43-D001 | DEFERRED | Keeps blocking; the closure requirements ask for an erratum or author clarification. It was not accepted just to clear the gate. |
+  | P43-D002 | DEFERRED | Keeps blocking (same reason). |
+  | P44-D001 | DEFERRED | Keeps blocking. |
+  | P16-D001 | BOUNDED | Formalises the existing bounded status. |
+  | P36-D001 | BOUNDED | Formalises the existing bounded status; in-sample, not held-out validation. |
+
+- Gate evidence before and after: `publication/PAPER_A_ENGIPROOF/G1_GATE_EVIDENCE.json`.
+  - P45 blockers go from 6 to 5.
+  - P41 blockers go from 2 to 1.
+  - P43 and P44 are unchanged.
+  - P16 and P36 stay ready.
+- No discrepancy record was edited. Qualification remains NOT_GRANTED everywhere.
+

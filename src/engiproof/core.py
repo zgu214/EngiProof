@@ -103,6 +103,8 @@ def validate_study_manifest(manifest: dict[str,Any]) -> list[str]:
             issues.append(f"tool {tool.get('name')} has unsupported evidence_class: {tool.get('evidence_class')}")
         for k in ("name","module","function","returns","evidence"):
             if k not in tool: issues.append(f"tool missing {k}: {tool.get('name','<unnamed>')}")
+    from .taxonomy import validate_manifest_discrepancies
+    issues += validate_manifest_discrepancies(manifest, load_contracts().get("contracts",{}).get("discrepancy_taxonomy") or {})
     return issues
 
 

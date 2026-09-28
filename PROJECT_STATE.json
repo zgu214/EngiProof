@@ -10,8 +10,8 @@
   "current_checkpoint": "P45_PHASE1_FROZEN",
   "last_green_verification": "28_VERIFY_P45_PHASE1_WINDOWS.bat",
   "last_green_status": "PASS",
-  "next_study": "PAPER_A_READINESS_REVIEW",
-  "next_action": "Perform the Paper A readiness review across P40-P45 and create P46 only if a specific evidence gap is demonstrated.",
+  "next_study": "PAPER_A_MANUSCRIPT_SYNTHESIS",
+  "next_action": "Merge PR #8 on the owner's yes; then rebase PR #9 onto develop, regenerate Appendix A, complete related-work references and the P42 author list, rebuild the manuscript. No P46.",
   "qualification": "NOT_GRANTED",
   "open_evidence_items": [
     "P40-D001",
@@ -41,6 +41,18 @@
   ],
   "source_of_truth": "Git repository",
   "private_source_policy": "Copyrighted PDFs remain outside the public repository; preserve canonical basename, DOI and SHA-256.",
-  "last_confirmed_local_date": "2026-09-27",
-  "pending_verification": null
+  "last_confirmed_local_date": "2026-09-28",
+  "pending_verification": null,
+  "pending_owner_decisions": [],
+  "pending_owner_actions": [
+    "Approve merge of PR #8"
+  ],
+  "last_green_verification_note": "Authoritative local P45 Windows verification: re-run on 2026-09-28 after the F22 dispatcher fix, on PR #8 head bab6764, Windows 10 AMD64, CPython 3.12.10, NumPy 2.5.3. verify P45 = PASS_SOURCE_EXTERNAL (BYTE_ONLY 1, NUMERICAL_NONMATERIAL 1, 0 material); batch banner PASS with exit codes checked. The pre-F22 banner of 2026-09-27 is superseded.",
+  "last_green_verification_post_f22": true,
+  "last_green_environment": {
+    "os": "Windows 10",
+    "machine": "AMD64",
+    "python": "3.12.10",
+    "numpy": "2.5.3"
+  }
 }

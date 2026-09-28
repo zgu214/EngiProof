@@ -272,6 +272,24 @@
       "generated_by": [
         "engiproof.evidence_graph_sync/1.0"
       ]
+    },
+    {
+      "id": "AUTO-DECISION-P41-D002-DEC-001",
+      "kind": "discrepancy_decision",
+      "label": "ACCEPTED_WITH_RATIONALE decision for P41-D002",
+      "evidence_class": "INDEPENDENT",
+      "status": "ACCEPTED_WITH_RATIONALE",
+      "source_refs": [
+        "P41-D002-DEC-001",
+        "P41-D002",
+        "papers/P41/results/phase3_global_buckling_summary.json",
+        "engiproof/studies/P41/study.json#P41-D002"
+      ],
+      "reviewer": "Zhiqiang Gu",
+      "qualification_effect": "NONE",
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
     }
   ],
   "edges": [
@@ -394,17 +412,27 @@
       "from": "AUTO-DISCREPANCY-P41-D002",
       "to": "AUTO-ASSESSMENT-P41-D002",
       "relation": "classified_by"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P41-D002",
+      "to": "AUTO-DECISION-P41-D002-DEC-001",
+      "relation": "reviewed_by"
+    },
+    {
+      "from": "AUTO-ASSESSMENT-P41-D002",
+      "to": "AUTO-DECISION-P41-D002-DEC-001",
+      "relation": "informs_decision"
     }
   ],
   "qualification": "NOT_GRANTED",
   "sync": {
     "schema_version": "engiproof.evidence_graph_sync/1.0",
-    "added_nodes": 0,
-    "added_edges": 0,
+    "added_nodes": 1,
+    "added_edges": 2,
     "tool_count": 14,
     "comparison_count": 6,
     "discrepancy_count": 2,
-    "decision_count": 0,
+    "decision_count": 1,
     "rule": "Synchronization is additive: existing hand-authored nodes/edges are preserved and qualification is never promoted."
   }
 }

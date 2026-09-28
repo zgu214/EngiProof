@@ -451,3 +451,41 @@ Next: run `28_VERIFY_P45_PHASE1_WINDOWS.bat` locally; on PASS record it as `last
 Local Windows `28_VERIFY_P45_PHASE1_WINDOWS.bat` PASS after PR #5 merged (`cb2a595`); continuity-audit PASS; checkpoint bundle PASS. P45 frozen CONDITIONAL / NOT_GRANTED (D-006); P45-D001…D006 OPEN; dynamic responses BLOCKED; no tuning.
 
 Active task: Paper A readiness review across P40–P45 (WORK_QUEUE Q6). Create P46 only if the review demonstrates a specific evidence gap. Low-priority runtime item: graph-sync persists per-run counters, so repeated syncs rewrite the tracked graph without changing evidence (Q7).
+
+## Checkpoint — Paper A evidence hardening (27 September 2026)
+
+- PR #7 (Paper A readiness package, P43/P44 source identity) merged into `develop` (`eeb84fc`).
+- Branch `feature/paper-a-evidence-hardening`:
+  - **G2:** controlled discrepancy taxonomy (`contracts.discrepancy_taxonomy`), proposed mapping for all 19 records (none approved).
+  - **G3:** tracked text-free `ingestion_summary.json` for P40–P45 (P45 machine-generated; P40–P43 pending local intakes; P44 none recorded).
+  - **G4:** CI on Linux/Windows/macOS, verifying every study and recording its environment.
+  - **G1:** decision candidates prepared.
+- Cross-OS findings F20 (P45 FE-check recomputation noise) and F21 (P38 platform-dependent provenance) are handled by D-007, which the owner approved on 28 September 2026.
+- Qualification remains NOT_GRANTED everywhere, and all discrepancies keep their status. No P46.
+
+## Checkpoint — owner approvals recorded (28 September 2026)
+
+- D-007 is approved.
+- The taxonomy (G2) is approved: all 19 labels, with an append-only review trail.
+- The G1 decisions are recorded (D-008):
+  - P45-D004 and P41-D002: ACCEPTED_WITH_RATIONALE;
+  - P43-D001, P43-D002 and P44-D001: DEFERRED;
+  - P16-D001 and P36-D001: BOUNDED.
+- Before/after gate evidence: `publication/PAPER_A_ENGIPROOF/G1_GATE_EVIDENCE.json`.
+- Graphs were synced for P16, P36 and P41–P45; all audits PASS at coverage 1.0.
+- The owner ran `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` locally (commit `f651f07`), so P40–P44 now have machine-generated summaries and G3 is closed.
+  - All fingerprints match.
+  - Readiness: P40 3/3, P41 5/5, P42 5/5, P43 3/5, P44 4/7.
+  - P44 was ingested through the pipeline.
+- That run exposed F22: `engiproof.cmd` swallowed exit codes. It is fixed in `c62f038`.
+- Qualification remains NOT_GRANTED. No P46.
+
+## Checkpoint — P45 Windows verification re-run after F22 (28 September 2026)
+
+- `28_VERIFY_P45_PHASE1_WINDOWS.bat` was re-run by the owner on the PR #8 branch (`bab6764`), using the fixed `engiproof.cmd`, so every `call engiproof` step's exit code was checked.
+- Result: `=== P45 PHASE1 VERIFY PASS ===`. Environment: Windows 10 AMD64, CPython 3.12.10, NumPy 2.5.3. `verify P45` = PASS_SOURCE_EXTERNAL; reproduction classes BYTE_ONLY 1, NUMERICAL_NONMATERIAL 1, 0 material.
+- This is now the authoritative local P45 Windows verification.
+- The only local change was the P45 graph counters (Q7), which were not committed.
+- The pre-F22 banner of 27 September is superseded as evidence (D-006 addendum).
+- No P45 evidence, discrepancy or qualification changed.
+

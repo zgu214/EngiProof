@@ -1,0 +1,313 @@
+{
+  "schema_version": "engiproof.cross_environment_record/1.0",
+  "commit": "a50cd9d563a5a45b3f5840233475152396ad59d9",
+  "recorded_on": "2026-09-28",
+  "source": "GitHub Actions check-run annotations 'engiproof-environment-record' (CI workflow, one job per environment)",
+  "rule": "Recomputation equivalence of frozen evidence across environments only. Not engineering acceptance; verification is not qualification.",
+  "environments": [
+    {
+      "job": "test (macos-latest, 3.13)",
+      "conclusion": "success",
+      "os": "Darwin",
+      "machine": "arm64",
+      "python": "3.13.15",
+      "numpy": "2.5.3",
+      "status": "PASS",
+      "studies": 12,
+      "classification_totals": {
+        "BYTE_ONLY": 8,
+        "ENVIRONMENT_METADATA": 2,
+        "IDENTICAL": 14,
+        "MATERIAL_NON_NUMERIC": 0,
+        "NUMERICAL_MATERIAL": 0,
+        "NUMERICAL_NONMATERIAL": 15
+      },
+      "non_identical_by_study": {
+        "P08": {
+          "BYTE_ONLY": 1
+        },
+        "P12": {
+          "BYTE_ONLY": 1,
+          "NUMERICAL_NONMATERIAL": 2
+        },
+        "P16": {
+          "ENVIRONMENT_METADATA": 1
+        },
+        "P29": {
+          "NUMERICAL_NONMATERIAL": 1
+        },
+        "P36": {
+          "ENVIRONMENT_METADATA": 1
+        },
+        "P38": {
+          "BYTE_ONLY": 3,
+          "NUMERICAL_NONMATERIAL": 2
+        },
+        "P40": {
+          "BYTE_ONLY": 1
+        },
+        "P41": {
+          "BYTE_ONLY": 1
+        },
+        "P42": {
+          "BYTE_ONLY": 1,
+          "NUMERICAL_NONMATERIAL": 2
+        },
+        "P43": {
+          "NUMERICAL_NONMATERIAL": 7
+        },
+        "P45": {
+          "NUMERICAL_NONMATERIAL": 1
+        }
+      }
+    },
+    {
+      "job": "test (ubuntu-latest, 3.10)",
+      "conclusion": "success",
+      "os": "Linux",
+      "machine": "x86_64",
+      "python": "3.10.21",
+      "numpy": "2.2.6",
+      "status": "PASS",
+      "studies": 12,
+      "classification_totals": {
+        "BYTE_ONLY": 10,
+        "ENVIRONMENT_METADATA": 2,
+        "IDENTICAL": 15,
+        "MATERIAL_NON_NUMERIC": 0,
+        "NUMERICAL_MATERIAL": 0,
+        "NUMERICAL_NONMATERIAL": 12
+      },
+      "non_identical_by_study": {
+        "P08": {
+          "BYTE_ONLY": 1
+        },
+        "P12": {
+          "BYTE_ONLY": 2
+        },
+        "P16": {
+          "NUMERICAL_NONMATERIAL": 1
+        },
+        "P29": {
+          "NUMERICAL_NONMATERIAL": 1
+        },
+        "P36": {
+          "ENVIRONMENT_METADATA": 1
+        },
+        "P38": {
+          "BYTE_ONLY": 4,
+          "ENVIRONMENT_METADATA": 1
+        },
+        "P40": {
+          "BYTE_ONLY": 1
+        },
+        "P41": {
+          "BYTE_ONLY": 1
+        },
+        "P42": {
+          "BYTE_ONLY": 1,
+          "NUMERICAL_NONMATERIAL": 2
+        },
+        "P43": {
+          "NUMERICAL_NONMATERIAL": 7
+        },
+        "P45": {
+          "NUMERICAL_NONMATERIAL": 1
+        }
+      }
+    },
+    {
+      "job": "test (ubuntu-latest, 3.12)",
+      "conclusion": "success",
+      "os": "Linux",
+      "machine": "x86_64",
+      "python": "3.12.14",
+      "numpy": "2.5.3",
+      "status": "PASS",
+      "studies": 12,
+      "classification_totals": {
+        "BYTE_ONLY": 9,
+        "ENVIRONMENT_METADATA": 3,
+        "IDENTICAL": 14,
+        "MATERIAL_NON_NUMERIC": 0,
+        "NUMERICAL_MATERIAL": 0,
+        "NUMERICAL_NONMATERIAL": 13
+      },
+      "non_identical_by_study": {
+        "P08": {
+          "BYTE_ONLY": 1
+        },
+        "P12": {
+          "BYTE_ONLY": 1,
+          "NUMERICAL_NONMATERIAL": 2
+        },
+        "P16": {
+          "ENVIRONMENT_METADATA": 1
+        },
+        "P29": {
+          "NUMERICAL_NONMATERIAL": 1
+        },
+        "P36": {
+          "ENVIRONMENT_METADATA": 1
+        },
+        "P38": {
+          "BYTE_ONLY": 4,
+          "ENVIRONMENT_METADATA": 1
+        },
+        "P40": {
+          "BYTE_ONLY": 1
+        },
+        "P41": {
+          "BYTE_ONLY": 1
+        },
+        "P42": {
+          "BYTE_ONLY": 1,
+          "NUMERICAL_NONMATERIAL": 2
+        },
+        "P43": {
+          "NUMERICAL_NONMATERIAL": 7
+        },
+        "P45": {
+          "NUMERICAL_NONMATERIAL": 1
+        }
+      }
+    },
+    {
+      "job": "test (ubuntu-latest, 3.13)",
+      "conclusion": "success",
+      "os": "Linux",
+      "machine": "x86_64",
+      "python": "3.13.15",
+      "numpy": "2.5.3",
+      "status": "PASS",
+      "studies": 12,
+      "classification_totals": {
+        "BYTE_ONLY": 9,
+        "ENVIRONMENT_METADATA": 4,
+        "IDENTICAL": 14,
+        "MATERIAL_NON_NUMERIC": 0,
+        "NUMERICAL_MATERIAL": 0,
+        "NUMERICAL_NONMATERIAL": 12
+      },
+      "non_identical_by_study": {
+        "P08": {
+          "BYTE_ONLY": 1
+        },
+        "P12": {
+          "BYTE_ONLY": 1,
+          "NUMERICAL_NONMATERIAL": 2
+        },
+        "P16": {
+          "ENVIRONMENT_METADATA": 1
+        },
+        "P29": {
+          "ENVIRONMENT_METADATA": 1
+        },
+        "P36": {
+          "ENVIRONMENT_METADATA": 1
+        },
+        "P38": {
+          "BYTE_ONLY": 4,
+          "ENVIRONMENT_METADATA": 1
+        },
+        "P40": {
+          "BYTE_ONLY": 1
+        },
+        "P41": {
+          "BYTE_ONLY": 1
+        },
+        "P42": {
+          "BYTE_ONLY": 1,
+          "NUMERICAL_NONMATERIAL": 2
+        },
+        "P43": {
+          "NUMERICAL_NONMATERIAL": 7
+        },
+        "P45": {
+          "NUMERICAL_NONMATERIAL": 1
+        }
+      }
+    },
+    {
+      "job": "test (windows-latest, 3.10)",
+      "conclusion": "success",
+      "os": "Windows",
+      "machine": "AMD64",
+      "python": "3.10.11",
+      "numpy": "2.2.6",
+      "status": "PASS",
+      "studies": 12,
+      "classification_totals": {
+        "BYTE_ONLY": 1,
+        "ENVIRONMENT_METADATA": 0,
+        "IDENTICAL": 23,
+        "MATERIAL_NON_NUMERIC": 0,
+        "NUMERICAL_MATERIAL": 0,
+        "NUMERICAL_NONMATERIAL": 15
+      },
+      "non_identical_by_study": {
+        "P12": {
+          "NUMERICAL_NONMATERIAL": 2
+        },
+        "P16": {
+          "NUMERICAL_NONMATERIAL": 1
+        },
+        "P29": {
+          "NUMERICAL_NONMATERIAL": 1
+        },
+        "P38": {
+          "NUMERICAL_NONMATERIAL": 2
+        },
+        "P42": {
+          "NUMERICAL_NONMATERIAL": 1
+        },
+        "P43": {
+          "NUMERICAL_NONMATERIAL": 7
+        },
+        "P45": {
+          "BYTE_ONLY": 1,
+          "NUMERICAL_NONMATERIAL": 1
+        }
+      }
+    },
+    {
+      "job": "test (windows-latest, 3.13)",
+      "conclusion": "success",
+      "os": "Windows",
+      "machine": "AMD64",
+      "python": "3.13.15",
+      "numpy": "2.5.3",
+      "status": "PASS",
+      "studies": 12,
+      "classification_totals": {
+        "BYTE_ONLY": 1,
+        "ENVIRONMENT_METADATA": 0,
+        "IDENTICAL": 24,
+        "MATERIAL_NON_NUMERIC": 0,
+        "NUMERICAL_MATERIAL": 0,
+        "NUMERICAL_NONMATERIAL": 14
+      },
+      "non_identical_by_study": {
+        "P12": {
+          "NUMERICAL_NONMATERIAL": 2
+        },
+        "P29": {
+          "NUMERICAL_NONMATERIAL": 1
+        },
+        "P38": {
+          "NUMERICAL_NONMATERIAL": 2
+        },
+        "P42": {
+          "NUMERICAL_NONMATERIAL": 1
+        },
+        "P43": {
+          "NUMERICAL_NONMATERIAL": 7
+        },
+        "P45": {
+          "BYTE_ONLY": 1,
+          "NUMERICAL_NONMATERIAL": 1
+        }
+      }
+    }
+  ]
+}

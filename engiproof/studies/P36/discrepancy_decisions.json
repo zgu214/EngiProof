@@ -1,0 +1,20 @@
+{
+  "schema_version": "engiproof.discrepancy_decisions/1.0",
+  "paper_id": "P36",
+  "decisions": [
+    {
+      "decision_id": "P36-D001-DEC-001",
+      "discrepancy_id": "P36-D001",
+      "disposition": "BOUNDED",
+      "rationale": "Formalises the existing BOUNDED manifest status: the Eq. (8) versus Figure 14 FE-marker residual is 1.748597% mean and 3.585742% maximum across 27 graphical marker centres. This is an in-sample empirical-fit audit, not held-out validation or independent FE reproduction.",
+      "reviewer": "Zhiqiang Gu",
+      "evidence_refs": [
+        "papers/P36/results/figure14_comparison.csv",
+        "engiproof/studies/P36/study.json#P36-D001"
+      ],
+      "effective_promotion_effect": "NONE",
+      "qualification_effect": "NONE",
+      "rule": "Human discrepancy decisions may resolve/bound/accept a review item but never grant engineering qualification."
+    }
+  ]
+}

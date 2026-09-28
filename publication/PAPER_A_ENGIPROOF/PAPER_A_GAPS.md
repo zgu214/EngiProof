@@ -6,6 +6,16 @@ Categories: **a** no new paper (work or decisions on existing records) · **b** 
 
 **Result: five gaps; none is category d. P46 is not required.**
 
+## Status after the evidence-hardening PR (updated 28 September 2026)
+
+| Gap | Status | What remains |
+|---|---|---|
+| G1 | **Closed (D-008).** Eight real decisions, in both directions: two ACCEPTED_WITH_RATIONALE (unblocking), two BOUNDED, four DEFERRED (still blocking). Before/after gate evidence is in `G1_GATE_EVIDENCE.json`. | — |
+| G2 | **Closed (D-008).** Controlled taxonomy; all 19 labels approved by the owner, with an append-only review trail (`docs/DISCREPANCY_TAXONOMY.md`) | — |
+| G3 | **Closed.** Machine-generated, text-free summaries for all six cases (P40–P44 from the owner's local intakes, 28 Sep 2026), and every fingerprint matches its study SHA-256. P44 was ingested through the pipeline, which corrects the earlier “no ingestion record”. | Source format detected only for P45; P40–P44 show `NOT_RECORDED` (optional: rerun with `--source-pdf`) |
+| G4 | **Closed (D-007 approved).** CI on Linux, Windows and macOS verifies all 12 studies and records each environment (`docs/CROSS_ENVIRONMENT_VERIFICATION.md`). | P38 runner portability (WORK_QUEUE Q9) at the next approved regeneration |
+| G5 | Reassessed: optional. P38-D002 already instantiates MODEL_VS_EXPERIMENT_GAP, and P40 Table 2 ratios are analytical / experiment by construction. | Nothing required for Paper A |
+
 ---
 
 ## G1 — Human decision boundary exercised only once
@@ -41,7 +51,7 @@ Categories: **a** no new paper (work or decisions on existing records) · **b** 
 - **Missing claim (PA-04, and the audit part of PA-02):** ingestion, extraction and source-audit outcomes are traceable in the repository for every case.
 - **Resolved on 27 September 2026 (no longer part of this gap):** P43/P44 source identity. The DOIs `10.2118/5620-PA` and `10.2118/28723-MS` (historical alias `10.2523/28723-MS`) were confirmed by the study owner from publisher records, and the P43 SPE number, previously recorded as 5820 in error, was corrected to 5620. The correction itself is recorded as failure F18.
 - **Why P40–P45 are still insufficient:**
-  - P40 and P44 have no `ingestion_record`.
+  - P40 and P44 have no `ingestion_record` pointer in the manifest. Correction: P40 did go through the pipeline (dev1/dev2, readiness READY 3/3, `HANDOVER_CURRENT.md`); for P44 no ingestion is recorded.
   - Candidate counts, readiness results and source-audit statuses exist only in prose (handover, dev notes), because intake directories are local and gitignored by design (they can hold source excerpts).
   - Source format (born-digital vs scan) is not recorded for P43/P44.
 - **Category:** b — a tracked, text-free ingestion summary per study: fingerprint, audit checks, candidate/readiness counts, source format; no excerpts.
@@ -49,6 +59,7 @@ Categories: **a** no new paper (work or decisions on existing records) · **b** 
   - add a small tracked `ingestion_summary` per study;
   - for cases scaffolded without the pipeline, state so rather than backfilling.
 - **Blocks submission:** yes — the extraction claims otherwise rest on prose.
+- **Closed on 28 September 2026:** `engiproof/studies/P40…P45/ingestion_summary.json` are all machine-generated from local intakes (`ingestion-summary-audit` PASS).
 
 ## G4 — Cross-OS reproducibility not recorded as artifacts
 
@@ -67,13 +78,13 @@ Categories: **a** no new paper (work or decisions on existing records) · **b** 
 ## G5 — Experimental data never handled as a distinct evidence population
 
 - **Missing claim (PA-26):** EngiProof distinguishes model-versus-experiment evidence from reproduction and from source inconsistency.
-- **Why P40–P45 are insufficient:** P40 Table 2 already contains hyperbaric-chamber propagation pressures (`papers/P40/reference/table2.csv`, `Pp_kPa`), but they are used only as the published normalisation of the analytical ratios. The MODEL_VS_EXPERIMENT_GAP category exists in `src/engiproof/discrepancy.py` and has never been instantiated.
+- **Why P40–P45 are insufficient:** P40 Table 2 already contains hyperbaric-chamber propagation pressures (`papers/P40/reference/table2.csv`, `Pp_kPa`), but they are used only as the published normalisation of the analytical ratios. Correction (27 September 2026): MODEL_VS_EXPERIMENT_GAP *is* instantiated in the repository, as P38-D002 (OBSERVED), outside the six-case population.
 - **Category:** c — deeper use of P40; no new source.
 - **Work:**
   - record the hyperbaric values as a PUBLISHED experimental population;
   - compare Eqs. (2), (3), (6), (9) against it as COMPARED;
   - record the model-versus-experiment gaps as OBSERVED MODEL_VS_EXPERIMENT_GAP. Do not re-open P40-D001, and do not tune.
-- **Blocks submission:** optional. Needed only if Paper A claims experimental-evidence handling; recommended because the evidence model already defines it.
+- **Blocks submission:** no. Given P38-D002, G5 would add a second, within-population instance, but no new capability. It is left optional.
 
 ---
 
@@ -93,3 +104,5 @@ Categories: **a** no new paper (work or decisions on existing records) · **b** 
 - **H2:** record the non-reproduced targets of P41/P42/P44 as BLOCKED comparisons, as P45 does. This adds records only; no evidence changes.
 - **H3:** flatten the nested `PAPER_A_ENGIPROOF_LATEX/publication/PAPER_A_ENGIPROOF_LATEX/` manuscript path.
 - **H4:** manuscript Draft v0.1 covers P40–P41 only; the synthesis should follow `PAPER_A_OUTLINE.md`.
+- **H5:** the P38 runner writes OS-dependent path keys (`str(Path)`). Fix it with `.as_posix()` at the next approved P38 regeneration; until then the comparator treats the separator as a rendering difference (F21).
+- **H6:** `verify-all` covers only live studies. CI now also runs `environment-record` over every study (F20).

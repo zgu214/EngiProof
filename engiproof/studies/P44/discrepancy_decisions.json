@@ -1,0 +1,19 @@
+{
+  "schema_version": "engiproof.discrepancy_decisions/1.0",
+  "paper_id": "P44",
+  "decisions": [
+    {
+      "decision_id": "P44-D001-DEC-001",
+      "discrepancy_id": "P44-D001",
+      "disposition": "DEFERRED",
+      "rationale": "The source contains incompatible printed time pairs. Figure 2 supports the captions, but the full contact response is not reproduced, so EngiProof does not select an intended pair without authoritative clarification.",
+      "reviewer": "Zhiqiang Gu",
+      "evidence_refs": [
+        "engiproof/studies/P44/study.json#P44-D001"
+      ],
+      "effective_promotion_effect": "BLOCK_PROMOTION",
+      "qualification_effect": "NONE",
+      "rule": "Human discrepancy decisions may resolve/bound/accept a review item but never grant engineering qualification."
+    }
+  ]
+}

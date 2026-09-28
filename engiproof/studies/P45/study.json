@@ -501,5 +501,22 @@
       "sub-figures 4(a), 6(a), 7(a), 8(a) not separated by OCR",
       "Appendix 1/2 absent from structure candidates"
     ]
+  },
+  "verification_tolerance": {
+    "purpose": "cross-platform recomputation equivalence",
+    "rel": 1e-09,
+    "abs": 1e-12,
+    "statement": "Recomputation-equivalence tolerance only. The study-wide default (rel 1e-9, abs 1e-12) is unchanged. One path-scoped entry covers the independent beam-column FE check. It is NOT an engineering acceptance or validation tolerance and does not relax any comparison with the published source.",
+    "path_tolerances": [
+      {
+        "path_prefix": ".appendix1_checks.independent_fe_comparison",
+        "rel": 1e-06,
+        "abs": 1e-07,
+        "artifacts": [
+          "papers/P45/results/phase1_summary.json"
+        ],
+        "rationale": "The independent FE solve of Appendix 1 (numpy.linalg on a fine mesh) differs across NumPy/BLAS builds and operating systems. Measured in CI on 27 September 2026 (Linux Python 3.10-3.13 with NumPy 2.2.6-2.5.3, Windows Python 3.10/3.13, macOS arm64 Python 3.13): FE stiffness and reaction values change by <= 2.9e-7 absolute (<= 5e-8 relative), and the FE-vs-Appendix-1 residual max_relative_difference (1.6e-8 to 3.2e-8) changes by <= 1e-8 absolute. The engineering statement is the boolean appendix1_matches_independent_fe (every residual < 1e-6), which is compared exactly and stays material if it flips."
+      }
+    ]
   }
 }

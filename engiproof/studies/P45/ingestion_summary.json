@@ -1,0 +1,188 @@
+{
+  "schema_version": "engiproof.ingestion_summary/1.0",
+  "paper_id": "P45",
+  "recorded_on": "2026-09-27",
+  "rule": "Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion pipeline produced; it is not evidence, and candidate extraction is not reproduction.",
+  "excluded_by_design": [
+    "source text",
+    "excerpts",
+    "captions",
+    "definitions",
+    "line locators",
+    "free-text readiness reasons"
+  ],
+  "ingestion_status": "SUMMARISED_FROM_LOCAL_INTAKE",
+  "ingestion_route": "ENGIPROOF_PIPELINE_V0_2",
+  "recorded_from": "engiproof/intake/P45/ (local, gitignored)",
+  "intake_status": "DRAFT_SCAFFOLDED",
+  "raw_source_copied": false,
+  "source": {
+    "sha256": "c10b4938dd3c4de6c027f8494386b43a46fc2c3cb011a69de94612dc52686a0d",
+    "matches_study_manifest_sha256": true,
+    "size_bytes": 772972,
+    "page_count": 11,
+    "text_extractable": true,
+    "format": {
+      "source_format": "SCANNED_WITH_TEXT_LAYER",
+      "page_count": 11,
+      "page_raster_count": 11,
+      "text_page_count": 11,
+      "raster_dpi_median": 300,
+      "basis": "AUTOMATIC_PAGE_RASTER_DETECTION"
+    }
+  },
+  "identity_audit": {
+    "status": "REVIEW_REQUIRED",
+    "checks": {
+      "title": "MATCH",
+      "doi": "NOT_FOUND_IN_SOURCE",
+      "year": "NOT_CONFIRMED"
+    },
+    "issue_count": 0,
+    "resolution_refs": [
+      "papers/P45/reference/source_identity.json",
+      "papers/P45/SOURCE.md"
+    ]
+  },
+  "candidates": {
+    "total": 32,
+    "by_kind": {
+      "appendix": 3,
+      "equation": 12,
+      "figure": 14,
+      "table": 3
+    },
+    "dossiers_located": 28,
+    "dossiers_total": 32,
+    "equation_candidates_added_by_recovery": 0
+  },
+  "structures": {
+    "equations": {
+      "count": 12,
+      "by_status": {
+        "BLOCK_NOT_EXTRACTED": 1,
+        "STRUCTURE_CANDIDATE": 11
+      }
+    },
+    "tables": {
+      "count": 3,
+      "by_status": {
+        "STRUCTURE_CANDIDATE": 3
+      }
+    },
+    "figures": {
+      "count": 14,
+      "by_status": {
+        "NOT_EXTRACTED": 4,
+        "STRUCTURE_CANDIDATE": 10
+      }
+    },
+    "definitions": {
+      "count": 23,
+      "by_status": {
+        "CANDIDATE": 23
+      }
+    }
+  },
+  "selected_targets": {
+    "count": 16,
+    "readiness_status": "PARTIAL",
+    "ready_count": 4,
+    "by_status": {
+      "BLOCKED": 10,
+      "PARTIAL": 2,
+      "READY": 4
+    },
+    "targets": [
+      {
+        "label": "Table 1",
+        "kind": "table",
+        "status": "READY"
+      },
+      {
+        "label": "Table 2",
+        "kind": "table",
+        "status": "READY"
+      },
+      {
+        "label": "Table 3",
+        "kind": "table",
+        "status": "READY"
+      },
+      {
+        "label": "Figure 10",
+        "kind": "figure",
+        "status": "BLOCKED"
+      },
+      {
+        "label": "Figure 11",
+        "kind": "figure",
+        "status": "BLOCKED"
+      },
+      {
+        "label": "Figure 4",
+        "kind": "figure",
+        "status": "BLOCKED"
+      },
+      {
+        "label": "Figure 5",
+        "kind": "figure",
+        "status": "PARTIAL"
+      },
+      {
+        "label": "Figure 5(b)",
+        "kind": "figure",
+        "status": "BLOCKED"
+      },
+      {
+        "label": "Figure 6(b)",
+        "kind": "figure",
+        "status": "BLOCKED"
+      },
+      {
+        "label": "Figure 7(b)",
+        "kind": "figure",
+        "status": "BLOCKED"
+      },
+      {
+        "label": "Figure 8",
+        "kind": "figure",
+        "status": "BLOCKED"
+      },
+      {
+        "label": "Figure 9",
+        "kind": "figure",
+        "status": "PARTIAL"
+      },
+      {
+        "label": "Figure 9(a)",
+        "kind": "figure",
+        "status": "BLOCKED"
+      },
+      {
+        "label": "Equation (7)",
+        "kind": "equation",
+        "status": "READY"
+      },
+      {
+        "label": "Appendix 1",
+        "kind": null,
+        "status": "BLOCKED"
+      },
+      {
+        "label": "Appendix 2",
+        "kind": null,
+        "status": "BLOCKED"
+      }
+    ]
+  },
+  "manual_review": {
+    "required": true,
+    "reasons": [
+      "selected-target readiness not READY",
+      "source-identity audit not PASS"
+    ],
+    "target_review_in_study_manifest": true,
+    "note": "Manual page-image review, where performed, is recorded in the study manifest, not here."
+  }
+}

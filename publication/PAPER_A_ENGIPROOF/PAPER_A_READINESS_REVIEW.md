@@ -13,9 +13,9 @@ What can EngiProof now support as a publishable methods/evidence paper, given th
 | | |
 |---|---|
 | Claims tested | 30 (`CLAIM_EVIDENCE_MATRIX.md`) |
-| SUPPORTED | 16 |
-| PARTIALLY_SUPPORTED | 7 |
-| NOT_SUPPORTED_YET | 4 |
+| SUPPORTED | 20 |
+| PARTIALLY_SUPPORTED | 4 |
+| NOT_SUPPORTED_YET | 3 |
 | OUT_OF_SCOPE | 3 |
 | Genuine evidence gaps | 5 (G1–G5, `PAPER_A_GAPS.md`) |
 | Gaps requiring a new source (category d) | **0** |
@@ -33,20 +33,20 @@ What is not yet strong enough is narrower: the human decision boundary has been 
 | P41 | 2011, ASME OMAE | Punctuation-free ASME captions | PiP axial load sharing, bonding, global buckling | PUBLISHED Eqs. 6–10, 14; INDEPENDENT geometry/EA/EI | Captions not anchored (dev5) | 2 OPEN (force balance; paragraph-vs-axis unit) | Global-buckling FE response |
 | P42 | 2019, Elsevier Marine Structures | Split captions | Unbonded flexible pipe, helical armour tension–bending | PUBLISHED analytical families; model-form comparison with FP-RUC | False year conflict from received/copyright dates | 1 OBSERVED (model form), 1 OPEN (implementation provenance) | FP-RUC FE; Figure 16 moment chain |
 | P43 | 1976, J. Petroleum Technology (SPE-5620-PA) | not recorded | Variable-tension riser eigenproblem | PUBLISHED Table 1/2; INDEPENDENT Hermite-FE eigen-solution (175 eigenvalues) | DOI recorded PENDING and SPE number recorded as 5820 in error (corrected manually) | 2 OPEN (printed eigenvalues vs internal consistency) | Source power-series recursion |
-| P44 | 1994, SPE 28723 conference | not recorded | Quasi-static nonlinear drillstring–riser contact | PUBLISHED Eq. 1; INDEPENDENT section properties, penalty scale | DOI recorded PENDING (completed manually; historical alias 10.2523/28723-MS); no ingestion record | 1 OPEN (paragraph vs caption time labels) | Full nonlinear FE contact profiles |
+| P44 | 1994, SPE 28723 conference | not recorded | Quasi-static nonlinear drillstring–riser contact | PUBLISHED Eq. 1; INDEPENDENT section properties, penalty scale | DOI recorded PENDING (completed manually; historical alias 10.2523/28723-MS); ingested through the pipeline, readiness PARTIAL 4/7, no structure extraction run (ingestion summary, 28 Sep 2026) | 1 OPEN (paragraph vs caption time labels) | Full nonlinear FE contact profiles |
 | P45 | 1983, Applied Ocean Research | 300 dpi bilevel scan with OCR layer | Nonlinear dynamic riser analysis (geometric stiffness, θ-Wilson integration, Morison loading) | PUBLISHED Appendix 1/2, Eq. 7; INDEPENDENT FE, rigid-body, stability, graphical measurement | Readiness PARTIAL 4/16; Eq. (11), sub-figures, appendices missed; DOI not in source | 6 OPEN (inconsistency, magnitude, unit, typography, convention, claim definition) | All dynamic responses (BLOCKED) |
 
 What the set stress-tests well:
 - **Eras and formats:** 1976–2019, four publishers/societies (ASCE, ASME, Elsevier, SPE), born-digital sources with font artefacts and a scanned 1983 source.
 - **Mechanics:** static collapse, axial load sharing, helical-armour bending, an eigenproblem, quasi-static nonlinear contact and nonlinear time integration. The formulations are genuinely different, not variations of one equation.
 - **Independent-check types:** analytical reconstruction (P40), numerical re-formulation (P43, P45), matrix-property checks (P45), graphical measurement against boundary conditions (P45).
-- **Discrepancy types:** ten distinct labels over 14 records, including several found only by cross-checking tables against equations (P41, P43) or against physics (P45-D001, D002).
+- **Discrepancy types:** ten distinct legacy labels over 14 records (seven proposed taxonomy categories), including several found only by cross-checking tables against equations (P41, P43) or against physics (P45-D001, D002).
 - **Incomplete reproduction:** four of six studies have a major target that is legitimately not reproducible from source detail.
 - **Runtime behaviour:** a real mutation defect was found, inventoried and fixed; recomputation noise across NumPy builds is quantified and classified.
 
 What it does not stress-test:
 - **Domain:** a single domain (offshore/subsea structural mechanics), so generality beyond it is out of scope (PA-27).
-- **Experimental evidence:** none handled as a population (G5).
+- **Experimental evidence:** not handled as a separate population within P40–P45. The repository has one MODEL_VS_EXPERIMENT_GAP record (P38-D002), outside the six cases (G5 optional).
 - **SOLVER_NEW evidence:** none (PA-25).
 - **Extraction accuracy:** not measured (PA-05).
 - **Organisational independence:** the checks are methodologically independent only (PA-10).
@@ -72,8 +72,11 @@ What it does not stress-test:
 | F15 | Comparator blind to deleted artifacts; `platform` treated as environment | runtime (review) | Structural changes material; `platform` removed | PR #3 commit `15f0c78` |
 | F16 | Automated readiness PARTIAL on a scanned source | P45 | Manual page-image review, recorded in the manifest | `S(P45).target_review` |
 | F17 | graph-sync persists per-run counters | runtime | Recorded as low-priority hardening | WORK_QUEUE Q7 |
-| F18 | Source identity recorded incompletely or wrongly (P43/P44 DOI PENDING; P43 SPE number 5820 instead of 5620); ingestion records missing | P43, P44 (P40) | Identity corrected from publisher records (27 Sep 2026); tracked ingestion summaries still missing — gap G3 | `S(P43)`, `S(P44)`, `papers/P43/SOURCE.md` |
+| F18 | Source identity recorded incompletely or wrongly (P43/P44 DOI PENDING; P43 SPE number 5820 instead of 5620); ingestion records missing | P43, P44 (P40) | Identity corrected from publisher records (27 Sep 2026); tracked ingestion summaries for all six cases (28 Sep 2026, G3 closed) | `S(P43)`, `S(P44)`, `papers/P43/SOURCE.md` |
 | F19 | Generated packaging metadata tracked in Git | runtime | Untracked | PR #4 |
+| F20 | Frozen P45 evidence was not recomputation-equivalent across NumPy/BLAS builds under the default tolerance: the ill-conditioned independent FE check changes by ≤ 2.9e-7 abs. CI missed this because `verify-all` covers only live studies, and the earlier “NUMERICAL_NONMATERIAL under NumPy 2.5.3” statement was wrong. | P45 (cross-OS CI) | CI verifies every study (`environment-record`); path-scoped recomputation tolerance on the FE block only, with the engineering boolean still compared exactly (D-007, approved 28 Sep 2026) | `docs/CROSS_ENVIRONMENT_VERIFICATION.md` |
+| F21 | Provenance manifests are platform-dependent: hashes of non-materially changed CSVs, and OS path separators in keys, made P38 fail on Windows/macOS | P38 (cross-OS CI) | Provenance-hash inheritance and separator-rendering rules (D-007, approved 28 Sep 2026); runner fix deferred to the next approved regeneration | same |
+| F22 | The Windows dispatcher `engiproof.cmd` expanded `%errorlevel%` inside a parenthesised block, so it returned 0 for every command whenever `.venv` existed. `call engiproof … / if errorlevel 1 goto :fail` in the Windows batches therefore never stopped on an EngiProof failure. Earlier “VERIFY PASS” banners certified the `python -m unittest` steps, but not the `engiproof verify` steps. Found when `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` continued past `invalid choice` errors. | runtime (Windows, owner's run) | Dispatcher fixed; Windows CI asserts that a failing command returns non-zero. The cross-OS CI verification (F20/F21) now covers what the local banners did not. P45 Windows verification was re-run after the fix and passed (28 Sep 2026, D-006 addendum). | `engiproof.cmd`, `.github/workflows/ci.yml` |
 
 These failures are themselves Paper A evidence: each was surfaced by the evidence process, recorded, and either corrected or left visible.
 
@@ -117,11 +120,6 @@ G5 is a C-type item (deeper use of P40). It is recommended but not blocking.
 
 ## 8. Next highest-value action
 
-A single “Paper A evidence hardening” runtime PR:
-- **G2:** a controlled discrepancy vocabulary with definitions and validation, plus a proposed mapping of the 14 existing records for human review. No evidence values change.
-- **G3:** tracked, text-free ingestion summaries per study (fingerprint, audit checks, candidate/readiness counts, source format).
-- **G4:** Windows in the CI matrix, and the producing environment recorded as ENVIRONMENT_METADATA in verification records.
-
-In parallel, the human reviewer records G1 decisions. Then G5 on P40. Then manuscript synthesis from `PAPER_A_OUTLINE.md`.
+Update, 28 September 2026: G1–G4 are closed. D-007 and the taxonomy were approved and the G1 decisions recorded (D-008). Machine-generated ingestion summaries now cover all six cases (from the owner's local run), and a Windows dispatcher defect was found and fixed (F22). Next: merge PR #8, then finalise the manuscript in PR #9 (rebase, regenerate Appendix A, related-work references, rebuild). G5 is optional; there is no P46.
 
 Contextual literature, including the ScientistTwo / Chain-of-Evidence direction, belongs in related work as architectural context only. It is not engineering validation evidence and does not replace P40–P45.

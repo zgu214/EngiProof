@@ -48,7 +48,13 @@ class P41EngiProofTests(unittest.TestCase):
         from engiproof.discrepancy import discrepancy_gate
         gate=discrepancy_gate("P41")
         self.assertFalse(gate["ready"])
-        self.assertEqual(gate["blocking_discrepancy_ids"],["P41-D001","P41-D002"])
+        # P41-D001 blocks. P41-D002 is unblocked only by the recorded human decision
+        # (ACCEPTED_WITH_RATIONALE, D-008); its manifest record stays OPEN and unchanged.
+        self.assertEqual(gate["blocking_discrepancy_ids"],["P41-D001"])
+        d2=next(a for a in gate["assessments"] if a["discrepancy_id"]=="P41-D002")
+        self.assertEqual(d2["state"],"OPEN"); self.assertEqual(d2["promotion_effect"],"BLOCK_PROMOTION")
+        self.assertEqual(d2["decision"]["disposition"],"ACCEPTED_WITH_RATIONALE"); self.assertEqual(d2["decision"]["qualification_effect"],"NONE")
+        self.assertEqual(d2["effective_promotion_effect"],"NONE")
         self.assertEqual(gate["assessments"][0]["category"],"PUBLISHED_REFERENCE_MISMATCH")
 
     def test_runner(self):
