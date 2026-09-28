@@ -42,3 +42,21 @@ The draft now follows `publication/PAPER_A_ENGIPROOF/PAPER_A_OUTLINE.md`. It has
   - complete the P42 author list in `references.bib`;
   - acknowledgements.
 - Not claimed: extraction accuracy, completeness, organisational independence, generality beyond offshore/subsea mechanics, autonomous discovery, qualification.
+
+## Draft v0.2.1 — 28 September 2026 (after PR #8)
+
+- Rebased onto `develop` after PR #8 merged.
+- Wording updated to the recorded state:
+  - eight human decisions in both directions (D-008), with P43 deliberately deferred;
+  - reviewer-approved taxonomy labels;
+  - D-007 approved;
+  - machine-generated ingestion summaries for all six cases;
+  - F22 (Windows dispatcher) and the post-fix P45 re-verification;
+  - 22 failure modes.
+- Appendix A regenerated from the final matrix (20 / 4 / 3 / 3).
+- References completed:
+  - Paper2Agent (Miao et al., Nature 2026; arXiv:2509.06917);
+  - ScientistOne / Chain-of-Evidence (Meng et al., arXiv:2605.26340);
+  - ScientistTwo (Nam et al., arXiv:2609.19644);
+  - full P42 author list (Lukassen et al. 2019).
+- Remaining TODOs: the reproducibility-literature paragraph and acknowledgements.

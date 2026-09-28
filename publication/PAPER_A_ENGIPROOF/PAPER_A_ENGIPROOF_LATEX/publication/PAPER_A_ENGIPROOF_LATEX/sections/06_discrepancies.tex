@@ -25,11 +25,11 @@ The framework now defines a controlled taxonomy with two parts:
 \end{itemize}
 Labels never change an observation, value, status, decision or qualification, and they never assert a cause. Manifests are validated against the vocabulary.
 
-Table~\ref{tab:taxonomy} shows one example per category. The mapping of existing records is \emph{proposed} and becomes effective only through recorded reviewer approval (\texttt{docs/DISCREPANCY\_TAXONOMY.md}). Until then, PA-13 is claimed for the vocabulary and its validation only.
+Table~\ref{tab:taxonomy} shows one example per category. A software agent proposed the mapping of all 19 records, and the study owner then approved each label. The approvals are recorded append-only (\texttt{docs/DISCREPANCY\_TAXONOMY.md}). The original free-text hints and the frozen assessments were left unchanged (PA-13).
 
 \begin{table}[htbp]
 \centering
-\caption{Discrepancy taxonomy (decision order) with one proposed example each. The mapping is pending reviewer approval.}
+\caption{Discrepancy taxonomy in decision order, with one reviewer-approved example per category.}
 \label{tab:taxonomy}
 \footnotesize
 \begin{tabular}{p{0.30\linewidth}p{0.20\linewidth}p{0.42\linewidth}}
@@ -52,4 +52,17 @@ Category & Example & Why this category \\
 \subsection{Human decisions gate promotion}
 Automation classifies and escalates a discrepancy; it does not decide it. An \estatus{OPEN} high-priority discrepancy blocks the promotion of its study. Only an append-only human decision can lift that block. The decision is one of four: \estatus{RESOLVED}, \estatus{BOUNDED}, \estatus{ACCEPTED\_WITH\_RATIONALE} or \estatus{DEFERRED}. It must name a reviewer and give a rationale, and every unblocking disposition must cite evidence references. A decision never edits the discrepancy record, and its qualification effect is always \texttt{NONE}.
 
-To date, one real decision exists: P40-D001 \estatus{DEFERRED}, which keeps the block. The unblocking path is implemented and tested, but it has not yet been exercised on real evidence (PA-14). Candidate decisions have been prepared for the reviewer, with the dry-run effect of each on the gates. Accepting both P43 records, for example, would clear P43's discrepancy gate; its promotion would remain subject to the ingestion checks. Those decisions are deliberately the reviewer's, not the software's.
+Eight real decisions have been recorded, and they exercise the boundary in both directions (PA-14):
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Unblocking.} P45-D004, a notation-only conflict, and P41-D002, where the plotted kNm axis is used for comparison while the paragraph's MNm unit stays preserved, were accepted with rationale. P45's blockers fall from six to five, and P41's from two to one.
+  \item \textbf{Bounded.} P16-D001 and P36-D001 were formalised as \estatus{BOUNDED}. For P36 the record states explicitly that the residual is in-sample, not held-out.
+  \item \textbf{Deferred.} Four decisions keep the block:
+    \begin{itemize}
+      \item P40-D001;
+      \item P43-D001 and P43-D002, where three consistent internal checks support the recomputed eigenvalues, but the records' own closure requirements ask for an erratum or author clarification;
+      \item P44-D001.
+    \end{itemize}
+\end{itemize}
+The P43 case matters for the argument: the reviewer declined to accept a well-supported correction just to clear a promotion gate.
+
+A software agent prepared the candidate decisions, each with the dry-run effect on the gates. The reviewer made the decisions. Every decision records \texttt{qualification\_effect: NONE}.

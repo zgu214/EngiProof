@@ -49,7 +49,7 @@ The first continuous-integration runs on Windows and macOS, which were also the 
   \item \textbf{P38 provenance manifest (F21).} It stores the hashes of result files that change non-materially between platforms. These hashes now \emph{inherit} the classification of the artifact they identify, instead of counting as independent text changes.
   \item \textbf{Path separators (F21).} A runner wrote relative-path keys with the operating system's path separator. Such keys are treated as a rendering difference, and their values are still compared.
 \end{itemize}
-These three rules are recorded as a proposed decision awaiting the study owner's approval.
+The study owner approved these three rules (D-007), subject to the conditions stated here: the scoped tolerance applies only to that block, and an inherited classification is controlled by the referenced artifact's own classification. The same cross-platform work exposed a fourth defect (F22). The Windows command dispatcher expanded its exit code before the command ran, so local Windows batch runs had reported PASS without checking the verification step. The dispatcher was fixed, continuous integration now asserts that exit codes propagate, and P45 was re-verified locally on Windows (NumPy 2.5.3) with no material artifact.
 
 Under them, all 12 studies in the repository verify in six environments with no material artifact (Table~\ref{tab:crossenv}). The environments cover Linux x86-64 (Python 3.10, 3.12, 3.13), Windows x86-64 (3.10, 3.13) and macOS arm64 (3.13), with NumPy 2.2.6 and 2.5.3 (PA-19).
 

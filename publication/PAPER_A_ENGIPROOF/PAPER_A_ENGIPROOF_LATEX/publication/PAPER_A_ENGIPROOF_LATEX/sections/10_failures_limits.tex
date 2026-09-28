@@ -2,7 +2,7 @@
 \label{sec:failures}
 
 \subsection{Failures of the framework}
-The evidence process recorded 21 failure modes of the framework itself (PA-24). They are condensed in Table~\ref{tab:failures}. They are reported as lessons, not as a quality metric. Each was surfaced by the process, recorded with a repository reference, and then corrected, bounded or left visible.
+The evidence process recorded 22 failure modes of the framework itself (PA-24). They are condensed in Table~\ref{tab:failures}. They are reported as lessons, not as a quality metric. Each was surfaced by the process, recorded with a repository reference, and then corrected, bounded or left visible.
 
 \begin{table}[htbp]
 \centering
@@ -17,7 +17,7 @@ Source identity & Wrong DOI/year accepted (F1); false year conflict (F6); identi
 Extraction & Glyph placeholders (F2); grouped references lost (F3); publisher captions (F4, F7); scanned source only partly ready (F16) & Recovery passes; broadened anchors; manual page review recorded \\
 Interpretation & Table mismatch not separable from transcription error (F5); literal equations not closing (F8) & Hold as uncertainty until visual confirmation; provenance-gap classification \\
 Verification & Verification rewrote 20 files (F10); line-ending-dependent hashes (F11); contract drift (F12); cross-build eigen noise (F14); deleted artifacts unseen (F15); cross-OS recomputation noise and platform-dependent provenance (F20, F21) & Non-mutating verification; canonical identity; declared and scoped tolerances; hash inheritance \\
-Operations & Windows batch chaining (F9); hard-coded checkpoint test (F13); graph counters (F17); packaging metadata tracked (F19) & Batch rule; durable invariants; hardening item; untracked \\
+Operations & Windows batch chaining (F9); hard-coded checkpoint test (F13); graph counters (F17); packaging metadata tracked (F19); Windows dispatcher swallowed exit codes (F22) & Batch rule; durable invariants; hardening item; untracked; dispatcher fixed with a CI assertion and P45 re-verified \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -38,7 +38,7 @@ These are recorded as limitations or as \estatus{BLOCKED} comparisons, and no in
   \item Independent checks are methodological, not organisational. External replication remains future work.
   \item The six studies share one domain.
   \item \eclass{SOLVER\_NEW} evidence is defined but not yet exercised.
-  \item Only one real human decision exists so far. The taxonomy mapping and the cross-environment comparator rules await owner approval.
-  \item Machine-generated ingestion summaries exist for one study. Four await the owner's local intakes, and one study has no recorded pipeline ingestion.
+  \item Human decisions have been exercised on eight records by one reviewer, who is also the author; no external reviewer has been involved yet.
+  \item The source format is recorded for one study only.
   \item Most frozen artifacts do not declare the environment that produced them.
 \end{enumerate}

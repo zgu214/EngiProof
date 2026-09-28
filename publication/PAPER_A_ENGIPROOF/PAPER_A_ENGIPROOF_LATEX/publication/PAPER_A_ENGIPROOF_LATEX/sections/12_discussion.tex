@@ -16,8 +16,8 @@ The most transferable lesson came from the framework's own verification. A check
 \subsection{Related work and context}
 Two strands of related work are relevant as context, not as validation evidence:
 \begin{itemize}[leftmargin=1.5em]
-  \item systems that turn published papers into executable agents or tools \todo{cite, e.g.\ Paper2Agent};
-  \item agentic research assistants that organise scientific claims into explicit chains of evidence \todo{cite ScientistTwo / Chain-of-Evidence after checking the reference}.
+  \item \textbf{Papers as agents.} Paper2Agent converts a research paper and its code base into an interactive agent: tools served through the Model Context Protocol that users can query in natural language \cite{Miao2026Paper2Agent}. \engiproof{} exposes its callable methods through the same protocol, but it adds an evidence envelope and a qualification boundary to every result.
+  \item \textbf{Chains of evidence.} ScientistOne introduces \emph{Chain-of-Evidence}: every claim produced by a research system must be traceable, through a recorded chain of supporting claims, to a grounding source \cite{Meng2026ScientistOne}. ScientistTwo extends this line to a fully autonomous multi-agent research pipeline \cite{Nam2026ScientistTwo}.
 \end{itemize}
 They are related to \engiproof{} at the level of architecture. The contribution here differs in three ways:
 \begin{itemize}[leftmargin=1.5em]
@@ -25,7 +25,7 @@ They are related to \engiproof{} at the level of architecture. The contribution 
   \item preservation of source inconsistencies, with a human decision boundary;
   \item non-mutating verification with an explicit qualification boundary.
 \end{itemize}
-Neither strand provides engineering validation of the P40--P45 evidence. \todo{Add reproducibility literature in computational science and engineering.}
+\engiproof{} shares the traceability principle with this line of work but deliberately keeps a human decision boundary. Neither strand provides engineering validation of the P40--P45 evidence. \todo{Add reproducibility literature in computational science and engineering.}
 
 \subsection{Future work}
 \begin{itemize}[leftmargin=1.5em]

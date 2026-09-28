@@ -43,6 +43,13 @@ Intake directories can hold source excerpts, so they are local and excluded from
 \end{itemize}
 The source format (born-digital, scan with a text layer, or image-only) is detected from page-sized raster images, and only when the local PDF matches the fingerprint. For P45 it detects a scan with a text layer at 300~dpi on all 11 pages.
 
-Where an intake is not available, the summary says so explicitly and lists only outcomes already written in tracked project records, with references. It never estimates. Four cases (P40--P43) still await a machine-generated summary from the owner's local intakes, and P44 has no recorded pipeline ingestion. This is reported as it stands (PA-04).
+Where an intake is not available, the summary says so explicitly and lists only outcomes already written in tracked project records, with references. It never estimates.
+
+For the six cases, all summaries are machine-generated from local intakes, and every intake fingerprint matches its study's SHA-256 (PA-04). Selected-target readiness is:
+\begin{itemize}[leftmargin=1.5em]
+  \item fully ready for P40 (3 of 3), P41 (5 of 5) and P42 (5 of 5);
+  \item partial for P43 (3 of 5), P44 (4 of 7) and P45 (4 of 16).
+\end{itemize}
+Equation-recovery passes added 19 candidates for P40 and 36 for P42. The identity audit passes for P40, P42 and P44. For P41, P43 and P45 it requires manual review, because the DOI does not appear in the source text. The source format is detected only for P45. For the other cases it is recorded as not determined, because the matching PDF was not available to the summariser.
 
 No extraction accuracy or recall is claimed (PA-05). The case-level observations above are failure-driven hardening, not a performance measure.
