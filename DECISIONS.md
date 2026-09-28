@@ -42,6 +42,7 @@ Local Windows verification `28_VERIFY_P45_PHASE1_WINDOWS.bat` reported `=== P45 
 - Reproduction of the nonlinear dynamic riser responses (Figures 4-9, 11) remains `BLOCKED`: the paper does not give theta/beta/lambda, the iteration tolerance, structural damping, the discretisation of the comparison cases, the float properties or the tension unit.
 - No tuning and no inferred completion of missing inputs. No `SOLVER_NEW` evidence.
 - Qualification remains `NOT_GRANTED`. P45 stays outside the live registry.
+- **Addendum, 28 September 2026 (after F22).** The original PASS banner is no longer treated as authoritative evidence. At the time, `engiproof.cmd` swallowed exit codes (F22), so that banner certified only the `python -m unittest` steps, not `engiproof verify P45`. After the dispatcher fix (`c62f038`), the owner re-ran `28_VERIFY_P45_PHASE1_WINDOWS.bat` on the PR #8 branch (`bab6764`), and it reported `=== P45 PHASE1 VERIFY PASS ===` with every `call engiproof` step's exit code checked. The only file modified was `engiproof/studies/P45/evidence_graph.json`, from graph-sync per-run counters (Q7); it was not committed. Windows CI also verifies P45 on Python 3.10 and 3.13. The authoritative Windows evidence for P45 is now this post-F22 re-run together with CI. P45 engineering evidence, discrepancies, decisions and qualification are unchanged.
 
 
 ## D-007 — Cross-environment recomputation equivalence (APPROVED by Zhiqiang Gu, 28 September 2026)

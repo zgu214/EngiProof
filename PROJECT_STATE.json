@@ -41,10 +41,12 @@
   ],
   "source_of_truth": "Git repository",
   "private_source_policy": "Copyrighted PDFs remain outside the public repository; preserve canonical basename, DOI and SHA-256.",
-  "last_confirmed_local_date": "2026-09-27",
+  "last_confirmed_local_date": "2026-09-28",
   "pending_verification": null,
   "pending_owner_decisions": [],
   "pending_owner_actions": [
     "Approve merge of PR #8"
-  ]
+  ],
+  "last_green_verification_note": "Re-run on 2026-09-28 after the F22 dispatcher fix (engiproof.cmd now propagates exit codes), on PR #8 head bab6764: === P45 PHASE1 VERIFY PASS ===. The pre-F22 PASS banner (2026-09-27) is not treated as authoritative. Windows CI also verifies P45 (Python 3.10/3.13).",
+  "last_green_verification_post_f22": true
 }
