@@ -61,12 +61,12 @@ def main():
         ("s8-crossenv", "sections/08_nonmutating.tex",
          f"all {f['crossenv_studies'][0]} studies in the repository verify in {W(f['crossenv_environments'])} environments with no material artifact"),
         ("s10-failure-modes", "sections/10_failures_limits.tex", f"recorded {f['failure_modes']} failure modes"),
-        ("s2-evidence-status", "sections/02_framework.tex", "the evidence status is \\estatus{CONDITIONAL} for all six cases"),
+        ("s2-evidence-status", "sections/02_framework.tex", "Across all six studies, the evidence status is \\estatus{CONDITIONAL}"),
         ("qualification-all-six", "sections/11_qualification.tex",
          "Every study manifest and evidence graph records engineering qualification as \\estatus{NOT\\_GRANTED}, "
          "as does every result artifact that carries a qualification field"),
         ("s2-qualification-field", "sections/02_framework.tex",
-         "a separate qualification field is \\estatus{NOT\\_GRANTED} for all six"),
+         "engineering qualification is \\estatus{NOT\\_GRANTED}; execution alone changes neither"),
     ]
     # conditions a phrase alone cannot express
     conditions = {

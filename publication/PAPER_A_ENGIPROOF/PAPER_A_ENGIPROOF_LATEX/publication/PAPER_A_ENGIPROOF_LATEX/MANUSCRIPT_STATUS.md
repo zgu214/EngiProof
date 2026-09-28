@@ -237,3 +237,4 @@ Remaining build messages, all benign:
 
 - §6.3: "Proposed dispositions, each with their projected effect on the promotion gates, were prepared with AI assistance; the final decisions were made by the human reviewer."
 - §4: the paragraph "Three aspects of this practice …" is kept together by a local penalty, so its first line no longer sits alone at the bottom of page 7. Layout only.
+- §2 (owner wording): "Across all six studies, the evidence status is CONDITIONAL and engineering qualification is NOT_GRANTED; execution alone changes neither." The facts-check phrases are updated to match; their conditions are unchanged.
