@@ -196,3 +196,9 @@ v0.2.0 development builds paper-ingestion and evidence automation on top of the 
 ## v0.2.0-dev3 discrepancy automation
 
 Use `engiproof discrepancy-audit P40`, `engiproof assess-discrepancies P40`, `engiproof discrepancy-gate P40`, and `engiproof discrepancy-audit-all`. The engine classifies review/escalation without deciding physical acceptability. P40-D001 is the first real blocking case.
+
+## Licence
+
+EngiProof is released under the [Apache License 2.0](LICENSE.txt). Copyright 2026 Zhiqiang Gu; see [NOTICE](NOTICE).
+
+The licence covers EngiProof's own code, documentation, calculations and evidence records. The third-party publications used as sources retain their original rights. They are not distributed or relicensed here: source PDFs and publisher figures are excluded, and transcribed reference values are included only as factual data for comparison.

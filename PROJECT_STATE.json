@@ -1,7 +1,7 @@
 {
   "schema_version": "engiproof.project_state/1.0",
   "framework": "EngiProof",
-  "framework_version": "0.2.0.dev8",
+  "framework_version": "0.2.0",
   "primary_branch": "develop",
   "development_line": "v0.2.0",
   "objective": "Paper Ingestion & Evidence Automation",
@@ -11,7 +11,7 @@
   "last_green_verification": "28_VERIFY_P45_PHASE1_WINDOWS.bat",
   "last_green_status": "PASS",
   "next_study": "PAPER_A_SUBMISSION_REFINEMENT",
-  "next_action": "Paper A evidence gathering is closed (PRs #7-#9 merged; Draft v0.2.1 on develop 36dfdcb). Next: submission-quality refinement: journal format (target Advances in Engineering Software, elsarticle), figures/tables, wording compression, reproducibility references, final source audit, final PDF review. No new evidence cases; no P46.",
+  "next_action": "Paper A submission refinement complete on develop (PRs #10-#14; Q11 steps 0-3, 5 and 6). Next: release v0.2.0 (release-prep PR into develop, develop -> main PR, tag v0.2.0 on main with Zenodo archiving), then add the Zenodo DOI to reference [16] and CITATION.cff and rebuild the submission PDF. Tag/release only on the owner's explicit approval. No new evidence cases; no P46.",
   "qualification": "NOT_GRANTED",
   "open_evidence_items": [
     "P40-D001",

@@ -165,3 +165,8 @@ Remaining build messages, all benign:
 - One underfull line (badness 1796) in §6 caused by a long monospaced path.
 - BibTeX: "empty pages in Bueno1994". The SPE conference paper has no page range in the source records; it is cited by paper number and DOI.
 - PA-06 (owner correction, 28 September 2026): the claim now reads "Published methods re-implemented from the source reproduce or closely agree with published values for bounded targets, with residual differences reported explicitly at target level", consistent with SA-3. Status stays SUPPORTED. Appendix A regenerated; claim counts unchanged (20 SUPPORTED / 4 PARTIALLY_SUPPORTED / 3 NOT_SUPPORTED_YET / 3 OUT_OF_SCOPE).
+
+## Licence — 28 September 2026 (D-010)
+
+- The data and code availability statement keeps "openly available" and adds "under the Apache License 2.0". It now states that the third-party publications used as sources retain their original rights and are neither redistributed nor relicensed.
+- The PDF is 30 pages because references [13]–[16] reflow onto a new page. No number, citation or claim changed.
