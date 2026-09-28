@@ -1,6 +1,12 @@
 # Paper A — Claim–Evidence Matrix
 
-Review date: 27 September 2026 · repository `develop` after PR #5 (`cb2a595`) and the P45 freeze patch · framework `0.2.0.dev8`
+Review date: 28 September 2026 · repository `develop` after PR #8 (`be33392`), which recorded:
+- D-007 approved;
+- the D-008 decisions and taxonomy approvals;
+- the ingestion summaries for all six cases;
+- the post-F22 P45 Windows re-verification.
+
+Framework `0.2.0.dev8`. The first version of this matrix was dated 27 September 2026 (after PR #5, `cb2a595`); its later corrections are noted in the rows concerned.
 
 Status vocabulary: **SUPPORTED** (claimable as stated, with the listed constraint) · **PARTIALLY_SUPPORTED** (claimable only in the narrower form given) · **NOT_SUPPORTED_YET** (do not claim) · **OUT_OF_SCOPE** (not a claim of this paper).
 
@@ -97,7 +103,7 @@ Evidence rule: only repository artifacts count. Paper count, test count, file co
 
 | ID | Candidate claim | Status | Repository evidence | Constraint |
 |---|---|---|---|---|
-| PA-24 | The framework's own failures were detected, recorded and corrected through the same evidence process. | SUPPORTED | Failure register in `PAPER_A_READINESS_REVIEW.md` §4 (19 recorded failure modes with repository references) | Report as lessons, not as a defect count. |
+| PA-24 | The framework's own failures were detected, recorded and corrected through the same evidence process. | SUPPORTED | Failure register in `PAPER_A_READINESS_REVIEW.md` §4: 22 recorded failure modes (F1–F22) with repository references. F20–F22 were found by cross-OS CI and by the owner's Windows run. | Report as lessons, not as a defect count. |
 
 ## Additional claims tested
 

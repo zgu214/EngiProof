@@ -25,7 +25,17 @@ They are related to \engiproof{} at the level of architecture. The contribution 
   \item preservation of source inconsistencies, with a human decision boundary;
   \item non-mutating verification with an explicit qualification boundary.
 \end{itemize}
-\engiproof{} shares the traceability principle with this line of work but deliberately keeps a human decision boundary. Neither strand provides engineering validation of the P40--P45 evidence. \todo{Add reproducibility literature in computational science and engineering.}
+\engiproof{} shares the traceability principle with this line of work but deliberately keeps a human decision boundary. Neither strand provides engineering validation of the P40--P45 evidence.
+
+\paragraph{Computational reproducibility and verification.}
+The framework also builds on the computational-reproducibility literature.
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{A spectrum, not a binary.} Peng describes reproducibility as a spectrum, from publication alone to full code and data, rather than a yes-or-no property \cite{Peng2011}. \engiproof{} records where each target sits on that spectrum instead of labelling a whole paper ``reproduced''.
+  \item \textbf{Code, data and environment are not enough.} Sandve et al.\ set out practical rules for reproducible computational work, such as recording every intermediate result and the exact software versions \cite{Sandve2013}. Studies of journal artefact policies show that sharing code and data does not by itself make results reproducible \cite{Stodden2018,Collberg2016}.
+  \item \textbf{Vocabulary.} The National Academies report distinguishes reproducibility (the same data and code give the same result) from replicability (a new study reaches consistent results) \cite{NASEM2019}. In those terms, \engiproof{}'s source-bounded reproduction is closer to replication from the published description, because the original code is almost never available.
+  \item \textbf{Verification versus validation.} From computational engineering, \engiproof{} adopts the separation of verification (solving the equations right) from validation (solving the right equations) \cite{Oberkampf2010}. It then adds a third boundary: neither amounts to engineering qualification.
+\end{itemize}
+What these works leave open, and what this paper addresses, is the handling of sources that are internally inconsistent or incomplete: preserving the conflict, deciding its direction with independent checks, and gating it through recorded human decisions.
 
 \subsection{Future work}
 \begin{itemize}[leftmargin=1.5em]

@@ -59,4 +59,10 @@ The draft now follows `publication/PAPER_A_ENGIPROOF/PAPER_A_OUTLINE.md`. It has
   - ScientistOne / Chain-of-Evidence (Meng et al., arXiv:2605.26340);
   - ScientistTwo (Nam et al., arXiv:2609.19644);
   - full P42 author list (Lukassen et al. 2019).
-- Remaining TODOs: the reproducibility-literature paragraph and acknowledgements.
+- Final cleanup, owner review of PR #9:
+  - PA-24 corrected to 22 failure modes (F1–F22), and the matrix provenance moved to the post-PR #8 state;
+  - Appendix A regenerated;
+  - version shown as v0.2.1 everywhere;
+  - computational-reproducibility paragraph added (Peng 2011; Sandve et al. 2013; Stodden et al. 2018; Collberg & Proebsting 2016; NASEM 2019; Oberkampf & Roy 2010; all DOIs checked against Crossref);
+  - acknowledgements TODO removed; acknowledgements will be added at submission.
+- No TODO markers remain in the rendered draft.
