@@ -44,9 +44,9 @@
   "last_confirmed_local_date": "2026-09-28",
   "pending_verification": null,
   "pending_owner_decisions": [],
-  "pending_owner_actions": [
-    "Confirm target journal/template for Paper A (recorded target: Advances in Engineering Software)"
-  ],
+  "pending_owner_actions": [],
+  "zenodo_archiving": "Enabled for zgu214/EngiProof by the owner on 2026-09-28; the DOI is minted when the v0.2.0 GitHub release is published.",
+  "paper_a_target_journal": "Advances in Engineering Software (Elsevier, elsarticle); confirmed by the owner on 2026-09-28",
   "last_green_verification_note": "Authoritative local P45 Windows verification: re-run on 2026-09-28 after the F22 dispatcher fix, on PR #8 head bab6764, Windows 10 AMD64, CPython 3.12.10, NumPy 2.5.3. verify P45 = PASS_SOURCE_EXTERNAL (BYTE_ONLY 1, NUMERICAL_NONMATERIAL 1, 0 material); batch banner PASS with exit codes checked. The pre-F22 banner of 2026-09-27 is superseded.",
   "last_green_verification_post_f22": true,
   "last_green_environment": {
