@@ -1,32 +1,126 @@
 {
   "schema_version": "engiproof.ingestion_summary/1.0",
   "paper_id": "P44",
-  "recorded_on": "2026-09-27",
-  "ingestion_status": "NO_INGESTION_RECORD",
-  "ingestion_route": "NOT_RECORDED",
-  "note": "Neither the study manifest nor the handover records a pipeline ingestion for P44, so none is claimed. If a local intake exists, 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat replaces this record; otherwise this record stands.",
-  "manifest_ingestion_record": null,
+  "recorded_on": "2026-09-28",
+  "rule": "Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion pipeline produced; it is not evidence, and candidate extraction is not reproduction.",
+  "excluded_by_design": [
+    "source text",
+    "excerpts",
+    "captions",
+    "definitions",
+    "line locators",
+    "free-text readiness reasons"
+  ],
+  "ingestion_status": "SUMMARISED_FROM_LOCAL_INTAKE",
+  "ingestion_route": "ENGIPROOF_PIPELINE_V0_2",
+  "recorded_from": "engiproof/intake/P44/ (local, gitignored)",
+  "intake_status": "DRAFT_SCAFFOLDED",
+  "raw_source_copied": false,
   "source": {
-    "sha256_in_study_manifest": "ca8b476b5f6c54f8a2a3c55c7836770ef55bc27d3cf05b8c6f4a953ca896b80b",
-    "doi": "10.2118/28723-MS",
+    "sha256": "ca8b476b5f6c54f8a2a3c55c7836770ef55bc27d3cf05b8c6f4a953ca896b80b",
+    "matches_study_manifest_sha256": true,
+    "size_bytes": 371830,
+    "page_count": 7,
+    "text_extractable": true,
     "format": {
       "source_format": "NOT_RECORDED",
       "basis": null
     }
   },
-  "identity": {
-    "status": "CONFIRMED_MANUALLY",
-    "detail": "DOI completed from publisher records on 2026-09-27: 10.2118/28723-MS (historical alias 10.2523/28723-MS) (failure F18).",
-    "ref": "engiproof/studies/P44/study.json#source.identity_basis"
+  "identity_audit": {
+    "status": "PASS",
+    "checks": {
+      "title": "MATCH",
+      "doi": "NOT_FOUND_IN_SOURCE",
+      "year": "MATCH"
+    },
+    "issue_count": 0,
+    "resolution_refs": [
+      "engiproof/studies/P44/study.json#source.identity_basis",
+      "papers/P44/SOURCE.md"
+    ]
   },
-  "documented_outcomes": {},
+  "candidates": {
+    "total": 7,
+    "by_kind": {
+      "equation": 1,
+      "figure": 4,
+      "table": 2
+    },
+    "dossiers_located": null,
+    "dossiers_total": null,
+    "equation_candidates_added_by_recovery": null
+  },
+  "structures": {
+    "equations": {
+      "count": 0,
+      "by_status": {}
+    },
+    "tables": {
+      "count": 0,
+      "by_status": {}
+    },
+    "figures": {
+      "count": 0,
+      "by_status": {}
+    },
+    "definitions": {
+      "count": 0,
+      "by_status": {}
+    }
+  },
+  "selected_targets": {
+    "count": 7,
+    "readiness_status": "PARTIAL",
+    "ready_count": 4,
+    "by_status": {
+      "PARTIAL": 3,
+      "READY": 4
+    },
+    "targets": [
+      {
+        "label": "Table 1",
+        "kind": "table",
+        "status": "READY"
+      },
+      {
+        "label": "Table 2",
+        "kind": "table",
+        "status": "READY"
+      },
+      {
+        "label": "Figure 3",
+        "kind": "figure",
+        "status": "READY"
+      },
+      {
+        "label": "Equation (1)",
+        "kind": "equation",
+        "status": "READY"
+      },
+      {
+        "label": "Figure 7",
+        "kind": "figure",
+        "status": "PARTIAL"
+      },
+      {
+        "label": "Figure 8",
+        "kind": "figure",
+        "status": "PARTIAL"
+      },
+      {
+        "label": "Figure 9",
+        "kind": "figure",
+        "status": "PARTIAL"
+      }
+    ]
+  },
   "manual_review": {
-    "required": "NOT_RECORDED"
-  },
-  "documented_in": [
-    "P44_PHASE1_CONTACT_VALIDATION_CHECKPOINT.md",
-    "papers/P44/SOURCE.md"
-  ],
-  "not_backfilled": "Candidate counts, readiness and audit outcomes are not reconstructed or estimated; only outcomes already written in tracked records are listed, with their reference.",
-  "rule": "Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion pipeline produced; it is not evidence, and candidate extraction is not reproduction."
+    "required": true,
+    "reasons": [
+      "selected-target readiness not READY"
+    ],
+    "target_review_in_study_manifest": false,
+    "note": "Manual page-image review, where performed, is recorded in the study manifest, not here."
+  }
 }

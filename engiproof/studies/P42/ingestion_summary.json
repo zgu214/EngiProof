@@ -1,34 +1,120 @@
 {
   "schema_version": "engiproof.ingestion_summary/1.0",
   "paper_id": "P42",
-  "recorded_on": "2026-09-27",
-  "ingestion_status": "PENDING_LOCAL_SUMMARY",
+  "recorded_on": "2026-09-28",
+  "rule": "Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion pipeline produced; it is not evidence, and candidate extraction is not reproduction.",
+  "excluded_by_design": [
+    "source text",
+    "excerpts",
+    "captions",
+    "definitions",
+    "line locators",
+    "free-text readiness reasons"
+  ],
+  "ingestion_status": "SUMMARISED_FROM_LOCAL_INTAKE",
   "ingestion_route": "ENGIPROOF_PIPELINE_V0_2",
-  "note": "Ingested through the pipeline (manifest ingestion_record). The intake is on the study owner's machine. 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat replaces this record.",
-  "manifest_ingestion_record": "engiproof/intake/P42/ingestion.json",
+  "recorded_from": "engiproof/intake/P42/ (local, gitignored)",
+  "intake_status": "DRAFT_SCAFFOLDED",
+  "raw_source_copied": false,
   "source": {
-    "sha256_in_study_manifest": "16c33a882da8a036dc7007fedd5b7aab7e0194bf8ea97ae9b9bf423accbc0d2d",
-    "doi": "10.1016/j.marstruc.2018.09.010",
+    "sha256": "16c33a882da8a036dc7007fedd5b7aab7e0194bf8ea97ae9b9bf423accbc0d2d",
+    "matches_study_manifest_sha256": true,
+    "size_bytes": 6439564,
+    "page_count": 20,
+    "text_extractable": true,
     "format": {
       "source_format": "NOT_RECORDED",
       "basis": null
     }
   },
-  "identity": {
-    "status": "FALSE_CONFLICT_RESOLVED",
-    "detail": "Received/copyright year raised a false year conflict; resolved by publication-vs-secondary year semantics (failure F6).",
-    "ref": "SOURCE_IDENTITY_AND_SPLIT_CAPTIONS_v0.2.0-dev7.md"
-  },
-  "documented_outcomes": {},
-  "manual_review": {
-    "required": true,
-    "reasons": [
-      "split captions not recognised before dev7 (failure F7)"
+  "identity_audit": {
+    "status": "PASS",
+    "checks": {
+      "title": "MATCH",
+      "doi": "MATCH",
+      "year": "MATCH"
+    },
+    "issue_count": 0,
+    "resolution_refs": [
+      "papers/P42/SOURCE.md"
     ]
   },
-  "documented_in": [
-    "SOURCE_IDENTITY_AND_SPLIT_CAPTIONS_v0.2.0-dev7.md"
-  ],
-  "not_backfilled": "Candidate counts, readiness and audit outcomes are not reconstructed or estimated; only outcomes already written in tracked records are listed, with their reference.",
-  "rule": "Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion pipeline produced; it is not evidence, and candidate extraction is not reproduction."
+  "candidates": {
+    "total": 76,
+    "by_kind": {
+      "equation": 45,
+      "figure": 27,
+      "table": 4
+    },
+    "dossiers_located": 76,
+    "dossiers_total": 76,
+    "equation_candidates_added_by_recovery": 36
+  },
+  "structures": {
+    "equations": {
+      "count": 45,
+      "by_status": {
+        "STRUCTURE_CANDIDATE": 45
+      }
+    },
+    "tables": {
+      "count": 4,
+      "by_status": {
+        "STRUCTURE_CANDIDATE": 4
+      }
+    },
+    "figures": {
+      "count": 27,
+      "by_status": {
+        "STRUCTURE_CANDIDATE": 27
+      }
+    },
+    "definitions": {
+      "count": 11,
+      "by_status": {
+        "CANDIDATE": 11
+      }
+    }
+  },
+  "selected_targets": {
+    "count": 5,
+    "readiness_status": "READY",
+    "ready_count": 5,
+    "by_status": {
+      "READY": 5
+    },
+    "targets": [
+      {
+        "label": "Table 1",
+        "kind": "table",
+        "status": "READY"
+      },
+      {
+        "label": "Table 3",
+        "kind": "table",
+        "status": "READY"
+      },
+      {
+        "label": "Table 4",
+        "kind": "table",
+        "status": "READY"
+      },
+      {
+        "label": "Equation (42)",
+        "kind": "equation",
+        "status": "READY"
+      },
+      {
+        "label": "Equation (43)",
+        "kind": "equation",
+        "status": "READY"
+      }
+    ]
+  },
+  "manual_review": {
+    "required": false,
+    "reasons": [],
+    "target_review_in_study_manifest": false,
+    "note": "Manual page-image review, where performed, is recorded in the study manifest, not here."
+  }
 }

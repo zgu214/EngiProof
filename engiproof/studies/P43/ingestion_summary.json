@@ -1,32 +1,127 @@
 {
   "schema_version": "engiproof.ingestion_summary/1.0",
   "paper_id": "P43",
-  "recorded_on": "2026-09-27",
-  "ingestion_status": "PENDING_LOCAL_SUMMARY",
+  "recorded_on": "2026-09-28",
+  "rule": "Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion pipeline produced; it is not evidence, and candidate extraction is not reproduction.",
+  "excluded_by_design": [
+    "source text",
+    "excerpts",
+    "captions",
+    "definitions",
+    "line locators",
+    "free-text readiness reasons"
+  ],
+  "ingestion_status": "SUMMARISED_FROM_LOCAL_INTAKE",
   "ingestion_route": "ENGIPROOF_PIPELINE_V0_2",
-  "note": "Ingested through the pipeline (manifest ingestion_record). The intake is on the study owner's machine. 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat replaces this record.",
-  "manifest_ingestion_record": "engiproof/intake/P43/ingestion.json",
+  "recorded_from": "engiproof/intake/P43/ (local, gitignored)",
+  "intake_status": "DRAFT_SCAFFOLDED",
+  "raw_source_copied": false,
   "source": {
-    "sha256_in_study_manifest": "4ab7c3b9a8377cc3d5a7f5eecb64712496aa825f969760e47ee17ccba03ffccf",
-    "doi": "10.2118/5620-PA",
+    "sha256": "4ab7c3b9a8377cc3d5a7f5eecb64712496aa825f969760e47ee17ccba03ffccf",
+    "matches_study_manifest_sha256": true,
+    "size_bytes": 469965,
+    "page_count": 6,
+    "text_extractable": true,
     "format": {
       "source_format": "NOT_RECORDED",
       "basis": null
     }
   },
-  "identity": {
-    "status": "CONFIRMED_MANUALLY",
-    "detail": "DOI recorded PENDING at ingestion and SPE number recorded as 5820 in error; confirmed from publisher records on 2026-09-27 as SPE-5620-PA, DOI 10.2118/5620-PA (failure F18).",
-    "ref": "engiproof/studies/P43/study.json#source.identity_basis"
+  "identity_audit": {
+    "status": "REVIEW_REQUIRED",
+    "checks": {
+      "title": "MATCH",
+      "doi": "NOT_FOUND_IN_SOURCE",
+      "year": "NOT_CONFIRMED"
+    },
+    "issue_count": 0,
+    "resolution_refs": [
+      "engiproof/studies/P43/study.json#source.identity_basis",
+      "papers/P43/SOURCE.md"
+    ]
   },
-  "documented_outcomes": {},
+  "candidates": {
+    "total": 17,
+    "by_kind": {
+      "equation": 9,
+      "figure": 6,
+      "table": 2
+    },
+    "dossiers_located": 17,
+    "dossiers_total": 17,
+    "equation_candidates_added_by_recovery": null
+  },
+  "structures": {
+    "equations": {
+      "count": 9,
+      "by_status": {
+        "BLOCK_NOT_EXTRACTED": 2,
+        "STRUCTURE_CANDIDATE": 7
+      }
+    },
+    "tables": {
+      "count": 2,
+      "by_status": {
+        "STRUCTURE_CANDIDATE": 2
+      }
+    },
+    "figures": {
+      "count": 6,
+      "by_status": {
+        "STRUCTURE_CANDIDATE": 6
+      }
+    },
+    "definitions": {
+      "count": 28,
+      "by_status": {
+        "CANDIDATE": 28
+      }
+    }
+  },
+  "selected_targets": {
+    "count": 5,
+    "readiness_status": "PARTIAL",
+    "ready_count": 3,
+    "by_status": {
+      "BLOCKED": 1,
+      "PARTIAL": 1,
+      "READY": 3
+    },
+    "targets": [
+      {
+        "label": "Table 1",
+        "kind": "table",
+        "status": "READY"
+      },
+      {
+        "label": "Figure 6",
+        "kind": "figure",
+        "status": "PARTIAL"
+      },
+      {
+        "label": "Equation (10)",
+        "kind": "equation",
+        "status": "BLOCKED"
+      },
+      {
+        "label": "Equation (8)",
+        "kind": "equation",
+        "status": "READY"
+      },
+      {
+        "label": "Equation (9)",
+        "kind": "equation",
+        "status": "READY"
+      }
+    ]
+  },
   "manual_review": {
-    "required": "NOT_RECORDED"
-  },
-  "documented_in": [
-    "engiproof/studies/P43/study.json",
-    "papers/P43/SOURCE.md"
-  ],
-  "not_backfilled": "Candidate counts, readiness and audit outcomes are not reconstructed or estimated; only outcomes already written in tracked records are listed, with their reference.",
-  "rule": "Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion pipeline produced; it is not evidence, and candidate extraction is not reproduction."
+    "required": true,
+    "reasons": [
+      "selected-target readiness not READY",
+      "source-identity audit not PASS"
+    ],
+    "target_review_in_study_manifest": false,
+    "note": "Manual page-image review, where performed, is recorded in the study manifest, not here."
+  }
 }

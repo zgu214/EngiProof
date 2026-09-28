@@ -1,54 +1,112 @@
 {
   "schema_version": "engiproof.ingestion_summary/1.0",
   "paper_id": "P40",
-  "recorded_on": "2026-09-27",
-  "ingestion_status": "PENDING_LOCAL_SUMMARY",
+  "recorded_on": "2026-09-28",
+  "rule": "Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion pipeline produced; it is not evidence, and candidate extraction is not reproduction.",
+  "excluded_by_design": [
+    "source text",
+    "excerpts",
+    "captions",
+    "definitions",
+    "line locators",
+    "free-text readiness reasons"
+  ],
+  "ingestion_status": "SUMMARISED_FROM_LOCAL_INTAKE",
   "ingestion_route": "ENGIPROOF_PIPELINE_V0_2",
-  "note": "Ingested through the v0.2.0 pipeline (dev1/dev2). The intake is on the study owner's machine; the manifest has no ingestion_record pointer. 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat replaces this record with a machine-generated summary.",
-  "manifest_ingestion_record": null,
+  "recorded_from": "engiproof/intake/P40/ (local, gitignored)",
+  "intake_status": "STRUCTURE_REVIEW_REQUIRED",
+  "raw_source_copied": false,
   "source": {
-    "sha256_in_study_manifest": "e83902ba46b8e713ddf2f11f5953bdf318ac539f6701ff303651e28d3d5e28bb",
-    "doi": "10.1061/(ASCE)EM.1943-7889.0001337",
+    "sha256": "e83902ba46b8e713ddf2f11f5953bdf318ac539f6701ff303651e28d3d5e28bb",
+    "matches_study_manifest_sha256": true,
+    "size_bytes": 1490877,
+    "page_count": 10,
+    "text_extractable": true,
     "format": {
       "source_format": "NOT_RECORDED",
       "basis": null
     }
   },
-  "identity": {
-    "status": "CORRECTED_AFTER_AUDIT",
-    "detail": "Incorrect DOI/year entered at intake; repaired and re-audited (failure F1).",
-    "ref": "PROGRESS_v0.2.0.md (P40 real-source findings); HANDOVER_CURRENT.md (Critical source-identity blocker)"
-  },
-  "documented_outcomes": {
-    "basis": "PROSE_RECORD",
-    "ref": "HANDOVER_CURRENT.md#checkpoint--p40-selected-target-readiness-achieved",
-    "structure_counts": {
-      "equations": 21,
-      "tables": 3,
-      "figures": 33,
-      "definitions": 4
+  "identity_audit": {
+    "status": "PASS",
+    "checks": {
+      "title": "MATCH",
+      "doi": "MATCH",
+      "year": "MATCH"
     },
-    "selected_targets": {
-      "labels": [
-        "Table 1",
-        "Table 2",
-        "Equation (9)"
-      ],
-      "readiness_status": "READY",
-      "ready_count": 3,
-      "count": 3
-    }
-  },
-  "manual_review": {
-    "required": true,
-    "reasons": [
-      "Type1/CFF glyph placeholders in extracted equation text: visual source review required before PUBLISHED implementation (failure F2)"
+    "issue_count": 0,
+    "resolution_refs": [
+      "papers/P40/SOURCE.md"
     ]
   },
-  "documented_in": [
-    "HANDOVER_CURRENT.md#checkpoint--p40-selected-target-readiness-achieved",
-    "PROGRESS_v0.2.0.md#dev2-p40-ingestion-generated-reproduction-checkpoint"
-  ],
-  "not_backfilled": "Candidate counts, readiness and audit outcomes are not reconstructed or estimated; only outcomes already written in tracked records are listed, with their reference.",
-  "rule": "Text-free record: hashes, counts, statuses and target identifiers only. It records what the ingestion pipeline produced; it is not evidence, and candidate extraction is not reproduction."
+  "candidates": {
+    "total": 57,
+    "by_kind": {
+      "equation": 21,
+      "figure": 33,
+      "table": 3
+    },
+    "dossiers_located": 37,
+    "dossiers_total": 57,
+    "equation_candidates_added_by_recovery": 19
+  },
+  "structures": {
+    "equations": {
+      "count": 21,
+      "by_status": {
+        "BLOCK_NOT_EXTRACTED": 3,
+        "STRUCTURE_CANDIDATE": 18
+      }
+    },
+    "tables": {
+      "count": 3,
+      "by_status": {
+        "STRUCTURE_CANDIDATE": 3
+      }
+    },
+    "figures": {
+      "count": 33,
+      "by_status": {
+        "NOT_EXTRACTED": 20,
+        "STRUCTURE_CANDIDATE": 13
+      }
+    },
+    "definitions": {
+      "count": 4,
+      "by_status": {
+        "CANDIDATE": 4
+      }
+    }
+  },
+  "selected_targets": {
+    "count": 3,
+    "readiness_status": "READY",
+    "ready_count": 3,
+    "by_status": {
+      "READY": 3
+    },
+    "targets": [
+      {
+        "label": "Table 2",
+        "kind": "table",
+        "status": "READY"
+      },
+      {
+        "label": "Table 1",
+        "kind": "table",
+        "status": "READY"
+      },
+      {
+        "label": "Equation (9)",
+        "kind": "equation",
+        "status": "READY"
+      }
+    ]
+  },
+  "manual_review": {
+    "required": false,
+    "reasons": [],
+    "target_review_in_study_manifest": false,
+    "note": "Manual page-image review, where performed, is recorded in the study manifest, not here."
+  }
 }
