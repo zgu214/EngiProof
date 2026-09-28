@@ -47,6 +47,12 @@
   "pending_owner_actions": [
     "Approve merge of PR #8"
   ],
-  "last_green_verification_note": "Re-run on 2026-09-28 after the F22 dispatcher fix (engiproof.cmd now propagates exit codes), on PR #8 head bab6764: === P45 PHASE1 VERIFY PASS ===. The pre-F22 PASS banner (2026-09-27) is not treated as authoritative. Windows CI also verifies P45 (Python 3.10/3.13).",
-  "last_green_verification_post_f22": true
+  "last_green_verification_note": "Authoritative local P45 Windows verification: re-run on 2026-09-28 after the F22 dispatcher fix, on PR #8 head bab6764, Windows 10 AMD64, CPython 3.12.10, NumPy 2.5.3. verify P45 = PASS_SOURCE_EXTERNAL (BYTE_ONLY 1, NUMERICAL_NONMATERIAL 1, 0 material); batch banner PASS with exit codes checked. The pre-F22 banner of 2026-09-27 is superseded.",
+  "last_green_verification_post_f22": true,
+  "last_green_environment": {
+    "os": "Windows 10",
+    "machine": "AMD64",
+    "python": "3.12.10",
+    "numpy": "2.5.3"
+  }
 }

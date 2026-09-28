@@ -483,7 +483,8 @@ Active task: Paper A readiness review across P40–P45 (WORK_QUEUE Q6). Create P
 ## Checkpoint — P45 Windows verification re-run after F22 (28 September 2026)
 
 - `28_VERIFY_P45_PHASE1_WINDOWS.bat` was re-run by the owner on the PR #8 branch (`bab6764`), using the fixed `engiproof.cmd`, so every `call engiproof` step's exit code was checked.
-- Result: `=== P45 PHASE1 VERIFY PASS ===`.
+- Result: `=== P45 PHASE1 VERIFY PASS ===`. Environment: Windows 10 AMD64, CPython 3.12.10, NumPy 2.5.3. `verify P45` = PASS_SOURCE_EXTERNAL; reproduction classes BYTE_ONLY 1, NUMERICAL_NONMATERIAL 1, 0 material.
+- This is now the authoritative local P45 Windows verification.
 - The only local change was the P45 graph counters (Q7), which were not committed.
 - The pre-F22 banner of 27 September is superseded as evidence (D-006 addendum).
 - No P45 evidence, discrepancy or qualification changed.
