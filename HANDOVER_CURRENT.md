@@ -489,3 +489,9 @@ Active task: Paper A readiness review across P40–P45 (WORK_QUEUE Q6). Create P
 - The pre-F22 banner of 27 September is superseded as evidence (D-006 addendum).
 - No P45 evidence, discrepancy or qualification changed.
 
+## Stage change — Paper A submission refinement (28 September 2026)
+
+- PR #9 (manuscript Draft v0.2.1) is merged into `develop` (`36dfdcb`).
+- Paper A evidence gathering is closed. The active stage is submission-quality refinement (WORK_QUEUE Q11): journal format, figures and tables, wording compression, reproducibility references, final source audit, final PDF review.
+- No new evidence cases and no P46. P40–P45 evidence, decisions and qualification are frozen for this stage.
+

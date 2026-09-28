@@ -239,3 +239,4 @@ PR #7 merged (eeb84fc). Hardening PR: G2 taxonomy (19 proposed labels), G3 inges
 28 Sep 2026: owner approved D-007 and the taxonomy (19 labels); G1 decisions recorded (D-008: 2 ACCEPTED_WITH_RATIONALE, 2 BOUNDED, 3 DEFERRED; P43 kept blocking). PR #8 waits only on local P40–P43 ingestion summaries. No P46.
 G3 closed: owner-run local intakes give machine-generated ingestion summaries for P40–P44 (f651f07). F22: engiproof.cmd swallowed exit codes, fixed. Matrix 20/4/3/3. PR #8 ready on the owner's yes.
 P45 Windows verify re-run after F22 fix (bab6764): PASS with exit codes checked; pre-F22 banner superseded (D-006 addendum).
+PR #9 merged (36dfdcb, Draft v0.2.1). Evidence gathering closed; active stage Q11 = submission refinement (AES/elsarticle, figures/tables, compression, references, source audit, PDF review). No P46.
