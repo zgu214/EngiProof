@@ -207,3 +207,18 @@ Remaining build messages, all benign:
 - The conclusion ends with the methodological conclusion. The final sentence about regeneration for submission was removed.
 - The Appendix B checklist was replaced with a permanent reproducibility statement: which script generates Tables 4 and 6 and Appendix A and which checks the numerical statements, and that these were regenerated and checked against the released EngiProof v0.2.0 evidence state. The statement on Tables 1–3, 5 and 7 and on copyrighted source PDFs is kept.
 - No evidence or claim change.
+
+## Journal-language scrub — 28 September 2026 (owner decisions)
+
+- Appendix A now lists ID, claim and status only. The matrix's authoring notes ("Constraint for the manuscript") stay unchanged in `CLAIM_EVIDENCE_MATRIX.md`, and no claim text or status changed. The last two rows are kept together so that no row stands alone on a page.
+- Scrubbed the whole manuscript for project-management language (owner, WORK_QUEUE, PR, next step, before/for submission, release prep, develop, main, commit, pending owner, software agent, candidate decisions):
+  - "the study owner approved" became "the author approved" (§6.2, §8.3);
+  - §6.3: "Draft decisions … were prepared with AI assistance, and the human reviewer made the decisions";
+  - §6.2: "The mapping … was drafted with AI assistance";
+  - §1: "AI-assisted tools were used to develop the framework".
+- Kept deliberately:
+  - decision and failure identifiers (D-005, D-007, F-numbers) as repository traceability references;
+  - repository paths and commands in Appendix B;
+  - "the agent orchestrates the solver runs" in future work (a technical role, not a process label);
+  - "left pending at ingestion" (§3, a technical state).
+- The manuscript is 28 pages with 0 undefined references, and the facts check passes 20/0/0.
