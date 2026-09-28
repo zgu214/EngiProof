@@ -46,6 +46,7 @@ Parallel/secondary. Keep evidence capture synchronized without displacing engine
 
 **Priority: HIGHEST (active, from 28 Sep 2026).** The evidence base is closed. This stage adds no new evidence cases and no P46, and it does not change P40–P45 evidence, decisions or qualification.
 
+0. **Technical-prose pass (first, before journal format).** Rewrite for style only, removing AI-style list-heavy and formulaic prose. Numbers, evidence claims, decisions, citations, qualification boundaries and technical meaning do not change. A token audit checks that numbers, citation keys, cross-references and evidence identifiers are unchanged before and after.
 1. **Journal format.** Target: Advances in Engineering Software (`docs/PUBLICATION_STRATEGY.md`), Elsevier `elsarticle`. Required front and back matter:
    - highlights and keywords;
    - CRediT statement;
