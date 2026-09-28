@@ -1,6 +1,12 @@
 # Paper A — Claim–Evidence Matrix
 
-Review date: 27 September 2026 · repository `develop` after PR #5 (`cb2a595`) and the P45 freeze patch · framework `0.2.0.dev8`
+Review date: 28 September 2026 · repository `develop` after PR #8 (`be33392`), which recorded:
+- D-007 approved;
+- the D-008 decisions and taxonomy approvals;
+- the ingestion summaries for all six cases;
+- the post-F22 P45 Windows re-verification.
+
+Framework `0.2.0.dev8`. The first version of this matrix was dated 27 September 2026 (after PR #5, `cb2a595`); its later corrections are noted in the rows concerned.
 
 Status vocabulary: **SUPPORTED** (claimable as stated, with the listed constraint) · **PARTIALLY_SUPPORTED** (claimable only in the narrower form given) · **NOT_SUPPORTED_YET** (do not claim) · **OUT_OF_SCOPE** (not a claim of this paper).
 
@@ -35,7 +41,7 @@ Evidence rule: only repository artifacts count. Paper count, test count, file co
 | ID | Candidate claim | Status | Repository evidence | Constraint |
 |---|---|---|---|---|
 | PA-06 | Published methods re-implemented from the source reproduce published values to source precision for bounded targets. | SUPPORTED | P40-C001 (max ratio difference 0.0055); P41-C001/C002/C004/C006; P42-C002/C004/C006; P43-C002…C008 (35-row/175-eigenvalue Table 1, full Table 2); P44-C001…C003; P45-C001 | Report per target, never “paper reproduced”. |
-| PA-07 | Outcomes are recorded per target as REPRODUCED / COMPARED / VERIFIED / CONDITIONAL / BLOCKED. | SUPPORTED | Comparison statuses across P40–P45: 14 REPRODUCED, 24 COMPARED, 2 VERIFIED, 7 CONDITIONAL, 1 BLOCKED (`S(Pxx).comparisons`) | Only P45 records a non-reproduced target as a BLOCKED comparison; P41/P42/P44 record theirs as limitations (housekeeping H2). |
+| PA-07 | Outcomes are recorded per target as REPRODUCED / COMPARED / VERIFIED / CONDITIONAL / BLOCKED. | SUPPORTED | 38 comparison records across P40–P45: 14 REPRODUCED, 19 COMPARED, 4 CONDITIONAL, 1 BLOCKED, none VERIFIED (`S(Pxx).comparisons`; recounted 28 September 2026, correcting the earlier 14/24/2/7/1) | Only P45 records a non-reproduced target as a BLOCKED comparison; P41/P42/P44 record theirs as limitations (housekeeping H2). |
 
 ## 4. Independent checking
 
@@ -97,7 +103,7 @@ Evidence rule: only repository artifacts count. Paper count, test count, file co
 
 | ID | Candidate claim | Status | Repository evidence | Constraint |
 |---|---|---|---|---|
-| PA-24 | The framework's own failures were detected, recorded and corrected through the same evidence process. | SUPPORTED | Failure register in `PAPER_A_READINESS_REVIEW.md` §4 (19 recorded failure modes with repository references) | Report as lessons, not as a defect count. |
+| PA-24 | The framework's own failures were detected, recorded and corrected through the same evidence process. | SUPPORTED | Failure register in `PAPER_A_READINESS_REVIEW.md` §4: 22 recorded failure modes (F1–F22) with repository references. F20–F22 were found by cross-OS CI and by the owner's Windows run. | Report as lessons, not as a defect count. |
 
 ## Additional claims tested
 

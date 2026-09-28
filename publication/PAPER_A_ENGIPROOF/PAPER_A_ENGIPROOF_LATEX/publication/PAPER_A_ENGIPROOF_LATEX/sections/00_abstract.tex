@@ -1,7 +1,21 @@
 \begin{abstract}
-Published engineering knowledge is commonly distributed across equations, tables, figures, narrative assumptions, and solver-specific results that are difficult to reuse computationally without losing provenance or overstating validation. This paper presents \engiproof, a source-bounded engineering-evidence framework designed to convert selected published methods into reproducible calculations, independent checks, explicit comparisons, discrepancy records, evidence graphs, and callable engineering methods. The framework separates extraction candidates from engineering evidence, distinguishes \eclass{PUBLISHED}, \eclass{INDEPENDENT}, and \eclass{SOLVER\_NEW} evidence, and keeps computational verification separate from engineering qualification.
+Published engineering results are difficult to reuse computationally without losing provenance. When a paper is internally inconsistent or omits an input, a reader or a code port tends to normalise the problem away: it picks one of two printed values, infers a missing unit, or tunes an unknown until the printed number is matched. This paper presents \engiproof, a framework that converts selected published engineering methods into source-bounded, reproducible and independently checked evidence, while keeping the following explicitly separated and machine-auditable:
+\begin{itemize}
+  \item what was published;
+  \item what was reproduced;
+  \item what was checked independently;
+  \item what disagrees;
+  \item what was decided by a human; and
+  \item what remains unqualified.
+\end{itemize}
 
-The current development adds a conservative paper-ingestion pipeline comprising source fingerprinting, source-identity review, target discovery, missing-equation recovery, structure extraction, selected-target readiness gates, reproduction planning, discrepancy classification, human discrepancy decisions, and evidence-graph synchronization. Two pipe-in-pipe case studies are used as development stress tests. They demonstrate successful reproduction of selected published mechanics while also exposing source-backed numerical and unit inconsistencies that are retained rather than removed through parameter tuning. These examples motivate the central argument of the paper: for engineering reuse, paper-to-code conversion is insufficient; a useful system must explicitly track what was published, what was independently reconstructed, what agrees, what does not, and what remains unqualified.
+The evidence model distinguishes \eclass{PUBLISHED}, \eclass{INDEPENDENT} and (reserved) \eclass{SOLVER\_NEW} evidence. Each target is recorded as reproduced, compared, conditional or blocked. Discrepancies are recorded in a controlled taxonomy, and only an append-only human decision can clear the promotion gate they impose. Each study carries an evidence graph. Verification recomputes in isolation and never mutates the evidence it verifies. Engineering qualification is kept outside the system: it is \estatus{NOT\_GRANTED} in every case.
 
-This draft reports bounded case evidence only. Broader claims about generality and extraction performance are reserved for a later evaluation across additional heterogeneous papers.
+The framework is evaluated by capability, not by paper count, on six heterogeneous offshore and subsea structural-mechanics studies published between 1976 and 2019. They span four publishers and societies and include a scanned 1983 source. The mechanics range from closed-form collapse to nonlinear time integration.
+
+Source-bounded implementations reproduce 14 targets to source precision and compare 19 more. Independent formulations decide the direction of five numerical conflicts, and 14 discrepancy records are preserved without tuning. Where the source lacks the inputs for a target, the outcome is recorded as blocked with the missing parameters named.
+
+The framework's own failures are part of the evidence. One example is a verification step that rewrote 20 tracked result files; another is recomputation noise that surfaced only on other operating systems. Each was found by the evidence process, recorded, and corrected or bounded.
+
+The contribution is a methodology and its evidence, not an autonomous-discovery or qualification claim.
 \end{abstract}

@@ -1,0 +1,68 @@
+\section{Discrepancy preservation, classification and the human decision boundary}
+\label{sec:discrepancy}
+
+\subsection{Preservation}
+A discrepancy record states the following:
+\begin{itemize}[leftmargin=1.5em]
+  \item the target;
+  \item the observation, with both sides as printed or computed;
+  \item an engineering interpretation;
+  \item the independent-support basis;
+  \item the closure requirements;
+  \item a status (\estatus{OPEN}, \estatus{OBSERVED} or \estatus{BOUNDED}).
+\end{itemize}
+The printed value is never replaced. This holds even where an inferred correction is strongly supported: 13.221 is kept against 18.221 (P43-D001), 153 against $\approx$159 (P41-D001), and ``1.290.500~dN'' against a plausible decimal-grouping error (P45-D002). Tests assert this preservation (PA-11).
+
+The six studies hold 14 records: 13 \estatus{OPEN} and one \estatus{OBSERVED}. The repository as a whole holds 19. No claim is made that all inconsistencies in a source were found (PA-12).
+
+\subsection{Controlled taxonomy}
+Early records used free-text classification hints. There were ten different labels over 14 records, and similar phenomena were labelled differently. For example, a paragraph-versus-axis unit conflict and a missing unit carried unrelated labels.
+
+The framework now defines a controlled taxonomy with two parts:
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Categories} say \emph{what kind} of conflict it is. There are nine. Each has a definition, a decision rule and a ``not this when'' rule, and they are applied in a fixed decision order so that each record gets exactly one category.
+  \item \textbf{Loci} say \emph{through which evidence} the conflict was established. There are seven, and a record may have several.
+\end{itemize}
+Labels never change an observation, value, status, decision or qualification, and they never assert a cause. Manifests are validated against the vocabulary.
+
+Table~\ref{tab:taxonomy} shows one example per category. A software agent proposed the mapping of all 19 records, and the study owner then approved each label. The approvals are recorded append-only (\texttt{docs/DISCREPANCY\_TAXONOMY.md}). The original free-text hints and the frozen assessments were left unchanged (PA-13).
+
+\begin{table}[htbp]
+\centering
+\caption{Discrepancy taxonomy in decision order, with one reviewer-approved example per category.}
+\label{tab:taxonomy}
+\footnotesize
+\begin{tabular}{p{0.30\linewidth}p{0.20\linewidth}p{0.42\linewidth}}
+\toprule
+Category & Example & Why this category \\
+\midrule
+\texttt{MODEL\_VS\_EXPERIMENT\_GAP} & P38-D002 & Analytical pressures are 43\%/26\% below the printed experiments, while the arithmetic reproduces the printed analytical values within 0.16\% \\
+\texttt{MODEL\_FORM\_DIFFERENCE} & P42-D001 & Analytical armour stresses are independent of $F_z$; the published FP-RUC results vary with $F_z$. Both are as published \\
+\texttt{MISSING\_OR\_INSUFFICIENT\_ SOURCE\_INFORMATION} & P42-D002 & The printed recursion does not fix the interface convention needed for Figure~16 \\
+\texttt{UNIT\_OR\_DIMENSION} & P41-D002, P45-D003 & ``300/850~MNm'' in text vs a kNm axis; tension ``298'' printed without a unit \\
+\texttt{QUANTITY\_DEFINITION\_ OR\_CONVENTION} & P45-D005 & ``Amplitude'' reconciles with the figures only when read as peak-to-peak \\
+\texttt{NOTATION\_OR\_TYPOGRAPHY} & P45-D004 & $\sin(2\pi t/g)$ printed where the text states a 9~s period \\
+\texttt{PRECISION\_OR\_DIGITIZATION\_ RESIDUAL} & P16-D001 & Graph--table difference within finite reading precision (\estatus{BOUNDED}) \\
+\texttt{NUMERICAL\_VALUE\_CONFLICT} & P43-D001 & The same eigenvalue printed as 13.221 and recomputed as 18.221 \\
+\texttt{PHYSICAL\_IMPLAUSIBILITY} & P45-D001 & Adding buoyancy material \emph{raises} the in-water weight \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Human decisions gate promotion}
+Automation classifies and escalates a discrepancy; it does not decide it. An \estatus{OPEN} high-priority discrepancy blocks the promotion of its study. Only an append-only human decision can lift that block. The decision is one of four: \estatus{RESOLVED}, \estatus{BOUNDED}, \estatus{ACCEPTED\_WITH\_RATIONALE} or \estatus{DEFERRED}. It must name a reviewer and give a rationale, and every unblocking disposition must cite evidence references. A decision never edits the discrepancy record, and its qualification effect is always \texttt{NONE}.
+
+Eight real decisions have been recorded, and they exercise the boundary in both directions (PA-14):
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Unblocking.} P45-D004, a notation-only conflict, and P41-D002, where the plotted kNm axis is used for comparison while the paragraph's MNm unit stays preserved, were accepted with rationale. P45's blockers fall from six to five, and P41's from two to one.
+  \item \textbf{Bounded.} P16-D001 and P36-D001 were formalised as \estatus{BOUNDED}. For P36 the record states explicitly that the residual is in-sample, not held-out.
+  \item \textbf{Deferred.} Four decisions keep the block:
+    \begin{itemize}
+      \item P40-D001;
+      \item P43-D001 and P43-D002, where three consistent internal checks support the recomputed eigenvalues, but the records' own closure requirements ask for an erratum or author clarification;
+      \item P44-D001.
+    \end{itemize}
+\end{itemize}
+The P43 case matters for the argument: the reviewer declined to accept a well-supported correction just to clear a promotion gate.
+
+A software agent prepared the candidate decisions, each with the dry-run effect on the gates. The reviewer made the decisions. Every decision records \texttt{qualification\_effect: NONE}.

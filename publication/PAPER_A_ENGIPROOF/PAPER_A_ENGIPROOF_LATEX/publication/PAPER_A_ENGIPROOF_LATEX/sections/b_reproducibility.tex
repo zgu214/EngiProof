@@ -1,11 +1,20 @@
-\section{Reproducibility checklist}
-Before submission, the following items must be regenerated directly from the tagged repository state:
+\section{Reproducibility entry points}
+\label{app:repro}
+\begin{raggedright}
+All statements in this paper trace to artifacts in the software repository \cite{EngiProof2026}. The entry points are:
 \begin{itemize}[leftmargin=1.5em]
-  \item software version, commit, and release DOI if available;
-  \item study registry and evidence-status table;
-  \item P40 and P41 comparison CSV/JSON artifacts;
-  \item discrepancy assessments and human-decision records;
-  \item evidence-graph audits;
-  \item exact test count and supported Python versions;
-  \item all manuscript numerical tables from machine-readable results rather than manually copied values.
+  \item \texttt{engiproof verify <ID>} and \texttt{engiproof verify-all} run non-mutating verification against the frozen evidence.
+  \item \texttt{engiproof environment-record} verifies every study and emits a compact record of the environment and the comparator classes.
+  \item \texttt{engiproof graph-audit <ID>}, \texttt{discrepancy-audit <ID>}, \texttt{discrepancy-gate <ID>} and \texttt{promotion-gate <ID>} run the provenance and gate audits.
+  \item \texttt{engiproof discrepancy-taxonomy} and \texttt{ingestion-summary-audit} report the taxonomy and ingestion records.
+  \item Continuous integration runs Linux, Windows and macOS with a tracked-file non-mutation gate (\texttt{.github/workflows/ci.yml}).
+  \item \texttt{docs/MUTATION\_INVENTORY\_v0.2.0.md} records the pre-fix inventory, and \texttt{docs/CROSS\_ENVIRONMENT\_VERIFICATION.md} records the cross-environment runs.
 \end{itemize}
+Before submission, the following are to be regenerated from a tagged release:
+\begin{itemize}[leftmargin=1.5em]
+  \item Table~\ref{tab:reproduction};
+  \item Tables~\ref{tab:taxonomy}--\ref{tab:cases};
+  \item Appendix~\ref{app:claims}, using \texttt{scripts/build\_claim\_appendix.py}.
+\end{itemize}
+Copyrighted source PDFs are not redistributed; each is identified by its SHA-256 and bibliographic record.
+\end{raggedright}

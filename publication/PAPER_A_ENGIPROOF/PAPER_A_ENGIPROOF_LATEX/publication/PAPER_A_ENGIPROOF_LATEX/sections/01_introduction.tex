@@ -1,22 +1,37 @@
-\section{Introduction}
-Engineering papers often contain enough information to reproduce part of a method, but not necessarily enough information to reproduce a complete model, resolve every convention, or qualify a result for design use. Reuse therefore requires more than extracting equations or generating executable code. A defensible workflow must preserve the identity of the source, distinguish published reference data from independent calculations, expose assumptions and unavailable inputs, quantify comparisons, and retain unresolved discrepancies.
+\section{Introduction: the problem is silent normalisation}
+\label{sec:intro}
 
-This distinction becomes important when a paper is internally inconsistent. A conventional paper-to-code workflow may silently select one source value, reinterpret a unit, or tune an input until the generated code reproduces the printed result. Such behavior can produce an apparently successful program while weakening engineering traceability. \engiproof{} instead treats disagreement as evidence that must be classified and preserved.
+Engineering papers often contain enough information to reproduce part of a method, but not a complete model. Reusing them computationally therefore requires more than extracting equations or generating code. The difficulty is sharpest when a source is internally inconsistent or incomplete, which is common. Three examples from the cases studied here illustrate it.
+\begin{itemize}[leftmargin=1.5em]
+  \item A table prints an eigenvalue of 13.221. The same paper's approximation formula, its own error table and an independent finite-element solution all give 18.221 (\S\ref{sec:discrepancy}, P43-D001).
+  \item A table reports a friction increment of 471~N/m split into 153 and 312~N/m, which sum to 465~N/m. The paper's own load-sharing equations give 158.8 and 312.2~N/m (P41-D001).
+  \item A prescribed riser head tension is printed as ``298'' with no unit (P45-D003).
+\end{itemize}
 
-The framework is motivated by the principle
+A conventional paper-to-code workflow resolves each of these silently. It substitutes the ``obvious'' correction, chooses a unit, or adjusts an input until the printed number appears. The resulting program may be numerically sound and still untraceable. A later reader cannot tell which values were published, which were inferred, and which were forced.
+
+\engiproof{} is built on the opposite rule: \emph{disagreement is evidence and is preserved}. It aims to convert a published method into computational evidence whose status is explicit at every step.
 \begin{center}
-\textbf{published research $\rightarrow$ engineering evidence $\rightarrow$ callable engineering method,}
+\textbf{published source} $\rightarrow$ \textbf{source-bounded reproduction} $\rightarrow$ \textbf{independent check} $\rightarrow$ \textbf{comparison / discrepancy} $\rightarrow$ \textbf{human decision} $\rightarrow$ \textbf{callable method},
 \end{center}
-not by paper-to-code conversion alone. The intended contribution is therefore an evidence progression model: what was published, what was independently reconstructed, what was newly generated, what was compared, what remains unresolved, and what has not been engineering-qualified.
+with engineering qualification kept outside the chain.
 
-The present manuscript focuses on the architecture and on two real-source development cases. The first is propagation buckling in subsea pipe-in-pipe (PIP) systems \cite{Karampour2017}. The second is global buckling and structural response of PIP systems \cite{Goplen2011}. The cases are intentionally used not only to demonstrate agreement, but also to test whether the framework can detect and preserve source-backed discrepancies.
-
-The current bounded contributions are:
+\paragraph{Contributions.} The paper makes the following contributions, each bounded by the evidence in Appendix~\ref{app:claims}:
 \begin{enumerate}[leftmargin=1.6em]
-  \item a source-bounded ingestion and provenance workflow;
-  \item explicit separation of extraction candidates, evidence classes, evidence status, and engineering qualification;
-  \item failure-aware equation and table recovery with selected-target readiness gates;
-  \item comparison and discrepancy records that preserve disagreement rather than tune it away;
-  \item append-only human discrepancy decisions and evidence-graph synchronization; and
-  \item development-case evidence showing both successful reproduction and source-backed mismatch detection.
+  \item An evidence model that separates extraction candidates, evidence classes (\eclass{PUBLISHED}, \eclass{INDEPENDENT}, reserved \eclass{SOLVER\_NEW}), per-target outcomes and engineering qualification (\S\ref{sec:framework}).
+  \item Source-bounded reproduction and methodologically independent checking that decide the direction of a conflict rather than being tuned to it (\S\S\ref{sec:reproduction}--\ref{sec:independent}).
+  \item Discrepancy preservation with a controlled taxonomy and an append-only human decision boundary that gates promotion (\S\ref{sec:discrepancy}).
+  \item Non-mutating verification. The framework's own verification was found to rewrite frozen evidence; the defect was inventoried, and the fix distinguishes byte, numerical and engineering equivalence across operating systems (\S\ref{sec:nonmutation}).
+  \item A capability-organised evaluation on six heterogeneous studies, including a register of the framework's own failures (\S\S\ref{sec:evaluation}--\ref{sec:failures}).
 \end{enumerate}
+
+\paragraph{What is not claimed.} This paper does not claim the following:
+\begin{itemize}[leftmargin=1.5em]
+  \item extraction accuracy or recall, since no labelled benchmark exists;
+  \item completeness of inconsistency detection;
+  \item organisational independence of the checks;
+  \item generality beyond offshore and subsea structural mechanics;
+  \item autonomous scientific discovery;
+  \item any form of engineering qualification.
+\end{itemize}
+Software agents were used to develop the framework. That is a method detail, not a result.

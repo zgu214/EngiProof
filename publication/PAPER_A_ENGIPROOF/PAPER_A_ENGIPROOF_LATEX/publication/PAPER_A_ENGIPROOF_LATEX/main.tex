@@ -2,6 +2,7 @@
 
 \usepackage[margin=1in]{geometry}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
@@ -18,13 +19,16 @@
 \usepackage{caption}
 \usepackage{fancyhdr}
 \usepackage{setspace}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+\setlength{\emergencystretch}{3em}
 
 \hypersetup{
   colorlinks=true,
   linkcolor=blue,
   citecolor=blue,
   urlcolor=blue,
-  pdftitle={EngiProof: From Published Research to Verified Engineering through Source-Bounded Evidence Automation},
+  pdftitle={EngiProof: A Provenance-Preserving Framework for Converting Published Engineering Research into Reproducible Computational Evidence},
   pdfauthor={Zhiqiang Gu}
 }
 
@@ -32,7 +36,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{EngiProof journal manuscript draft}
-\rhead{Draft v0.1 -- 26 September 2026}
+\rhead{Draft v0.2.1 -- 28 September 2026}
 \cfoot{\thepage}
 
 \newcommand{\engiproof}{\textsc{EngiProof}}
@@ -40,34 +44,36 @@
 \newcommand{\estatus}[1]{\texttt{#1}}
 \newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
 
-\title{\textbf{EngiProof: From Published Research to Verified Engineering through Source-Bounded Evidence Automation}\\[0.6em]
-\large Living journal manuscript draft -- methods first, results not final}
+\title{\textbf{EngiProof: A Provenance-Preserving Framework for Converting Published Engineering Research into Reproducible Computational Evidence}\\[0.6em]
+\large Journal manuscript Draft v0.2.1 -- synthesis over P40--P45}
 \author{Zhiqiang Gu\\\texttt{Zhiqiang.gu214@gmail.com}}
-\date{Draft v0.1 -- 26 September 2026}
+\date{Draft v0.2.1 -- 28 September 2026}
 
 \begin{document}
 \maketitle
 
 \begin{center}
-\fbox{\parbox{0.92\linewidth}{\textbf{Draft status.} This manuscript is an evidence-capture draft, not a submission-ready paper. Claims are deliberately bounded by the current EngiProof evidence state. Generalization, extraction-accuracy, and performance claims remain provisional until additional heterogeneous end-to-end cases are complete.}}
+\fbox{\parbox{0.92\linewidth}{\textbf{Draft status.} Synthesis draft following the approved claim--evidence matrix and outline. Claims are bounded by Appendix~\ref{app:claims}. The owner decisions (discrepancy dispositions, taxonomy mapping, cross-environment comparator rules) and the ingestion summaries are recorded in the repository (PR \#8, 28 September 2026).}}
 \end{center}
 
 \input{sections/00_abstract}
 \input{sections/01_introduction}
 \input{sections/02_framework}
 \input{sections/03_ingestion}
-\input{sections/04_case_studies}
-\input{sections/05_discrepancies}
-\input{sections/06_evaluation}
-\input{sections/07_discussion}
-\input{sections/08_limitations}
-\input{sections/09_conclusion}
+\input{sections/04_reproduction}
+\input{sections/05_independent}
+\input{sections/06_discrepancies}
+\input{sections/07_provenance}
+\input{sections/08_nonmutating}
+\input{sections/09_evaluation}
+\input{sections/10_failures_limits}
+\input{sections/11_qualification}
+\input{sections/12_discussion}
+\input{sections/13_conclusion}
 
 \section*{Data, software and source boundary}
-The EngiProof software repository is cited as software in this draft. Copyrighted source PDFs and publisher raster figures are intentionally not redistributed by EngiProof. Source fingerprints, bibliographic identifiers, bounded source locators, independently generated calculations, and machine-readable evidence records are used instead. The manuscript will be synchronized with the repository evidence graph before submission.
+The EngiProof software repository is cited as software in this draft. Copyrighted source PDFs and publisher raster figures are intentionally not redistributed by EngiProof. Source fingerprints, bibliographic identifiers, bounded source locators, independently generated calculations, and machine-readable evidence records are used instead. All numerical statements trace to repository artifacts listed in Appendix~\ref{app:repro}.
 
-\section*{Acknowledgements}
-\todo{Add acknowledgements only when finalized.}
 
 \printbibliography
 
