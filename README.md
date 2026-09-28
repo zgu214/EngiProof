@@ -201,4 +201,6 @@ Use `engiproof discrepancy-audit P40`, `engiproof assess-discrepancies P40`, `en
 
 EngiProof is released under the [Apache License 2.0](LICENSE.txt). Copyright 2026 Zhiqiang Gu; see [NOTICE](NOTICE).
 
+EngiProof™ is a trademark of Zhiqiang Gu. The Apache License 2.0 applies to the software code and does not grant rights to use the EngiProof name, logo or branding, except to truthfully describe the origin of the software.
+
 The licence covers EngiProof's own code, documentation, calculations and evidence records. The third-party publications used as sources retain their original rights. They are not distributed or relicensed here: source PDFs and publisher figures are excluded, and transcribed reference values are included only as factual data for comparison.
