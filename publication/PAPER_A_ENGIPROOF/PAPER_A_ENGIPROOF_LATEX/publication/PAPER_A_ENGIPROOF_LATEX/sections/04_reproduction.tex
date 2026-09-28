@@ -22,7 +22,9 @@ P45 & Appendix~1/2 element matrices, Eq.~(7) integrator, Tables~1--3 & Matrix id
 \end{tabular}
 \end{table}
 
-Three aspects of this practice are central to the paper's argument. First, reproduction is reported target by target. P40, for example, shows close agreement with the two-decimal table for three of its four equation families (maximum absolute ratio difference 0.00546); the fourth disagrees materially for one of three cases, and that disagreement is recorded as a discrepancy (\S\ref{sec:discrepancy}) instead of being averaged away.
+% Layout only: keep the first lines of this paragraph together (no orphan line at a page break).
+{\leavevmode\clubpenalty=10000 \widowpenalty=10000
+Three aspects of this practice are central to the paper's argument. First, reproduction is reported target by target. P40, for example, shows close agreement with the two-decimal table for three of its four equation families (maximum absolute ratio difference 0.00546); the fourth disagrees materially for one of three cases, and that disagreement is recorded as a discrepancy (\S\ref{sec:discrepancy}) instead of being averaged away.\par}
 
 Second, a literal implementation that does not close against a figure is not assumed to reveal a source error. In P42, implementing the Eqs.~(27)--(30) contact-pressure recursion literally and then applying Eq.~(41) does not reproduce the Figure~16 moment scale under the stated zero-pressure load case. It is recorded as a \emph{source-implementation provenance gap}: the printed equations do not fix the interface convention. No friction coefficient or contact pressure is adjusted.
 

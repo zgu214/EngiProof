@@ -6,7 +6,7 @@
 
 Each comparison target carries one of five outcomes. A target is \estatus{REPRODUCED} when the published value is regenerated to source precision, and \estatus{COMPARED} when agreement or disagreement is quantified against a published reference population. \estatus{CONDITIONAL} marks a comparison that holds only under a stated source ambiguity, and \estatus{BLOCKED} marks a target for which the source lacks the inputs, with the missing items named. \estatus{VERIFIED} is reserved and is used by no comparison in the six cases.
 
-At study level, the evidence status is \estatus{CONDITIONAL} for all six cases and a separate qualification field is \estatus{NOT\_GRANTED} for all six; execution alone never changes either. The contracts are versioned, machine-readable JSON (\texttt{engiproof/contracts/contracts.json}).
+Across all six studies, the evidence status is \estatus{CONDITIONAL} and engineering qualification is \estatus{NOT\_GRANTED}; execution alone changes neither. The contracts are versioned, machine-readable JSON (\texttt{engiproof/\allowbreak{}contracts/\allowbreak{}contracts.json}).
 
 \subsection{Lifecycle}
 Figure~\ref{fig:lifecycle} shows the lifecycle, in which every arrow is a controlled transition with its own record. An extraction candidate does not become evidence because it was recognised, a callable method does not become qualified because it returns a number, and a discrepancy is not closed because a later step agrees with one of its sides.
