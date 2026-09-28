@@ -178,10 +178,11 @@ Remaining build messages, all benign:
 - Verified from the owner's screenshots: title, author Gu, Zhiqiang, version v0.2.0, Software, open access, Apache License 2.0, and archive folder `zgu214-EngiProof-d0d96eb`.
 - Reference [16] now carries the version DOI. The data-availability statement adds "archived on Zenodo (version 0.2.0)".
 
-## Journal-format check against the AES guide for authors — 28 September 2026 (owner)
+## Journal-format check against the AES guide for authors — 28 September 2026
 
-- Official guide: https://www.sciencedirect.com/journal/advances-in-engineering-software/publish/guide-for-authors. Automated access to the complete ScienceDirect page returned HTTP 403, and earlier attempts returned 429. The owner cross-checked the requirements against current AES and Elsevier materials and recent AES articles.
-- Confirmed by the owner:
+- The owner supplied and confirmed the official guide URL: https://www.sciencedirect.com/journal/advances-in-engineering-software/publish/guide-for-authors.
+- Automated access to the complete ScienceDirect guide returned HTTP 403 (and 429 on earlier attempts).
+- The requirements were therefore cross-checked against the accessible current AES and Elsevier materials and recent AES articles. The resulting submission-format check:
   - journal scope;
   - abstract of 236 words, consistent with the current guidance of about 250 words;
   - 5 highlights, each ≤ 85 characters;
@@ -189,5 +190,5 @@ Remaining build messages, all benign:
   - numbered Elsevier references;
   - CRediT, competing-interest, funding, data/code-availability and generative-AI statements present;
   - Zenodo software DOI present in reference [16].
-- The guide check is closed and is no longer a submission blocker. It supersedes the earlier note that the official guide still had to be checked.
+- This submission-format check was accepted for package preparation, and the guide check is no longer a submission blocker. It supersedes the earlier note that the official guide still had to be checked.
 - Next: prepare the submission package. No further manuscript restructuring.
