@@ -473,6 +473,10 @@ Active task: Paper A readiness review across P40–P45 (WORK_QUEUE Q6). Create P
   - P16-D001 and P36-D001: BOUNDED.
 - Before/after gate evidence: `publication/PAPER_A_ENGIPROOF/G1_GATE_EVIDENCE.json`.
 - Graphs were synced for P16, P36 and P41–P45; all audits PASS at coverage 1.0.
-- PR #8 now waits only on the owner's local `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` results for P40–P43.
+- The owner ran `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` locally (commit `f651f07`), so P40–P44 now have machine-generated summaries and G3 is closed.
+  - All fingerprints match.
+  - Readiness: P40 3/3, P41 5/5, P42 5/5, P43 3/5, P44 4/7.
+  - P44 was ingested through the pipeline.
+- That run exposed F22: `engiproof.cmd` swallowed exit codes. It is fixed in `c62f038`.
 - Qualification remains NOT_GRANTED. No P46.
 

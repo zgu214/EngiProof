@@ -237,3 +237,4 @@ P45 local Windows verify PASS; frozen CONDITIONAL/NOT_GRANTED (D-006), D001–D0
 PR #7 merged (eeb84fc). Hardening PR: G2 taxonomy (19 proposed labels), G3 ingestion summaries, G4 cross-OS CI + environment records, G1 candidates. D-007 PROPOSED (hash inheritance, path-separator rendering, scoped P45 FE tolerance) awaits owner approval. Owner actions: approve D-007, taxonomy review, G1 decisions, run 29_ batch. No P46.
 
 28 Sep 2026: owner approved D-007 and the taxonomy (19 labels); G1 decisions recorded (D-008: 2 ACCEPTED_WITH_RATIONALE, 2 BOUNDED, 3 DEFERRED; P43 kept blocking). PR #8 waits only on local P40–P43 ingestion summaries. No P46.
+G3 closed: owner-run local intakes give machine-generated ingestion summaries for P40–P44 (f651f07). F22: engiproof.cmd swallowed exit codes, fixed. Matrix 20/4/3/3. PR #8 ready on the owner's yes.

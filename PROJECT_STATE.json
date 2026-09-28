@@ -11,7 +11,7 @@
   "last_green_verification": "28_VERIFY_P45_PHASE1_WINDOWS.bat",
   "last_green_status": "PASS",
   "next_study": "PAPER_A_MANUSCRIPT_SYNTHESIS",
-  "next_action": "Incorporate the owner's local 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat results (P40-P43) into PR #8, or record them as still pending; after PR #8 merges, finalise the Paper A manuscript (PR #9). No P46.",
+  "next_action": "Merge PR #8 on the owner's yes; then rebase PR #9 onto develop, regenerate Appendix A, complete related-work references and the P42 author list, rebuild the manuscript. No P46.",
   "qualification": "NOT_GRANTED",
   "open_evidence_items": [
     "P40-D001",
@@ -45,6 +45,6 @@
   "pending_verification": null,
   "pending_owner_decisions": [],
   "pending_owner_actions": [
-    "Run 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat locally and provide the P40-P43 ingestion_summary.json results"
+    "Approve merge of PR #8"
   ]
 }

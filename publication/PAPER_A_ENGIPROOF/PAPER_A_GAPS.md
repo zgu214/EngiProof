@@ -12,7 +12,7 @@ Categories: **a** no new paper (work or decisions on existing records) · **b** 
 |---|---|---|
 | G1 | **Closed (D-008).** Eight real decisions, in both directions: two ACCEPTED_WITH_RATIONALE (unblocking), two BOUNDED, four DEFERRED (still blocking). Before/after gate evidence is in `G1_GATE_EVIDENCE.json`. | — |
 | G2 | **Closed (D-008).** Controlled taxonomy; all 19 labels approved by the owner, with an append-only review trail (`docs/DISCREPANCY_TAXONOMY.md`) | — |
-| G3 | Tracked text-free summaries for P40–P45. P45 is machine-generated; P40–P43 are pending the owner's local run; P44 has no ingestion record. | Incorporate the `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` results, or record them explicitly as still pending |
+| G3 | **Closed.** Machine-generated, text-free summaries for all six cases (P40–P44 from the owner's local intakes, 28 Sep 2026), and every fingerprint matches its study SHA-256. P44 was ingested through the pipeline, which corrects the earlier “no ingestion record”. | Source format detected only for P45; P40–P44 show `NOT_RECORDED` (optional: rerun with `--source-pdf`) |
 | G4 | **Closed (D-007 approved).** CI on Linux, Windows and macOS verifies all 12 studies and records each environment (`docs/CROSS_ENVIRONMENT_VERIFICATION.md`). | P38 runner portability (WORK_QUEUE Q9) at the next approved regeneration |
 | G5 | Reassessed: optional. P38-D002 already instantiates MODEL_VS_EXPERIMENT_GAP, and P40 Table 2 ratios are analytical / experiment by construction. | Nothing required for Paper A |
 
@@ -59,6 +59,7 @@ Categories: **a** no new paper (work or decisions on existing records) · **b** 
   - add a small tracked `ingestion_summary` per study;
   - for cases scaffolded without the pipeline, state so rather than backfilling.
 - **Blocks submission:** yes — the extraction claims otherwise rest on prose.
+- **Closed on 28 September 2026:** `engiproof/studies/P40…P45/ingestion_summary.json` are all machine-generated from local intakes (`ingestion-summary-audit` PASS).
 
 ## G4 — Cross-OS reproducibility not recorded as artifacts
 

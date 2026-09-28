@@ -30,7 +30,7 @@ Parallel/secondary. Keep evidence capture synchronized without displacing engine
 
 **Priority: HIGHEST (active).**
 - **Done:** D-007 approved; taxonomy approved; G1 decisions recorded (D-008).
-- **Remaining for PR #8:** incorporate the owner's local `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` results for P40–P43, or record them explicitly as still pending.
+- **Done (28 Sep 2026):** machine-generated ingestion summaries for P40–P44 from the owner's local intakes (G3 closed). PR #8 is ready to merge on the owner's yes.
 - **After PR #8 merges:** finalise the manuscript in PR #9 (Appendix A, related-work references, P42 author list, rebuild).
 - G5 optional. No P46.
 
