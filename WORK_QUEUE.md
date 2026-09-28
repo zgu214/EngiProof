@@ -37,3 +37,8 @@ Parallel/secondary. Keep evidence capture synchronized without displacing engine
 ## Q9 — Runtime hardening: portable P38 runner
 
 **Priority: low.** `papers/P38/run_calculation.py` writes `str(Path.relative_to())` keys, which gives backslashes on Windows. Use `.as_posix()` at the next explicitly approved P38 regeneration: the code hash is recorded in the frozen manifest, so fixing it now would itself be a material change.
+
+## Q10 — Windows dispatcher exit codes (F22)
+
+**Fixed in PR #8.** `engiproof.cmd` returned 0 for every command. Windows CI now asserts that exit codes propagate. After pulling, re-run any local Windows batch whose PASS mattered. Verification of P40–P45 on Windows is covered by CI.
+

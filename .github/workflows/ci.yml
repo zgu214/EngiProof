@@ -31,6 +31,16 @@ jobs:
       - name: Snapshot tracked files
         run: git ls-files -z | xargs -0 sha256sum > "$RUNNER_TEMP/tracked.sha256"
       - run: engiproof doctor
+      - name: Windows dispatcher propagates exit codes (engiproof.cmd)
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: |
+          python -m venv --system-site-packages .venv
+          call engiproof.cmd doctor > NUL
+          if errorlevel 1 (echo ::error title=dispatcher::engiproof.cmd doctor failed & exit /b 1)
+          call engiproof.cmd no-such-command > NUL 2>&1
+          if not errorlevel 1 (echo ::error title=dispatcher::engiproof.cmd swallowed a failing exit code & exit /b 1)
+          echo ::notice title=dispatcher::engiproof.cmd propagates exit codes
       - name: Cross-environment record (all studies, non-mutating)
         run: |
           set +e
