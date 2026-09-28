@@ -41,6 +41,7 @@ jobs:
           call engiproof.cmd no-such-command > NUL 2>&1
           if not errorlevel 1 (echo ::error title=dispatcher::engiproof.cmd swallowed a failing exit code & exit /b 1)
           echo ::notice title=dispatcher::engiproof.cmd propagates exit codes
+          exit /b 0
       - name: Cross-environment record (all studies, non-mutating)
         run: |
           set +e
