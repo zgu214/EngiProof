@@ -96,3 +96,37 @@ The draft now follows `publication/PAPER_A_ENGIPROOF/PAPER_A_OUTLINE.md`. It has
   - Appendix A column widths are adjusted.
 - Journal requirements (abstract ≈250 words, 3–5 highlights of ≈85 characters, CRediT, data-availability and competing-interest statements, numbered references) are taken from a secondary summary. The official guide for authors returned HTTP 429 and must be checked before submission.
 
+
+## Tables from repository data and final source audit — 28 September 2026 (WORK_QUEUE Q11 steps 2–3)
+
+Tables (step 2):
+- `scripts/build_tables.py` generates `generated/tab_evidence_by_study.tex` (new Table `tab:evidence` in §9), `generated/tab_crossenv.tex` (§8 table body, rows identical to the previous hand-written rows) and `generated/facts.json`. `--check` fails if any generated file is stale.
+- The evidence-graph node count and coverage are taken from `audit_evidence_graph`, not from the tracked file.
+
+Automated facts check (step 3):
+- `scripts/check_manuscript_facts.py` rebuilds 19 prose phrases from `generated/facts.json` and requires each to occur verbatim: comparison counts, discrepancy counts, readiness, taxonomy counts, decision counts, graph node range, cross-environment result, failure-mode count, evidence status and qualification. Result after the owner decisions: 20 PASS, 0 FAIL, 0 OPEN (a check on the §2 qualification field was added). A mutation test (reverting 11--40 to 11--39) makes it fail as intended.
+
+Independent source audit: a separate agent checked about 125 further statements against the study manifests, results, decision logs, taxonomy mapping, failure register and references. About 115 were confirmed. The findings and their handling:
+
+| ID | Location | Finding | Handling |
+|---|---|---|---|
+| SA-1 | §7 | "11--39 nodes"; the P45 graph has 40 nodes since commit 2a57f27 (decision node P45-D004 added) | Corrected to "11--40 nodes" |
+| SA-2 | §2, Fig. 1, §11, abstract | "qualification NOT_GRANTED for all six / every manifest, result artifact and graph". `engiproof/studies/P44/study.json` has no `qualification` field (only limitation text says NOT_GRANTED). The framework default `NOT_CLAIMED` is therefore written to `engiproof/studies/P44/evidence_graph.json`. Three result files carry no qualification field: `papers/P41/results/phase3_global_buckling_summary.json`, `papers/P42/results/phase1_summary.json`, `papers/P42/results/phase2_analytical_stress_summary.json` **Resolved (D-009, option a):** field added to the P44 manifest; graph resynced (NOT_GRANTED, 16/16, audit PASS). The three result files are unchanged, and §11 now reads "every result artifact that carries a qualification field" |
+| SA-3 | §4 table, §4 text, §9 | "Agreement to the two-decimal table precision for all ratios except Eq. (9), PIP-3". P40-C001 records a maximum difference of 0.00546: Eq. (6), PIP-1 gives 0.5655 against a printed 0.56, just outside the ±0.005 rounding band. `papers/P40/README.md` makes the same "within source precision" statement **Resolved (D-009):** no new discrepancy. Wording in §4 (table and text), §9, `papers/P40/README.md` and the PA-06 evidence note changed to "close agreement … maximum absolute ratio difference 0.00546; Eq. (6), PIP-1 marginally outside the strict two-decimal rounding interval". P40-D001 unchanged |
+| SA-4 | §4 table, P40 row | Status given as COMPARED; the row also covers P40-C003, which is CONDITIONAL | Corrected to COMPARED / CONDITIONAL |
+| SA-5 | §4 table, P41 row | Status given as REPRODUCED / COMPARED, with "reproduced" in the text. The row's records are C001, C002, C004 (COMPARED) and C003 (CONDITIONAL); "four bonding categories" are really four cases in three categories | Corrected to COMPARED / CONDITIONAL, "agree", and "four … bonding classifications" |
+| SA-6 | §9 | "six discrepancies of five kinds"; the taxonomy gives P45 four categories | Corrected to "four kinds" |
+| SA-7 | §6 | Approvals said to be recorded in `docs/DISCREPANCY_TAXONOMY.md`; the append-only reviews are in `engiproof/contracts/discrepancy_taxonomy_mapping.json` | Corrected: mapping file named, the .md file named as the documentation |
+| SA-8 | §3 | Manual review stated to be required "because the DOI does not appear in the source text". P44 also has DOI NOT_FOUND_IN_SOURCE, yet its audit passes | Causal clause replaced by the recorded checks |
+| SA-9 | §8 | F22 said to be exposed by "the same cross-platform work"; the register records a local Windows batch run | Reworded to "A local Windows run during the same work" |
+| SA-10 | abstract | "independent formulations decide the direction of five numerical conflicts" (PA-09: P40-D001, P41-D001, P43-D001/D002, P45-D001). P45-D001 is categorised PHYSICAL_IMPLAUSIBILITY, and P41-D001's recorded support is CORROBORATES_REPRODUCTION (published Eqs. (6)–(8) plus the printed total) **Resolved (D-009):** now "independent checks and source-consistency checks clarify five source conflicts" |
+| — | §5, §6, §9 (P43-D002) | The auditor questioned "three consistent checks": Eq. (10) alone gives 6.746, and it is consistent with the FE result 6.654 only through the 1.39% error in Table 2 | No change: this matches the recorded basis `EQ8_FE_PLUS_EQ10_PLUS_TABLE2_INTERNAL_CONSISTENCY` |
+| — | §3 | "not determined, because the matching PDF was not available" | No change: `ingestion_summary.py` writes NOT_RECORDED with no note only when no PDF is found |
+
+- No numerical result, evidence record, discrepancy, decision, taxonomy label or qualification was changed.
+
+## Author declarations — 28 September 2026
+
+- Confirmed by the author: affiliation (Independent researcher, Norway), CRediT roles, competing interests (none), funding (no specific grant). All [author to confirm] markers are removed, together with the `\authorconfirm` macro.
+- Generative-AI declaration replaced by the author's wording: Claude (Anthropic) and ChatGPT (OpenAI) were used for software development and testing, manuscript drafting and revision, and bibliographic checking, followed by author review, with the author responsible for the content.
+- The conclusion no longer says the author statements are still to be confirmed.

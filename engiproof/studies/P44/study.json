@@ -154,5 +154,6 @@
     "Phase 2 only if source-ready: bounded unilateral beam-to-bore contact benchmark and/or digitized Figure7-9 evidence with explicit provenance.",
     "Do not tune missing wall geometry or contact data to reproduce the published curves.",
     "Keep qualification NOT_GRANTED."
-  ]
+  ],
+  "qualification": "NOT_GRANTED"
 }
