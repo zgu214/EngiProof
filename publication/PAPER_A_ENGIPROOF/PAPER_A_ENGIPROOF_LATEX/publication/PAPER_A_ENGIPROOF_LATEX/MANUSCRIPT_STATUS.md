@@ -192,3 +192,12 @@ Remaining build messages, all benign:
   - Zenodo software DOI present in reference [16].
 - This submission-format check was accepted for package preparation, and the guide check is no longer a submission blocker. It supersedes the earlier note that the official guide still had to be checked.
 - Next: prepare the submission package. No further manuscript restructuring.
+
+## Completion wording — 28 September 2026 (owner correction)
+
+- The conclusion and Appendix B no longer describe regeneration as a future action. They state that Tables 4 and 6 and Appendix A were regenerated and checked against the released v0.2.0 evidence state, and that the manuscript facts check passed.
+- Verified at tag v0.2.0 (`d0d96eb`):
+  - `build_tables.py --check` OK;
+  - facts check 20 passed, 0 failed, 0 open;
+  - Appendix A regenerates identically.
+- `git diff v0.2.0 develop` shows no change to `engiproof/`, `papers/`, `src/`, the cross-environment record or the claim–evidence matrix.
