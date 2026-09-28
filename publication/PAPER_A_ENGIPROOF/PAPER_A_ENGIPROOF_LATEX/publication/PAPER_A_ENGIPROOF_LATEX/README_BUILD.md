@@ -1,37 +1,41 @@
-# EngiProof journal manuscript - LaTeX draft v0.1
+# EngiProof Paper A: LaTeX build
 
-This is a generic, compile-ready journal manuscript draft. It intentionally does **not** use a publisher-specific class yet. After P42/P43 establish stronger heterogeneous evidence, select the target journal and migrate the content to that journal's template.
+Target journal: **Advances in Engineering Software** (Elsevier). The manuscript uses the `elsarticle` class (`preprint,12pt`) and the numbered Elsevier BibTeX style `elsarticle-num`.
 
-## Windows
+## Requirements
 
-From this folder:
+TeX Live or MiKTeX with the `elsarticle`, `lm` (Latin Modern) and `pgf/tikz` packages. On Debian/Ubuntu these come from `texlive-publishers` and `lmodern`.
+
+## Build
+
+Windows:
 
 ```bat
 BUILD_LATEX_WINDOWS.bat
 ```
 
-or directly:
-
-```bat
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-biber main
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-```
-
-## Linux/macOS
+Linux/macOS:
 
 ```bash
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-biber main
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
-pdflatex -interaction=nonstopmode -halt-on-error main.tex
+latexmk -pdf main.tex
+# or: pdflatex main && bibtex main && pdflatex main && pdflatex main
 ```
+
+## Generated content and checks
+
+- Appendix A comes from `publication/PAPER_A_ENGIPROOF/CLAIM_EVIDENCE_MATRIX.md`:
+  ```bash
+  python scripts/build_claim_appendix.py
+  ```
+- Style-only edits are guarded by `scripts/prose_audit.py [REV]`. It compares numbers, citations, cross-references, evidence identifiers, status macros, mathematics and table contents with a git revision; column specs and line-break hints are treated as layout.
+
+## Author items
+
+Text marked **[author to confirm]** can only be confirmed by the author: affiliation, CRediT statement, competing interests, funding and the generative-AI declaration.
 
 ## Draft rules
 
-- Do not turn `OPEN` discrepancies into source errors without an erratum/author clarification.
-- Do not add extraction accuracy/generalization percentages before the benchmark corpus is fixed.
+- Do not turn `OPEN` discrepancies into source errors without an erratum or author clarification.
+- Do not add extraction-accuracy or generalisation figures.
 - Do not add publisher raster figures to the repository.
-- Generate final manuscript tables from machine-readable EngiProof evidence before submission.
-- Keep `HANDOVER_CURRENT.md`, `CHAT_COMPACT_CURRENT.md`, and the publication claim-evidence matrix synchronized at meaningful checkpoints.
+- Generate manuscript tables from machine-readable EngiProof evidence before submission.

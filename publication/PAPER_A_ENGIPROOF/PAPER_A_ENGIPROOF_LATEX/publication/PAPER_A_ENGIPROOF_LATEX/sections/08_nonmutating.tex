@@ -8,8 +8,8 @@ The original verification command re-ran each study's runner in the working tree
 \centering
 \caption{Pre-fix mutation inventory (\texttt{docs/MUTATION\_INVENTORY\_v0.2.0.md}).}
 \label{tab:mutation}
-\footnotesize
-\begin{tabular}{lrp{0.55\linewidth}}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lr>{\raggedright\arraybackslash}p{0.55\linewidth}}
 \toprule
 Class & Files & Mechanism \\
 \midrule
@@ -38,7 +38,7 @@ The study owner approved these three rules (D-007) on the conditions stated here
 \centering
 \caption{Cross-environment verification of all 12 studies: regenerated artifacts per comparator class. Source: the cross-environment record in \texttt{docs/}.}
 \label{tab:crossenv}
-\footnotesize
+\scriptsize\setlength{\tabcolsep}{3pt}
 \begin{tabular}{llllrrrrrr}
 \toprule
 OS & Arch & Python & NumPy & \texttt{IDENT.} & \texttt{BYTE} & \texttt{ENV} & \texttt{NUM\_NM} & \texttt{NUM\_M} & \texttt{MAT\_NN} \\

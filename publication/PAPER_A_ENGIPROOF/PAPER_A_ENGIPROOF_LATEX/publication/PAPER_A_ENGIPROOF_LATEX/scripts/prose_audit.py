@@ -36,7 +36,8 @@ def strip_comments(t):
 def tokens(t):
     t = strip_comments(t)
     t = re.sub(r"\\begin\{(itemize|enumerate|description)\}\[[^\]]*\]", r"\\begin{\1}", t)  # layout options only
-    tables = re.findall(r"\\begin\{tabular\}.*?\\end\{tabular\}", t, flags=re.S)
+    tables = [re.sub(r"\\begin\{tabular\}\{(?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*\}", r"\\begin{tabular}", x).replace("\\allowbreak{}", "")
+              for x in re.findall(r"\\begin\{tabular\}.*?\\end\{tabular\}", t, flags=re.S)]  # column specs and break hints are layout
     tikz = re.findall(r"\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}", t, flags=re.S)
     body = re.sub(r"\\begin\{(tabular|tikzpicture)\}.*?\\end\{\1\}", " ", t, flags=re.S)
     math = re.findall(r"(?<!\\)\$[^$]+\$|\\\[.*?\\\]", body, flags=re.S)

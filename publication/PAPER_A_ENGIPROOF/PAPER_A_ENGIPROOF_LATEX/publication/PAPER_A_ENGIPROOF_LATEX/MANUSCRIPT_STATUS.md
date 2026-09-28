@@ -79,3 +79,20 @@ The draft now follows `publication/PAPER_A_ENGIPROOF/PAPER_A_OUTLINE.md`. It has
 - Word count 7075 → 6997; the PDF is 18 pages (previously 22), mainly because lists became prose.
 - Noted for the later source audit, deliberately left unchanged in this pass:
   - §7 says "graphs of 11--39 nodes", but after the PR #8 graph-sync the P45 graph has 40 nodes. This number needs checking against the current `graph-audit`.
+
+## Journal format — 28 September 2026 (WORK_QUEUE Q11 step 1)
+
+- Converted to Elsevier `elsarticle` (`preprint,12pt`) for Advances in Engineering Software, with numbered Elsevier references (`elsarticle-num`, BibTeX in place of biblatex/biber).
+- Front matter:
+  - title;
+  - author and affiliation;
+  - abstract compressed to 236 words (about 250 allowed), keeping all numbers and claims;
+  - five highlights, each ≤ 71 characters (limit 85);
+  - six keywords.
+- Back matter (`sections/14_declarations.tex`): data and code availability, CRediT, competing interests, funding, and the Elsevier generative-AI declaration using Elsevier's template wording. Every author statement is marked **[author to confirm]**.
+- Layout only:
+  - tables use ragged-right columns with tighter padding;
+  - the lifecycle figure is scaled to the text width;
+  - Appendix A column widths are adjusted.
+- Journal requirements (abstract ≈250 words, 3–5 highlights of ≈85 characters, CRediT, data-availability and competing-interest statements, numbered references) are taken from a secondary summary. The official guide for authors returned HTTP 429 and must be checked before submission.
+
