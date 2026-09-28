@@ -177,3 +177,12 @@ Remaining build messages, all benign:
 - Zenodo record https://zenodo.org/records/23017727. The version DOI is 10.5281/zenodo.23017727, and the concept DOI is 10.5281/zenodo.23017726.
 - Verified from the owner's screenshots: title, author Gu, Zhiqiang, version v0.2.0, Software, open access, Apache License 2.0, and archive folder `zgu214-EngiProof-d0d96eb`.
 - Reference [16] now carries the version DOI. The data-availability statement adds "archived on Zenodo (version 0.2.0)".
+
+## Completion wording — 28 September 2026 (owner correction)
+
+- The conclusion and Appendix B no longer describe regeneration as a future action. They state that Tables 4 and 6 and Appendix A were regenerated and checked against the released v0.2.0 evidence state, and that the manuscript facts check passed.
+- Verified at tag v0.2.0 (`d0d96eb`):
+  - `build_tables.py --check` OK;
+  - facts check 20 passed, 0 failed, 0 open;
+  - Appendix A regenerates identically.
+- `git diff v0.2.0 develop` shows no change to `engiproof/`, `papers/`, `src/`, the cross-environment record or the claim–evidence matrix.
