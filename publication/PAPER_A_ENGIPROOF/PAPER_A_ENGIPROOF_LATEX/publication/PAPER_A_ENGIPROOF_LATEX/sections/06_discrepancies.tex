@@ -15,20 +15,20 @@ Table~\ref{tab:taxonomy} gives one example per category. A software agent propos
 \centering
 \caption{Discrepancy taxonomy in decision order, with one reviewer-approved example per category.}
 \label{tab:taxonomy}
-\footnotesize
-\begin{tabular}{p{0.30\linewidth}p{0.20\linewidth}p{0.42\linewidth}}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.36\linewidth}>{\raggedright\arraybackslash}p{0.15\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}}
 \toprule
 Category & Example & Why this category \\
 \midrule
-\texttt{MODEL\_VS\_EXPERIMENT\_GAP} & P38-D002 & Analytical pressures are 43\%/26\% below the printed experiments, while the arithmetic reproduces the printed analytical values within 0.16\% \\
-\texttt{MODEL\_FORM\_DIFFERENCE} & P42-D001 & Analytical armour stresses are independent of $F_z$; the published FP-RUC results vary with $F_z$. Both are as published \\
-\texttt{MISSING\_OR\_INSUFFICIENT\_ SOURCE\_INFORMATION} & P42-D002 & The printed recursion does not fix the interface convention needed for Figure~16 \\
-\texttt{UNIT\_OR\_DIMENSION} & P41-D002, P45-D003 & ``300/850~MNm'' in text vs a kNm axis; tension ``298'' printed without a unit \\
-\texttt{QUANTITY\_DEFINITION\_ OR\_CONVENTION} & P45-D005 & ``Amplitude'' reconciles with the figures only when read as peak-to-peak \\
-\texttt{NOTATION\_OR\_TYPOGRAPHY} & P45-D004 & $\sin(2\pi t/g)$ printed where the text states a 9~s period \\
-\texttt{PRECISION\_OR\_DIGITIZATION\_ RESIDUAL} & P16-D001 & Graph--table difference within finite reading precision (\estatus{BOUNDED}) \\
-\texttt{NUMERICAL\_VALUE\_CONFLICT} & P43-D001 & The same eigenvalue printed as 13.221 and recomputed as 18.221 \\
-\texttt{PHYSICAL\_IMPLAUSIBILITY} & P45-D001 & Adding buoyancy material \emph{raises} the in-water weight \\
+\texttt{MODEL\_\allowbreak{}VS\_\allowbreak{}EXPERIMENT\_\allowbreak{}GAP} & P38-D002 & Analytical pressures are 43\%/26\% below the printed experiments, while the arithmetic reproduces the printed analytical values within 0.16\% \\
+\texttt{MODEL\_\allowbreak{}FORM\_\allowbreak{}DIFFERENCE} & P42-D001 & Analytical armour stresses are independent of $F_z$; the published FP-RUC results vary with $F_z$. Both are as published \\
+\texttt{MISSING\_\allowbreak{}OR\_\allowbreak{}INSUFFICIENT\_\allowbreak{}SOURCE\_\allowbreak{}INFORMATION} & P42-D002 & The printed recursion does not fix the interface convention needed for Figure~16 \\
+\texttt{UNIT\_\allowbreak{}OR\_\allowbreak{}DIMENSION} & P41-D002, P45-D003 & ``300/850~MNm'' in text vs a kNm axis; tension ``298'' printed without a unit \\
+\texttt{QUANTITY\_\allowbreak{}DEFINITION\_\allowbreak{}OR\_\allowbreak{}CONVENTION} & P45-D005 & ``Amplitude'' reconciles with the figures only when read as peak-to-peak \\
+\texttt{NOTATION\_\allowbreak{}OR\_\allowbreak{}TYPOGRAPHY} & P45-D004 & $\sin(2\pi t/g)$ printed where the text states a 9~s period \\
+\texttt{PRECISION\_\allowbreak{}OR\_\allowbreak{}DIGITIZATION\_\allowbreak{}RESIDUAL} & P16-D001 & Graph--table difference within finite reading precision (\estatus{BOUNDED}) \\
+\texttt{NUMERICAL\_\allowbreak{}VALUE\_\allowbreak{}CONFLICT} & P43-D001 & The same eigenvalue printed as 13.221 and recomputed as 18.221 \\
+\texttt{PHYSICAL\_\allowbreak{}IMPLAUSIBILITY} & P45-D001 & Adding buoyancy material \emph{raises} the in-water weight \\
 \bottomrule
 \end{tabular}
 \end{table}

@@ -1,6 +1,7 @@
-\documentclass[11pt]{article}
+% EngiProof, Paper A. Target journal: Advances in Engineering Software (Elsevier), elsarticle class.
+% Build: pdflatex main; bibtex main; pdflatex main; pdflatex main   (or: latexmk -pdf main)
+\documentclass[preprint,12pt]{elsarticle}
 
-\usepackage[margin=1in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[utf8]{inputenc}
@@ -12,51 +13,46 @@
 \usepackage{microtype}
 \usepackage{enumitem}
 \usepackage{xcolor}
-\usepackage{hyperref}
-\usepackage{url}
-\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
-\addbibresource{references.bib}
-\usepackage{caption}
-\usepackage{fancyhdr}
-\usepackage{setspace}
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
 \setlength{\emergencystretch}{3em}
-
-\hypersetup{
-  colorlinks=true,
-  linkcolor=blue,
-  citecolor=blue,
-  urlcolor=blue,
-  pdftitle={EngiProof: A Provenance-Preserving Framework for Converting Published Engineering Research into Reproducible Computational Evidence},
-  pdfauthor={Zhiqiang Gu}
-}
-
-\setlength{\headheight}{14pt}
-\pagestyle{fancy}
-\fancyhf{}
-\lhead{EngiProof journal manuscript draft}
-\rhead{Draft v0.2.1 -- 28 September 2026}
-\cfoot{\thepage}
 
 \newcommand{\engiproof}{\textsc{EngiProof}}
 \newcommand{\eclass}[1]{\texttt{#1}}
 \newcommand{\estatus}[1]{\texttt{#1}}
-\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+% Marks author statements that only the author can confirm (affiliation, declarations).
+\newcommand{\authorconfirm}{\textcolor{gray}{\,[author to confirm]}}
 
-\title{\textbf{EngiProof: A Provenance-Preserving Framework for Converting Published Engineering Research into Reproducible Computational Evidence}\\[0.6em]
-\large Journal manuscript Draft v0.2.1 -- synthesis over P40--P45}
-\author{Zhiqiang Gu\\\texttt{Zhiqiang.gu214@gmail.com}}
-\date{Draft v0.2.1 -- 28 September 2026}
+\journal{Advances in Engineering Software}
 
 \begin{document}
-\maketitle
 
-\begin{center}
-\fbox{\parbox{0.92\linewidth}{\textbf{Draft status.} Synthesis draft following the approved claim--evidence matrix and outline. Claims are bounded by Appendix~\ref{app:claims}. The owner decisions (discrepancy dispositions, taxonomy mapping, cross-environment comparator rules) and the ingestion summaries are recorded in the repository (PR \#8, 28 September 2026).}}
-\end{center}
+\begin{frontmatter}
+
+\title{EngiProof: A provenance-preserving framework for converting published engineering research into reproducible computational evidence}
+
+\author{Zhiqiang Gu}
+\ead{Zhiqiang.gu214@gmail.com}
+\affiliation{organization={Independent researcher},country={Norway\authorconfirm}}
 
 \input{sections/00_abstract}
+
+\begin{highlights}
+\item Published engineering methods become source-bounded, callable evidence
+\item Source inconsistencies are preserved, never tuned or silently corrected
+\item Independent checks decide the direction of numerical conflicts
+\item Human decisions gate promotion; verification never grants qualification
+\item Non-mutating verification is checked on Linux, Windows and macOS
+\end{highlights}
+
+\begin{keyword}
+reproducibility \sep provenance \sep engineering software \sep verification \sep source discrepancies \sep offshore structural mechanics
+\end{keyword}
+
+\end{frontmatter}
+
 \input{sections/01_introduction}
 \input{sections/02_framework}
 \input{sections/03_ingestion}
@@ -71,14 +67,13 @@
 \input{sections/12_discussion}
 \input{sections/13_conclusion}
 
-\section*{Data, software and source boundary}
-The EngiProof software repository is cited as software in this draft. Copyrighted source PDFs and publisher raster figures are intentionally not redistributed by EngiProof. Source fingerprints, bibliographic identifiers, bounded source locators, independently generated calculations, and machine-readable evidence records are used instead. All numerical statements trace to repository artifacts listed in Appendix~\ref{app:repro}.
-
-
-\printbibliography
+\input{sections/14_declarations}
 
 \appendix
 \input{sections/a_claim_evidence}
 \input{sections/b_reproducibility}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
 
 \end{document}

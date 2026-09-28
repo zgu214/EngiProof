@@ -13,6 +13,7 @@ Figure~\ref{fig:lifecycle} shows the lifecycle, in which every arrow is a contro
 
 \begin{figure}[htbp]
 \centering
+\resizebox{\linewidth}{!}{%
 \begin{tikzpicture}[
   box/.style={draw, rounded corners=2pt, align=center, font=\footnotesize, minimum height=7mm, inner sep=3pt},
   gate/.style={box, fill=black!8},
@@ -32,9 +33,9 @@ Figure~\ref{fig:lifecycle} shows the lifecycle, in which every arrow is a contro
 \draw[arr] (src) -- (ing); \draw[arr] (ing) -- (rep); \draw[arr] (rep) -- (ind);
 \draw[arr] (ind) -- (cmp); \draw[arr] (cmp) -- (dis); \draw[arr] (dis) -- (dec); \draw[arr] (dec) -- (pro);
 \draw[arr] (dis) -- (gra); \draw[arr] (gra) -- (tool); \draw[arr] (ver) -- (gra);
-\node[draw, dashed, font=\footnotesize, align=center, below=7mm of gra, text width=0.8\linewidth] (q)
+\node[draw, dashed, font=\footnotesize, align=center, below=7mm of gra, text width=12cm] (q)
   {\textbf{Qualification boundary.} Engineering qualification is outside the lifecycle: \estatus{NOT\_GRANTED} in every study, unaffected by verification, decisions or promotion.};
-\end{tikzpicture}
+\end{tikzpicture}}
 \caption{Evidence lifecycle. Shaded boxes are gates. No transition is implied by successful execution.}
 \label{fig:lifecycle}
 \end{figure}
