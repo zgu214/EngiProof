@@ -18,11 +18,7 @@ HERE = Path(__file__).resolve().parent.parent
 WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine",
          10: "ten", 11: "eleven", 12: "twelve"}
 
-OPEN_FINDINGS = {
-    "qualification-all-six": "P44 study.json has no qualification field, so the framework default NOT_CLAIMED is "
-                             "recorded in engiproof/studies/P44/evidence_graph.json; the manuscript states NOT_GRANTED "
-                             "for every study manifest and graph. Owner decision needed (MANUSCRIPT_STATUS.md, SA-2).",
-}
+OPEN_FINDINGS = {}  # SA-2 resolved 28 September 2026 (owner decision, option a); see MANUSCRIPT_STATUS.md
 
 
 def text(rel):
@@ -67,7 +63,10 @@ def main():
         ("s10-failure-modes", "sections/10_failures_limits.tex", f"recorded {f['failure_modes']} failure modes"),
         ("s2-evidence-status", "sections/02_framework.tex", "the evidence status is \\estatus{CONDITIONAL} for all six cases"),
         ("qualification-all-six", "sections/11_qualification.tex",
-         "records engineering qualification as \\estatus{NOT\\_GRANTED}"),
+         "Every study manifest and evidence graph records engineering qualification as \\estatus{NOT\\_GRANTED}, "
+         "as does every result artifact that carries a qualification field"),
+        ("s2-qualification-field", "sections/02_framework.tex",
+         "a separate qualification field is \\estatus{NOT\\_GRANTED} for all six"),
     ]
     # conditions a phrase alone cannot express
     conditions = {
@@ -77,7 +76,10 @@ def main():
         "s2-evidence-status": f["evidence_status"] == ["CONDITIONAL"],
         "s7-graph-nodes": f["graph_coverage_all"] == [1.0],
         "qualification-all-six": set(f["qualification_by_study"].values()) == {"NOT_GRANTED"}
-                                 and set(f["graph_qualification_by_study"].values()) == {"NOT_GRANTED"},
+                                 and set(f["graph_qualification_by_study"].values()) == {"NOT_GRANTED"}
+                                 and f["result_qualification_values"] == ["NOT_GRANTED"],
+        "s2-qualification-field": not f["manifests_without_qualification_field"]
+                                  and set(f["qualification_by_study"].values()) == {"NOT_GRANTED"},
     }
     failed = 0
     for cid, rel, phrase in checks:

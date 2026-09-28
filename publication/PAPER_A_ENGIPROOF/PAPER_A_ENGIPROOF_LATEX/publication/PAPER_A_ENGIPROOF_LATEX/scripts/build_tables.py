@@ -98,6 +98,24 @@ def tab_crossenv(rec):
     return "\n".join(L)
 
 
+def result_qualifications():
+    """Qualification values recorded in P40-P45 result JSON files, and files that carry none."""
+    def walk(o):
+        if isinstance(o, dict):
+            return [v for k, v in o.items() if k == "qualification" and isinstance(v, str)] + [x for v in o.values() for x in walk(v)]
+        if isinstance(o, list):
+            return [x for v in o for x in walk(v)]
+        return []
+    values, without = set(), []
+    for pid in STUDIES:
+        for f in sorted((REPO / "papers" / pid / "results").glob("*.json")):
+            q = walk(json.loads(f.read_text(encoding="utf-8")))
+            values.update(q)
+            if not q:
+                without.append(f.relative_to(REPO).as_posix())
+    return sorted(values), without
+
+
 def facts(rows, rec):
     comp = collections.Counter(); disc = collections.Counter()
     for r in rows:
@@ -123,6 +141,8 @@ def facts(rows, rec):
         "qualification_by_study": {r["study"]: r["qualification"] for r in rows},
         "graph_qualification_by_study": {r["study"]: r["graph_qualification"] for r in rows},
         "manifests_without_qualification_field": [r["study"] for r in rows if not r["qualification_field_present"]],
+        "result_qualification_values": result_qualifications()[0],
+        "result_files_without_qualification_field": result_qualifications()[1],
         "failure_modes": len(failures), "failure_ids_contiguous": failures == list(range(1, len(failures) + 1)),
         "crossenv_environments": len(rec["environments"]), "crossenv_studies": sorted({e["studies"] for e in rec["environments"]}),
         "crossenv_material": sum(e["classification_totals"].get("NUMERICAL_MATERIAL", 0) + e["classification_totals"].get("MATERIAL_NON_NUMERIC", 0) for e in rec["environments"]),

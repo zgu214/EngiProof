@@ -14,7 +14,7 @@ Selected source targets:
 
 ## Reproduction result
 
-Eqs. (2), (3), and (6) reproduce their Table 2 normalized ratios within the two-decimal source precision. Eq. (9) reproduces PIP-1 and PIP-2 to source rounding.
+Eqs. (2), (3), and (6) show close agreement with the two-decimal Table 2 values; the maximum absolute ratio difference is 0.00546. Eq. (6), PIP-1 lies marginally outside the strict two-decimal rounding interval. Eq. (9) reproduces PIP-1 and PIP-2 to source rounding.
 
 For PIP-3:
 

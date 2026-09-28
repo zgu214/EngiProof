@@ -12,7 +12,7 @@ A \eclass{PUBLISHED} implementation is built only from what the source states: i
 \toprule
 Study & Target & Result & Outcome \\
 \midrule
-P40 & Eqs.~(2), (3), (6), (9) normalised propagation-pressure ratios, Table~2 & Agreement to the two-decimal table precision for all ratios except Eq.~(9), PIP-3 (0.66 printed vs 0.7057 computed) & \estatus{COMPARED} / \estatus{CONDITIONAL}; one discrepancy \\
+P40 & Eqs.~(2), (3), (6), (9) normalised propagation-pressure ratios, Table~2 & Eqs.~(2), (3), (6): close agreement, maximum absolute ratio difference 0.00546, with Eq.~(6), PIP-1 marginally outside the strict two-decimal rounding interval; Eq.~(9), PIP-3: 0.66 printed vs 0.7057 computed & \estatus{COMPARED} / \estatus{CONDITIONAL}; one discrepancy \\
 P41 & Axial stiffness and load-sharing Eqs.~(6)--(8); bonding criterion Eq.~(9), Table~3 & Steel areas and $EA$ agree with Table~2; all four Table~3 bonding classifications agree; inner increment 158.8 vs printed 153~N/m & \estatus{COMPARED} / \estatus{CONDITIONAL} \\
 P42 & Axisymmetric response Eqs.~(24)--(26); analytical armour-wire bending stresses & Axial-force/torsion closure to machine precision; analytical stress families regenerated & \estatus{REPRODUCED}; Figure~16 chain \estatus{CONDITIONAL} \\
 P43 & Table~1 eigenvalues (35 rows, 175 values); Table~2 approximation errors & Ordinary values to printed precision; two printed values contradicted & \estatus{REPRODUCED}; two discrepancies \\
@@ -22,7 +22,7 @@ P45 & Appendix~1/2 element matrices, Eq.~(7) integrator, Tables~1--3 & Matrix id
 \end{tabular}
 \end{table}
 
-Three aspects of this practice are central to the paper's argument. First, reproduction is reported target by target. P40, for example, reproduces three of its four equation families to table precision; the fourth disagrees for one of three cases, and that disagreement is recorded as a discrepancy (\S\ref{sec:discrepancy}) instead of being averaged away.
+Three aspects of this practice are central to the paper's argument. First, reproduction is reported target by target. P40, for example, shows close agreement with the two-decimal table for three of its four equation families (maximum absolute ratio difference 0.00546); the fourth disagrees materially for one of three cases, and that disagreement is recorded as a discrepancy (\S\ref{sec:discrepancy}) instead of being averaged away.
 
 Second, a literal implementation that does not close against a figure is not assumed to reveal a source error. In P42, implementing the Eqs.~(27)--(30) contact-pressure recursion literally and then applying Eq.~(41) does not reproduce the Figure~16 moment scale under the stated zero-pressure load case. It is recorded as a \emph{source-implementation provenance gap}: the printed equations do not fix the interface convention. No friction coefficient or contact pressure is adjusted.
 

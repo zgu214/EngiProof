@@ -38,14 +38,11 @@
     "P41": "NOT_GRANTED",
     "P42": "NOT_GRANTED",
     "P43": "NOT_GRANTED",
-    "P44": "NOT_CLAIMED",
+    "P44": "NOT_GRANTED",
     "P45": "NOT_GRANTED"
   },
-  "manifests_without_qualification_field": [
-    "P44"
-  ],
+  "manifests_without_qualification_field": [],
   "qualification": [
-    "NOT_CLAIMED",
     "NOT_GRANTED"
   ],
   "qualification_by_study": {
@@ -53,7 +50,7 @@
     "P41": "NOT_GRANTED",
     "P42": "NOT_GRANTED",
     "P43": "NOT_GRANTED",
-    "P44": "NOT_CLAIMED",
+    "P44": "NOT_GRANTED",
     "P45": "NOT_GRANTED"
   },
   "readiness": {
@@ -82,6 +79,14 @@
       16
     ]
   },
+  "result_files_without_qualification_field": [
+    "papers/P41/results/phase3_global_buckling_summary.json",
+    "papers/P42/results/phase1_summary.json",
+    "papers/P42/results/phase2_analytical_stress_summary.json"
+  ],
+  "result_qualification_values": [
+    "NOT_GRANTED"
+  ],
   "taxonomy_approved": 19,
   "taxonomy_categories": 9,
   "taxonomy_loci": 7

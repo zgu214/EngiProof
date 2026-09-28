@@ -88,3 +88,19 @@ Approved by Zhiqiang Gu on 28 September 2026.
   - P16 and P36 stay ready.
 - No discrepancy record was edited. Qualification remains NOT_GRANTED everywhere.
 
+
+## D-009 — P44 qualification metadata consistency (SA-2) and Paper A source-audit wording (SA-3, SA-10)
+
+Approved by Zhiqiang Gu on 28 September 2026.
+
+- **SA-2 (metadata-consistency correction).**
+  - Found by the Paper A source audit: `engiproof/studies/P44/study.json` had no structured `qualification` field. Its recorded limitations already stated "Engineering qualification is NOT_GRANTED", and D-004 froze P44 with qualification NOT_GRANTED. The framework default `NOT_CLAIMED` had therefore been written into `engiproof/studies/P44/evidence_graph.json`.
+  - Change: `"qualification": "NOT_GRANTED"` was added to the P44 manifest, and the graph was resynced with `graph-sync P44`.
+  - Graph after resync: qualification NOT_GRANTED; 16 nodes and 16 edges, 0 added; `graph-audit` PASS, coverage 1.0. The per-run sync counters were rewritten, which is the known file-idempotency item (Q7).
+  - This is not a new qualification decision and not a promotion. No P44 result, comparison, discrepancy or decision changed.
+  - Three result files record no qualification field: `papers/P41/results/phase3_global_buckling_summary.json` and `papers/P42/results/phase1_summary.json`, `phase2_analytical_stress_summary.json`. They are left unchanged. The Paper A wording is narrowed to "every result artifact that carries a qualification field".
+- **SA-3 (no new discrepancy).**
+  - P40 Eq. (6), PIP-1 gives 0.5654599 against a printed 0.56 (difference 0.00546, about 0.98% relative). This is close engineering agreement, only marginally outside the strict two-decimal rounding interval.
+  - The "within the two-decimal source precision" wording is replaced in `papers/P40/README.md`, in the PA-06 evidence note and in the manuscript.
+  - P40-D001 remains the materially larger discrepancy: Eq. (9), PIP-3, 0.705666 against 0.66.
+- **SA-10.** In the Paper A abstract, "independent formulations decide the direction of five numerical conflicts" becomes "independent checks and source-consistency checks clarify five source conflicts". Not all five records are numerical conflicts, and not all are decided by methodologically independent formulations.

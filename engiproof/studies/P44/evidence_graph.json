@@ -287,11 +287,11 @@
       "relation": "informs_decision"
     }
   ],
-  "qualification": "NOT_CLAIMED",
+  "qualification": "NOT_GRANTED",
   "sync": {
     "schema_version": "engiproof.evidence_graph_sync/1.0",
-    "added_nodes": 1,
-    "added_edges": 2,
+    "added_nodes": 0,
+    "added_edges": 0,
     "tool_count": 4,
     "comparison_count": 4,
     "discrepancy_count": 1,

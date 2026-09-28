@@ -37,7 +37,7 @@ latexmk -pdf main.tex
 
 ## Author items
 
-Text marked **[author to confirm]** can only be confirmed by the author: affiliation, CRediT statement, competing interests, funding and the generative-AI declaration.
+The affiliation, CRediT statement, competing-interest, funding and generative-AI declarations were confirmed by the author on 28 September 2026 (`sections/14_declarations.tex`). Only the author may change them.
 
 ## Draft rules
 
