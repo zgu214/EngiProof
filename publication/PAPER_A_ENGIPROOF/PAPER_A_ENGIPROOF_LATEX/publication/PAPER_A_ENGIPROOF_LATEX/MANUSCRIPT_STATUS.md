@@ -201,3 +201,9 @@ Remaining build messages, all benign:
   - facts check 20 passed, 0 failed, 0 open;
   - Appendix A regenerates identically.
 - `git diff v0.2.0 develop` shows no change to `engiproof/`, `papers/`, `src/`, the cross-environment record or the claim–evidence matrix.
+
+## Editorial cleanup — 28 September 2026 (owner)
+
+- The conclusion ends with the methodological conclusion. The final sentence about regeneration for submission was removed.
+- The Appendix B checklist was replaced with a permanent reproducibility statement: which script generates Tables 4 and 6 and Appendix A and which checks the numerical statements, and that these were regenerated and checked against the released EngiProof v0.2.0 evidence state. The statement on Tables 1–3, 5 and 7 and on copyrighted source PDFs is kept.
+- No evidence or claim change.
