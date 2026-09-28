@@ -32,25 +32,14 @@ The default recomputation tolerance ($10^{-9}$ relative, $10^{-12}$ absolute) ad
 \subsection{Across operating systems}
 The first continuous-integration runs on Windows and macOS, which were also the first to verify the non-registry studies there, found three further failures, none of which was resolved by changing frozen evidence. The first failure (F20) was in P45, whose independent FE check is ill-conditioned. Across NumPy/BLAS builds, the P45 check moves by up to $2.9\times10^{-7}$, and its FE-versus-analytical residual (${\sim}3\times10^{-8}$) moves by up to 47\% in relative terms, which is material under the default tolerance. The fix is a tolerance scoped to that block only ($10^{-6}$/$10^{-7}$); the study default is unchanged, and the engineering statement it supports (residual $<10^{-6}$) is still compared exactly. The second (F21) concerns the P38 provenance manifest, which stores the hashes of result files that change non-materially between platforms; these hashes now \emph{inherit} the classification of the artifact they identify instead of counting as independent text changes. The third (F21) concerns path separators: a runner wrote relative-path keys with the operating system's path separator, and such keys are now treated as a rendering difference whose values are still compared.
 
-The study owner approved these three rules (D-007) on the conditions stated here: the scoped tolerance applies only to that block, and an inherited classification is controlled by the referenced artifact's own classification. The same cross-platform work exposed a fourth defect (F22). The Windows command dispatcher expanded its exit code before the command ran, so local Windows batch runs had reported PASS without checking the verification step. The dispatcher was fixed, continuous integration now asserts that exit codes propagate, and P45 was re-verified locally on Windows (NumPy 2.5.3) with no material artifact. Under these rules, all 12 studies in the repository verify in six environments with no material artifact (Table~\ref{tab:crossenv}). The environments cover Linux x86-64 (Python 3.10, 3.12, 3.13), Windows x86-64 (3.10, 3.13) and macOS arm64 (3.13), with NumPy 2.2.6 and 2.5.3 (PA-19).
+The study owner approved these three rules (D-007) on the conditions stated here: the scoped tolerance applies only to that block, and an inherited classification is controlled by the referenced artifact's own classification. A local Windows run during the same work exposed a fourth defect (F22). The Windows command dispatcher expanded its exit code before the command ran, so local Windows batch runs had reported PASS without checking the verification step. The dispatcher was fixed, continuous integration now asserts that exit codes propagate, and P45 was re-verified locally on Windows (NumPy 2.5.3) with no material artifact. Under these rules, all 12 studies in the repository verify in six environments with no material artifact (Table~\ref{tab:crossenv}). The environments cover Linux x86-64 (Python 3.10, 3.12, 3.13), Windows x86-64 (3.10, 3.13) and macOS arm64 (3.13), with NumPy 2.2.6 and 2.5.3 (PA-19).
 
 \begin{table}[htbp]
 \centering
 \caption{Cross-environment verification of all 12 studies: regenerated artifacts per comparator class. Source: the cross-environment record in \texttt{docs/}.}
 \label{tab:crossenv}
 \scriptsize\setlength{\tabcolsep}{3pt}
-\begin{tabular}{llllrrrrrr}
-\toprule
-OS & Arch & Python & NumPy & \texttt{IDENT.} & \texttt{BYTE} & \texttt{ENV} & \texttt{NUM\_NM} & \texttt{NUM\_M} & \texttt{MAT\_NN} \\
-\midrule
-Linux & x86-64 & 3.10.21 & 2.2.6 & 15 & 10 & 2 & 12 & 0 & 0 \\
-Linux & x86-64 & 3.12.14 & 2.5.3 & 14 & 9 & 3 & 13 & 0 & 0 \\
-Linux & x86-64 & 3.13.15 & 2.5.3 & 14 & 9 & 4 & 12 & 0 & 0 \\
-Windows & x86-64 & 3.10.11 & 2.2.6 & 23 & 1 & 0 & 15 & 0 & 0 \\
-Windows & x86-64 & 3.13.15 & 2.5.3 & 24 & 1 & 0 & 14 & 0 & 0 \\
-macOS & arm64 & 3.13.15 & 2.5.3 & 14 & 8 & 2 & 15 & 0 & 0 \\
-\bottomrule
-\end{tabular}
+\input{generated/tab_crossenv}
 \end{table}
 
 These results support recomputation equivalence of the frozen evidence across these environments; they say nothing about the engineering validity of that evidence.
