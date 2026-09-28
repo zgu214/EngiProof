@@ -1,14 +1,10 @@
 \section{Provenance and the evidence graph}
 \label{sec:provenance}
 
-Each study carries an evidence graph. It links the source identity, the selected targets, the callable methods with their evidence class, the comparisons, the discrepancies, the automated assessments and the human decisions.
-
-Graph synchronisation adds only missing provenance and never deletes hand-authored content. A graph audit checks that every tool, comparison, discrepancy and decision is represented. All six studies pass with coverage 1.0, on graphs of 11--39 nodes (PA-15). Coverage is a property of the representation. A complete graph does not imply that a method is correct, verified or qualified.
-
-Synchronisation is evidence-idempotent but not yet file-idempotent: a repeated run rewrites per-run counters in the tracked file without changing any node or edge. This is recorded as a hardening item and did not require reopening any study.
+Each study carries an evidence graph linking the source identity, the selected targets, the callable methods with their evidence class, the comparisons, the discrepancies, the automated assessments and the human decisions. Graph synchronisation adds only missing provenance and never deletes hand-authored content, and a graph audit checks that every tool, comparison, discrepancy and decision is represented. All six studies pass with coverage 1.0, on graphs of 11--39 nodes (PA-15). Coverage is a property of the representation: a complete graph does not imply that a method is correct, verified or qualified. Synchronisation is evidence-idempotent but not yet file-idempotent, since a repeated run rewrites per-run counters in the tracked file without changing any node or edge; this is recorded as a hardening item and did not require reopening any study.
 
 \paragraph{Checkout-independent identity.}
-Text provenance hashes turned out to depend on the line endings of the checkout (F11): every inherited result hash had been taken over CRLF bytes. Historical hashes are preserved as recorded. New text provenance uses a canonical identity (\texttt{text/lf-v1}, UTF-8 with LF line endings), reported alongside the byte hash, and the verification comparator resolves line-ending renderings of the same file (PA-16).
+Text provenance hashes turned out to depend on the line endings of the checkout (F11): every inherited result hash had been taken over CRLF bytes. Historical hashes are preserved as recorded. New text provenance uses a canonical identity (\texttt{text/lf-v1}, UTF-8 with LF line endings) that is reported alongside the byte hash, and the verification comparator resolves line-ending renderings of the same file (PA-16).
 
 \paragraph{Callable methods.}
-Every method exposed through the command line or the Model Context Protocol server returns an evidence envelope with the result. The envelope carries the evidence class, the study status, the limitations and, where set, an explicit evidence boundary (PA-28). The protocol server is read-only by default. Recomputation must be opted into, and in-place regeneration of evidence is never exposed.
+Every method exposed through the command line or the Model Context Protocol server returns its result inside an evidence envelope that carries the evidence class, the study status, the limitations and, where set, an explicit evidence boundary (PA-28). The protocol server is read-only by default: recomputation must be enabled explicitly, and in-place regeneration of evidence is never exposed.

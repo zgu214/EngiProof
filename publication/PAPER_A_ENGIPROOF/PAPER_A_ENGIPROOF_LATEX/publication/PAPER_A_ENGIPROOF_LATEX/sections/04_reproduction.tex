@@ -1,16 +1,7 @@
 \section{Source-bounded reproduction}
 \label{sec:reproduction}
 
-A \eclass{PUBLISHED} implementation is built only from what the source states: its equations, tables, figure axes and stated load cases. Inputs the source does not give are neither inferred nor tuned (PA-21). Outcomes are recorded per target, never per paper (PA-06, PA-07).
-
-Across the six studies there are 38 comparison records:
-\begin{itemize}[leftmargin=1.5em]
-  \item 14 \estatus{REPRODUCED};
-  \item 19 \estatus{COMPARED};
-  \item 4 \estatus{CONDITIONAL};
-  \item 1 \estatus{BLOCKED}.
-\end{itemize}
-Table~\ref{tab:reproduction} gives one representative target per study.
+A \eclass{PUBLISHED} implementation is built only from what the source states: its equations, tables, figure axes and stated load cases. Inputs the source does not give are neither inferred nor tuned (PA-21), and outcomes are recorded per target rather than per paper (PA-06, PA-07). Across the six studies there are 38 comparison records, of which 14 are \estatus{REPRODUCED}, 19 \estatus{COMPARED}, 4 \estatus{CONDITIONAL} and 1 \estatus{BLOCKED}. Table~\ref{tab:reproduction} gives one representative target per study.
 
 \begin{table}[htbp]
 \centering
@@ -31,19 +22,8 @@ P45 & Appendix~1/2 element matrices, Eq.~(7) integrator, Tables~1--3 & Matrix id
 \end{tabular}
 \end{table}
 
-Three behaviours matter for the argument of this paper.
+Three aspects of this practice are central to the paper's argument. First, reproduction is reported target by target. P40, for example, reproduces three of its four equation families to table precision; the fourth disagrees for one of three cases, and that disagreement is recorded as a discrepancy (\S\ref{sec:discrepancy}) instead of being averaged away.
 
-\emph{First}, reproduction is reported target by target. P40, for example, reproduces three of its four equation families to table precision. The fourth disagrees for one of three cases, and that disagreement becomes a discrepancy (\S\ref{sec:discrepancy}); it is not averaged away.
+Second, a literal implementation that does not close against a figure is not assumed to reveal a source error. In P42, implementing the Eqs.~(27)--(30) contact-pressure recursion literally and then applying Eq.~(41) does not reproduce the Figure~16 moment scale under the stated zero-pressure load case. It is recorded as a \emph{source-implementation provenance gap}: the printed equations do not fix the interface convention. No friction coefficient or contact pressure is adjusted.
 
-\emph{Second}, a literal implementation that does not close against a figure is not assumed to be a source error. In P42, a literal implementation of the Eqs.~(27)--(30) contact-pressure recursion, followed by Eq.~(41), does not reproduce the Figure~16 moment scale under the stated zero-pressure load case. It is recorded as a \emph{source-implementation provenance gap}: the printed equations do not fix the interface convention. No friction coefficient or contact pressure is adjusted.
-
-\emph{Third}, non-reproduction is an evidence-bearing outcome (PA-20). P45's nonlinear dynamic responses (Figures~4--9 and 11) are \estatus{BLOCKED}, and the record names what is missing:
-\begin{itemize}[leftmargin=1.5em]
-  \item the integration parameters $\theta$, $\beta$ and $\lambda$;
-  \item the iteration tolerance;
-  \item structural damping;
-  \item the discretisation of the comparison cases;
-  \item the float properties;
-  \item the tension unit.
-\end{itemize}
-The reconstructed integrator also shows why one of these gaps matters: with $\theta=1$ the scheme is unstable above $\Delta t/T = 0.5513$, while $\theta=1.37$ is stable on the tested grid.
+Third, non-reproduction is itself an evidence-bearing outcome (PA-20). The nonlinear dynamic responses of P45 (Figures~4--9 and 11) are \estatus{BLOCKED}, and the record names what the source omits: the integration parameters $\theta$, $\beta$ and $\lambda$, the iteration tolerance, structural damping, the discretisation of the comparison cases, the float properties and the tension unit. The reconstructed integrator shows why one of these gaps matters: with $\theta=1$ the scheme is unstable above $\Delta t/T = 0.5513$, whereas $\theta=1.37$ is stable on the tested grid.

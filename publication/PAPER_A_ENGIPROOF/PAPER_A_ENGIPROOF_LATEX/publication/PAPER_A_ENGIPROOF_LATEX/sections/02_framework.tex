@@ -2,33 +2,14 @@
 \label{sec:framework}
 
 \subsection{Evidence classes and outcomes}
-\engiproof{} separates the \emph{origin} of a result from its \emph{maturity}.
+\engiproof{} separates the \emph{origin} of a result from its \emph{maturity}. Every callable method and every evidence node carries one of three evidence classes. \eclass{PUBLISHED} denotes a source-bounded implementation of a method, or a value as printed. \eclass{INDEPENDENT} denotes a methodologically independent formulation or numerical method applied to the same quantity. \eclass{SOLVER\_NEW} denotes newly generated solver evidence; the class is defined in the contracts but no study uses it yet (PA-25), and it is reserved for solver adapters.
 
-Every callable method and every evidence node carries one of three evidence classes:
-\begin{itemize}[leftmargin=1.5em]
-  \item \eclass{PUBLISHED}: a source-bounded implementation of a method or a value as printed;
-  \item \eclass{INDEPENDENT}: a methodologically independent formulation or numerical method, applied to the same quantity;
-  \item \eclass{SOLVER\_NEW}: newly generated solver evidence. This class is defined in the contracts, but no study uses it yet (PA-25); it is reserved for solver adapters.
-\end{itemize}
+Each comparison target carries one of five outcomes. A target is \estatus{REPRODUCED} when the published value is regenerated to source precision, and \estatus{COMPARED} when agreement or disagreement is quantified against a published reference population. \estatus{CONDITIONAL} marks a comparison that holds only under a stated source ambiguity, and \estatus{BLOCKED} marks a target for which the source lacks the inputs, with the missing items named. \estatus{VERIFIED} is reserved and is used by no comparison in the six cases.
 
-Each comparison target carries an outcome:
-\begin{itemize}[leftmargin=1.5em]
-  \item \estatus{REPRODUCED}: the published value is regenerated to source precision;
-  \item \estatus{COMPARED}: agreement or disagreement is quantified against a published reference population;
-  \item \estatus{VERIFIED}: reserved, and used by no comparison in the six cases;
-  \item \estatus{CONDITIONAL}: the comparison holds only under a stated source ambiguity;
-  \item \estatus{BLOCKED}: the source lacks the inputs; the missing items are named.
-\end{itemize}
-
-Studies carry an evidence status, which is \estatus{CONDITIONAL} for all six cases, and a separate qualification field, which is \estatus{NOT\_GRANTED} for all six. Execution alone never changes either. The contracts are machine-readable, versioned JSON (\texttt{engiproof/contracts/contracts.json}).
+At study level, the evidence status is \estatus{CONDITIONAL} for all six cases and a separate qualification field is \estatus{NOT\_GRANTED} for all six; execution alone never changes either. The contracts are versioned, machine-readable JSON (\texttt{engiproof/contracts/contracts.json}).
 
 \subsection{Lifecycle}
-Figure~\ref{fig:lifecycle} shows the lifecycle. Every arrow is a controlled transition with its own record. In particular:
-\begin{itemize}[leftmargin=1.5em]
-  \item an extraction candidate does not become evidence because it was recognised;
-  \item a callable method does not become qualified because it returns a number;
-  \item a discrepancy is not closed because a later step agrees with one of its sides.
-\end{itemize}
+Figure~\ref{fig:lifecycle} shows the lifecycle, in which every arrow is a controlled transition with its own record. An extraction candidate does not become evidence because it was recognised, a callable method does not become qualified because it returns a number, and a discrepancy is not closed because a later step agrees with one of its sides.
 
 \begin{figure}[htbp]
 \centering
@@ -59,7 +40,7 @@ Figure~\ref{fig:lifecycle} shows the lifecycle. Every arrow is a controlled tran
 \end{figure}
 
 \subsection{Rules enforced by the repository}
-The rules are part of the repository contract (\texttt{AGENTS.md}), not guidance. Tests and gates enforce them where possible:
+The following rules are part of the repository contract (\texttt{AGENTS.md}), not guidance, and tests and gates enforce them where possible:
 \begin{enumerate}[leftmargin=1.6em]
   \item \eclass{PUBLISHED}, \eclass{INDEPENDENT} and \eclass{SOLVER\_NEW} are preserved.
   \item Extraction candidates are not evidence.
@@ -69,4 +50,4 @@ The rules are part of the repository contract (\texttt{AGENTS.md}), not guidance
   \item Copyrighted sources are not redistributed; the SHA-256 is kept instead.
   \item No machine-specific paths are persisted.
 \end{enumerate}
-Every evidence-producing calculation has persistent runnable code, traceable inputs and results, and tests.
+In addition, every evidence-producing calculation has persistent runnable code, traceable inputs and results, and tests.

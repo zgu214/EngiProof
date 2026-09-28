@@ -2,7 +2,7 @@
 \label{sec:nonmutation}
 
 \subsection{The defect}
-The original verification command re-ran each study's runner in the working tree, so it rewrote the frozen result files it was meant to check. An inventory on a clean checkout recorded the SHA-256 of every tracked file before and after each command. It found that \texttt{verify}, \texttt{verify-all} and the unit-test suite together rewrote 20 tracked result files (F10, Table~\ref{tab:mutation}). None of the rewrites changed an engineering value at published precision or any status. Nevertheless, a verification that silently replaces the evidence under test cannot distinguish ``reproduced'' from ``overwritten''. The same inventory exposed a study whose verification contract had drifted from its tests (F12).
+The original verification command re-ran each study's runner in the working tree and therefore rewrote the frozen result files it was meant to check. An inventory taken on a clean checkout, which recorded the SHA-256 of every tracked file before and after each command, found that \texttt{verify}, \texttt{verify-all} and the unit-test suite together rewrote 20 tracked result files (F10, Table~\ref{tab:mutation}). None of the rewrites changed an engineering value at published precision or any status, but a verification that silently replaces the evidence under test cannot distinguish ``reproduced'' from ``overwritten''. The same inventory exposed a study whose verification contract had drifted from its tests (F12).
 
 \begin{table}[htbp]
 \centering
@@ -23,35 +23,16 @@ Contract drift & 1 study & Verification tests renamed in code but not in the stu
 \end{table}
 
 \subsection{Design rule and comparator}
-The adopted rule (decision D-005) is: \emph{verification must not mutate the evidence being verified}.
+The adopted rule (decision D-005) is that \emph{verification must not mutate the evidence being verified}. Verification copies the project into a disposable sandbox, runs the study there and compares every regenerated artifact with its frozen counterpart. Replacing evidence is a separate, explicit \texttt{regenerate} operation that is never exposed to agents through the protocol server.
 
-Verification copies the project into a disposable sandbox, runs the study there, and compares every regenerated artifact with its frozen counterpart. Replacing evidence is a separate, explicit \texttt{regenerate} operation, which is never exposed to agents through the protocol server.
+The comparator assigns each artifact one of six classes: \texttt{IDENTICAL}, \texttt{BYTE\_\allowbreak{}ONLY}, \texttt{ENVIRONMENT\_\allowbreak{}METADATA}, \texttt{NUMERICAL\_\allowbreak{}NONMATERIAL}, \texttt{NUMERICAL\_\allowbreak{}MATERIAL} and \texttt{MATERIAL\_\allowbreak{}NON\_\allowbreak{}NUMERIC}. Only the last two fail verification, and artifacts that are created or deleted count as material. The classes keep apart four notions that are usually conflated (PA-18): byte reproducibility, numerical reproducibility, equivalence of the engineering evidence, and engineering verification.
 
-The comparator assigns each artifact one of six classes:
-\begin{itemize}[leftmargin=1.5em]
-  \item \texttt{IDENTICAL};
-  \item \texttt{BYTE\_ONLY};
-  \item \texttt{ENVIRONMENT\_METADATA};
-  \item \texttt{NUMERICAL\_NONMATERIAL};
-  \item \texttt{NUMERICAL\_MATERIAL};
-  \item \texttt{MATERIAL\_NON\_NUMERIC}.
-\end{itemize}
-Only the last two fail verification. Artifacts that are created or deleted count as material. This keeps four notions apart that are usually conflated (PA-18): byte reproducibility, numerical reproducibility, equivalence of the engineering evidence, and engineering verification.
-
-The default recomputation tolerance ($10^{-9}$ relative, $10^{-12}$ absolute) admits only floating-point serialisation noise. Where a study needs more, it declares its own tolerance with a statement and a rationale. P43, for instance, declares $10^{-6}$/$10^{-5}$ for its eigen-solution, together with a hard guard: every recomputed eigenvalue must keep its three-decimal printed value. These tolerances define \emph{recomputation equivalence}. They are never engineering acceptance criteria (PA-22).
-
-A test hashes every tracked file around \texttt{verify-all}, around every study's verification and around the whole test suite. Continuous integration fails on any change to a tracked file (PA-17).
+The default recomputation tolerance ($10^{-9}$ relative, $10^{-12}$ absolute) admits only floating-point serialisation noise. A study that needs more declares its own tolerance with a statement and a rationale. P43, for instance, declares $10^{-6}$/$10^{-5}$ for its eigen-solution together with a hard guard that every recomputed eigenvalue must keep its three-decimal printed value. Such tolerances define \emph{recomputation equivalence} and are never engineering acceptance criteria (PA-22). A test hashes every tracked file around \texttt{verify-all}, around every study's verification and around the whole test suite, and continuous integration fails on any change to a tracked file (PA-17).
 
 \subsection{Across operating systems}
-The first continuous-integration runs on Windows and macOS, which were also the first to verify the non-registry studies there, found three further failures. The frozen evidence was not changed to make them pass:
-\begin{itemize}[leftmargin=1.5em]
-  \item \textbf{P45 FE check (F20).} P45's independent FE check is ill-conditioned. Across NumPy/BLAS builds it moves by up to $2.9\times10^{-7}$, and its FE-versus-analytical residual (${\sim}3\times10^{-8}$) moves by up to 47\% in relative terms. This is material under the default tolerance. The fix is a tolerance scoped to that block only ($10^{-6}$/$10^{-7}$). The study default is unchanged, and the engineering statement it supports (residual $<10^{-6}$) is still compared exactly.
-  \item \textbf{P38 provenance manifest (F21).} It stores the hashes of result files that change non-materially between platforms. These hashes now \emph{inherit} the classification of the artifact they identify, instead of counting as independent text changes.
-  \item \textbf{Path separators (F21).} A runner wrote relative-path keys with the operating system's path separator. Such keys are treated as a rendering difference, and their values are still compared.
-\end{itemize}
-The study owner approved these three rules (D-007), subject to the conditions stated here: the scoped tolerance applies only to that block, and an inherited classification is controlled by the referenced artifact's own classification. The same cross-platform work exposed a fourth defect (F22). The Windows command dispatcher expanded its exit code before the command ran, so local Windows batch runs had reported PASS without checking the verification step. The dispatcher was fixed, continuous integration now asserts that exit codes propagate, and P45 was re-verified locally on Windows (NumPy 2.5.3) with no material artifact.
+The first continuous-integration runs on Windows and macOS, which were also the first to verify the non-registry studies there, found three further failures, none of which was resolved by changing frozen evidence. The first failure (F20) was in P45, whose independent FE check is ill-conditioned. Across NumPy/BLAS builds, the P45 check moves by up to $2.9\times10^{-7}$, and its FE-versus-analytical residual (${\sim}3\times10^{-8}$) moves by up to 47\% in relative terms, which is material under the default tolerance. The fix is a tolerance scoped to that block only ($10^{-6}$/$10^{-7}$); the study default is unchanged, and the engineering statement it supports (residual $<10^{-6}$) is still compared exactly. The second (F21) concerns the P38 provenance manifest, which stores the hashes of result files that change non-materially between platforms; these hashes now \emph{inherit} the classification of the artifact they identify instead of counting as independent text changes. The third (F21) concerns path separators: a runner wrote relative-path keys with the operating system's path separator, and such keys are now treated as a rendering difference whose values are still compared.
 
-Under them, all 12 studies in the repository verify in six environments with no material artifact (Table~\ref{tab:crossenv}). The environments cover Linux x86-64 (Python 3.10, 3.12, 3.13), Windows x86-64 (3.10, 3.13) and macOS arm64 (3.13), with NumPy 2.2.6 and 2.5.3 (PA-19).
+The study owner approved these three rules (D-007) on the conditions stated here: the scoped tolerance applies only to that block, and an inherited classification is controlled by the referenced artifact's own classification. The same cross-platform work exposed a fourth defect (F22). The Windows command dispatcher expanded its exit code before the command ran, so local Windows batch runs had reported PASS without checking the verification step. The dispatcher was fixed, continuous integration now asserts that exit codes propagate, and P45 was re-verified locally on Windows (NumPy 2.5.3) with no material artifact. Under these rules, all 12 studies in the repository verify in six environments with no material artifact (Table~\ref{tab:crossenv}). The environments cover Linux x86-64 (Python 3.10, 3.12, 3.13), Windows x86-64 (3.10, 3.13) and macOS arm64 (3.13), with NumPy 2.2.6 and 2.5.3 (PA-19).
 
 \begin{table}[htbp]
 \centering
@@ -72,4 +53,4 @@ macOS & arm64 & 3.13.15 & 2.5.3 & 14 & 8 & 2 & 15 & 0 & 0 \\
 \end{tabular}
 \end{table}
 
-These results support recomputation equivalence of the frozen evidence across these environments. They say nothing about the engineering validity of that evidence.
+These results support recomputation equivalence of the frozen evidence across these environments; they say nothing about the engineering validity of that evidence.

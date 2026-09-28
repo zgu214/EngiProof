@@ -4,52 +4,16 @@
 \subsection{Fingerprint and identity}
 Each source is bound to a SHA-256 of its bytes. The PDF stays outside the repository, and a source can be re-opened for enrichment only if its fingerprint matches (PA-01).
 
-A separate identity audit compares the configured title, year and DOI with what is recoverable from the source. It distinguishes a DOI \emph{absent} from the extractable text from a \emph{conflicting} one. The audit exists because of failures:
-\begin{itemize}[leftmargin=1.5em]
-  \item The first real case (P40) was accepted at intake with a wrong DOI and year. A human found the error, and the gate was introduced in response (F1).
-  \item A received/copyright year in P42 raised a false conflict, which was removed by distinguishing publication from secondary years (F6).
-  \item The 1983 scan (P45) contains no DOI at all, so the audit reports \texttt{NOT\_FOUND\_IN\_SOURCE} and identity was confirmed manually.
-  \item For P43 and P44 the DOIs were left pending at ingestion. The P43 SPE paper number was recorded wrongly and corrected later from publisher records (F18).
-\end{itemize}
-The identity audit is therefore a gate with a human in the loop. It is not an automatic detector (PA-02).
+A separate identity audit compares the configured title, year and DOI with what can be recovered from the source, and distinguishes a DOI that is \emph{absent} from the extractable text from one that \emph{conflicts} with it. The audit was introduced in response to failures. The first real case (P40) was accepted at intake with a wrong DOI and year; a human found the error, and the gate was added as a result (F1). In P42, a received/copyright year raised a false conflict, which was removed by distinguishing the publication year from secondary years (F6). The 1983 scan (P45) contains no DOI at all, so the audit reports \texttt{NOT\_FOUND\_IN\_SOURCE} and identity was confirmed manually. For P43 and P44 the DOIs were left pending at ingestion, and the P43 SPE paper number was recorded wrongly and later corrected from publisher records (F18). The identity audit is therefore a gate with a human in the loop rather than an automatic detector (PA-02).
 
 \subsection{Candidates, structures and readiness}
-Figures, tables, equations and appendices are first recorded as candidates with locators. Structure extraction then attempts caption-anchored table rows and equation bodies. For a selected target, a \emph{readiness} gate opens only when:
-\begin{itemize}[leftmargin=1.5em]
-  \item a table has a true caption with candidate data rows; or
-  \item an equation has a recovered body.
-\end{itemize}
-Readiness permits reproduction work to start. It does not make extracted text evidence, and the promotion gate independently requires reviewed targets (PA-03).
+Figures, tables, equations and appendices are first recorded as candidates with locators, after which structure extraction attempts caption-anchored table rows and equation bodies. The \emph{readiness} gate for a selected target opens only when a table has a true caption with candidate data rows, or when an equation has a recovered body. Readiness permits reproduction work to start; it does not turn extracted text into evidence, and the promotion gate separately requires reviewed targets (PA-03).
 
-Extraction was hardened against concrete, recorded failures rather than against a benchmark:
-\begin{itemize}[leftmargin=1.5em]
-  \item Type1/CFF glyph placeholders in equation text and lost grouped references such as ``Eqs.~(2), (3), (6), and (9)'' (P40, ASCE; F2, F3);
-  \item punctuation-free ASME captions that were not treated as anchors (P41; F4);
-  \item Elsevier split captions (P42; F7);
-  \item a 1983 bilevel scan with an OCR layer, on which automated readiness reached only 4 of 16 selected targets and missed an equation, sub-figures and appendices (P45; F16).
-\end{itemize}
-In the P45 case, every figure and appendix was then reviewed manually from page images, and the review is recorded in the study manifest.
+Extraction was hardened against concrete, recorded failures rather than against a benchmark. In the ASCE source (P40), Type1/CFF glyph placeholders appeared in the equation text and grouped references such as ``Eqs.~(2), (3), (6), and (9)'' were lost (F2, F3). Punctuation-free ASME captions were not treated as anchors (P41; F4), and Elsevier split captions were not recognised (P42; F7). On a 1983 bilevel scan with an OCR layer, automated readiness reached only 4 of 16 selected targets and missed an equation, sub-figures and appendices (P45; F16). In the P45 case every figure and appendix was then reviewed manually from page images, and the review is recorded in the study manifest.
 
 \subsection{Tracked, text-free ingestion summaries}
-Intake directories can hold source excerpts, so they are local and excluded from version control by design. To make ingestion outcomes auditable without redistributing text, each study carries a tracked \texttt{ingestion\_summary.json}. It records only hashes, counts, statuses and target identifiers:
-\begin{itemize}[leftmargin=1.5em]
-  \item the ingestion route;
-  \item the fingerprint, and whether it matches the study manifest;
-  \item the identity-audit checks;
-  \item candidate and structure counts by kind and status;
-  \item selected-target readiness;
-  \item the source format;
-  \item whether manual review was required.
-\end{itemize}
-The source format (born-digital, scan with a text layer, or image-only) is detected from page-sized raster images, and only when the local PDF matches the fingerprint. For P45 it detects a scan with a text layer at 300~dpi on all 11 pages.
+Intake directories can hold source excerpts, so by design they are local and excluded from version control. To make ingestion outcomes auditable without redistributing text, each study carries a tracked \texttt{ingestion\_summary.json} containing only hashes, counts, statuses and target identifiers. It records the ingestion route; the fingerprint and whether it matches the study manifest; the identity-audit checks; candidate and structure counts by kind and status; selected-target readiness; the source format; and whether manual review was required. The source format (born-digital, scan with a text layer, or image-only) is detected from page-sized raster images, and only when the local PDF matches the fingerprint; for P45 it detects a scan with a text layer at 300~dpi on all 11 pages. Where an intake is not available, the summary says so and lists only outcomes already written in tracked project records, with references, without estimating anything.
 
-Where an intake is not available, the summary says so explicitly and lists only outcomes already written in tracked project records, with references. It never estimates.
+For the six cases, all summaries are machine-generated from local intakes, and every intake fingerprint matches its study's SHA-256 (PA-04). Selected-target readiness is complete for P40 (3 of 3), P41 (5 of 5) and P42 (5 of 5), and partial for P43 (3 of 5), P44 (4 of 7) and P45 (4 of 16). Equation-recovery passes added 19 candidates for P40 and 36 for P42. The identity audit passes for P40, P42 and P44; for P41, P43 and P45 it requires manual review because the DOI does not appear in the source text. The source format is detected only for P45; for the other cases it is recorded as not determined, because the matching PDF was not available to the summariser.
 
-For the six cases, all summaries are machine-generated from local intakes, and every intake fingerprint matches its study's SHA-256 (PA-04). Selected-target readiness is:
-\begin{itemize}[leftmargin=1.5em]
-  \item fully ready for P40 (3 of 3), P41 (5 of 5) and P42 (5 of 5);
-  \item partial for P43 (3 of 5), P44 (4 of 7) and P45 (4 of 16).
-\end{itemize}
-Equation-recovery passes added 19 candidates for P40 and 36 for P42. The identity audit passes for P40, P42 and P44. For P41, P43 and P45 it requires manual review, because the DOI does not appear in the source text. The source format is detected only for P45. For the other cases it is recorded as not determined, because the matching PDF was not available to the summariser.
-
-No extraction accuracy or recall is claimed (PA-05). The case-level observations above are failure-driven hardening, not a performance measure.
+No extraction accuracy or recall is claimed (PA-05); the case-level observations above describe failure-driven hardening, not performance.

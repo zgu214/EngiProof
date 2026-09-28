@@ -2,58 +2,18 @@
 \label{sec:discussion}
 
 \subsection{Paper-to-code is not paper-to-evidence}
-A generated function can be syntactically correct and numerically stable while still using a misread table cell, an assumed unit or an unsupported convention. The cases show that the useful output of evidence automation is often not a match with a printed number. Three examples:
-\begin{itemize}[leftmargin=1.5em]
-  \item a demonstrated internal contradiction, as in P41 and P43;
-  \item a named missing input, as in P44 and P45;
-  \item a documented model-form difference, as in P42.
-\end{itemize}
-A system judged only by how often it reproduces printed numbers would be rewarded for normalising these away.
+A generated function can be syntactically correct and numerically stable while still using a misread table cell, an assumed unit or an unsupported convention. The cases show that the useful output of evidence automation is often not a match with a printed number. Examples include a demonstrated internal contradiction (P41 and P43), a named missing input (P44 and P45) and a documented model-form difference (P42). A system judged only by how often it reproduces printed numbers would be rewarded for normalising these away.
 
 \subsection{Verification must itself be verifiable}
-The most transferable lesson came from the framework's own verification. A check that recomputes in place destroys the distinction between reproducing evidence and replacing it. Only once verification was isolated and classified did cross-platform recomputation noise become visible. Only when it ran on further operating systems did platform-dependent provenance and an ill-conditioned independent check show up. Each case was then handled without touching frozen evidence. We expect the same pattern in any research-software evidence pipeline that reruns its own analyses.
+The most transferable lesson came from the framework's own verification. A check that recomputes in place destroys the distinction between reproducing evidence and replacing it. Cross-platform recomputation noise became visible only once verification was isolated and classified, and platform-dependent provenance and an ill-conditioned independent check appeared only when verification ran on further operating systems. Each case was then handled without touching frozen evidence. We expect the same pattern in any research-software evidence pipeline that reruns its own analyses.
 
 \subsection{Related work and context}
-Three contemporary systems are relevant as context. They are not validation evidence for the P40--P45 results.
-\begin{itemize}[leftmargin=1.5em]
-  \item \textbf{Paper2Agent} turns a research paper and its code base into an executable, interactive agent: tools served through the Model Context Protocol that users can query in natural language \cite{Miao2026Paper2Agent}.
-  \item \textbf{ScientistOne} introduces \emph{Chain-of-Evidence}: every claim a research system produces must be traceable, through a recorded chain of supporting claims, to a grounding source \cite{Meng2026ScientistOne}.
-  \item \textbf{ScientistTwo} describes an autonomous research workflow, a multi-agent pipeline running from problem formulation to manuscript \cite{Nam2026ScientistTwo}.
-\end{itemize}
+Three contemporary systems are relevant as context; they are not validation evidence for the P40--P45 results. Paper2Agent turns a research paper and its code base into an executable, interactive agent, with tools served through the Model Context Protocol that users can query in natural language \cite{Miao2026Paper2Agent}. ScientistOne introduces \emph{Chain-of-Evidence}, under which every claim a research system produces must be traceable, through a recorded chain of supporting claims, to a grounding source \cite{Meng2026ScientistOne}. ScientistTwo describes an autonomous research workflow, a multi-agent pipeline that runs from problem formulation to manuscript \cite{Nam2026ScientistTwo}.
 
-\engiproof{} shares some features with these systems:
-\begin{itemize}[leftmargin=1.5em]
-  \item \textbf{With Paper2Agent:} published methods become callable tools, served through the same protocol.
-  \item \textbf{With ScientistOne:} claims are traced to their sources.
-\end{itemize}
-
-It differs from them in its engineering-specific evidence model:
-\begin{itemize}[leftmargin=1.5em]
-  \item evidence classes that keep published, independent and solver-generated results apart;
-  \item source-bounded reproduction, with no tuning or inferred inputs;
-  \item methodologically independent checks that decide the direction of a conflict;
-  \item preservation of source discrepancies in a controlled taxonomy;
-  \item append-only human dispositions that gate promotion;
-  \item non-mutating verification;
-  \item an explicit boundary between verification and engineering qualification.
-\end{itemize}
-Unlike an autonomous research workflow, \engiproof{} keeps human decisions as a required step for discrepancies and qualification.
+\engiproof{} shares some features with these systems: like Paper2Agent, it turns published methods into callable tools served through the same protocol, and like ScientistOne, it traces claims to their sources. It differs from them in its engineering-specific evidence model, which comprises evidence classes that keep published, independent and solver-generated results apart; source-bounded reproduction with no tuning or inferred inputs; methodologically independent checks that decide the direction of a conflict; preservation of source discrepancies in a controlled taxonomy; append-only human dispositions that gate promotion; non-mutating verification; and an explicit boundary between verification and engineering qualification. Unlike an autonomous research workflow, \engiproof{} keeps human decisions as a required step for discrepancies and qualification.
 
 \paragraph{Computational reproducibility and verification.}
-The framework also builds on the computational-reproducibility literature.
-\begin{itemize}[leftmargin=1.5em]
-  \item \textbf{A spectrum, not a binary.} Peng describes reproducibility as a spectrum, from publication alone to full code and data, rather than a yes-or-no property \cite{Peng2011}. \engiproof{} records where each target sits on that spectrum instead of labelling a whole paper ``reproduced''.
-  \item \textbf{Code, data and environment are not enough.} Sandve et al.\ set out practical rules for reproducible computational work, such as recording every intermediate result and the exact software versions \cite{Sandve2013}. Studies of journal artefact policies show that sharing code and data does not by itself make results reproducible \cite{Stodden2018,Collberg2016}.
-  \item \textbf{Vocabulary.} The National Academies report distinguishes reproducibility (the same data and code give the same result) from replicability (a new study reaches consistent results) \cite{NASEM2019}. In those terms, \engiproof{}'s source-bounded reproduction is closer to replication from the published description, because the original code is almost never available.
-  \item \textbf{Verification versus validation.} From computational engineering, \engiproof{} adopts the separation of verification (solving the equations right) from validation (solving the right equations) \cite{Oberkampf2010}. It then adds a third boundary: neither amounts to engineering qualification.
-\end{itemize}
-What these works leave open, and what this paper addresses, is the handling of sources that are internally inconsistent or incomplete: preserving the conflict, deciding its direction with independent checks, and gating it through recorded human decisions.
+The framework also builds on the computational-reproducibility literature. Peng describes reproducibility as a spectrum, from publication alone to full code and data, rather than a yes-or-no property \cite{Peng2011}; \engiproof{} accordingly records where each target sits on that spectrum instead of labelling a whole paper ``reproduced''. Sandve et al.\ set out practical rules for reproducible computational work, such as recording every intermediate result and the exact software versions \cite{Sandve2013}, and studies of journal artefact policies show that sharing code and data does not by itself make results reproducible \cite{Stodden2018,Collberg2016}. The National Academies report distinguishes reproducibility (the same data and code give the same result) from replicability (a new study reaches consistent results) \cite{NASEM2019}; in those terms, the source-bounded reproduction of \engiproof{} is closer to replication from the published description, because the original code is almost never available. From computational engineering, \engiproof{} adopts the separation of verification (solving the equations right) from validation (solving the right equations) \cite{Oberkampf2010} and adds a third boundary, that neither amounts to engineering qualification. What these works leave open, and what this paper addresses, is the handling of sources that are internally inconsistent or incomplete: preserving the conflict, deciding its direction with independent checks, and gating it through recorded human decisions.
 
 \subsection{Future work}
-\begin{itemize}[leftmargin=1.5em]
-  \item \textbf{Solver adapters.} External solvers generate \eclass{SOLVER\_NEW} evidence on existing cases. The agent orchestrates the solver runs, and \engiproof{} adjudicates their results.
-  \item \textbf{Extraction benchmark.} A labelled extraction benchmark would make accuracy measurable.
-  \item \textbf{External replication.} Replication of selected studies by independent teams.
-  \item \textbf{Experimental evidence.} Recording experimental reference data as a separate population where the sources contain it.
-  \item \textbf{Environment metadata.} Frozen artifacts that declare the environment that produced them.
-\end{itemize}
+Future work includes solver adapters, in which external solvers generate \eclass{SOLVER\_NEW} evidence on existing cases, the agent orchestrates the solver runs and \engiproof{} adjudicates their results. A labelled extraction benchmark would make accuracy measurable. Other directions are replication of selected studies by independent teams, recording experimental reference data as a separate population where the sources contain it, and frozen artifacts that declare the environment that produced them.
