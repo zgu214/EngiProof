@@ -130,3 +130,38 @@ Independent source audit: a separate agent checked about 125 further statements 
 - Confirmed by the author: affiliation (Independent researcher, Norway), CRediT roles, competing interests (none), funding (no specific grant). All [author to confirm] markers are removed, together with the `\authorconfirm` macro.
 - Generative-AI declaration replaced by the author's wording: Claude (Anthropic) and ChatGPT (OpenAI) were used for software development and testing, manuscript drafting and revision, and bibliographic checking, followed by author review, with the author responsible for the content.
 - The conclusion no longer says the author statements are still to be confirmed.
+
+## Final PDF review — 28 September 2026 (WORK_QUEUE Q11 step 5)
+
+Owner corrections:
+- Abstract grammar: the sentence now reads "… normalise the problem away by choosing one of two printed values, inferring a missing unit, or tuning an unknown …". No claim changed.
+- Conclusion (SA-3 consistency): the sentence now reads "Bounded targets are reproduced or compared against the published values with their agreement reported explicitly, target by target."
+
+Review corrections (layout and reference only; `prose_audit.py develop` shows no change to numbers, citations, evidence ids, status macros, mathematics or tables):
+- "Appendix Appendix A/B" doubled: elsarticle's `\ref` already includes "Appendix", so `Appendix~\ref{app:…}` became `\ref{app:…}` (§1, the data-availability statement, Appendix B).
+- Doubled full stops after run-in paragraph headings: trailing periods removed from the five `\paragraph{…}` titles.
+- Appendix B: the stale list of tables to regenerate was replaced. The generated tables are `tab:crossenv` and `tab:evidence`; the facts check and Appendix A follow; Tables 1–3, 5 and 7 are marked as hand-written and source-audited.
+
+Checks:
+
+| Item | Result |
+|---|---|
+| Front matter | Title, author, affiliation (Independent researcher, Norway), e-mail, abstract, keywords |
+| Abstract | 236 words |
+| Highlights | 5 items; 70, 71, 62, 71, 64 characters (≤ 85) |
+| Keywords | 6 |
+| Figures and tables | Figure 1 and Tables 1–7 legible, none exceed the text width. Tables 2, 4 and 7 are placed as floats with white space around them; acceptable for a preprint |
+| Cross-references and citations | 0 undefined; 16 of 16 bibliography entries cited |
+| Markers | No TODO, FIXME, TBD or [author to confirm] |
+| Declarations | Data/code availability, CRediT, competing interests (none), funding (no specific grant) |
+| AI declaration | Identical to the owner-approved text |
+| Appendix A | Regenerated; identical to the committed version |
+| Generated tables and facts | `build_tables.py --check` OK; facts check 20 PASS / 0 FAIL / 0 OPEN |
+| Build | Clean `latexmk` build: 29 pages, US letter, 0 undefined |
+
+Remaining build messages, all benign:
+- One 2.6 pt overfull box in `\output` on the title page (elsarticle preprint footer).
+- A duplicate `page.1` hyperref destination (elsarticle highlights page plus title page).
+- One underfull line (badness 1796) in §6 caused by a long monospaced path.
+- BibTeX: "empty pages in Bueno1994". The SPE conference paper has no page range in the source records; it is cited by paper number and DOI.
+- PA-06 (owner correction, 28 September 2026): the claim now reads "Published methods re-implemented from the source reproduce or closely agree with published values for bounded targets, with residual differences reported explicitly at target level", consistent with SA-3. Status stays SUPPORTED. Appendix A regenerated; claim counts unchanged (20 SUPPORTED / 4 PARTIALLY_SUPPORTED / 3 NOT_SUPPORTED_YET / 3 OUT_OF_SCOPE).
