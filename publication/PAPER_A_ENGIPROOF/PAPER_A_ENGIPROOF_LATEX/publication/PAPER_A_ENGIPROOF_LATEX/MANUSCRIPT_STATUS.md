@@ -177,3 +177,18 @@ Remaining build messages, all benign:
 - Zenodo record https://zenodo.org/records/23017727. The version DOI is 10.5281/zenodo.23017727, and the concept DOI is 10.5281/zenodo.23017726.
 - Verified from the owner's screenshots: title, author Gu, Zhiqiang, version v0.2.0, Software, open access, Apache License 2.0, and archive folder `zgu214-EngiProof-d0d96eb`.
 - Reference [16] now carries the version DOI. The data-availability statement adds "archived on Zenodo (version 0.2.0)".
+
+## Journal-format check against the AES guide for authors — 28 September 2026
+
+- The owner supplied and confirmed the official guide URL: https://www.sciencedirect.com/journal/advances-in-engineering-software/publish/guide-for-authors.
+- Automated access to the complete ScienceDirect guide returned HTTP 403 (and 429 on earlier attempts).
+- The requirements were therefore cross-checked against the accessible current AES and Elsevier materials and recent AES articles. The resulting submission-format check:
+  - journal scope;
+  - abstract of 236 words, consistent with the current guidance of about 250 words;
+  - 5 highlights, each ≤ 85 characters;
+  - 6 keywords;
+  - numbered Elsevier references;
+  - CRediT, competing-interest, funding, data/code-availability and generative-AI statements present;
+  - Zenodo software DOI present in reference [16].
+- This submission-format check was accepted for package preparation, and the guide check is no longer a submission blocker. It supersedes the earlier note that the official guide still had to be checked.
+- Next: prepare the submission package. No further manuscript restructuring.
