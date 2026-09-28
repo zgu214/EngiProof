@@ -1,0 +1,355 @@
+{
+  "schema_version": "engiproof.evidence_graph/1.1",
+  "paper_id": "P42",
+  "nodes": [
+    {
+      "id": "SOURCE-P42",
+      "kind": "source",
+      "label": "Tension-bending analysis of flexible pipe by a repeated unit cell finite element model",
+      "evidence_class": "PUBLISHED",
+      "status": "SOURCE_READY",
+      "source_refs": [
+        "10.1016/j.marstruc.2018.09.010",
+        "16c33a882da8a036dc7007fedd5b7aab7e0194bf8ea97ae9b9bf423accbc0d2d"
+      ]
+    },
+    {
+      "id": "TARGET-T006",
+      "kind": "table",
+      "label": "Table 1",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:3"
+      ]
+    },
+    {
+      "id": "TARGET-T008",
+      "kind": "table",
+      "label": "Table 3",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:8",
+        "page:14"
+      ]
+    },
+    {
+      "id": "TARGET-T009",
+      "kind": "table",
+      "label": "Table 4",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:9"
+      ]
+    },
+    {
+      "id": "TARGET-T066",
+      "kind": "equation",
+      "label": "Equation (42)",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:11"
+      ]
+    },
+    {
+      "id": "TARGET-T067",
+      "kind": "equation",
+      "label": "Equation (43)",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:11"
+      ]
+    },
+    {
+      "id": "AUTO-TOOL-BALANCED-PITCH-L2-MM",
+      "kind": "implementation",
+      "label": "balanced_pitch_L2_mm",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "tool:balanced_pitch_L2_mm",
+        "independent Table 1 consistency check",
+        "papers/P42/tool_api.py",
+        "tool:equation42_continuum_moment_kNm",
+        "P42 Eq. (42)",
+        "tool:equation43_total_moment_kNm",
+        "P42 Eq. (43)",
+        "tool:contact_properties",
+        "P42 Table 4",
+        "tool:phase1_continuum_summary",
+        "P42 Phase-1 evidence chain",
+        "tool:equation31_preslip_stress_MPa",
+        "P42 Eq. (31)",
+        "tool:equation32_critical_curvature_per_m",
+        "P42 Eq. (32)",
+        "tool:equation33_transition_angle_deg",
+        "P42 Eq. (33)",
+        "tool:equation34_slip_stress_MPa",
+        "P42 Eq. (34)",
+        "tool:equation35_stick_stress_MPa",
+        "P42 Eq. (35)",
+        "tool:phase2_analytical_stress_summary",
+        "P42 Eqs. (36)-(39), Figs.20-23",
+        "tool:phase3_axisymmetric_and_moment_summary",
+        "P42 Eqs.24-30,41-43 / Figs.12-16"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P42-C001",
+      "kind": "comparison",
+      "label": "Table 1 armor pitch balance",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P42-C001",
+        "P42 Table 1"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P42-C002",
+      "kind": "comparison",
+      "label": "Eq. (42) continuum-layer bending line",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P42-C002",
+        "P42 Eq. (42)"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P42-C003",
+      "kind": "comparison",
+      "label": "Eq. (42) continuum mechanism versus Figure 16 full-slip description",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P42-C003",
+        "P42 Figure 16 / Section 4.2"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P42-C004",
+      "kind": "comparison",
+      "label": "Eqs. (36)-(39) -> analytical solid-line families in Figures 20-23",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P42-C004",
+        "P42 Figures 20-23"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P42-C005",
+      "kind": "comparison",
+      "label": "Analytical versus FP-RUC axial-tension dependence in Figures 21 and 23",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P42-C005",
+        "P42 Sections 4.2.1 / Figures 21 and 23"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DISCREPANCY-P42-D001",
+      "kind": "discrepancy",
+      "label": "Axial-tension dependence of tensile-armor bending stress in Figures 21 and 23",
+      "evidence_class": "INDEPENDENT",
+      "status": "OBSERVED",
+      "source_refs": [
+        "P42-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P42-D001",
+      "kind": "discrepancy_assessment",
+      "label": "MODEL_FORM_KINEMATICS_DIFFERENCE assessment for P42-D001",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P42-D001",
+        "assessment:P42-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P42-C006",
+      "kind": "comparison",
+      "label": "Eqs. (24)-(26) axisymmetric force/torsion closure",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P42-C006",
+        "P42 Eqs. (24)-(26), Figures 12-14"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P42-C007",
+      "kind": "comparison",
+      "label": "Literal Eqs. (27)-(30)+(41)-(43) implementation versus Figure 16 scale",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P42-C007",
+        "P42 Figure 16"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DISCREPANCY-P42-D002",
+      "kind": "discrepancy",
+      "label": "Reconstruction of Figure 16 from Eqs. (27)-(30) and Eq. (41)",
+      "evidence_class": "INDEPENDENT",
+      "status": "OPEN",
+      "source_refs": [
+        "P42-D002"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P42-D002",
+      "kind": "discrepancy_assessment",
+      "label": "SOURCE_IMPLEMENTATION_PROVENANCE_GAP assessment for P42-D002",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P42-D002",
+        "assessment:P42-D002"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "SOURCE-P42",
+      "to": "TARGET-T006",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "TARGET-T008",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "TARGET-T009",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "TARGET-T066",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "TARGET-T067",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "AUTO-TOOL-BALANCED-PITCH-L2-MM",
+      "relation": "supports_implementation"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "AUTO-COMPARISON-P42-C001",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "AUTO-COMPARISON-P42-C002",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "AUTO-COMPARISON-P42-C003",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "AUTO-COMPARISON-P42-C004",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "AUTO-COMPARISON-P42-C005",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "AUTO-DISCREPANCY-P42-D001",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P42-D001",
+      "to": "AUTO-ASSESSMENT-P42-D001",
+      "relation": "classified_by"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "AUTO-COMPARISON-P42-C006",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "AUTO-COMPARISON-P42-C007",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P42",
+      "to": "AUTO-DISCREPANCY-P42-D002",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P42-D002",
+      "to": "AUTO-ASSESSMENT-P42-D002",
+      "relation": "classified_by"
+    }
+  ],
+  "qualification": "NOT_GRANTED",
+  "sync": {
+    "schema_version": "engiproof.evidence_graph_sync/1.0",
+    "added_nodes": 4,
+    "added_edges": 4,
+    "tool_count": 12,
+    "comparison_count": 7,
+    "discrepancy_count": 2,
+    "decision_count": 0,
+    "rule": "Synchronization is additive: existing hand-authored nodes/edges are preserved and qualification is never promoted."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": "engiproof.p42.figure16_source_review/1.0",
+  "source": "P42 Figure 16 and Section 4.2, pages 414-415",
+  "status": "PUBLISHED_SOURCE_REVIEWED",
+  "observations": [
+    "Figure 16 plots pipe cross-section bending moment versus global pipe curvature for various axial tension levels.",
+    "The paper reports good correlation between analytical and FP-RUC moment-curvature response at small curvature.",
+    "At larger curvature in the full-slip phase, FP-RUC and analytical results deviate.",
+    "The FP-RUC full-slip response is nonlinear, whereas the analytical total moment remains linear because it is governed by continuum-layer moment contributions."
+  ],
+  "evidence_boundary": "No graphical curve digitization or FP-RUC recreation is claimed in Phase 1."
+}

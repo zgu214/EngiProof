@@ -1,0 +1,20 @@
+{
+  "schema_version": "engiproof.discrepancy_decisions/1.0",
+  "paper_id": "P45",
+  "decisions": [
+    {
+      "decision_id": "P45-D004-DEC-001",
+      "discrepancy_id": "P45-D004",
+      "disposition": "ACCEPTED_WITH_RATIONALE",
+      "rationale": "Notation-only conflict. The 9 s period is stated explicitly in the source text and in the companion tension equation. The implementation uses the stated 9 s period while preserving the printed equation unchanged.",
+      "reviewer": "Zhiqiang Gu",
+      "evidence_refs": [
+        "papers/P45/reference/example_1200m_inputs.json",
+        "engiproof/studies/P45/study.json#P45-D004"
+      ],
+      "effective_promotion_effect": "NONE",
+      "qualification_effect": "NONE",
+      "rule": "Human discrepancy decisions may resolve/bound/accept a review item but never grant engineering qualification."
+    }
+  ]
+}

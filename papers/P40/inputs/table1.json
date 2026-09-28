@@ -1,0 +1,60 @@
+{
+  "schema_version": "engiproof.p40.table1/1.0",
+  "paper_id": "P40",
+  "source_target": "Table 1. Properties of PIP Systems",
+  "units": {
+    "diameter": "mm",
+    "thickness": "mm",
+    "E": "MPa",
+    "sigma_Yo": "MPa"
+  },
+  "cases": [
+    {
+      "identifier": "PIP-1",
+      "Do_mm": 80.0,
+      "to_mm": 2.0,
+      "Di_mm": 40.0,
+      "ti_mm": 1.6,
+      "Do_over_to": 40.0,
+      "Di_over_ti": 25.0,
+      "Di_over_Do": 0.50,
+      "ti_over_to": 0.80,
+      "E_MPa": 69000.0,
+      "tangent_modulus_ratio_percent": 1.01,
+      "sigma_Yo_MPa": 169.0,
+      "sigma_Yi_over_sigma_Yo": 0.93
+    },
+    {
+      "identifier": "PIP-2",
+      "Do_mm": 60.0,
+      "to_mm": 2.0,
+      "Di_mm": 40.0,
+      "ti_mm": 1.6,
+      "Do_over_to": 30.0,
+      "Di_over_ti": 25.0,
+      "Di_over_Do": 0.75,
+      "ti_over_to": 0.80,
+      "E_MPa": 69000.0,
+      "tangent_modulus_ratio_percent": 0.97,
+      "sigma_Yo_MPa": 139.0,
+      "sigma_Yi_over_sigma_Yo": 1.12
+    },
+    {
+      "identifier": "PIP-3",
+      "Do_mm": 80.0,
+      "to_mm": 3.0,
+      "Di_mm": 40.0,
+      "ti_mm": 1.6,
+      "Do_over_to": 26.7,
+      "Di_over_ti": 25.0,
+      "Di_over_Do": 0.50,
+      "ti_over_to": 0.53,
+      "E_MPa": 69000.0,
+      "tangent_modulus_ratio_percent": 1.02,
+      "sigma_Yo_MPa": 209.0,
+      "sigma_Yi_over_sigma_Yo": 0.75
+    }
+  ],
+  "review_status": "SOURCE_TEXT_CONFIRMED",
+  "note": "Values transcribed from the P40 Table 1 source target. Original PDF remains external."
+}

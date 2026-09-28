@@ -1,0 +1,6 @@
+\section{The qualification boundary}
+\label{sec:qualification}
+
+Every study manifest and evidence graph records engineering qualification as \estatus{NOT\_GRANTED}, as does every result artifact that carries a qualification field (PA-22). Reproduction, independent agreement and recomputation equivalence leave it untouched, as do complete graph coverage, a human discrepancy decision (which carries \texttt{qualification\_effect: NONE} by construction) and the promotion of a study.
+
+Three boundaries follow. Verification tolerances express recomputation equivalence, not engineering acceptance. Agreement between a reproduction and a printed value says that the printed value follows from the printed method, not that the method is valid for a design. Physics interpretation, scope changes, the interpretation of source ambiguities and discrepancy dispositions remain human responsibilities, and the repository contract names them as such. \engiproof{} therefore does not qualify designs and does not replace project-specific engineering verification (PA-23).

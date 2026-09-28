@@ -1,0 +1,29 @@
+\section{Failure cases and limits}
+\label{sec:failures}
+
+\subsection{Failures of the framework}
+The evidence process recorded 22 failure modes of the framework itself (PA-24), condensed in Table~\ref{tab:failures}. They are reported as lessons rather than as a quality metric: each was surfaced by the process, recorded with a repository reference, and then corrected, bounded or left visible.
+
+\begin{table}[htbp]
+\centering
+\caption{Condensed failure register (full register: \texttt{PAPER\_A\_READINESS\_REVIEW.md}, \S4).}
+\label{tab:failures}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedright\arraybackslash}p{0.30\linewidth}}
+\toprule
+Area & Failures (IDs) & Response \\
+\midrule
+Source identity & Wrong DOI/year accepted (F1); false year conflict (F6); identifiers incomplete or wrong (F18) & Identity gate with manual confirmation; publication vs secondary years \\
+Extraction & Glyph placeholders (F2); grouped references lost (F3); publisher captions (F4, F7); scanned source only partly ready (F16) & Recovery passes; broadened anchors; manual page review recorded \\
+Interpretation & Table mismatch not separable from transcription error (F5); literal equations not closing (F8) & Hold as uncertainty until visual confirmation; provenance-gap classification \\
+Verification & Verification rewrote 20 files (F10); line-ending-dependent hashes (F11); contract drift (F12); cross-build eigen noise (F14); deleted artifacts unseen (F15); cross-OS recomputation noise and platform-dependent provenance (F20, F21) & Non-mutating verification; canonical identity; declared and scoped tolerances; hash inheritance \\
+Operations & Windows batch chaining (F9); hard-coded checkpoint test (F13); graph counters (F17); packaging metadata tracked (F19); Windows dispatcher swallowed exit codes (F22) & Batch rule; durable invariants; hardening item; untracked; dispatcher fixed with a CI assertion and P45 re-verified \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Legitimately irreproducible targets}
+Four of the six studies have a major target that cannot be reproduced from the source: the P41 global-buckling FE response, the P42 FE unit-cell results, the P44 nonlinear FE contact profiles and the P45 dynamic responses. These are recorded as limitations or as \estatus{BLOCKED} comparisons, and no inputs are inferred to complete them. Only P45 records its non-reproduced targets as \estatus{BLOCKED} comparisons; the other three record them as limitations, and aligning them is a housekeeping item.
+
+\subsection{Limitations}
+No extraction accuracy or recall is measured, and inconsistency detection is not claimed to be complete. The independent checks are methodological, not organisational, and external replication remains future work. The six studies share one domain, and \eclass{SOLVER\_NEW} evidence is defined but not yet exercised. Human decisions have been exercised on eight records by one reviewer, who is also the author; no external reviewer has been involved yet. The source format is recorded for one study only, and most frozen artifacts do not declare the environment that produced them.

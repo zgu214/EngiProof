@@ -1,0 +1,46 @@
+{
+  "schema_version": "engiproof.discrepancy_assessment/1.0",
+  "paper_id": "P41",
+  "evidence_status": "CONDITIONAL",
+  "discrepancy_count": 1,
+  "high_priority_count": 1,
+  "promotion_blocker_count": 1,
+  "assessments": [
+    {
+      "schema_version": "engiproof.discrepancy_assessment/1.0",
+      "discrepancy_id": "P41-D001",
+      "target": "Table 2 inner effective-force increment source transcription",
+      "state": "OPEN",
+      "category": "SOURCE_TRANSCRIPTION_UNCERTAINTY",
+      "review_priority": "HIGH",
+      "promotion_effect": "BLOCK_PROMOTION",
+      "basis": [
+        "explicit classification hint",
+        "structured rounding-band check",
+        "independent_support=CORROBORATES_REPRODUCTION",
+        "difference exceeds recorded rounding band and independent check corroborates reproduction"
+      ],
+      "metrics": {
+        "reference_value": 153,
+        "reproduced_value": 158.78448922208514,
+        "absolute_difference": 5.78448922208514,
+        "reference_decimals": 0
+      },
+      "rounding_check": {
+        "reference_decimals": 0,
+        "half_unit_in_last_place": 0.5,
+        "absolute_difference": 5.784489222085142,
+        "beyond_rounding_band": true
+      },
+      "independent_support": "CORROBORATES_REPRODUCTION",
+      "closure_requirements": [
+        "Visually confirm the original Table 2 inner force-increment cell in the fingerprinted PDF.",
+        "If the source reads 159 N/m, correct the machine-readable transcription and close this review item as extraction error.",
+        "If the source truly reads 153 N/m, retain the mismatch and investigate the published calculation without tuning inputs."
+      ],
+      "engineering_interpretation": "Treat this as a source-transcription review item, not a confirmed paper numerical inconsistency, until the original Table 2 cell is visually inspected.",
+      "rule": "Automation classifies review/escalation state only; it does not decide engineering acceptability or qualification."
+    }
+  ],
+  "qualification": "NOT_GRANTED"
+}

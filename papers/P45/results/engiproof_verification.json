@@ -1,0 +1,23 @@
+{
+  "schema_version": "engiproof.p45.verification/1.0",
+  "paper_id": "P45",
+  "status": "CONDITIONAL",
+  "checks": {
+    "table2_riser_length_and_offset_reproduced": true,
+    "table_values_are_round_imperial_renderings": true,
+    "appendix1_k3_equals_k1_plus_k2": true,
+    "appendix1_continuous_at_zero_axial_force": true,
+    "appendix1_matches_independent_fe": true,
+    "appendix1_K_has_six_rigid_body_modes": true,
+    "eq7_reduces_to_wilson_linear_acceleration": true,
+    "eq7_theta_1_critical_step_0p551": true,
+    "appendix2_factors_are_hermite_interpolation": true,
+    "infinite_depth_airy_valid_all_depths": true,
+    "P45_D001_preserved": true,
+    "P45_D002_preserved": true,
+    "P45_D005_head_envelopes_peak_to_peak": true,
+    "figure11_15pct_claim_reproduced_as_peak_abs_stress": true,
+    "nonlinear_dynamic_response_reproduced": false
+  },
+  "qualification": "NOT_GRANTED"
+}

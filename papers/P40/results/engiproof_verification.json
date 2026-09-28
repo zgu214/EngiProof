@@ -1,0 +1,26 @@
+{
+  "schema_version": "engiproof.verification/1.0",
+  "paper_id": "P40",
+  "status": "CONDITIONAL",
+  "source_pdf_external": true,
+  "supporting_equations_max_absolute_ratio_difference": 0.005459910313130201,
+  "published_eq9_vs_independent_max_percent": 0.08118231763489275,
+  "open_discrepancy": {
+    "identifier": "PIP-3",
+    "calculated_eq9_ratio": 0.7056664056684557,
+    "published_eq9_ratio": 0.66,
+    "absolute_ratio_difference": 0.0456664056684557,
+    "relative_to_published_percent": 6.919152374008439
+  },
+  "qualification": "NOT_GRANTED",
+  "limitations": [
+    "PIP-3 Table 2 reports Eq. (9) normalized ratio 0.66, while direct Eq. (9) evaluation from Table 1 inputs gives approximately 0.7057.",
+    "The discrepancy is preserved and no source parameter is tuned to force agreement.",
+    "The independent work-balance check reproduces the Eq. (9) mechanics to within rounding of the published 0.626/2.515 reduction.",
+    "No source FE model is reproduced."
+  ],
+  "discrepancy_assessment": {
+    "promotion_blocker_count": 1,
+    "artifact": "papers/P40/results/discrepancy_assessment.json"
+  }
+}

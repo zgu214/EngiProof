@@ -1,0 +1,43 @@
+{
+  "schema_version": "engiproof.p41.source_review/1.0",
+  "paper_id": "P41",
+  "title": "Global Buckling of Pipe-in-Pipe: Structural Response and Design Criteria",
+  "paper_number": "OMAE2011-49960",
+  "year": 2011,
+  "doi": "10.1115/OMAE2011-49960",
+  "source_filename": "p41-goplen2011.pdf",
+  "source_sha256": "21c3765eb4e9bd16b5bf36b1a58f3c5f72bf4a08058fc7b7ca5241c045ee619d",
+  "source_identity": {
+    "title": "MATCH",
+    "year": "MATCH",
+    "doi_in_extracted_pdf_text": "NOT_FOUND_IN_SOURCE",
+    "doi_external_bibliographic_confirmation": "CONFIRMED"
+  },
+  "selected_targets": [
+    "Table 1",
+    "Table 2",
+    "Equation (6)",
+    "Equation (7)",
+    "Equation (8)"
+  ],
+  "review_state": "CONDITIONAL",
+  "open_source_review": [
+    "Table 2 mismatch is source-confirmed: 153 + 312 = 465 N/m while fS and Eq. (8) require 471 N/m. A typographical error (153 versus 159) is plausible but unconfirmed.",
+    "Eq. (10) is source-confirmed, but the paper does not explicitly provide all numerical inputs required to independently reconstruct S0_total from Eqs. (4)-(5) without added assumptions."
+  ],
+  "rule": "Preserve the confirmed Table 2 mismatch without tuning. Treat 153->159 only as an unconfirmed inference unless an erratum or author clarification is obtained.",
+  "selected_targets_phase2": [
+    "Table 3",
+    "Equation (9)",
+    "Equation (10)"
+  ],
+  "table2_visual_confirmation": {
+    "status": "CONFIRMED",
+    "published_fS_N_per_m": 471,
+    "published_deltaS_inner_N_per_m": 153,
+    "published_deltaS_outer_N_per_m": 312,
+    "published_component_sum_N_per_m": 465,
+    "eq8_required_total_N_per_m": 471,
+    "interpretation": "The original Table 2 visibly reports 153 and 312 N/m. This is a source-backed internal mismatch with Eq. (8), not a PDF extraction error."
+  }
+}

@@ -1,0 +1,522 @@
+{
+  "schema_version": "engiproof.study/1.1",
+  "framework": "EngiProof",
+  "framework_version": "0.2.0.dev8",
+  "paper_id": "P45",
+  "title": "Nonlinear dynamic analysis of deep water risers",
+  "year": 1983,
+  "evidence_status": "CONDITIONAL",
+  "category": "NONLINEAR_DYNAMIC_RISER_ANALYSIS",
+  "source": {
+    "canonical_pdf": "p45-safai1983.pdf",
+    "sha256": "c10b4938dd3c4de6c027f8494386b43a46fc2c3cb011a69de94612dc52686a0d",
+    "doi": "10.1016/0141-1187(83)90036-6"
+  },
+  "selected_targets": [
+    "Table 1",
+    "Table 2",
+    "Table 3",
+    "Figures 4(a)-9(a) head-end envelopes",
+    "Figures 4(b)-9(b) (source review only)",
+    "Figure 10",
+    "Figure 11",
+    "Equation (7)",
+    "Appendix 1",
+    "Appendix 2"
+  ],
+  "runner": "papers/P45/run_calculation.py",
+  "source_contract": "papers/P45/SOURCE.md",
+  "evidence_graph": "engiproof/studies/P45/evidence_graph.json",
+  "result_files": [
+    "papers/P45/results/phase1_summary.json",
+    "papers/P45/results/engiproof_verification.json"
+  ],
+  "verification_tests": [
+    "tests.test_p45_phase1"
+  ],
+  "tools": [
+    {
+      "name": "appendix1_stiffness_coefficients",
+      "module": "papers/P45/tool_api.py",
+      "function": "appendix1_stiffness_coefficients",
+      "arguments": {
+        "F_N": "axial force N (tension > 0)",
+        "EI_Nm2": "bending stiffness N m²",
+        "L_m": "element length m",
+        "GA_shear_N": "optional G A' (reduced shear area) N; omit for shear-rigid"
+      },
+      "returns": "k1, k2, k3 [N m], branch, alphaL, beta, delta",
+      "evidence": "P45 Appendix 1 (compression / tension / zero-force branches)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "eq7_theta_coefficients",
+      "module": "papers/P45/tool_api.py",
+      "function": "eq7_theta_coefficients",
+      "arguments": {
+        "theta": "Wilson theta",
+        "beta": "parameter beta",
+        "lam": "parameter lambda",
+        "dt_s": "time step s"
+      },
+      "returns": "a1..a6 and tau",
+      "evidence": "P45 Eq. (7)",
+      "evidence_class": "PUBLISHED",
+      "evidence_boundary": "Coefficients only. The source does not give theta, beta or lambda for its analyses."
+    },
+    {
+      "name": "example1200_head_displacement_m",
+      "module": "papers/P45/tool_api.py",
+      "function": "example1200_head_displacement_m",
+      "arguments": {
+        "t_s": "time s"
+      },
+      "returns": "prescribed head displacement m",
+      "evidence": "P45 p. 222 text (period 9 s, amplitude 7.70 m)",
+      "evidence_class": "PUBLISHED",
+      "evidence_boundary": "The printed equation reads 'sin(2 pi t/g)'; the 9 s period is the source text's statement (P45-D004)."
+    },
+    {
+      "name": "example1200_head_tension_printed",
+      "module": "papers/P45/tool_api.py",
+      "function": "example1200_head_tension_printed",
+      "arguments": {
+        "t_s": "time s"
+      },
+      "returns": "head tension as printed, UNIT NOT GIVEN",
+      "evidence": "P45 p. 222: T = 298(1 + 0,2 sin 2 pi t/9)",
+      "evidence_class": "PUBLISHED",
+      "evidence_boundary": "The source states no unit (P45-D003). The number is returned as printed and must not be used as a force without a unit decision."
+    },
+    {
+      "name": "example1200_current_speed_m_per_s",
+      "module": "papers/P45/tool_api.py",
+      "function": "example1200_current_speed_m_per_s",
+      "arguments": {
+        "depth_m": "depth below free surface m, 0..1200"
+      },
+      "returns": "current speed m/s",
+      "evidence": "P45 Figure 10 labels",
+      "evidence_class": "PUBLISHED",
+      "evidence_boundary": "Straight segments between labelled points as drawn; the 0 m/s bottom value is read from the figure."
+    },
+    {
+      "name": "cases_current_speed_m_per_s",
+      "module": "papers/P45/tool_api.py",
+      "function": "cases_current_speed_m_per_s",
+      "arguments": {
+        "height_above_ball_joint_m": "height above ball joint m",
+        "water_depth_m": "152.40, 457.20 or 914.40"
+      },
+      "returns": "current speed m/s",
+      "evidence": "P45 Table 2 item 17",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "table2_geometry_check",
+      "module": "papers/P45/tool_api.py",
+      "function": "table2_geometry_check",
+      "arguments": {},
+      "returns": "riser length and static offset reconstruction",
+      "evidence": "P45 Table 2 B",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "table1_tension_plausibility",
+      "module": "papers/P45/tool_api.py",
+      "function": "table1_tension_plausibility",
+      "arguments": {},
+      "returns": "head axial stress and tension/submerged-weight ratio per case",
+      "evidence": "P45 Table 1 with Table 2",
+      "evidence_class": "INDEPENDENT",
+      "evidence_boundary": "Plausibility arithmetic on printed values; it does not correct Table 1 (P45-D002)."
+    },
+    {
+      "name": "table2_buoyancy_consistency",
+      "module": "papers/P45/tool_api.py",
+      "function": "table2_buoyancy_consistency",
+      "arguments": {},
+      "returns": "implied buoyancy of the buoyant material vs geometry",
+      "evidence": "P45 Table 2 item 16 with items 3, 5, 9, 11",
+      "evidence_class": "INDEPENDENT",
+      "evidence_boundary": "Relies on a stated assumption that the buoyant material fills the annulus shown in Figure 3 (P45-D001)."
+    },
+    {
+      "name": "airy_depth_regime",
+      "module": "papers/P45/tool_api.py",
+      "function": "airy_depth_regime",
+      "arguments": {},
+      "returns": "Airy dispersion at the four depths",
+      "evidence": "P45 Table 2 footnote and p. 222",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "head_envelope_interpretation",
+      "module": "papers/P45/tool_api.py",
+      "function": "head_envelope_interpretation",
+      "arguments": {},
+      "returns": "measured head envelopes vs single / peak-to-peak amplitude",
+      "evidence": "P45 Figures 4(a)-9(a), Table 2 items 20 and B3",
+      "evidence_class": "INDEPENDENT",
+      "evidence_boundary": "Graphical measurement of published figures (head-end tips only), not a reproduction of the riser response."
+    },
+    {
+      "name": "figure11_linear_vs_nonlinear",
+      "module": "papers/P45/tool_api.py",
+      "function": "figure11_linear_vs_nonlinear",
+      "arguments": {},
+      "returns": "linear vs nonlinear stress ratios from the Figure 11 labels",
+      "evidence": "P45 Figure 11 and p. 222 claim",
+      "evidence_class": "INDEPENDENT",
+      "evidence_boundary": "Arithmetic on published labels; it does not recompute the stresses (P45-D006)."
+    },
+    {
+      "name": "appendix1_independent_checks",
+      "module": "papers/P45/tool_api.py",
+      "function": "appendix1_independent_checks",
+      "arguments": {},
+      "returns": "identities, limits, buckling points, independent FE and rigid-body checks",
+      "evidence": "P45 Appendix 1",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "eq7_independent_checks",
+      "module": "papers/P45/tool_api.py",
+      "function": "eq7_independent_checks",
+      "arguments": {},
+      "returns": "Eq. (7) reductions and stability of the reconstructed scheme",
+      "evidence": "P45 Eq. (7), (10), (12), (13)",
+      "evidence_class": "INDEPENDENT",
+      "evidence_boundary": "The step from t+tau to t+dt is not printed in the source; the standard Wilson-theta/Newmark relations are used as an independent reconstruction."
+    },
+    {
+      "name": "appendix2_independent_checks",
+      "module": "papers/P45/tool_api.py",
+      "function": "appendix2_independent_checks",
+      "arguments": {},
+      "returns": "Appendix 2 interpolation and added-mass identities",
+      "evidence": "P45 Appendix 2",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "phase1_summary",
+      "module": "papers/P45/tool_api.py",
+      "function": "phase1_summary",
+      "arguments": {},
+      "returns": "complete Phase 1 evidence summary",
+      "evidence": "P45 Phase 1",
+      "evidence_class": "INDEPENDENT",
+      "evidence_boundary": "Summary of source-bounded checks; no nonlinear dynamic response is reproduced."
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "P45-C001",
+      "target": "Table 2 riser lengths and static offsets from depth, 15.24 m freeboard, 9.144 m ball joint and 3% offset",
+      "status": "REPRODUCED",
+      "reference": "P45 Table 2 B",
+      "metrics": {
+        "computed_riser_length_m": [
+          158.496,
+          463.296,
+          920.496
+        ],
+        "published_precision": "2 decimals"
+      }
+    },
+    {
+      "id": "P45-C002",
+      "target": "Table 1/2 and figure-axis values as SI renderings of round imperial quantities (API 2J basis)",
+      "status": "COMPARED",
+      "reference": "P45 Tables 1-2, Figures 4-9 axes",
+      "metrics": {
+        "max_relative_deviation_table2_and_axes": 0.00475162,
+        "table1_kips": [
+          120.048,
+          200.08,
+          2901.1594,
+          5001.999,
+          2901.1594,
+          5001.999
+        ]
+      }
+    },
+    {
+      "id": "P45-C003",
+      "target": "Appendix 1 beam-column coefficients: identity k3=k1+k2, continuity at F=0 incl. shear, Euler points, independent Hermite FE, 6 rigid-body modes of K",
+      "status": "COMPARED",
+      "reference": "P45 Appendix 1",
+      "metrics": {
+        "max_fe_relative_difference": 3.2110442556581653e-08,
+        "rigid_body_nullity": 6
+      }
+    },
+    {
+      "id": "P45-C004",
+      "target": "Eq. (7) reduction to Wilson-theta linear-acceleration relations and stability of the reconstructed scheme",
+      "status": "COMPARED",
+      "reference": "P45 Eq. (7)",
+      "metrics": {
+        "theta_1_critical_dt_over_T": 0.5513288954217921,
+        "theta_1.37_stable_on_grid": true
+      }
+    },
+    {
+      "id": "P45-C005",
+      "target": "Appendix 2 segment factors and B_i",
+      "status": "COMPARED",
+      "reference": "P45 Appendix 2",
+      "metrics": {
+        "max_identity_deviation": 3.0531133177191805e-16
+      }
+    },
+    {
+      "id": "P45-C006",
+      "target": "Infinite-depth Airy wave model (Table 2 footnote) at all depths",
+      "status": "COMPARED",
+      "reference": "P45 Table 2 footnote, p. 222",
+      "metrics": {
+        "max_one_minus_tanh_kh": 5.273827741181236e-07
+      }
+    },
+    {
+      "id": "P45-C007",
+      "target": "Figures 4(a)-9(a) head-end envelopes vs Table 2 static offset and prescribed head motion",
+      "status": "COMPARED",
+      "reference": "P45 Figures 4(a)-9(a), Table 2",
+      "metrics": {
+        "measured_widths_m": [
+          1.253,
+          1.255,
+          1.289,
+          1.345,
+          1.543,
+          1.369
+        ],
+        "centre_minus_offset_m": [
+          0.1255,
+          0.0415,
+          -0.0425,
+          -0.2025,
+          0.0415,
+          0.1365
+        ]
+      }
+    },
+    {
+      "id": "P45-C008",
+      "target": "Figure 11 labels vs the '~15%' linear-structure underestimate",
+      "status": "CONDITIONAL",
+      "reference": "P45 Figure 11, p. 222",
+      "metrics": {
+        "peak_abs_underestimate_relative_to_nonlinear_percent": 13.375796,
+        "peak_abs_nonlinear_excess_relative_to_linear_percent": 15.441176,
+        "max_envelope_linear_vs_nonlinear_percent": 3.658537,
+        "min_envelope_linear_vs_nonlinear_percent": -28.503185
+      }
+    },
+    {
+      "id": "P45-C009",
+      "target": "Nonlinear dynamic riser responses of Figures 4-9 and 11 (RISER program vs eight other programs; linear vs nonlinear structure)",
+      "status": "BLOCKED",
+      "reference": "P45 Figures 4-9, 11",
+      "metrics": {
+        "reason": "source insufficient: theta/beta/lambda, iteration tolerance, damping, discretisation, float properties and tension unit not given"
+      }
+    }
+  ],
+  "discrepancies": [
+    {
+      "id": "P45-D001",
+      "target": "Table 2 item 16 buoyed vs unbuoyed element weight",
+      "status": "OPEN",
+      "classification_hint": "SOURCE_INTERNAL_INCONSISTENCY",
+      "observation": "Adding buoyant material raises the element weight in air by 350 dN (3836 -> 4186) and the weight in water by 338 dN (3243 -> 3581). The implied added buoyancy is 12 dN, i.e. a displaced volume of 0.012 m³ and an implied density of about 29 000 kg/m³ for the added material.",
+      "engineering_interpretation": "A buoyant material of 60.96 cm OD around the 40.64 cm riser displaces about 2.22 m³ per 15.24 m element (Figure 3 geometry, choke/kill lines excluded), so the in-water weight should fall by roughly 1840 dN, not rise. The tabulated buoyed w_p (or its definition) is inconsistent with the stated buoyancy. EngiProof does not choose a corrected value.",
+      "metrics": {
+        "implied_added_buoyancy_dN": 12.0,
+        "implied_density_of_added_material_kg_per_m3": 29341.6667,
+        "geometric_buoyant_volume_m3": 2.22399993,
+        "expected_change_in_water_weight_dN": -1844.0849
+      },
+      "automation": {
+        "independent_support": "GEOMETRIC_DISPLACEMENT_CHECK",
+        "promotion_effect": "BLOCK_PROMOTION"
+      },
+      "closure_requirements": [
+        "Preserve the printed w_a and w_p values.",
+        "Resolve only with an erratum, the API 2J source data or equivalent primary evidence.",
+        "Do not substitute an inferred buoyed weight."
+      ]
+    },
+    {
+      "id": "P45-D002",
+      "target": "Table 1 head tensions for 457.20 m and 914.40 m (cases 3-6)",
+      "status": "OPEN",
+      "classification_hint": "SOURCE_MAGNITUDE_IMPLAUSIBILITY",
+      "observation": "Printed 1.290.500 dN and 2.225.000 dN imply 662 MPa and 1141 MPa axial stress in the 40.64/37.46 cm riser pipe and 6-23 times the tabulated submerged weight; cases 1-2 (53.400, 89.000 dN) imply 27 and 46 MPa and 1.6-2.6 times.",
+      "engineering_interpretation": "All other Table 1/2 values are SI renderings of round imperial quantities; cases 1-2 equal 120 and 200 kips, while cases 3-6 equal 2901 and 5002 kips - ten times 290 and 500 kips. A one-place grouping/decimal error is plausible but is not established by the source. The printed values are preserved and not corrected.",
+      "metrics": {
+        "head_axial_stress_MPa": [
+          27.3762,
+          45.627,
+          661.5916,
+          1140.6751,
+          661.5916,
+          1140.6751
+        ],
+        "tension_kips": [
+          120.048,
+          200.08,
+          2901.1594,
+          5001.999,
+          2901.1594,
+          5001.999
+        ]
+      },
+      "automation": {
+        "independent_support": "STRESS_AND_WEIGHT_PLAUSIBILITY_PLUS_IMPERIAL_PATTERN",
+        "promotion_effect": "BLOCK_PROMOTION"
+      },
+      "closure_requirements": [
+        "Preserve the printed tensions.",
+        "Resolve only with API Bulletin 2J (1977) case data, an erratum, or equivalent primary evidence."
+      ]
+    },
+    {
+      "id": "P45-D003",
+      "target": "1200 m example head tension T = 298 (1 + 0,2 sin 2 pi t/9)",
+      "status": "OPEN",
+      "classification_hint": "SOURCE_UNIT_AMBIGUITY",
+      "observation": "No unit is given for 298. The mud-filled riser of Table 3 has an effective weight of 3.46 MN (2.45 MN with ideal massless floats over the full length).",
+      "engineering_interpretation": "Only a unit of order 10 kN (e.g. tonne-force, giving a mean of 2.92 MN) supports the riser weight; N, dN and kN do not. Even then the minimum tension (0.8 x 298) is below the ideal-float effective weight. The unit is not asserted, and float coverage/mass are not given.",
+      "metrics": {
+        "effective_weight_MN": 3.46225918,
+        "effective_weight_ideal_floats_MN": 2.4455787
+      },
+      "automation": {
+        "independent_support": "TABLE3_WEIGHT_BALANCE",
+        "promotion_effect": "BLOCK_PROMOTION"
+      },
+      "closure_requirements": [
+        "Do not assign a unit without primary evidence.",
+        "Record float coverage and mass if a source provides them."
+      ]
+    },
+    {
+      "id": "P45-D004",
+      "target": "1200 m example head displacement equation",
+      "status": "OPEN",
+      "classification_hint": "SOURCE_EQUATION_TEXT_MISMATCH",
+      "observation": "The printed equation reads Y = 7.70 sin(2 pi t/g); the preceding sentence states a sinusoidal variation with a period of 9 s and an amplitude of 7.70 m, and the tension equation on the same page uses 2 pi t/9.",
+      "engineering_interpretation": "Most likely a typographical 'g' for '9'. The tool uses the period stated in the source text; the printed equation is preserved.",
+      "automation": {
+        "independent_support": "SOURCE_TEXT_AND_ADJACENT_EQUATION",
+        "promotion_effect": "BLOCK_PROMOTION"
+      },
+      "closure_requirements": [
+        "Preserve both the printed equation and the text statement."
+      ]
+    },
+    {
+      "id": "P45-D005",
+      "target": "Meaning of 'amplitude' of the prescribed head displacement (Table 2 item 20, 1.22 m)",
+      "status": "OPEN",
+      "classification_hint": "SOURCE_CONVENTION_AMBIGUITY",
+      "observation": "Figures 4(a)-9(a) show head-end envelopes centred on the Table 2 static offsets (within 0.2 m) with total widths of 1.25-1.54 m (measurement uncertainty 0.05-0.33 m), consistent with 1.22 m peak-to-peak and not with +/-1.22 m (2.44 m width).",
+      "engineering_interpretation": "The author uses 'amplitude' for trough-to-crest height elsewhere ('amplitude (through-to-crest) of 6 m'; p. 220 calls the Table 2 wave height of 6.096 m an 'amplitude'), but uses single amplitude in Y = 7.70 sin(...). The figures support peak-to-peak for the six comparison cases. EngiProof records this without redefining Table 2.",
+      "metrics": {
+        "measured_widths_m": [
+          1.253,
+          1.255,
+          1.289,
+          1.345,
+          1.543,
+          1.369
+        ],
+        "uncertainty_m": [
+          0.059,
+          0.054,
+          0.13,
+          0.15,
+          0.304,
+          0.328
+        ]
+      },
+      "automation": {
+        "independent_support": "GRAPHICAL_HEAD_ENVELOPE_MEASUREMENT",
+        "promotion_effect": "BLOCK_PROMOTION"
+      },
+      "closure_requirements": [
+        "Preserve the Table 2 wording.",
+        "Resolve with API 2J case definitions or equivalent primary evidence."
+      ]
+    },
+    {
+      "id": "P45-D006",
+      "target": "Figure 11 '~15%' linear-structure stress underestimate near the riser head",
+      "status": "OPEN",
+      "classification_hint": "SOURCE_CLAIM_DEFINITION_AMBIGUITY",
+      "observation": "From the Figure 11 labels (linear: +27.20/-22.45, nonlinear: +26.24/-31.40 dN/mm²), the peak absolute stress is 13.4% lower in the linear analysis (nonlinear exceeds linear by 15.4%). Per envelope, the linear analysis is 28.5% lower on the minimum envelope and 3.7% higher on the maximum envelope.",
+      "engineering_interpretation": "The '~15%' statement is reproduced only when read as the peak absolute bending stress near the head; it does not hold per envelope. The maximum-envelope label attribution is less certain (overlapping spikes); the alternative attribution gives 16.4%/19.7%. The underlying stresses are not recomputed.",
+      "metrics": {
+        "max_envelope_linear_vs_nonlinear_percent": 3.658537,
+        "min_envelope_linear_vs_nonlinear_percent": -28.503185,
+        "peak_abs_linear_dN_per_mm2": 27.2,
+        "peak_abs_nonlinear_dN_per_mm2": 31.4,
+        "peak_abs_underestimate_relative_to_nonlinear_percent": 13.375796,
+        "peak_abs_nonlinear_excess_relative_to_linear_percent": 15.441176,
+        "range_underestimate_relative_to_nonlinear_percent": 13.861901
+      },
+      "automation": {
+        "independent_support": "LABEL_ARITHMETIC_WITH_ATTRIBUTION_ALTERNATIVE",
+        "promotion_effect": "BLOCK_PROMOTION"
+      },
+      "closure_requirements": [
+        "Preserve the printed labels and the claim.",
+        "Resolve only with the original analysis output or an author statement of the metric."
+      ]
+    }
+  ],
+  "limitations": [
+    "The nonlinear dynamic riser responses of Figures 4-9 and 11 are not reproduced (P45-C009 BLOCKED): theta, beta, lambda of Eq. (7), the iteration tolerance and limit of Appendix 3, the structural damping, the element discretisation of cases 1-6, and the float coverage/mass of the 1200 m example are not given; the 1200 m tension unit is missing (P45-D003).",
+    "No SOLVER_NEW evidence is produced. The only integrator is an INDEPENDENT single-degree-of-freedom reconstruction whose t+tau -> t+dt step is not in the source.",
+    "Only the head-end tips of Figures 4(a)-9(a) are digitized; Figures 4(b)-9(b) and 10 are source-reviewed only. Figure 11 is used through its printed labels.",
+    "Figure 11 maximum-envelope label attribution is a visual reading with MEDIUM confidence.",
+    "The comparison programs of Figures 4-9 are identified only as 'eight other programs' (API Bulletin 2J, 1977); agreement between RISER and those envelopes is published evidence, not independent validation.",
+    "Source PDF and page images are external to the repository; the SHA-256 and page locators are retained."
+  ],
+  "next_actions": [
+    "Human review of P45-D001 to D006 wording and classifications.",
+    "Optional Phase 2 only if source-ready: API Bulletin 2J (1977) case data would allow closing D002/D005 and a bounded linear-structure benchmark of cases 1-2.",
+    "Paper A readiness review with P40-P45."
+  ],
+  "qualification": "NOT_GRANTED",
+  "ingestion_record": "engiproof/intake/P45/ingestion.json",
+  "target_review": {
+    "automated_readiness": "PARTIAL (4/16 selected candidates READY: Tables 1-3 and Equation (7)); figure captions and appendices not located in the OCR layer of the 1983 scan",
+    "manual_review": "All selected targets reviewed on the 300 dpi page images (not the OCR text). Values transcribed in papers/P45/reference/*.json with page locators.",
+    "automation_gaps_observed": [
+      "Equation (11) not discovered as a candidate",
+      "sub-figures 4(a), 6(a), 7(a), 8(a) not separated by OCR",
+      "Appendix 1/2 absent from structure candidates"
+    ]
+  },
+  "verification_tolerance": {
+    "purpose": "cross-platform recomputation equivalence",
+    "rel": 1e-09,
+    "abs": 1e-12,
+    "statement": "Recomputation-equivalence tolerance only. The study-wide default (rel 1e-9, abs 1e-12) is unchanged. One path-scoped entry covers the independent beam-column FE check. It is NOT an engineering acceptance or validation tolerance and does not relax any comparison with the published source.",
+    "path_tolerances": [
+      {
+        "path_prefix": ".appendix1_checks.independent_fe_comparison",
+        "rel": 1e-06,
+        "abs": 1e-07,
+        "artifacts": [
+          "papers/P45/results/phase1_summary.json"
+        ],
+        "rationale": "The independent FE solve of Appendix 1 (numpy.linalg on a fine mesh) differs across NumPy/BLAS builds and operating systems. Measured in CI on 27 September 2026 (Linux Python 3.10-3.13 with NumPy 2.2.6-2.5.3, Windows Python 3.10/3.13, macOS arm64 Python 3.13): FE stiffness and reaction values change by <= 2.9e-7 absolute (<= 5e-8 relative), and the FE-vs-Appendix-1 residual max_relative_difference (1.6e-8 to 3.2e-8) changes by <= 1e-8 absolute. The engineering statement is the boolean appendix1_matches_independent_fe (every residual < 1e-6), which is compared exactly and stays material if it flips."
+      }
+    ]
+  }
+}

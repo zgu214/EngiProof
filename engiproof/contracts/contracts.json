@@ -1,7 +1,7 @@
 {
   "schema_version": "engiproof.contracts/1.0",
   "framework": "EngiProof",
-  "framework_version": "0.1.1.dev0",
+  "framework_version": "0.2.0.dev3",
   "evidence_classes": [
     "PUBLISHED",
     "INDEPENDENT",
@@ -82,7 +82,242 @@
         "source_check",
         "contract_check"
       ],
-      "rule": "Computational verification is not engineering qualification."
+      "rule": "Computational verification is not engineering qualification.",
+      "reproduction": {
+        "schema": "engiproof.frozen_comparison/1.1",
+        "classes": [
+          "IDENTICAL",
+          "BYTE_ONLY",
+          "ENVIRONMENT_METADATA",
+          "NUMERICAL_NONMATERIAL",
+          "NUMERICAL_MATERIAL",
+          "MATERIAL_NON_NUMERIC"
+        ],
+        "material": [
+          "NUMERICAL_MATERIAL",
+          "MATERIAL_NON_NUMERIC"
+        ],
+        "default_tolerance": {
+          "rel": 1e-09,
+          "abs": 1e-12
+        },
+        "study_override": "verification_tolerance {rel, abs, purpose, statement, rationale, rounding_guards, path_tolerances[{path_prefix, rel, abs, artifacts, rationale}]}",
+        "provenance_hash_rule": "A SHA-256 field in a regenerated artifact that identifies another regenerated artifact of the same study (frozen hash = frozen file, regenerated hash = regenerated file) inherits that artifact's classification; any other hash change is MATERIAL_NON_NUMERIC unless it is a line-ending rendering of the same file."
+      },
+      "non_mutation_rule": "Verification must not mutate the evidence being verified. Recompute in isolation and compare with frozen evidence; regeneration is a separate explicit operation.",
+      "tolerance_rule": "Verification tolerances define recomputation equivalence only; they are not engineering acceptance or validation tolerances."
+    },
+    "ingestion": {
+      "schema": "engiproof.ingestion/1.0",
+      "required": [
+        "paper_id",
+        "source_fingerprint",
+        "target_candidates",
+        "status"
+      ],
+      "rule": "Ingestion discovers candidates only; no candidate becomes engineering evidence without review and reproduction."
+    },
+    "source_fingerprint": {
+      "schema": "engiproof.source_fingerprint/1.0",
+      "required": [
+        "canonical_filename",
+        "sha256",
+        "size_bytes",
+        "mime_type"
+      ],
+      "rule": "Persist basename/hash/metadata only; never persist machine-specific absolute source paths."
+    },
+    "target_candidates": {
+      "schema": "engiproof.target_candidates/1.0",
+      "required": [
+        "candidate_count",
+        "review_required",
+        "candidates"
+      ],
+      "rule": "Lexical figure/table/equation discovery is a review queue, not evidence."
+    },
+    "promotion_gate": {
+      "schema": "engiproof.promotion_gate/1.0",
+      "required": [
+        "paper_id",
+        "ready",
+        "issues"
+      ],
+      "rule": "A study cannot enter the live registry while DRAFT/BLOCKED or without targets, results, tests and callable tools."
+    },
+    "source_map": {
+      "schema": "engiproof.source_map/1.0",
+      "required": [
+        "paper_id",
+        "source_filename",
+        "source_sha256",
+        "page_count",
+        "pages",
+        "raw_text_persisted"
+      ],
+      "rule": "Persist page-level hashes/counts and bounded target excerpts only; never persist full extracted source text by default."
+    },
+    "target_dossiers": {
+      "schema": "engiproof.target_dossiers/1.0",
+      "required": [
+        "paper_id",
+        "source_sha256",
+        "dossier_count",
+        "located_count",
+        "dossiers"
+      ],
+      "rule": "Target dossiers are source-location aids. Automated excerpts/symbol/unit candidates require review before evidence promotion."
+    },
+    "reproduction_tasks": {
+      "schema": "engiproof.reproduction_tasks/1.0",
+      "required": [
+        "paper_id",
+        "status",
+        "task_count",
+        "tasks",
+        "global_gates"
+      ],
+      "rule": "Generated tasks are plans, not completed reproduction or verification evidence."
+    },
+    "structure_candidates": {
+      "schema": "engiproof.structure_candidates/1.0",
+      "required": [
+        "paper_id",
+        "source_sha256",
+        "equations",
+        "tables",
+        "figures",
+        "definitions",
+        "review_required"
+      ],
+      "rule": "Structure extraction is heuristic review material; extracted blocks/rows/captions do not become engineering evidence automatically."
+    },
+    "comparison_templates": {
+      "schema": "engiproof.comparison_templates/1.0",
+      "required": [
+        "paper_id",
+        "template_count",
+        "templates",
+        "status"
+      ],
+      "rule": "Comparison templates specify candidate metrics only; metrics require source-backed reproduced/reference populations before evaluation."
+    },
+    "discrepancy_assessment": {
+      "schema": "engiproof.discrepancy_assessment/1.0",
+      "required": [
+        "discrepancy_id",
+        "state",
+        "category",
+        "review_priority",
+        "promotion_effect",
+        "closure_requirements"
+      ],
+      "rule": "Classification controls review/escalation workflow only; it cannot decide physical acceptability or engineering qualification."
+    },
+    "discrepancy_gate": {
+      "schema": "engiproof.discrepancy_gate/1.0",
+      "required": [
+        "paper_id",
+        "ready",
+        "blocking_discrepancy_ids",
+        "assessments"
+      ],
+      "rule": "Unresolved high-priority evidence conflicts block new-study promotion until resolved, bounded, or explicitly accepted by documented decision."
+    },
+    "discrepancy_taxonomy": {
+      "schema": "engiproof.discrepancy_taxonomy/1.0",
+      "rule": "A taxonomy label describes the kind of discrepancy and where it was established. It never changes an observation, value, status, decision or qualification, and it does not state a cause.",
+      "decision_order": [
+        "MODEL_VS_EXPERIMENT_GAP",
+        "MODEL_FORM_DIFFERENCE",
+        "MISSING_OR_INSUFFICIENT_SOURCE_INFORMATION",
+        "UNIT_OR_DIMENSION",
+        "QUANTITY_DEFINITION_OR_CONVENTION",
+        "NOTATION_OR_TYPOGRAPHY",
+        "PRECISION_OR_DIGITIZATION_RESIDUAL",
+        "NUMERICAL_VALUE_CONFLICT",
+        "PHYSICAL_IMPLAUSIBILITY"
+      ],
+      "decision_order_rule": "Apply the categories in decision_order; the first whose decision_rule holds is the category. Exactly one category per discrepancy.",
+      "categories": {
+        "MODEL_VS_EXPERIMENT_GAP": {
+          "definition": "A model prediction (published or reproduced) differs from measured experimental data reported in the source.",
+          "decision_rule": "Use when one side of the comparison is a physical measurement. Takes precedence over all other categories.",
+          "not_this_when": "Both sides are calculations or printed values."
+        },
+        "MODEL_FORM_DIFFERENCE": {
+          "definition": "Two models, each implemented as published, give different results because of their stated assumptions, kinematics or idealisations.",
+          "decision_rule": "Use when both models are reproduced or taken as published and the difference is attributable to the stated model form, not to a printed value.",
+          "not_this_when": "One side is a printed value that the other side contradicts; use NUMERICAL_VALUE_CONFLICT."
+        },
+        "MISSING_OR_INSUFFICIENT_SOURCE_INFORMATION": {
+          "definition": "The printed equations, parameters or load-case statements are insufficient to determine a published result uniquely, so a source-bounded implementation cannot reconcile with it.",
+          "decision_rule": "Use when the conflict disappears only by supplying information the source does not give. Do not supply it.",
+          "not_this_when": "The missing item is only a unit (UNIT_OR_DIMENSION) or a quantity definition (QUANTITY_DEFINITION_OR_CONVENTION)."
+        },
+        "UNIT_OR_DIMENSION": {
+          "definition": "A unit is missing, conflicts between source statements, or makes a stated value dimensionally or physically untenable, while the magnitudes are otherwise consistent under one unit reading.",
+          "decision_rule": "Use when the conflict is resolved by the choice of unit alone. Takes precedence over NUMERICAL_VALUE_CONFLICT.",
+          "not_this_when": "The digits themselves disagree under any unit reading."
+        },
+        "QUANTITY_DEFINITION_OR_CONVENTION": {
+          "definition": "The definition, sign, normalisation, amplitude or reference convention of a quantity (or of a quantitative claim) is ambiguous or used inconsistently; the numbers reconcile under one reading only.",
+          "decision_rule": "Use when the printed numbers are reproduced under one stated reading and contradicted under another.",
+          "not_this_when": "No reading reconciles the numbers."
+        },
+        "NOTATION_OR_TYPOGRAPHY": {
+          "definition": "A printed symbol, operator or equation text contradicts the surrounding text or neighbouring equations, without a conflicting numerical value.",
+          "decision_rule": "Use when the contradiction is in notation only. No cause (typesetting, author error) is asserted.",
+          "not_this_when": "A numerical value is affected; use NUMERICAL_VALUE_CONFLICT."
+        },
+        "PRECISION_OR_DIGITIZATION_RESIDUAL": {
+          "definition": "A difference between a published value and a reproduction that lies within, or is attributable to, the published rounding precision or the uncertainty of graphical digitization.",
+          "decision_rule": "Use when the difference does not exceed the recorded rounding band or digitization uncertainty. Usually BOUNDED.",
+          "not_this_when": "The difference exceeds the recorded band; use NUMERICAL_VALUE_CONFLICT."
+        },
+        "NUMERICAL_VALUE_CONFLICT": {
+          "definition": "A printed numerical value disagrees, beyond its stated precision, with another source statement of the same quantity or with a source-bounded reproduction or independent check of it.",
+          "decision_rule": "Use when the same quantity has two incompatible values (printed vs printed, or printed vs recomputed).",
+          "not_this_when": "No other value of the same quantity exists and the conflict is only with physics; use PHYSICAL_IMPLAUSIBILITY."
+        },
+        "PHYSICAL_IMPLAUSIBILITY": {
+          "definition": "A printed value or trend is contradicted by basic mechanics applied to other source data, while no other source statement gives a conflicting value of the same quantity.",
+          "decision_rule": "Use when the conflict is established only through physical bounds (equilibrium, buoyancy, material strength, weight support).",
+          "not_this_when": "Another printed or recomputed value of the same quantity exists; use NUMERICAL_VALUE_CONFLICT."
+        }
+      },
+      "loci": {
+        "WITHIN_SOURCE": "Two or more statements of the source (paragraph, table, figure axis, caption, equation) disagree with each other.",
+        "SOURCE_INCOMPLETE": "A single source statement lacks information needed to interpret or reproduce it (e.g. a missing unit or parameter).",
+        "SOURCE_VS_REPRODUCTION": "A published value differs from EngiProof's PUBLISHED-class implementation of the source's own method.",
+        "SOURCE_VS_INDEPENDENT": "A published value differs from an INDEPENDENT-class check (different formulation, numerical method or measurement).",
+        "SOURCE_VS_PHYSICAL_BOUNDS": "The conflict is established by basic mechanics applied to other source data.",
+        "MODEL_VS_MODEL": "Two models, each as published, are compared.",
+        "MODEL_VS_EXPERIMENT": "A model is compared with measured data."
+      },
+      "loci_rule": "List every locus through which the discrepancy was established (one or more).",
+      "legacy_classification_hints": [
+        "PUBLISHED_REFERENCE_MISMATCH",
+        "MODEL_FORM_KINEMATICS_DIFFERENCE",
+        "SOURCE_IMPLEMENTATION_PROVENANCE_GAP",
+        "SOURCE_FIGURE_TEXT_MISMATCH",
+        "SOURCE_INTERNAL_INCONSISTENCY",
+        "SOURCE_MAGNITUDE_IMPLAUSIBILITY",
+        "SOURCE_UNIT_AMBIGUITY",
+        "SOURCE_EQUATION_TEXT_MISMATCH",
+        "SOURCE_CONVENTION_AMBIGUITY",
+        "SOURCE_CLAIM_DEFINITION_AMBIGUITY",
+        "MODEL_VS_EXPERIMENT_GAP",
+        "BOUNDED_PRECISION_OR_DIGITIZATION",
+        "UNRESOLVED_EVIDENCE_CONFLICT",
+        "OBSERVED_DIFFERENCE"
+      ],
+      "legacy_rule": "Existing free-text classification_hint values are retained unchanged and are not mapped automatically. New discrepancies must use a taxonomy category or a listed legacy hint. Mapping legacy records to the taxonomy requires human review (engiproof/contracts/discrepancy_taxonomy_mapping.json).",
+      "review_statuses": [
+        "PROPOSED",
+        "APPROVED",
+        "REJECTED"
+      ]
     }
   }
 }

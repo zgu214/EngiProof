@@ -1,0 +1,81 @@
+{
+  "P43_D001_probe": {
+    "classification": "PUBLISHED_REFERENCE_MISMATCH",
+    "source_cell": {
+      "alpha": 0.0,
+      "beta": 200.0,
+      "mode": 5,
+      "printed_lambda": 13.221
+    },
+    "independent_FE_lambda": 18.22106367956287,
+    "eq10_lambda": 18.221061552876808,
+    "published_table2_error_percent": 0.0,
+    "observation": "Table 1 visibly prints lambda5=13.221 at alpha=0, beta=200. Independent Eq.8 FE and Eq.10 both give approximately 18.221, while Table 2 reports zero approximation error for alpha=0. This is retained as a source-internal numerical mismatch.",
+    "source_correction_inferred_not_applied": "18.221 is a strongly supported inferred intended value, but the source record remains 13.221 unless an erratum/author source confirms the correction."
+  },
+  "P43_D002_probe": {
+    "classification": "PUBLISHED_REFERENCE_MISMATCH",
+    "source_cell": {
+      "alpha": 200.0,
+      "beta": 100.0,
+      "mode": 1,
+      "printed_lambda": 6.554
+    },
+    "independent_FE_lambda": 6.653720250048107,
+    "eq10_lambda": 6.746248310624977,
+    "published_table2_error_percent": 1.39,
+    "observation": "Table 1 visibly prints lambda1=6.554 at alpha=200, beta=100. Independent Eq.8 FE gives approximately 6.654, and using 6.654 makes the Eq.10 error approximately 1.39%, matching Table 2. The printed 6.554 is retained as source evidence.",
+    "source_correction_inferred_not_applied": "6.654 is a strongly supported inferred intended value, but EngiProof does not replace the printed 6.554 without authoritative confirmation."
+  },
+  "evidence_boundary": "Full Table 1/2 transcription is PUBLISHED source evidence. The Hermite-FE matrix and mode shapes are INDEPENDENT. Figures 4-6 are reconstructed from source table mechanics / independent equations without redistributing or digitizing publisher raster curves.",
+  "qualification": "NOT_GRANTED",
+  "table1_full_matrix": {
+    "row_count": 35,
+    "scalar_comparisons": 175,
+    "max_abs_FE_relative_difference_percent_excluding_source_mismatches": 0.012965012743455535,
+    "max_abs_FE_difference_excluding_source_mismatches": 0.000498024613985848,
+    "max_abs_Table2_error_difference_percentage_points_using_independent_FE": 0.010381685152742737
+  },
+  "figures4_5_parameter_families": {
+    "status": "REPRODUCED_FROM_TABLE_AND_INDEPENDENT_FE",
+    "curve_digitized": false
+  },
+  "figure6_first_three_modes": {
+    "status": "INDEPENDENT_MODE_SHAPES",
+    "summary": [
+      {
+        "mode": 1,
+        "independent_lambda": 6.8160417157962065,
+        "inflection_zeta": [
+          0.9094946488605056
+        ],
+        "distance_below_top": [
+          0.09050535113949443
+        ]
+      },
+      {
+        "mode": 2,
+        "independent_lambda": 10.006413452714659,
+        "inflection_zeta": [
+          0.43412114087667114
+        ],
+        "distance_below_top": [
+          0.5658788591233288
+        ]
+      },
+      {
+        "mode": 3,
+        "independent_lambda": 12.851387464633962,
+        "inflection_zeta": [
+          0.2967726465054291,
+          0.6276644718648959
+        ],
+        "distance_below_top": [
+          0.7032273534945709,
+          0.37233552813510407
+        ]
+      }
+    ],
+    "curve_digitized": false
+  }
+}

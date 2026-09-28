@@ -1,0 +1,11 @@
+{
+  "schema_version": "engiproof.p44.figure_review/1.0",
+  "source": "P44 Figures 7\u20139 and accompanying text, printed pages 535\u2013536",
+  "observations": [
+    "Positive contact force denotes contact on the right side and negative force denotes contact on the left.",
+    "For the example, the maximum contact force occurs in the flexible-joint region and is stated to be almost twice the maximum force inside the well.",
+    "Figure 9 is described as sinusoidal-like but low-resolution because only ten time points were used.",
+    "The source states that drillstring stiffness contributes less than 3% of the original contact force inside the well in the gravity-removal check."
+  ],
+  "curve_digitized": false
+}

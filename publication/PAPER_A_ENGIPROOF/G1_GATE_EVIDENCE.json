@@ -1,0 +1,279 @@
+{
+  "schema_version": "engiproof.g1_gate_evidence/1.0",
+  "recorded_on": "2026-09-28",
+  "reviewer": "Zhiqiang Gu",
+  "decision_files": [
+    "engiproof/studies/P16/discrepancy_decisions.json",
+    "engiproof/studies/P36/discrepancy_decisions.json",
+    "engiproof/studies/P41/discrepancy_decisions.json",
+    "engiproof/studies/P43/discrepancy_decisions.json",
+    "engiproof/studies/P44/discrepancy_decisions.json",
+    "engiproof/studies/P45/discrepancy_decisions.json"
+  ],
+  "rule": "Before/after gate state around the owner-approved G1 decisions. Decisions never change a discrepancy record, an evidence value or qualification (NOT_GRANTED).",
+  "note": "Promotion-gate items 'source identity not audited' / 'selected-target readiness not assessed' for P41/P43 reflect intakes absent from the recording environment and are independent of the decisions.",
+  "before": {
+    "P16": {
+      "discrepancy_gate": {
+        "ready": true,
+        "blocking": [],
+        "review_required": [],
+        "decision_count": 0
+      },
+      "promotion_gate": {
+        "ready": true,
+        "issues": []
+      }
+    },
+    "P36": {
+      "discrepancy_gate": {
+        "ready": true,
+        "blocking": [],
+        "review_required": [],
+        "decision_count": 0
+      },
+      "promotion_gate": {
+        "ready": true,
+        "issues": []
+      }
+    },
+    "P41": {
+      "discrepancy_gate": {
+        "ready": false,
+        "blocking": [
+          "P41-D001",
+          "P41-D002"
+        ],
+        "review_required": [],
+        "decision_count": 0
+      },
+      "promotion_gate": {
+        "ready": false,
+        "issues": [
+          "source identity not audited",
+          "selected-target readiness not assessed",
+          "unresolved discrepancy blocks promotion: P41-D001",
+          "unresolved discrepancy blocks promotion: P41-D002"
+        ]
+      }
+    },
+    "P43": {
+      "discrepancy_gate": {
+        "ready": false,
+        "blocking": [
+          "P43-D001",
+          "P43-D002"
+        ],
+        "review_required": [],
+        "decision_count": 0
+      },
+      "promotion_gate": {
+        "ready": false,
+        "issues": [
+          "source identity not audited",
+          "selected-target readiness not assessed",
+          "unresolved discrepancy blocks promotion: P43-D001",
+          "unresolved discrepancy blocks promotion: P43-D002"
+        ]
+      }
+    },
+    "P44": {
+      "discrepancy_gate": {
+        "ready": false,
+        "blocking": [
+          "P44-D001"
+        ],
+        "review_required": [],
+        "decision_count": 0
+      },
+      "promotion_gate": {
+        "ready": false,
+        "issues": [
+          "unresolved discrepancy blocks promotion: P44-D001"
+        ]
+      }
+    },
+    "P45": {
+      "discrepancy_gate": {
+        "ready": false,
+        "blocking": [
+          "P45-D001",
+          "P45-D002",
+          "P45-D003",
+          "P45-D004",
+          "P45-D005",
+          "P45-D006"
+        ],
+        "review_required": [],
+        "decision_count": 0
+      },
+      "promotion_gate": {
+        "ready": false,
+        "issues": [
+          "selected-target readiness is PARTIAL",
+          "unresolved discrepancy blocks promotion: P45-D001",
+          "unresolved discrepancy blocks promotion: P45-D002",
+          "unresolved discrepancy blocks promotion: P45-D003",
+          "unresolved discrepancy blocks promotion: P45-D004",
+          "unresolved discrepancy blocks promotion: P45-D005",
+          "unresolved discrepancy blocks promotion: P45-D006"
+        ]
+      }
+    }
+  },
+  "after": {
+    "P16": {
+      "discrepancy_gate": {
+        "ready": true,
+        "blocking": [],
+        "review_required": [],
+        "decision_count": 1
+      },
+      "promotion_gate": {
+        "ready": true,
+        "issues": []
+      }
+    },
+    "P36": {
+      "discrepancy_gate": {
+        "ready": true,
+        "blocking": [],
+        "review_required": [],
+        "decision_count": 1
+      },
+      "promotion_gate": {
+        "ready": true,
+        "issues": []
+      }
+    },
+    "P41": {
+      "discrepancy_gate": {
+        "ready": false,
+        "blocking": [
+          "P41-D001"
+        ],
+        "review_required": [],
+        "decision_count": 1
+      },
+      "promotion_gate": {
+        "ready": false,
+        "issues": [
+          "source identity not audited",
+          "selected-target readiness not assessed",
+          "unresolved discrepancy blocks promotion: P41-D001"
+        ]
+      }
+    },
+    "P43": {
+      "discrepancy_gate": {
+        "ready": false,
+        "blocking": [
+          "P43-D001",
+          "P43-D002"
+        ],
+        "review_required": [],
+        "decision_count": 2
+      },
+      "promotion_gate": {
+        "ready": false,
+        "issues": [
+          "source identity not audited",
+          "selected-target readiness not assessed",
+          "unresolved discrepancy blocks promotion: P43-D001",
+          "unresolved discrepancy blocks promotion: P43-D002"
+        ]
+      }
+    },
+    "P44": {
+      "discrepancy_gate": {
+        "ready": false,
+        "blocking": [
+          "P44-D001"
+        ],
+        "review_required": [],
+        "decision_count": 1
+      },
+      "promotion_gate": {
+        "ready": false,
+        "issues": [
+          "unresolved discrepancy blocks promotion: P44-D001"
+        ]
+      }
+    },
+    "P45": {
+      "discrepancy_gate": {
+        "ready": false,
+        "blocking": [
+          "P45-D001",
+          "P45-D002",
+          "P45-D003",
+          "P45-D005",
+          "P45-D006"
+        ],
+        "review_required": [],
+        "decision_count": 1
+      },
+      "promotion_gate": {
+        "ready": false,
+        "issues": [
+          "selected-target readiness is PARTIAL",
+          "unresolved discrepancy blocks promotion: P45-D001",
+          "unresolved discrepancy blocks promotion: P45-D002",
+          "unresolved discrepancy blocks promotion: P45-D003",
+          "unresolved discrepancy blocks promotion: P45-D005",
+          "unresolved discrepancy blocks promotion: P45-D006"
+        ]
+      }
+    }
+  },
+  "graph": {
+    "P16": {
+      "sync_added_nodes": 2,
+      "sync_added_edges": 6,
+      "audit_status": "PASS",
+      "coverage": 1.0,
+      "nodes": 8,
+      "edges": 12
+    },
+    "P36": {
+      "sync_added_nodes": 2,
+      "sync_added_edges": 6,
+      "audit_status": "PASS",
+      "coverage": 1.0,
+      "nodes": 8,
+      "edges": 12
+    },
+    "P41": {
+      "sync_added_nodes": 1,
+      "sync_added_edges": 2,
+      "audit_status": "PASS",
+      "coverage": 1.0,
+      "nodes": 20,
+      "edges": 26
+    },
+    "P43": {
+      "sync_added_nodes": 2,
+      "sync_added_edges": 4,
+      "audit_status": "PASS",
+      "coverage": 1.0,
+      "nodes": 22,
+      "edges": 23
+    },
+    "P44": {
+      "sync_added_nodes": 1,
+      "sync_added_edges": 2,
+      "audit_status": "PASS",
+      "coverage": 1.0,
+      "nodes": 16,
+      "edges": 16
+    },
+    "P45": {
+      "sync_added_nodes": 1,
+      "sync_added_edges": 2,
+      "audit_status": "PASS",
+      "coverage": 1.0,
+      "nodes": 40,
+      "edges": 40
+    }
+  }
+}

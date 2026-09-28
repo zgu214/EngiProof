@@ -1,0 +1,164 @@
+{
+  "axisymmetric_equations_24_26": {
+    "status": "REPRODUCED_EQUILIBRIUM_CHAIN",
+    "cases": [
+      {
+        "Fz_kN": 50,
+        "axial_strain": 4.5668843590366856e-05,
+        "twist_rate_deg_per_m": 0.001538061316171208,
+        "sigma_inner_MPa": 8.173430716785736,
+        "sigma_outer_MPa": 7.589869732588289,
+        "force_residual_N": 0.0,
+        "torque_residual_Nm": 2.2737367544323206e-13,
+        "literal_contact_inner": {
+          "p_i_MPa": 0.11007311879477358,
+          "p_o_MPa": 0.1021093683150801
+        },
+        "literal_contact_outer": {
+          "p_i_MPa": 0.051102227374029446,
+          "p_o_MPa": 0.04750463476846577
+        }
+      },
+      {
+        "Fz_kN": 100,
+        "axial_strain": 9.133768718073371e-05,
+        "twist_rate_deg_per_m": 0.003076122632342416,
+        "sigma_inner_MPa": 16.346861433571473,
+        "sigma_outer_MPa": 15.179739465176578,
+        "force_residual_N": 0.0,
+        "torque_residual_Nm": 4.547473508864641e-13,
+        "literal_contact_inner": {
+          "p_i_MPa": 0.22014623758954716,
+          "p_o_MPa": 0.2042187366301602
+        },
+        "literal_contact_outer": {
+          "p_i_MPa": 0.10220445474805889,
+          "p_o_MPa": 0.09500926953693153
+        }
+      },
+      {
+        "Fz_kN": 500,
+        "axial_strain": 0.0004566884359036686,
+        "twist_rate_deg_per_m": 0.01538061316171208,
+        "sigma_inner_MPa": 81.73430716785737,
+        "sigma_outer_MPa": 75.89869732588289,
+        "force_residual_N": 0.0,
+        "torque_residual_Nm": 1.8189894035458565e-12,
+        "literal_contact_inner": {
+          "p_i_MPa": 1.1007311879477357,
+          "p_o_MPa": 1.021093683150801
+        },
+        "literal_contact_outer": {
+          "p_i_MPa": 0.5110222737402944,
+          "p_o_MPa": 0.47504634768465764
+        }
+      },
+      {
+        "Fz_kN": 1000,
+        "axial_strain": 0.0009133768718073372,
+        "twist_rate_deg_per_m": 0.03076122632342416,
+        "sigma_inner_MPa": 163.46861433571473,
+        "sigma_outer_MPa": 151.79739465176579,
+        "force_residual_N": 0.0,
+        "torque_residual_Nm": 3.637978807091713e-12,
+        "literal_contact_inner": {
+          "p_i_MPa": 2.2014623758954714,
+          "p_o_MPa": 2.042187366301602
+        },
+        "literal_contact_outer": {
+          "p_i_MPa": 1.0220445474805888,
+          "p_o_MPa": 0.9500926953693153
+        }
+      },
+      {
+        "Fz_kN": 1500,
+        "axial_strain": 0.0013700653077110057,
+        "twist_rate_deg_per_m": 0.04614183948513624,
+        "sigma_inner_MPa": 245.20292150357207,
+        "sigma_outer_MPa": 227.69609197764868,
+        "force_residual_N": 0.0,
+        "torque_residual_Nm": 7.275957614183426e-12,
+        "literal_contact_inner": {
+          "p_i_MPa": 3.3021935638432076,
+          "p_o_MPa": 3.0632810494524034
+        },
+        "literal_contact_outer": {
+          "p_i_MPa": 1.5330668212208836,
+          "p_o_MPa": 1.4251390430539732
+        }
+      },
+      {
+        "Fz_kN": 2000,
+        "axial_strain": 0.0018267537436146744,
+        "twist_rate_deg_per_m": 0.06152245264684832,
+        "sigma_inner_MPa": 326.93722867142947,
+        "sigma_outer_MPa": 303.59478930353157,
+        "force_residual_N": 0.0,
+        "torque_residual_Nm": 7.275957614183426e-12,
+        "literal_contact_inner": {
+          "p_i_MPa": 4.402924751790943,
+          "p_o_MPa": 4.084374732603204
+        },
+        "literal_contact_outer": {
+          "p_i_MPa": 2.0440890949611776,
+          "p_o_MPa": 1.9001853907386306
+        }
+      },
+      {
+        "Fz_kN": 2500,
+        "axial_strain": 0.002283442179518343,
+        "twist_rate_deg_per_m": 0.0769030658085604,
+        "sigma_inner_MPa": 408.6715358392869,
+        "sigma_outer_MPa": 379.4934866294146,
+        "force_residual_N": 0.0,
+        "torque_residual_Nm": 0.0,
+        "literal_contact_inner": {
+          "p_i_MPa": 5.503655939738678,
+          "p_o_MPa": 5.105468415754006
+        },
+        "literal_contact_outer": {
+          "p_i_MPa": 2.555111368701473,
+          "p_o_MPa": 2.375231738423289
+        }
+      },
+      {
+        "Fz_kN": 3000,
+        "axial_strain": 0.0027401306154220114,
+        "twist_rate_deg_per_m": 0.09228367897027248,
+        "sigma_inner_MPa": 490.40584300714414,
+        "sigma_outer_MPa": 455.39218395529736,
+        "force_residual_N": 0.0,
+        "torque_residual_Nm": 1.4551915228366852e-11,
+        "literal_contact_inner": {
+          "p_i_MPa": 6.604387127686415,
+          "p_o_MPa": 6.126562098904807
+        },
+        "literal_contact_outer": {
+          "p_i_MPa": 3.066133642441767,
+          "p_o_MPa": 2.8502780861079464
+        }
+      }
+    ],
+    "source_comparison_note": "The calculated stress/strain/twist trends are linear in Fz and are consistent with the published Figures 12-14. No point digitization is used here."
+  },
+  "contact_equations_27_30": {
+    "status": "CONDITIONAL_IMPLEMENTATION_CONVENTION",
+    "boundary": {
+      "outer_nominal_pressures_Pa": 0.0,
+      "applied_torsion_Nm": 0.0,
+      "reason": "The paper states no internal/external pressure and no torsional moment for the comparison analyses. The zero-pressure recursion boundary is retained explicitly rather than hidden.",
+      "status": "EXPLICIT_IMPLEMENTATION_CONVENTION",
+      "warning": "The paper does not spell out enough implementation detail to demonstrate that this literal recursion/mapping is exactly the convention used to generate Figure 16."
+    },
+    "note": "The recursion is implemented literally with explicit zero outer nominal-pressure boundary. This convention is not silently promoted as the unique source implementation."
+  },
+  "evidence_boundary": "Eqs.24-26 are independently solved with exact force/torsion closure. Eqs.27-30 and Eq.41 are callable and exercised under an explicit boundary convention. Figure16 is not claimed reproduced because the source implementation convention does not close without additional provenance.",
+  "qualification": "NOT_GRANTED",
+  "equation41_figure16_probe": {
+    "status": "NOT_REPRODUCED_SOURCE_IMPLEMENTATION_GAP",
+    "literal_max_at_kappa_0p1_kNm": 85.51736781158758,
+    "source_plot_axis_max_kNm": 35.0,
+    "exceeds_source_plot_axis": true,
+    "interpretation": "The literal Eqs.27-30 boundary/mapping convention combined with Eq.41 does not close against the published Figure 16 scale at high tension. Inputs are not tuned. The gap is retained as an implementation/provenance ambiguity, not classified as a paper error."
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "engiproof.discrepancy_assessment/1.0",
+  "paper_id": "P40",
+  "evidence_status": "CONDITIONAL",
+  "discrepancy_count": 1,
+  "high_priority_count": 1,
+  "promotion_blocker_count": 1,
+  "assessments": [
+    {
+      "schema_version": "engiproof.discrepancy_assessment/1.0",
+      "discrepancy_id": "P40-D001",
+      "target": "PIP-3 Eq. (9) normalized ratio in Table 2",
+      "state": "OPEN",
+      "category": "PUBLISHED_REFERENCE_MISMATCH",
+      "review_priority": "HIGH",
+      "promotion_effect": "BLOCK_PROMOTION",
+      "basis": [
+        "explicit classification hint",
+        "structured rounding-band check",
+        "independent_support=CORROBORATES_REPRODUCTION",
+        "difference exceeds recorded rounding band and independent check corroborates reproduction"
+      ],
+      "metrics": {
+        "reference_value": 0.66,
+        "reproduced_value": 0.7056664056684557,
+        "absolute_difference": 0.0456664056684557,
+        "relative_difference_percent": 6.919152374008439,
+        "reference_decimals": 2,
+        "independent_value": 0.7053
+      },
+      "rounding_check": {
+        "reference_decimals": 2,
+        "half_unit_in_last_place": 0.005,
+        "absolute_difference": 0.0456664056684557,
+        "beyond_rounding_band": true
+      },
+      "independent_support": "CORROBORATES_REPRODUCTION",
+      "closure_requirements": [
+        "Confirm Table 1 and Table 2 source transcription against the fingerprinted original.",
+        "Confirm the printed Eq. (9) form and normalization.",
+        "Obtain an additional provenance explanation, erratum, or documented engineering acceptance of the unresolved published-reference mismatch.",
+        "Do not tune source inputs to force the Table 2 value."
+      ],
+      "engineering_interpretation": "The mismatch exceeds the two-decimal table rounding band. The independent Eq. (8a-d) work-balance reconstruction also gives approximately 0.7053, supporting the Eq. (9) calculation. The discrepancy is retained without tuning and requires source-author clarification or additional provenance before closure.",
+      "rule": "Automation classifies review/escalation state only; it does not decide engineering acceptability or qualification."
+    }
+  ],
+  "qualification": "NOT_GRANTED"
+}

@@ -1,0 +1,93 @@
+{
+  "comparisons": {
+    "BLOCKED": 1,
+    "COMPARED": 19,
+    "CONDITIONAL": 4,
+    "REPRODUCED": 14
+  },
+  "comparisons_total": 38,
+  "crossenv_environments": 6,
+  "crossenv_material": 0,
+  "crossenv_studies": [
+    12
+  ],
+  "decisions_by_disposition": {
+    "ACCEPTED_WITH_RATIONALE": 2,
+    "BOUNDED": 2,
+    "DEFERRED": 4
+  },
+  "decisions_total": 8,
+  "discrepancies_paper_a": 14,
+  "discrepancies_paper_a_by_status": {
+    "OBSERVED": 1,
+    "OPEN": 13
+  },
+  "discrepancies_repository": 19,
+  "evidence_status": [
+    "CONDITIONAL"
+  ],
+  "failure_ids_contiguous": true,
+  "failure_modes": 22,
+  "graph_coverage_all": [
+    1.0
+  ],
+  "graph_nodes_max": 40,
+  "graph_nodes_min": 11,
+  "graph_qualification_by_study": {
+    "P40": "NOT_GRANTED",
+    "P41": "NOT_GRANTED",
+    "P42": "NOT_GRANTED",
+    "P43": "NOT_GRANTED",
+    "P44": "NOT_GRANTED",
+    "P45": "NOT_GRANTED"
+  },
+  "manifests_without_qualification_field": [],
+  "qualification": [
+    "NOT_GRANTED"
+  ],
+  "qualification_by_study": {
+    "P40": "NOT_GRANTED",
+    "P41": "NOT_GRANTED",
+    "P42": "NOT_GRANTED",
+    "P43": "NOT_GRANTED",
+    "P44": "NOT_GRANTED",
+    "P45": "NOT_GRANTED"
+  },
+  "readiness": {
+    "P40": [
+      3,
+      3
+    ],
+    "P41": [
+      5,
+      5
+    ],
+    "P42": [
+      5,
+      5
+    ],
+    "P43": [
+      3,
+      5
+    ],
+    "P44": [
+      4,
+      7
+    ],
+    "P45": [
+      4,
+      16
+    ]
+  },
+  "result_files_without_qualification_field": [
+    "papers/P41/results/phase3_global_buckling_summary.json",
+    "papers/P42/results/phase1_summary.json",
+    "papers/P42/results/phase2_analytical_stress_summary.json"
+  ],
+  "result_qualification_values": [
+    "NOT_GRANTED"
+  ],
+  "taxonomy_approved": 19,
+  "taxonomy_categories": 9,
+  "taxonomy_loci": 7
+}

@@ -1,5 +1,5 @@
 {
-  "schema_version": "engiproof.evidence_graph/1.0",
+  "schema_version": "engiproof.evidence_graph/1.1",
   "paper_id": "P36",
   "qualification": "NOT_GRANTED",
   "nodes": [
@@ -40,7 +40,14 @@
       "evidence_class": "INDEPENDENT",
       "status": "COMPARED",
       "source_refs": [
-        "papers/P36/tool_api.py"
+        "papers/P36/tool_api.py",
+        "tool:equation8_ratio",
+        "P36 printed Eq. (8), A=0.431, B=1.023, exponent=1",
+        "tool:figure14_residual_summary",
+        "independent arithmetic audit against 27 extracted Figure 14 symbol centres"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
       ]
     },
     {
@@ -50,7 +57,11 @@
       "evidence_class": "INDEPENDENT",
       "status": "COMPARED",
       "source_refs": [
-        "P36-C001"
+        "P36-C001",
+        "27 PDF-vector symbol centres"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
       ]
     },
     {
@@ -61,6 +72,41 @@
       "status": "BOUNDED",
       "source_refs": [
         "P36-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P36-D001",
+      "kind": "discrepancy_assessment",
+      "label": "BOUNDED_PRECISION_OR_DIGITIZATION assessment for P36-D001",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P36-D001",
+        "assessment:P36-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DECISION-P36-D001-DEC-001",
+      "kind": "discrepancy_decision",
+      "label": "BOUNDED decision for P36-D001",
+      "evidence_class": "INDEPENDENT",
+      "status": "BOUNDED",
+      "source_refs": [
+        "P36-D001-DEC-001",
+        "P36-D001",
+        "papers/P36/results/figure14_comparison.csv",
+        "engiproof/studies/P36/study.json#P36-D001"
+      ],
+      "reviewer": "Zhiqiang Gu",
+      "qualification_effect": "NONE",
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
       ]
     }
   ],
@@ -94,6 +140,46 @@
       "from": "C-P36",
       "to": "D-P36",
       "relation": "bounds"
+    },
+    {
+      "from": "S-P36",
+      "to": "I-P36",
+      "relation": "supports_implementation"
+    },
+    {
+      "from": "S-P36",
+      "to": "C-P36",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "S-P36",
+      "to": "D-P36",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "D-P36",
+      "to": "AUTO-ASSESSMENT-P36-D001",
+      "relation": "classified_by"
+    },
+    {
+      "from": "D-P36",
+      "to": "AUTO-DECISION-P36-D001-DEC-001",
+      "relation": "reviewed_by"
+    },
+    {
+      "from": "AUTO-ASSESSMENT-P36-D001",
+      "to": "AUTO-DECISION-P36-D001-DEC-001",
+      "relation": "informs_decision"
     }
-  ]
+  ],
+  "sync": {
+    "schema_version": "engiproof.evidence_graph_sync/1.0",
+    "added_nodes": 2,
+    "added_edges": 6,
+    "tool_count": 2,
+    "comparison_count": 1,
+    "discrepancy_count": 1,
+    "decision_count": 1,
+    "rule": "Synchronization is additive: existing hand-authored nodes/edges are preserved and qualification is never promoted."
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "schema_version": "engiproof.evidence_graph/1.0",
+  "schema_version": "engiproof.evidence_graph/1.1",
   "paper_id": "P16",
   "qualification": "NOT_GRANTED",
   "nodes": [
@@ -40,7 +40,16 @@
       "evidence_class": "INDEPENDENT",
       "status": "COMPARED",
       "source_refs": [
-        "papers/P16/tool_api.py"
+        "papers/P16/tool_api.py",
+        "tool:table2_cumulative_displacement_mm",
+        "P16 printed Table 2 increments",
+        "tool:figure5_interpolated_displacement_mm",
+        "reviewed P16 Figure 5 vector-curve extraction",
+        "tool:figure5_table2_discrepancy_mm",
+        "independent arithmetic/linear-interpolation comparison of two published representations"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
       ]
     },
     {
@@ -50,7 +59,11 @@
       "evidence_class": "INDEPENDENT",
       "status": "COMPARED",
       "source_refs": [
-        "P16-C001"
+        "P16-C001",
+        "published vector-curve extraction and printed Table 2 increments"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
       ]
     },
     {
@@ -61,6 +74,41 @@
       "status": "BOUNDED",
       "source_refs": [
         "P16-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P16-D001",
+      "kind": "discrepancy_assessment",
+      "label": "BOUNDED_PRECISION_OR_DIGITIZATION assessment for P16-D001",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P16-D001",
+        "assessment:P16-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DECISION-P16-D001-DEC-001",
+      "kind": "discrepancy_decision",
+      "label": "BOUNDED decision for P16-D001",
+      "evidence_class": "INDEPENDENT",
+      "status": "BOUNDED",
+      "source_refs": [
+        "P16-D001-DEC-001",
+        "P16-D001",
+        "papers/P16/results/figure5_table2_comparison.csv",
+        "engiproof/studies/P16/study.json#P16-D001"
+      ],
+      "reviewer": "Zhiqiang Gu",
+      "qualification_effect": "NONE",
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
       ]
     }
   ],
@@ -94,6 +142,46 @@
       "from": "C-P16",
       "to": "D-P16",
       "relation": "bounds"
+    },
+    {
+      "from": "S-P16",
+      "to": "I-P16",
+      "relation": "supports_implementation"
+    },
+    {
+      "from": "S-P16",
+      "to": "C-P16",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "S-P16",
+      "to": "D-P16",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "D-P16",
+      "to": "AUTO-ASSESSMENT-P16-D001",
+      "relation": "classified_by"
+    },
+    {
+      "from": "D-P16",
+      "to": "AUTO-DECISION-P16-D001-DEC-001",
+      "relation": "reviewed_by"
+    },
+    {
+      "from": "AUTO-ASSESSMENT-P16-D001",
+      "to": "AUTO-DECISION-P16-D001-DEC-001",
+      "relation": "informs_decision"
     }
-  ]
+  ],
+  "sync": {
+    "schema_version": "engiproof.evidence_graph_sync/1.0",
+    "added_nodes": 2,
+    "added_edges": 6,
+    "tool_count": 3,
+    "comparison_count": 1,
+    "discrepancy_count": 1,
+    "decision_count": 1,
+    "rule": "Synchronization is additive: existing hand-authored nodes/edges are preserved and qualification is never promoted."
+  }
 }

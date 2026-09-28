@@ -1,0 +1,20 @@
+{
+  "schema_version": "engiproof.source_review/1.0",
+  "paper_id": "P40",
+  "review_date": "2026-09-26",
+  "title": "Propagation Buckling in Subsea Pipe-in-Pipe Systems",
+  "year": 2017,
+  "doi": "10.1061/(ASCE)EM.1943-7889.0001337",
+  "canonical_pdf": "p40-karampour2017.pdf",
+  "expected_local_sha256": "e83902ba46b8e713ddf2f11f5953bdf318ac539f6701ff303651e28d3d5e28bb",
+  "source_identity": "CONFIRMED",
+  "selected_targets": {
+    "Table 1": "SOURCE_TEXT_CONFIRMED",
+    "Table 2": "SOURCE_TEXT_CONFIRMED",
+    "Equation (9)": "SOURCE_TEXT_CONFIRMED"
+  },
+  "equation9_transcription": "Ptilde_p2 = [3*pi*sigma_Yo/2.515*(to/Do)^2] * [1 + (sigma_Yi/sigma_Yo)*(ti/to)^2] * [1/(1 - (Di/(2*Do))^2)]",
+  "source_statement": "The source states that Eq. (9) reduces to Eq. (6) for Di = ti = 0 and that Eq. (9) accounts for Di/Do in addition to ti/to and sigmaYi/sigmaYo.",
+  "table2_pip3_eq9_ratio": 0.66,
+  "review_boundary": "Accepted-manuscript source text and the fingerprinted local-source extraction agree on the selected numerical targets. The copyrighted PDF is not redistributed."
+}

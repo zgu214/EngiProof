@@ -1,0 +1,304 @@
+{
+  "schema_version": "engiproof.study/1.1",
+  "framework": "EngiProof",
+  "framework_version": "0.2.0.dev8",
+  "paper_id": "P43",
+  "title": "Natural Frequencies of Marine Drilling Risers",
+  "year": 1976,
+  "evidence_status": "CONDITIONAL",
+  "verification_tolerance": {
+    "purpose": "cross-platform recomputation equivalence",
+    "rel": 1e-06,
+    "abs": 1e-05,
+    "statement": "Recomputation-equivalence tolerance only. It decides whether a regenerated P43 artifact is the same evidence as the frozen artifact across Python/NumPy/BLAS builds. It is NOT an engineering acceptance or validation tolerance and does not relax any comparison with the published source.",
+    "rationale": "The independent Hermite-FE eigen-solution (numpy.linalg cholesky/eigh) differs across NumPy/BLAS builds. Measured against the frozen evidence under Python 3.10-3.13 with NumPy 2.2.6-2.5.3: eigenvalue changes <= 3.8e-8 absolute; largest change in any percentage column 1.2e-6 percentage points; no text, status or structure change (docs/MUTATION_INVENTORY_v0.2.0.md).",
+    "rounding_guards": [
+      {
+        "field": "independent_FE_lambda",
+        "decimals": 3,
+        "artifacts": [
+          "papers/P43/results/table1_full_matrix_comparison.csv",
+          "papers/P43/results/table1_alpha50_beta100_comparison.csv",
+          "papers/P43/results/phase1_eigen_benchmark_summary.json",
+          "papers/P43/results/phase2_full_matrix_summary.json"
+        ],
+        "rule": "Every recomputed eigenvalue compared with published Table 1 must keep the same 3-decimal rounded value (Table 1 printed precision)."
+      },
+      {
+        "field": "published_lambda",
+        "decimals": 3,
+        "artifacts": [
+          "papers/P43/results/table1_full_matrix_comparison.csv",
+          "papers/P43/results/table1_alpha50_beta100_comparison.csv",
+          "papers/P43/results/phase1_eigen_benchmark_summary.json"
+        ],
+        "rule": "Published Table 1 eigenvalues must keep the same 3-decimal value."
+      }
+    ]
+  },
+  "category": "MARINE_RISER_NATURAL_FREQUENCY",
+  "source": {
+    "canonical_pdf": "p43-dareing1976.pdf",
+    "sha256": "4ab7c3b9a8377cc3d5a7f5eecb64712496aa825f969760e47ee17ccba03ffccf",
+    "doi": "10.2118/5620-PA",
+    "spe_paper_number": "SPE-5620-PA",
+    "identity_basis": "Journal of Petroleum Technology, July 1976. DOI and SPE paper number confirmed by the study owner from the publisher record on 2026-09-27. The earlier source contract recorded the SPE number as 5820 in error."
+  },
+  "selected_targets": [
+    "Table 1",
+    "Figure 6",
+    "Equation (10)",
+    "Equation (8)",
+    "Equation (9)"
+  ],
+  "runner": "papers/P43/run_calculation.py",
+  "source_contract": "papers/P43/SOURCE.md",
+  "evidence_graph": "engiproof/studies/P43/evidence_graph.json",
+  "result_files": [
+    "papers/P43/results/phase1_eigen_benchmark_summary.json",
+    "papers/P43/results/table1_alpha50_beta100_comparison.csv",
+    "papers/P43/results/figure6_mode1_independent.csv",
+    "papers/P43/results/engiproof_verification.json",
+    "papers/P43/results/phase2_full_matrix_summary.json",
+    "papers/P43/results/table1_full_matrix_comparison.csv",
+    "papers/P43/results/figures4_5_parameter_families.csv",
+    "papers/P43/results/figure6_first_three_modes_independent.csv"
+  ],
+  "verification_tests": [
+    "tests.test_p43_phase1"
+  ],
+  "tools": [
+    {
+      "name": "dimensionless_parameters",
+      "module": "papers/P43/tool_api.py",
+      "function": "dimensionless_parameters",
+      "arguments": {
+        "weight_lb_per_ft": "riser weight lb/ft",
+        "outer_area_ft2": "external displaced area ft^2",
+        "inner_area_ft2": "internal area ft^2",
+        "sea_water_weight_density_lb_per_ft3": "sea-water weight density lb/ft^3",
+        "mud_weight_density_lb_per_ft3": "mud weight density lb/ft^3",
+        "length_ft": "riser length ft",
+        "youngs_modulus_psi": "Young's modulus psi",
+        "second_moment_in4": "second moment in^4",
+        "bottom_pull_lb": "bottom ball-joint pull lb"
+      },
+      "returns": "P43 dimensionless alpha and beta",
+      "evidence": "P43 dimensionless definitions following Eq. (7)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "independent_eigenvalues",
+      "module": "papers/P43/tool_api.py",
+      "function": "independent_eigenvalues",
+      "arguments": {
+        "alpha": "dimensionless alpha",
+        "beta": "dimensionless beta",
+        "modes": "number of modes",
+        "elements": "Hermite elements"
+      },
+      "returns": "independent lambda_i values",
+      "evidence": "Independent weak-form solution of P43 Eq. (8)",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "equation10_lambda",
+      "module": "papers/P43/tool_api.py",
+      "function": "equation10_lambda",
+      "arguments": {
+        "mode": "mode index",
+        "alpha": "dimensionless alpha",
+        "beta": "dimensionless beta"
+      },
+      "returns": "Eq. (10) approximate lambda_i",
+      "evidence": "P43 Eq. (10)",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "natural_period_s",
+      "module": "papers/P43/tool_api.py",
+      "function": "natural_period_s",
+      "arguments": {
+        "lambda_value": "dimensionless lambda",
+        "youngs_modulus_psi": "Young's modulus psi",
+        "second_moment_in4": "second moment in^4",
+        "participating_mass_slug_per_ft": "participating mass slugs/ft",
+        "length_ft": "length ft"
+      },
+      "returns": "natural period seconds",
+      "evidence": "P43 lambda definition / worked example",
+      "evidence_class": "PUBLISHED"
+    },
+    {
+      "name": "phase1_eigen_benchmark_summary",
+      "module": "papers/P43/tool_api.py",
+      "function": "phase1_eigen_benchmark_summary",
+      "arguments": {},
+      "returns": "Table1/2, worked-example and Figure6 independent benchmark summary",
+      "evidence": "P43 Eqs.8-10, Tables1-2, Figure6, worked example",
+      "evidence_class": "INDEPENDENT"
+    },
+    {
+      "name": "phase2_full_matrix_summary",
+      "module": "papers/P43/tool_api.py",
+      "function": "phase2_full_matrix_summary",
+      "arguments": {},
+      "returns": "Full Table1/2 matrix, Figures4-6 independent reproduction and source-mismatch audit",
+      "evidence": "P43 Eq.8/Eq.10, Tables1-2, Figures4-6",
+      "evidence_class": "INDEPENDENT"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "P43-C001",
+      "target": "Worked-example dimensionless alpha/beta from printed source inputs",
+      "status": "COMPARED",
+      "reference": "P43 worked example / dimensionless definitions",
+      "metrics": {
+        "source_table_alpha": 50.0,
+        "source_table_beta": 100.0
+      }
+    },
+    {
+      "id": "P43-C002",
+      "target": "Independent Hermite-FE eigenvalues versus Table 1 at alpha=50, beta=100",
+      "status": "REPRODUCED",
+      "reference": "P43 Eq. (8), Table 1",
+      "metrics": {
+        "modes": 5,
+        "published_precision": "3 decimals"
+      }
+    },
+    {
+      "id": "P43-C003",
+      "target": "Eq. (10) approximate eigenvalue errors versus Table 2 at alpha=50, beta=100",
+      "status": "REPRODUCED",
+      "reference": "P43 Eq. (10), Table 2",
+      "metrics": {
+        "modes": 5
+      }
+    },
+    {
+      "id": "P43-C004",
+      "target": "Worked-example fundamental natural period",
+      "status": "REPRODUCED",
+      "reference": "P43 worked example",
+      "metrics": {
+        "published_exact_period_s": 7.71,
+        "published_approx_period_s": 7.68
+      }
+    },
+    {
+      "id": "P43-C005",
+      "target": "Figure 6 first-mode inflection location at alpha=250, beta=100",
+      "status": "COMPARED",
+      "reference": "P43 Figure 6 discussion",
+      "metrics": {
+        "published_distance_below_top": "approximately 0.1",
+        "curve_digitized": false
+      }
+    },
+    {
+      "id": "P43-C006",
+      "target": "Full Table 1 35-row / 175-scalar eigenvalue matrix",
+      "status": "REPRODUCED",
+      "reference": "P43 Eq.8 / Table1",
+      "metrics": {
+        "rows": 35,
+        "scalar_values": 175,
+        "exceptions": [
+          "P43-D001",
+          "P43-D002"
+        ]
+      }
+    },
+    {
+      "id": "P43-C007",
+      "target": "Full Table 2 Eq.10 approximation-error matrix",
+      "status": "REPRODUCED",
+      "reference": "P43 Eq.10 / Table2",
+      "metrics": {
+        "rows": 35,
+        "modes": 5
+      }
+    },
+    {
+      "id": "P43-C008",
+      "target": "Figures 4-5 lambda1/lambda2 parameter families",
+      "status": "REPRODUCED",
+      "reference": "P43 Figures4-5 / Table1",
+      "metrics": {
+        "curve_digitized": false
+      }
+    },
+    {
+      "id": "P43-C009",
+      "target": "Figure 6 first three independent mode shapes",
+      "status": "COMPARED",
+      "reference": "P43 Figure6",
+      "metrics": {
+        "curve_digitized": false,
+        "modes": 3
+      }
+    }
+  ],
+  "discrepancies": [
+    {
+      "id": "P43-D001",
+      "target": "Table 1 alpha=0, beta=200, fifth eigenvalue lambda5",
+      "status": "OPEN",
+      "classification_hint": "PUBLISHED_REFERENCE_MISMATCH",
+      "observation": "The source visibly prints lambda5=13.221. Independent Eq. (8) FE and Eq. (10) give approximately 18.221, and Table 2 reports zero approximation error for alpha=0.",
+      "engineering_interpretation": "The evidence strongly suggests a source table typo, likely 13.221 -> 18.221, but EngiProof does not silently correct the published record without an erratum or author/source confirmation.",
+      "automation": {
+        "independent_support": "EQ8_FE_PLUS_EQ10_PLUS_TABLE2_INTERNAL_CONSISTENCY",
+        "promotion_effect": "BLOCK_PROMOTION"
+      },
+      "closure_requirements": [
+        "Retain the published 13.221 value in source evidence.",
+        "Do not substitute 18.221 into the published table record.",
+        "Resolve only with authoritative erratum/author clarification or equivalent primary evidence."
+      ]
+    },
+    {
+      "id": "P43-D002",
+      "target": "Table 1 alpha=200, beta=100, first eigenvalue lambda1",
+      "status": "OPEN",
+      "classification_hint": "PUBLISHED_REFERENCE_MISMATCH",
+      "observation": "The source visibly prints lambda1=6.554. Independent Eq. (8) FE gives approximately 6.654. Eq. (10) combined with 6.654 gives about 1.39% error, matching Table 2; using 6.554 gives about 2.93%, inconsistent with Table 2.",
+      "engineering_interpretation": "The evidence strongly suggests a source table typo, likely 6.554 -> 6.654, but EngiProof retains the printed source value unless authoritative confirmation is available.",
+      "automation": {
+        "independent_support": "EQ8_FE_PLUS_EQ10_PLUS_TABLE2_INTERNAL_CONSISTENCY",
+        "promotion_effect": "BLOCK_PROMOTION"
+      },
+      "closure_requirements": [
+        "Retain the printed 6.554 source value.",
+        "Do not silently substitute 6.654 in the published table record.",
+        "Resolve only with authoritative erratum/author clarification or equivalent primary evidence."
+      ]
+    }
+  ],
+  "limitations": [
+    "P43-D001 remains open: Table 1 visibly prints lambda5=13.221 at alpha=0, beta=200, while independent Eq.8 FE and Eq.10 give approximately 18.221 and Table2 reports zero Eq10 error for alpha=0.",
+    "P43-D002 remains open: Table 1 visibly prints lambda1=6.554 at alpha=200, beta=100, while independent Eq.8 FE gives approximately 6.654 and Table2 is internally consistent with 6.654 rather than 6.554.",
+    "The source power-series coefficient recursion used for Eq. (9) is not fully reproduced in the paper; EngiProof uses an independent Hermite-FE eigenvalue solution instead.",
+    "Figure 6 is not digitized. Phase 1 independently checks the first-mode inflection location and qualitative non-trigonometric behavior.",
+    "Automated source-identity audit remains REVIEW_REQUIRED because no DOI is found and the 1976 page header is not classified as primary publication-year evidence; no conflicting identity evidence was found.",
+    "Engineering qualification is NOT_GRANTED."
+  ],
+  "next_actions": [
+    "Run P43 Phase-2 verification locally and graph-sync/audit.",
+    "If local verification passes, freeze P43 as CONDITIONAL with P43-D001 preserved.",
+    "Move to P44 with a materially different mechanics/evidence class.",
+    "Keep qualification NOT_GRANTED."
+  ],
+  "qualification": "NOT_GRANTED",
+  "ingestion_record": "engiproof/intake/P43/ingestion.json",
+  "phase2_targets": [
+    "Table 1 full matrix",
+    "Table 2 full matrix",
+    "Figure 4",
+    "Figure 5",
+    "Figure 6"
+  ]
+}

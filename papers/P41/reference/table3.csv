@@ -1,0 +1,5 @@
+case,fI_N_per_m,published_type,end_expansion_m
+1,0,NO_FRICTION,1.355
+2,87.5,PARTIAL_BONDING,1.311
+3,175,FULL_BONDING,1.305
+4,358,FULL_BONDING,1.305

@@ -1,0 +1,23 @@
+\section{Introduction: the problem is silent normalisation}
+\label{sec:intro}
+
+Engineering papers often contain enough information to reproduce part of a method but not a complete model, so reusing them computationally requires more than extracting equations or generating code. The difficulty is sharpest when a source is internally inconsistent or incomplete, which is common. In one of the cases studied here, a table prints an eigenvalue of 13.221, whereas the same paper's approximation formula, its own error table and an independent finite-element solution all give 18.221 (\S\ref{sec:discrepancy}, P43-D001). In another, a table reports a friction increment of 471~N/m split into 153 and 312~N/m, which sum to 465~N/m, while the paper's own load-sharing equations give 158.8 and 312.2~N/m (P41-D001). In a third, a prescribed riser head tension is printed as ``298'' with no unit (P45-D003).
+
+A conventional paper-to-code workflow resolves each of these silently: it substitutes the ``obvious'' correction, chooses a unit, or adjusts an input until the printed number appears. The resulting program may be numerically sound and still untraceable. A later reader cannot tell which values were published, which were inferred and which were forced.
+
+\engiproof{} follows the opposite rule, that \emph{disagreement is evidence and is preserved}. Its aim is to convert a published method into computational evidence whose status is explicit at every step,
+\begin{center}
+\textbf{published source} $\rightarrow$ \textbf{source-bounded reproduction} $\rightarrow$ \textbf{independent check} $\rightarrow$ \textbf{comparison / discrepancy} $\rightarrow$ \textbf{human decision} $\rightarrow$ \textbf{callable method},
+\end{center}
+with engineering qualification kept outside the chain.
+
+\paragraph{Contributions} Each contribution is bounded by the evidence summarised in \ref{app:claims}.
+\begin{enumerate}[leftmargin=1.6em]
+  \item An evidence model that separates extraction candidates, evidence classes (\eclass{PUBLISHED}, \eclass{INDEPENDENT}, reserved \eclass{SOLVER\_NEW}), per-target outcomes and engineering qualification (\S\ref{sec:framework}).
+  \item Source-bounded reproduction combined with methodologically independent checks that decide the direction of a conflict rather than being tuned to it (\S\S\ref{sec:reproduction}--\ref{sec:independent}).
+  \item Discrepancy preservation with a controlled taxonomy and an append-only human decision boundary that gates promotion (\S\ref{sec:discrepancy}).
+  \item Non-mutating verification. The framework's own verification was found to rewrite frozen evidence; the defect was inventoried, and the fix distinguishes byte, numerical and engineering equivalence across operating systems (\S\ref{sec:nonmutation}).
+  \item A capability-organised evaluation on six heterogeneous studies, including a register of the framework's own failures (\S\S\ref{sec:evaluation}--\ref{sec:failures}).
+\end{enumerate}
+
+\paragraph{What is not claimed} The paper does not claim extraction accuracy or recall, since no labelled benchmark exists; completeness of inconsistency detection; organisational independence of the checks; generality beyond offshore and subsea structural mechanics; autonomous scientific discovery; or any form of engineering qualification. Software agents were used to develop the framework; this is a detail of method, not a result.

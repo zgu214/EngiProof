@@ -1,0 +1,14 @@
+{
+  "schema_version": "engiproof.p44.table2/1.0",
+  "source": "P44 Table 2, printed page 534",
+  "riser_OD_in": 18.625,
+  "riser_thickness_in": 0.625,
+  "choke_kill_OD_in": 4.5,
+  "choke_kill_thickness_in": 0.674,
+  "joint_length_ft": 50.0,
+  "dry_weight_with_floater_lb": 11750.0,
+  "wet_weight_with_floater_lb": 705.0,
+  "wet_weight_telescopic_joint_lb": 21725.0,
+  "wet_weight_LMRP_lb": 78210.0,
+  "wet_weight_BOP_lb": 237000.0
+}

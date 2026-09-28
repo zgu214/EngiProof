@@ -1,0 +1,118 @@
+{
+  "schema_version": "engiproof.patch_manifest/1.0",
+  "version": "0.2.0.dev2",
+  "baseline": "0.2.0.dev1",
+  "date": "2026-09-26",
+  "purpose": "Robust equation/table recovery, source-identity audit, selected-target readiness, persistent handover continuity",
+  "validation": {
+    "test_count": 44,
+    "tests": "PASS across split test runs",
+    "doctor": "PASS",
+    "verify_all": "PASS",
+    "live_studies": [
+      "P08",
+      "P12",
+      "P16",
+      "P29",
+      "P36",
+      "P38"
+    ]
+  },
+  "files": [
+    {
+      "path": ".agents/skills/engiproof/SKILL.md",
+      "sha256": "8b2c33be30d0dac37e154282107925c41b9692f3f6bb149ac1294df980531e53",
+      "size_bytes": 2139
+    },
+    {
+      "path": ".agents/skills/engiproof-ingestion/SKILL.md",
+      "sha256": "4de225935acbf655bf7368a422f8678f14cfd09c7d15270b43912d735bb56981",
+      "size_bytes": 2147
+    },
+    {
+      "path": "10_VERIFY_V020_DEV2_WINDOWS.bat",
+      "sha256": "79ab805cb9b2bc43326f4a4b8d041fd05a29637e80011b4f00de74718d3ae3c6",
+      "size_bytes": 374
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "497056554acd8ad6c20cd4588640e11162454d87e17a546063ebe789e92c6c17",
+      "size_bytes": 1731
+    },
+    {
+      "path": "HANDOVER_CURRENT.md",
+      "sha256": "792bdb592567e99bfa9405fbb0610c6376ab09b2fa904abc00549021b077c579",
+      "size_bytes": 4524
+    },
+    {
+      "path": "PATCH_NOTES_v0.2.0_DEV2.md",
+      "sha256": "b56dac7ae55d34277420ae16cbdcbbc53ee5145e2e9b8107924362facc54c7dd",
+      "size_bytes": 668
+    },
+    {
+      "path": "PROGRESS_v0.2.0.md",
+      "sha256": "ab823edfd7d4370c6b9dc0d73858959b976a6fce997496a4e4b8fc8ae12d8451",
+      "size_bytes": 2268
+    },
+    {
+      "path": "README.md",
+      "sha256": "a3be85f655657ac8b3fb6f62d79650d976d15c71fc6b6459bfd7af664fc1555f",
+      "size_bytes": 7170
+    },
+    {
+      "path": "ROADMAP_v0.2.0.md",
+      "sha256": "d6cb1b87b712f8ccd950568a5749b873570bc6182f2a23e79c8b88e0bb9506a0",
+      "size_bytes": 3070
+    },
+    {
+      "path": "VERSION",
+      "sha256": "c9f1b7bcdcd8452f9463a260f08e1846ab2babf1b46cd1aa11fe3fa2d2c1ef2c",
+      "size_bytes": 11
+    },
+    {
+      "path": "docs/INGESTION_AUTOMATION.md",
+      "sha256": "771682a5d8dfaeb28a9cccf1aba8eac23ddee570695a3f99afd9cf26415a580f",
+      "size_bytes": 2251
+    },
+    {
+      "path": "engiproof/contracts/contracts.json",
+      "sha256": "0693454c424ec486d13ee8220a913629e77b95c82fce6c64b97e2dc4df4f5ee7",
+      "size_bytes": 5017
+    },
+    {
+      "path": "engiproof/registry.json",
+      "sha256": "b33d2264516fb75dcfaef0ed7a0c9f658143e49f26c5c67403f69d9bda69c8bb",
+      "size_bytes": 253
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "23ef4fa33b536b15aa20f47873909c70bf08bb90c8f2bc9484442f8b97321358",
+      "size_bytes": 626
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "fd9b115879cf659bde4cc4e244d3e2db8ccbbf3eee81de6c0f7d0e974754ee91",
+      "size_bytes": 43
+    },
+    {
+      "path": "src/engiproof/__init__.py",
+      "sha256": "4009858460b59f8b5338b805c43329d0d3ba08a34194ec89aa5d307a64739350",
+      "size_bytes": 93
+    },
+    {
+      "path": "src/engiproof/cli.py",
+      "sha256": "d0b7b45b78e61be47cb602aa2e96c1cb6cc9849222a80318b8bb3702acc881f7",
+      "size_bytes": 8792
+    },
+    {
+      "path": "src/engiproof/ingestion.py",
+      "sha256": "32192f02e27f6c487ad12770d7201f653291e125fc3f38bd7605172e4da80d47",
+      "size_bytes": 58232
+    },
+    {
+      "path": "tests/test_ingestion.py",
+      "sha256": "1be8a3be4bf52d625fa524cc70327c2680d879653f4d334c84e028ced41092e4",
+      "size_bytes": 13412
+    }
+  ]
+}

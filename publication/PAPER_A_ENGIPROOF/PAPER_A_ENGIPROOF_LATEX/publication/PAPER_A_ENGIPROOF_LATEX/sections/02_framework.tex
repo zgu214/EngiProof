@@ -1,0 +1,54 @@
+\section{Evidence architecture}
+\label{sec:framework}
+
+\subsection{Evidence classes and outcomes}
+\engiproof{} separates the \emph{origin} of a result from its \emph{maturity}. Every callable method and every evidence node carries one of three evidence classes. \eclass{PUBLISHED} denotes a source-bounded implementation of a method, or a value as printed. \eclass{INDEPENDENT} denotes a methodologically independent formulation or numerical method applied to the same quantity. \eclass{SOLVER\_NEW} denotes newly generated solver evidence; the class is defined in the contracts but no study uses it yet (PA-25), and it is reserved for solver adapters.
+
+Each comparison target carries one of five outcomes. A target is \estatus{REPRODUCED} when the published value is regenerated to source precision, and \estatus{COMPARED} when agreement or disagreement is quantified against a published reference population. \estatus{CONDITIONAL} marks a comparison that holds only under a stated source ambiguity, and \estatus{BLOCKED} marks a target for which the source lacks the inputs, with the missing items named. \estatus{VERIFIED} is reserved and is used by no comparison in the six cases.
+
+At study level, the evidence status is \estatus{CONDITIONAL} for all six cases and a separate qualification field is \estatus{NOT\_GRANTED} for all six; execution alone never changes either. The contracts are versioned, machine-readable JSON (\texttt{engiproof/contracts/contracts.json}).
+
+\subsection{Lifecycle}
+Figure~\ref{fig:lifecycle} shows the lifecycle, in which every arrow is a controlled transition with its own record. An extraction candidate does not become evidence because it was recognised, a callable method does not become qualified because it returns a number, and a discrepancy is not closed because a later step agrees with one of its sides.
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[
+  box/.style={draw, rounded corners=2pt, align=center, font=\footnotesize, minimum height=7mm, inner sep=3pt},
+  gate/.style={box, fill=black!8},
+  arr/.style={-{Stealth[length=2mm]}, semithick},
+  node distance=4mm and 5mm]
+\node[box] (src) {published source\\\scriptsize SHA-256, identity};
+\node[gate, right=of src] (ing) {ingestion\\\scriptsize candidates, readiness};
+\node[box, right=of ing] (rep) {reproduction\\\scriptsize \eclass{PUBLISHED}};
+\node[box, right=of rep] (ind) {independent check\\\scriptsize \eclass{INDEPENDENT}};
+\node[box, below=9mm of ind] (cmp) {comparison\\\scriptsize outcome per target};
+\node[box, left=of cmp] (dis) {discrepancy\\\scriptsize taxonomy, preserved};
+\node[gate, left=of dis] (dec) {human decision\\\scriptsize append-only};
+\node[gate, left=of dec] (pro) {promotion gate};
+\node[box, below=9mm of dis] (gra) {evidence graph\\\scriptsize provenance audit};
+\node[box, right=of gra] (tool) {callable method\\\scriptsize evidence envelope};
+\node[gate, left=of gra] (ver) {non-mutating\\verification};
+\draw[arr] (src) -- (ing); \draw[arr] (ing) -- (rep); \draw[arr] (rep) -- (ind);
+\draw[arr] (ind) -- (cmp); \draw[arr] (cmp) -- (dis); \draw[arr] (dis) -- (dec); \draw[arr] (dec) -- (pro);
+\draw[arr] (dis) -- (gra); \draw[arr] (gra) -- (tool); \draw[arr] (ver) -- (gra);
+\node[draw, dashed, font=\footnotesize, align=center, below=7mm of gra, text width=12cm] (q)
+  {\textbf{Qualification boundary.} Engineering qualification is outside the lifecycle: \estatus{NOT\_GRANTED} in every study, unaffected by verification, decisions or promotion.};
+\end{tikzpicture}}
+\caption{Evidence lifecycle. Shaded boxes are gates. No transition is implied by successful execution.}
+\label{fig:lifecycle}
+\end{figure}
+
+\subsection{Rules enforced by the repository}
+The following rules are part of the repository contract (\texttt{AGENTS.md}), not guidance, and tests and gates enforce them where possible:
+\begin{enumerate}[leftmargin=1.6em]
+  \item \eclass{PUBLISHED}, \eclass{INDEPENDENT} and \eclass{SOLVER\_NEW} are preserved.
+  \item Extraction candidates are not evidence.
+  \item Code execution is not verification, and verification is not qualification.
+  \item Unknown source inputs are never tuned to force agreement.
+  \item Published inconsistencies are never silently corrected.
+  \item Copyrighted sources are not redistributed; the SHA-256 is kept instead.
+  \item No machine-specific paths are persisted.
+\end{enumerate}
+In addition, every evidence-producing calculation has persistent runnable code, traceable inputs and results, and tests.

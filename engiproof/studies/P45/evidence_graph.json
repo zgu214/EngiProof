@@ -1,0 +1,745 @@
+{
+  "schema_version": "engiproof.evidence_graph/1.1",
+  "paper_id": "P45",
+  "nodes": [
+    {
+      "id": "SOURCE-P45",
+      "kind": "source",
+      "label": "Nonlinear dynamic analysis of deep water risers",
+      "evidence_class": "PUBLISHED",
+      "status": "SOURCE_READY",
+      "source_refs": [
+        "10.1016/0141-1187(83)90036-6",
+        "c10b4938dd3c4de6c027f8494386b43a46fc2c3cb011a69de94612dc52686a0d"
+      ]
+    },
+    {
+      "id": "TARGET-T001",
+      "kind": "table",
+      "label": "Table 1",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:4",
+        "page:6"
+      ]
+    },
+    {
+      "id": "TARGET-T002",
+      "kind": "table",
+      "label": "Table 2",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:4",
+        "page:6"
+      ]
+    },
+    {
+      "id": "TARGET-T003",
+      "kind": "table",
+      "label": "Table 3",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:7"
+      ]
+    },
+    {
+      "id": "TARGET-T005",
+      "kind": "figure",
+      "label": "Figure 10",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:8"
+      ]
+    },
+    {
+      "id": "TARGET-T006",
+      "kind": "figure",
+      "label": "Figure 11",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:8"
+      ]
+    },
+    {
+      "id": "TARGET-T010",
+      "kind": "figure",
+      "label": "Figure 4",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:5"
+      ]
+    },
+    {
+      "id": "TARGET-T011",
+      "kind": "figure",
+      "label": "Figure 5",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:5"
+      ]
+    },
+    {
+      "id": "TARGET-T012",
+      "kind": "figure",
+      "label": "Figure 5(b)",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:5"
+      ]
+    },
+    {
+      "id": "TARGET-T013",
+      "kind": "figure",
+      "label": "Figure 6(b)",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:6"
+      ]
+    },
+    {
+      "id": "TARGET-T014",
+      "kind": "figure",
+      "label": "Figure 7(b)",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:6"
+      ]
+    },
+    {
+      "id": "TARGET-T015",
+      "kind": "figure",
+      "label": "Figure 8",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:7"
+      ]
+    },
+    {
+      "id": "TARGET-T016",
+      "kind": "figure",
+      "label": "Figure 9",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:7"
+      ]
+    },
+    {
+      "id": "TARGET-T017",
+      "kind": "figure",
+      "label": "Figure 9(a)",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:7"
+      ]
+    },
+    {
+      "id": "TARGET-T029",
+      "kind": "equation",
+      "label": "Equation (7)",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:3"
+      ]
+    },
+    {
+      "id": "TARGET-T030",
+      "kind": "appendix",
+      "label": "Appendix 1",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:2",
+        "page:9"
+      ]
+    },
+    {
+      "id": "TARGET-T031",
+      "kind": "appendix",
+      "label": "Appendix 2",
+      "evidence_class": "PUBLISHED",
+      "status": "DRAFT",
+      "source_refs": [
+        "page:3",
+        "page:10"
+      ]
+    },
+    {
+      "id": "AUTO-TOOL-APPENDIX1-STIFFNESS-COEFFICIENTS",
+      "kind": "implementation",
+      "label": "appendix1_stiffness_coefficients",
+      "evidence_class": "PUBLISHED",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "tool:appendix1_stiffness_coefficients",
+        "P45 Appendix 1 (compression / tension / zero-force branches)",
+        "papers/P45/tool_api.py",
+        "tool:eq7_theta_coefficients",
+        "P45 Eq. (7)",
+        "tool:example1200_head_displacement_m",
+        "P45 p. 222 text (period 9 s, amplitude 7.70 m)",
+        "tool:example1200_head_tension_printed",
+        "P45 p. 222: T = 298(1 + 0,2 sin 2 pi t/9)",
+        "tool:example1200_current_speed_m_per_s",
+        "P45 Figure 10 labels",
+        "tool:cases_current_speed_m_per_s",
+        "P45 Table 2 item 17",
+        "tool:table2_geometry_check",
+        "P45 Table 2 B",
+        "tool:table1_tension_plausibility",
+        "P45 Table 1 with Table 2",
+        "tool:table2_buoyancy_consistency",
+        "P45 Table 2 item 16 with items 3, 5, 9, 11",
+        "tool:airy_depth_regime",
+        "P45 Table 2 footnote and p. 222",
+        "tool:head_envelope_interpretation",
+        "P45 Figures 4(a)-9(a), Table 2 items 20 and B3",
+        "tool:figure11_linear_vs_nonlinear",
+        "P45 Figure 11 and p. 222 claim",
+        "tool:appendix1_independent_checks",
+        "P45 Appendix 1",
+        "tool:eq7_independent_checks",
+        "P45 Eq. (7), (10), (12), (13)",
+        "tool:appendix2_independent_checks",
+        "P45 Appendix 2",
+        "tool:phase1_summary",
+        "P45 Phase 1"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P45-C001",
+      "kind": "comparison",
+      "label": "Table 2 riser lengths and static offsets from depth, 15.24 m freeboard, 9.144 m ball joint and 3% offset",
+      "evidence_class": "INDEPENDENT",
+      "status": "REPRODUCED",
+      "source_refs": [
+        "P45-C001",
+        "P45 Table 2 B"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P45-C002",
+      "kind": "comparison",
+      "label": "Table 1/2 and figure-axis values as SI renderings of round imperial quantities (API 2J basis)",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P45-C002",
+        "P45 Tables 1-2, Figures 4-9 axes"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P45-C003",
+      "kind": "comparison",
+      "label": "Appendix 1 beam-column coefficients: identity k3=k1+k2, continuity at F=0 incl. shear, Euler points, independent Hermite FE, 6 rigid-body modes of K",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P45-C003",
+        "P45 Appendix 1"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P45-C004",
+      "kind": "comparison",
+      "label": "Eq. (7) reduction to Wilson-theta linear-acceleration relations and stability of the reconstructed scheme",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P45-C004",
+        "P45 Eq. (7)"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P45-C005",
+      "kind": "comparison",
+      "label": "Appendix 2 segment factors and B_i",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P45-C005",
+        "P45 Appendix 2"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P45-C006",
+      "kind": "comparison",
+      "label": "Infinite-depth Airy wave model (Table 2 footnote) at all depths",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P45-C006",
+        "P45 Table 2 footnote, p. 222"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P45-C007",
+      "kind": "comparison",
+      "label": "Figures 4(a)-9(a) head-end envelopes vs Table 2 static offset and prescribed head motion",
+      "evidence_class": "INDEPENDENT",
+      "status": "COMPARED",
+      "source_refs": [
+        "P45-C007",
+        "P45 Figures 4(a)-9(a), Table 2"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P45-C008",
+      "kind": "comparison",
+      "label": "Figure 11 labels vs the '~15%' linear-structure underestimate",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P45-C008",
+        "P45 Figure 11, p. 222"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-COMPARISON-P45-C009",
+      "kind": "comparison",
+      "label": "Nonlinear dynamic riser responses of Figures 4-9 and 11 (RISER program vs eight other programs; linear vs nonlinear structure)",
+      "evidence_class": "INDEPENDENT",
+      "status": "BLOCKED",
+      "source_refs": [
+        "P45-C009",
+        "P45 Figures 4-9, 11"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DISCREPANCY-P45-D001",
+      "kind": "discrepancy",
+      "label": "Table 2 item 16 buoyed vs unbuoyed element weight",
+      "evidence_class": "INDEPENDENT",
+      "status": "OPEN",
+      "source_refs": [
+        "P45-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DISCREPANCY-P45-D002",
+      "kind": "discrepancy",
+      "label": "Table 1 head tensions for 457.20 m and 914.40 m (cases 3-6)",
+      "evidence_class": "INDEPENDENT",
+      "status": "OPEN",
+      "source_refs": [
+        "P45-D002"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DISCREPANCY-P45-D003",
+      "kind": "discrepancy",
+      "label": "1200 m example head tension T = 298 (1 + 0,2 sin 2 pi t/9)",
+      "evidence_class": "INDEPENDENT",
+      "status": "OPEN",
+      "source_refs": [
+        "P45-D003"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DISCREPANCY-P45-D004",
+      "kind": "discrepancy",
+      "label": "1200 m example head displacement equation",
+      "evidence_class": "INDEPENDENT",
+      "status": "OPEN",
+      "source_refs": [
+        "P45-D004"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DISCREPANCY-P45-D005",
+      "kind": "discrepancy",
+      "label": "Meaning of 'amplitude' of the prescribed head displacement (Table 2 item 20, 1.22 m)",
+      "evidence_class": "INDEPENDENT",
+      "status": "OPEN",
+      "source_refs": [
+        "P45-D005"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DISCREPANCY-P45-D006",
+      "kind": "discrepancy",
+      "label": "Figure 11 '~15%' linear-structure stress underestimate near the riser head",
+      "evidence_class": "INDEPENDENT",
+      "status": "OPEN",
+      "source_refs": [
+        "P45-D006"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P45-D001",
+      "kind": "discrepancy_assessment",
+      "label": "SOURCE_INTERNAL_INCONSISTENCY assessment for P45-D001",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P45-D001",
+        "assessment:P45-D001"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P45-D002",
+      "kind": "discrepancy_assessment",
+      "label": "SOURCE_MAGNITUDE_IMPLAUSIBILITY assessment for P45-D002",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P45-D002",
+        "assessment:P45-D002"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P45-D003",
+      "kind": "discrepancy_assessment",
+      "label": "SOURCE_UNIT_AMBIGUITY assessment for P45-D003",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P45-D003",
+        "assessment:P45-D003"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P45-D004",
+      "kind": "discrepancy_assessment",
+      "label": "SOURCE_EQUATION_TEXT_MISMATCH assessment for P45-D004",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P45-D004",
+        "assessment:P45-D004"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P45-D005",
+      "kind": "discrepancy_assessment",
+      "label": "SOURCE_CONVENTION_AMBIGUITY assessment for P45-D005",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P45-D005",
+        "assessment:P45-D005"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-ASSESSMENT-P45-D006",
+      "kind": "discrepancy_assessment",
+      "label": "SOURCE_CLAIM_DEFINITION_AMBIGUITY assessment for P45-D006",
+      "evidence_class": "INDEPENDENT",
+      "status": "CONDITIONAL",
+      "source_refs": [
+        "P45-D006",
+        "assessment:P45-D006"
+      ],
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DECISION-P45-D004-DEC-001",
+      "kind": "discrepancy_decision",
+      "label": "ACCEPTED_WITH_RATIONALE decision for P45-D004",
+      "evidence_class": "INDEPENDENT",
+      "status": "ACCEPTED_WITH_RATIONALE",
+      "source_refs": [
+        "P45-D004-DEC-001",
+        "P45-D004",
+        "papers/P45/reference/example_1200m_inputs.json",
+        "engiproof/studies/P45/study.json#P45-D004"
+      ],
+      "reviewer": "Zhiqiang Gu",
+      "qualification_effect": "NONE",
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T001",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T002",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T003",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T005",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T006",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T010",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T011",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T012",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T013",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T014",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T015",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T016",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T017",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T029",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T030",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "TARGET-T031",
+      "relation": "contains_candidate"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-TOOL-APPENDIX1-STIFFNESS-COEFFICIENTS",
+      "relation": "supports_implementation"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-COMPARISON-P45-C001",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-COMPARISON-P45-C002",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-COMPARISON-P45-C003",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-COMPARISON-P45-C004",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-COMPARISON-P45-C005",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-COMPARISON-P45-C006",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-COMPARISON-P45-C007",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-COMPARISON-P45-C008",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-COMPARISON-P45-C009",
+      "relation": "provides_reference_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-DISCREPANCY-P45-D001",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-DISCREPANCY-P45-D002",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-DISCREPANCY-P45-D003",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-DISCREPANCY-P45-D004",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-DISCREPANCY-P45-D005",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "SOURCE-P45",
+      "to": "AUTO-DISCREPANCY-P45-D006",
+      "relation": "contains_discrepancy_context"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P45-D001",
+      "to": "AUTO-ASSESSMENT-P45-D001",
+      "relation": "classified_by"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P45-D002",
+      "to": "AUTO-ASSESSMENT-P45-D002",
+      "relation": "classified_by"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P45-D003",
+      "to": "AUTO-ASSESSMENT-P45-D003",
+      "relation": "classified_by"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P45-D004",
+      "to": "AUTO-ASSESSMENT-P45-D004",
+      "relation": "classified_by"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P45-D005",
+      "to": "AUTO-ASSESSMENT-P45-D005",
+      "relation": "classified_by"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P45-D006",
+      "to": "AUTO-ASSESSMENT-P45-D006",
+      "relation": "classified_by"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P45-D004",
+      "to": "AUTO-DECISION-P45-D004-DEC-001",
+      "relation": "reviewed_by"
+    },
+    {
+      "from": "AUTO-ASSESSMENT-P45-D004",
+      "to": "AUTO-DECISION-P45-D004-DEC-001",
+      "relation": "informs_decision"
+    }
+  ],
+  "qualification": "NOT_GRANTED",
+  "sync": {
+    "schema_version": "engiproof.evidence_graph_sync/1.0",
+    "added_nodes": 1,
+    "added_edges": 2,
+    "tool_count": 16,
+    "comparison_count": 9,
+    "discrepancy_count": 6,
+    "decision_count": 1,
+    "rule": "Synchronization is additive: existing hand-authored nodes/edges are preserved and qualification is never promoted."
+  }
+}

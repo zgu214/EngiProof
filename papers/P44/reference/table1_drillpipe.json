@@ -1,0 +1,14 @@
+{
+  "schema_version": "engiproof.p44.table1/1.0",
+  "source": "P44 Table 1, printed page 534",
+  "grade": "S-135",
+  "OD_in": 5.0,
+  "ID_in": 4.276,
+  "range": "II (30 ft)",
+  "tool_joint_OD_in": 6.625,
+  "cross_area_ft2": 0.037,
+  "moment_of_inertia_ft4": 0.000688,
+  "youngs_coefficient_printed": 4176000000.0,
+  "youngs_coefficient_unit_note": "unit not printed in the table; value preserved verbatim",
+  "floating_factor_10_ppg_mud": 0.847
+}

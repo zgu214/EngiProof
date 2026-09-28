@@ -1,0 +1,16 @@
+{
+  "schema_version": "engiproof.p42.table4/1.0",
+  "source": "P42 Table 4, page 409",
+  "contact_formulation": "surface-to-surface",
+  "sliding_formulation": "finite sliding",
+  "surface_smoothing": "automatic",
+  "friction_formulation": "penalty",
+  "coulomb_friction_coefficient": 0.12,
+  "absolute_elastic_slip_mm": 0.005,
+  "normal_pressure_overclosure": "linear penalty stiffness",
+  "contact_stiffness_N_per_mm3": 2000.0,
+  "contact_stabilization_step": 1,
+  "contact_stabilization_factor": 1.0,
+  "tangent_fraction": 1.0,
+  "fraction_damping_end_step": 0.0
+}

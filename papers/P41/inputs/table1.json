@@ -1,0 +1,21 @@
+{
+  "schema_version": "engiproof.p41.table1/1.0",
+  "source": "P41 Table 1 Pipeline data",
+  "source_review_status": "SOURCE_TEXT_EXTRACTED_REVIEWED_FOR_SELECTED_COLUMNS",
+  "pipes": {
+    "inner": {
+      "D_mm": 298.5,
+      "t_mm": 14.25,
+      "E_Pa": 1.99e11
+    },
+    "outer": {
+      "D_mm": 394.0,
+      "t_mm": 20.5,
+      "E_Pa": 2.07e11
+    }
+  },
+  "notes": [
+    "Only geometry and Young's modulus are used in the first reproduction chain.",
+    "SMYS/SMTS columns are not required for Eqs. (6)-(8) and are not asserted here."
+  ]
+}

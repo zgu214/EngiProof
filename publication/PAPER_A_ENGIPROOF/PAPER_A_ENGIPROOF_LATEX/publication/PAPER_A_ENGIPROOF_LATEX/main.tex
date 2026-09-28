@@ -1,0 +1,77 @@
+% EngiProof, Paper A. Target journal: Advances in Engineering Software (Elsevier), elsarticle class.
+% Build: pdflatex main; bibtex main; pdflatex main; pdflatex main   (or: latexmk -pdf main)
+\documentclass[preprint,12pt]{elsarticle}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\setlength{\emergencystretch}{3em}
+
+\newcommand{\engiproof}{\textsc{EngiProof}}
+\newcommand{\eclass}[1]{\texttt{#1}}
+\newcommand{\estatus}[1]{\texttt{#1}}
+
+\journal{Advances in Engineering Software}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{EngiProof: A provenance-preserving framework for converting published engineering research into reproducible computational evidence}
+
+\author{Zhiqiang Gu}
+\ead{Zhiqiang.gu214@gmail.com}
+\affiliation{organization={Independent researcher},country={Norway}}
+
+\input{sections/00_abstract}
+
+\begin{highlights}
+\item Published engineering methods become source-bounded, callable evidence
+\item Source inconsistencies are preserved, never tuned or silently corrected
+\item Independent checks decide the direction of numerical conflicts
+\item Human decisions gate promotion; verification never grants qualification
+\item Non-mutating verification is checked on Linux, Windows and macOS
+\end{highlights}
+
+\begin{keyword}
+reproducibility \sep provenance \sep engineering software \sep verification \sep source discrepancies \sep offshore structural mechanics
+\end{keyword}
+
+\end{frontmatter}
+
+\input{sections/01_introduction}
+\input{sections/02_framework}
+\input{sections/03_ingestion}
+\input{sections/04_reproduction}
+\input{sections/05_independent}
+\input{sections/06_discrepancies}
+\input{sections/07_provenance}
+\input{sections/08_nonmutating}
+\input{sections/09_evaluation}
+\input{sections/10_failures_limits}
+\input{sections/11_qualification}
+\input{sections/12_discussion}
+\input{sections/13_conclusion}
+
+\input{sections/14_declarations}
+
+\appendix
+\input{sections/a_claim_evidence}
+\input{sections/b_reproducibility}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+
+\end{document}

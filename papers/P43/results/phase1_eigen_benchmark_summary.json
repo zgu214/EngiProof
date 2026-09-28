@@ -1,0 +1,130 @@
+{
+  "source_example_parameter_check": {
+    "computed_from_printed_inputs": {
+      "alpha": 50.62539449775256,
+      "beta": 99.71411265899455
+    },
+    "published_table_parameters": {
+      "alpha": 50.0,
+      "beta": 100.0
+    },
+    "interpretation": "Printed example inputs give values close to the discrete Table 1 parameter pair used by the source. No hidden inputs are fitted."
+  },
+  "table1_independent_FE_comparison": {
+    "alpha": 50.0,
+    "beta": 100.0,
+    "comparisons": [
+      {
+        "mode": 1,
+        "published_lambda": 6.029,
+        "independent_FE_lambda": 6.029207074754396,
+        "difference": 0.00020707475439607492,
+        "relative_difference_percent": 0.0034346451218456612
+      },
+      {
+        "mode": 2,
+        "published_lambda": 8.969,
+        "independent_FE_lambda": 8.969159570886871,
+        "difference": 0.00015957088687201804,
+        "relative_difference_percent": 0.00177913799612017
+      },
+      {
+        "mode": 3,
+        "published_lambda": 11.735,
+        "independent_FE_lambda": 11.735271052974111,
+        "difference": 0.0002710529741118961,
+        "relative_difference_percent": 0.002309782480714922
+      },
+      {
+        "mode": 4,
+        "published_lambda": 14.536,
+        "independent_FE_lambda": 14.536088408951088,
+        "difference": 8.840895108797042e-05,
+        "relative_difference_percent": 0.000608206873197375
+      },
+      {
+        "mode": 5,
+        "published_lambda": 17.401,
+        "independent_FE_lambda": 17.401443730294773,
+        "difference": 0.0004437302947728483,
+        "relative_difference_percent": 0.002550027554582198
+      }
+    ],
+    "method": "Independent cubic-Hermite finite-element weak solution of Eq. (8), not the source Eq. (9) power-series implementation."
+  },
+  "equation10_table2_comparison": {
+    "alpha": 50.0,
+    "beta": 100.0,
+    "comparisons": [
+      {
+        "mode": 1,
+        "published_exact_lambda": 6.029,
+        "eq10_lambda": 6.040229739165875,
+        "computed_error_percent": 0.18626205284251665,
+        "published_table2_error_percent": 0.19
+      },
+      {
+        "mode": 2,
+        "published_exact_lambda": 8.969,
+        "eq10_lambda": 8.976709354906019,
+        "computed_error_percent": 0.08595556813490275,
+        "published_table2_error_percent": 0.09
+      },
+      {
+        "mode": 3,
+        "published_exact_lambda": 11.735,
+        "eq10_lambda": 11.739535538199226,
+        "computed_error_percent": 0.03864966509779508,
+        "published_table2_error_percent": 0.04
+      },
+      {
+        "mode": 4,
+        "published_exact_lambda": 14.536,
+        "eq10_lambda": 14.538460314043983,
+        "computed_error_percent": 0.016925660731858472,
+        "published_table2_error_percent": 0.02
+      },
+      {
+        "mode": 5,
+        "published_exact_lambda": 17.401,
+        "eq10_lambda": 17.402826654444542,
+        "computed_error_percent": 0.010497410749626124,
+        "published_table2_error_percent": 0.01
+      }
+    ]
+  },
+  "worked_example": {
+    "published_lambda1": 6.029,
+    "omega_from_published_lambda_rad_per_s": 0.8149831130728052,
+    "published_omega_rad_per_s": 0.815,
+    "period_from_published_lambda_s": 7.709589568659305,
+    "published_exact_period_s": 7.71,
+    "eq10_lambda1": 6.040229739165875,
+    "eq10_period_s": 7.680949532164039,
+    "published_approx_period_s": 7.68
+  },
+  "figure6_independent_mode_shape_check": {
+    "alpha": 250.0,
+    "beta": 100.0,
+    "independent_lambda1": 6.8160417157962065,
+    "first_mode_inflection_zeta": 0.9094946488605056,
+    "distance_below_top": 0.09050535113949443,
+    "published_statement": "approximately 0.1 below the top",
+    "curve_digitized": false,
+    "source_review": {
+      "schema_version": "engiproof.p43.figure6_review/1.0",
+      "source": "P43 Figure 6 and accompanying discussion, printed pages 816-817",
+      "alpha": 250.0,
+      "beta": 100.0,
+      "published_observations": [
+        "The first three mode shapes differ from trigonometric modes.",
+        "Nodal distance is greatest in the upper portion where tension is greatest.",
+        "The first mode has a point of inflection approximately 0.1 below the top.",
+        "The bottom slope is greater than the corresponding trigonometric-mode slope."
+      ],
+      "phase1_comparison": "Independent FE mode shape is compared to the source qualitative inflection-location statement; no source curve digitization."
+    }
+  },
+  "evidence_boundary": "Table values and worked-example values are PUBLISHED. The Eq. (8) Hermite-FE solution and parameter arithmetic are INDEPENDENT. The source power-series implementation is not recreated because its coefficient details are referred to earlier papers. No Figure 6 raster/curve digitization is used.",
+  "qualification": "NOT_GRANTED"
+}
