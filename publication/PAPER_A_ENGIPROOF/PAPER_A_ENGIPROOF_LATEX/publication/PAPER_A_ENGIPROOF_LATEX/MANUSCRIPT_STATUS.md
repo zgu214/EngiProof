@@ -222,3 +222,4 @@ Remaining build messages, all benign:
   - "the agent orchestrates the solver runs" in future work (a technical role, not a process label);
   - "left pending at ingestion" (§3, a technical state).
 - The manuscript is 28 pages with 0 undefined references, and the facts check passes 20/0/0.
+- §1: the evidence-chain passage is rewritten as full sentences at the owner's request ("…explicit at every step. The resulting evidence chain is [chain]. Engineering qualification remains outside this chain."). The chain itself is unchanged.

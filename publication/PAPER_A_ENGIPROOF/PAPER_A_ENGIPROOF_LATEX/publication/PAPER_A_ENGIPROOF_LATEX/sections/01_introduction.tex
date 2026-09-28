@@ -5,11 +5,11 @@ Engineering papers often contain enough information to reproduce part of a metho
 
 A conventional paper-to-code workflow resolves each of these silently: it substitutes the ``obvious'' correction, chooses a unit, or adjusts an input until the printed number appears. The resulting program may be numerically sound and still untraceable. A later reader cannot tell which values were published, which were inferred and which were forced.
 
-\engiproof{} follows the opposite rule, that \emph{disagreement is evidence and is preserved}. Its aim is to convert a published method into computational evidence whose status is explicit at every step,
+\engiproof{} follows the opposite rule, that \emph{disagreement is evidence and is preserved}. Its aim is to convert a published method into computational evidence whose status is explicit at every step. The resulting evidence chain is
 \begin{center}
-\textbf{published source} $\rightarrow$ \textbf{source-bounded reproduction} $\rightarrow$ \textbf{independent check} $\rightarrow$ \textbf{comparison / discrepancy} $\rightarrow$ \textbf{human decision} $\rightarrow$ \textbf{callable method},
+\textbf{published source} $\rightarrow$ \textbf{source-bounded reproduction} $\rightarrow$ \textbf{independent check} $\rightarrow$ \textbf{comparison / discrepancy} $\rightarrow$ \textbf{human decision} $\rightarrow$ \textbf{callable method}.
 \end{center}
-with engineering qualification kept outside the chain.
+Engineering qualification remains outside this chain.
 
 \paragraph{Contributions} Each contribution is bounded by the evidence summarised in \ref{app:claims}.
 \begin{enumerate}[leftmargin=1.6em]
