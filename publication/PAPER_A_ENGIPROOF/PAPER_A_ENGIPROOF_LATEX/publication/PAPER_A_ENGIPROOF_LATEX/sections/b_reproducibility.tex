@@ -10,12 +10,7 @@ All statements in this paper trace to artifacts in the software repository \cite
   \item Continuous integration runs Linux, Windows and macOS with a tracked-file non-mutation gate (\texttt{.github/workflows/ci.yml}).
   \item \texttt{docs/MUTATION\_INVENTORY\_v0.2.0.md} records the pre-fix inventory, and \texttt{docs/CROSS\_ENVIRONMENT\_VERIFICATION.md} records the cross-environment runs.
 \end{itemize}
-For submission, the following were regenerated and checked against the released v0.2.0 evidence state \cite{EngiProof2026}:
-\begin{itemize}[leftmargin=1.5em]
-  \item Tables~\ref{tab:crossenv} and~\ref{tab:evidence}, using \texttt{scripts/build\_tables.py};
-  \item \ref{app:claims}, using \texttt{scripts/build\_claim\_appendix.py};
-  \item the numbers stated in the text, using \texttt{scripts/check\_manuscript\_facts.py}; the facts check passed.
-\end{itemize}
+Tables~\ref{tab:crossenv} and~\ref{tab:evidence} are generated from repository data using \texttt{scripts/\allowbreak{}build\_\allowbreak{}tables.py}, \ref{app:claims} is generated using \texttt{scripts/\allowbreak{}build\_\allowbreak{}claim\_\allowbreak{}appendix.py}, and numerical statements in the manuscript are checked using \texttt{scripts/\allowbreak{}check\_\allowbreak{}manuscript\_\allowbreak{}facts.py}. These artifacts were regenerated and checked against the released \engiproof{} v0.2.0 evidence state \cite{EngiProof2026}.
 Tables~\ref{tab:reproduction}--\ref{tab:mutation}, \ref{tab:cases} and~\ref{tab:failures} are written from the repository records and were checked in the final source audit.
 Copyrighted source PDFs are not redistributed; each is identified by its SHA-256 and bibliographic record.
 \end{raggedright}

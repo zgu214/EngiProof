@@ -2,40 +2,40 @@
 \section{Claim--evidence matrix}
 \label{app:claims}
 Repository evidence for each claim is listed in the tracked claim--evidence matrix (\texttt{CLAIM\_\allowbreak{}EVIDENCE\_\allowbreak{}MATRIX.md} in the Paper~A publication folder). Status vocabulary: SUPPORTED, PARTIALLY\_SUPPORTED, NOT\_SUPPORTED\_YET, OUT\_OF\_SCOPE.
-{\scriptsize\setlength{\tabcolsep}{3pt}
-\begin{longtable}{>{\raggedright\arraybackslash}p{0.06\linewidth}>{\raggedright\arraybackslash}p{0.28\linewidth}>{\raggedright\arraybackslash}p{0.17\linewidth}>{\raggedright\arraybackslash}p{0.37\linewidth}}
-\toprule ID & Claim & Status & Constraint for the manuscript \\ \midrule \endfirsthead
-\toprule ID & Claim & Status & Constraint for the manuscript \\ \midrule \endhead
-PA-01 & Every evidence case is bound to an external source by SHA-256, and the copyrighted source is never redistributed. & SUPPORTED & State as a provenance rule, not as copyright compliance advice. \\
-PA-02 & A source-identity audit gates reproduction and detects bibliographic conflicts. & PARTIALLY\_\allowbreak{}SUPPORTED & The P40 conflict was found by a human and led to the gate; do not present it as automatic detection. P43/\allowbreak{}P44 identity was completed manually from publisher records (DOIs \texttt{10.2118/\allowbreak{}5620-PA}, \texttt{10.2118/\allowbreak{}28723-MS}; the P43 SPE number had been recorded as 5820 in error, corrected to 5620). The audit cannot confirm identity for pre-DOI or text-poor sources without manual review. \\
-PA-03 & Extraction candidates never become evidence: readiness and promotion gates block unreviewed targets, and extraction uncertainty is kept separate from source error. & SUPPORTED & Core claim of the paper. \\
-PA-04 & Extraction was hardened against concrete, recorded failures across publisher styles (ASCE, ASME, Elsevier) and a 1983 scanned source. & SUPPORTED & Case-level observations only; no accuracy figure. Machine-generated, text-free summaries exist for all six cases (G3 closed 28 September 2026), and every intake fingerprint matches its study SHA-256. Selected-target readiness: P40 3/\allowbreak{}3, P41 5/\allowbreak{}5, P42 5/\allowbreak{}5, P43 3/\allowbreak{}5, P44 4/\allowbreak{}7, P45 4/\allowbreak{}16. Equation recovery added 19 candidates (P40) and 36 (P42). Source format is detected only for P45 (scan with text layer); P40--P44 are \texttt{NOT\_\allowbreak{}RECORDED}. \\
-PA-05 & Quantified extraction accuracy /\allowbreak{} recall across publishers. & NOT\_\allowbreak{}SUPPORTED\_\allowbreak{}YET & Needs a labelled benchmark corpus, not one more paper. Do not report any accuracy figure. \\
-PA-06 & Published methods re-implemented from the source reproduce or closely agree with published values for bounded targets, with residual differences reported explicitly at target level. & SUPPORTED & Report per target, never ``paper reproduced''. \\
-PA-07 & Outcomes are recorded per target as REPRODUCED /\allowbreak{} COMPARED /\allowbreak{} VERIFIED /\allowbreak{} CONDITIONAL /\allowbreak{} BLOCKED. & SUPPORTED & Only P45 records a non-reproduced target as a BLOCKED comparison; P41/\allowbreak{}P42/\allowbreak{}P44 record theirs as limitations (housekeeping H2). \\
-PA-08 & Methodologically independent computations (different formulation or numerical method) corroborate or contradict published values. & SUPPORTED & ``Independent'' means methodologically independent, not independent people. \\
-PA-09 & Independent checks decide the direction of a discrepancy (reproduction vs printed value) rather than being tuned to it. & SUPPORTED & --- \\
-PA-10 & Checks are independent in the organisational sense (performed by other people/\allowbreak{}teams). & NOT\_\allowbreak{}SUPPORTED\_\allowbreak{}YET & State as a limitation; external replication is future work. \\
-PA-11 & Source inconsistencies are detected and preserved without tuning or silent correction. & SUPPORTED & --- \\
-PA-12 & All inconsistencies in a source are found (completeness). & NOT\_\allowbreak{}SUPPORTED\_\allowbreak{}YET & No recall measure exists; do not claim. \\
-PA-13 & Every discrepancy carries an explicit classification, independent-support basis, promotion effect and closure requirements. & SUPPORTED & The controlled vocabulary now exists: nine categories and seven loci, with decision rules, validated in \texttt{validate\_\allowbreak{}study\_\allowbreak{}manifest} (\texttt{contracts.discrepancy\_\allowbreak{}taxonomy}, \texttt{docs/\allowbreak{}DISCREPANCY\_\allowbreak{}TAXONOMY.md}). All 19 records carry a reviewer-approved label: approved by the owner on 28 September 2026 (D-008), with an append-only review trail. Legacy hints and frozen assessments are unchanged. The taxonomy classifies records and does not assert causes. \\
-PA-14 & Discrepancies block promotion until an append-only human decision with reviewer, rationale and evidence references is recorded; decisions never change qualification. & SUPPORTED & Both directions are exercised on real evidence. Every decision records \texttt{qualification\_\allowbreak{}effect: NONE}. No study is fully unblocked (other OPEN discrepancies remain), and P43 was deliberately deferred, not accepted to clear its gate. \\
-PA-15 & Each study has a machine-auditable evidence graph linking source, implementations, comparisons, discrepancies and assessments. & SUPPORTED & Coverage checks representation, not correctness. graph-sync is evidence-idempotent but not file-idempotent (WORK\_\allowbreak{}QUEUE Q7). \\
-PA-16 & Provenance hashes are independent of the checkout. & PARTIALLY\_\allowbreak{}SUPPORTED & New provenance only; historical hashes are preserved as recorded, by decision (D-005). \\
-PA-17 & Verification never mutates the evidence being verified. & SUPPORTED & Strong, concrete, and failure-driven --- a central contribution. \\
-PA-18 & Byte reproducibility, numerical reproducibility, engineering equivalence and engineering verification are distinct and machine-classified. & SUPPORTED & Tolerances are recomputation equivalence, never acceptance. \\
-PA-19 & Evidence regenerates equivalently across Python/\allowbreak{}NumPy versions and operating systems. & SUPPORTED & CI now verifies all 12 studies on Linux (Python 3.10/\allowbreak{}3.12/\allowbreak{}3.13), Windows (3.10/\allowbreak{}3.13) and macOS arm64 (3.13), with NumPy 2.2.6--2.5.3. Each run records its environment and comparator classes (\texttt{docs/\allowbreak{}CROSS\_\allowbreak{}ENVIRONMENT\_\allowbreak{}VERIFICATION.md}). Equivalence across these environments needed two comparator rules and one scoped P45 tolerance (D-007, approved 28 September 2026). The claim is limited to the CI matrix tested and to recomputation equivalence. Frozen artifacts still mostly do not declare their producing environment. \\
-PA-20 & Non-reproduction is an explicit, evidence-bearing outcome that names the missing inputs. & SUPPORTED & --- \\
-PA-21 & Missing inputs are never inferred to complete a reproduction. & SUPPORTED & --- \\
-PA-22 & Verification never grants engineering qualification; verification tolerances are not acceptance criteria. & SUPPORTED & --- \\
-PA-23 & EngiProof qualifies designs or replaces project-specific engineering verification. & OUT\_\allowbreak{}OF\_\allowbreak{}SCOPE & Explicitly disclaimed. \\
-PA-24 & The framework's own failures were detected, recorded and corrected through the same evidence process. & SUPPORTED & Report as lessons, not as a defect count. \\
-PA-25 & All three evidence classes (PUBLISHED, INDEPENDENT, SOLVER\_\allowbreak{}NEW) are exercised. & PARTIALLY\_\allowbreak{}SUPPORTED & Present SOLVER\_\allowbreak{}NEW as defined and reserved; do not claim it is demonstrated. \\
-PA-26 & Experimental reference data are handled as a distinct evidence population (model vs experiment). & PARTIALLY\_\allowbreak{}SUPPORTED & P38 is outside the six-case population, so cite it as a repository example. G5 (recording P40's experimental population explicitly) is optional. \\
-PA-27 & EngiProof generalises beyond offshore/\allowbreak{}subsea structural mechanics. & OUT\_\allowbreak{}OF\_\allowbreak{}SCOPE & State the domain scope; one additional paper would not establish generality. \\
-PA-28 & Evidence-controlled methods are callable, and every result carries its evidence envelope (class, status, limitations, boundary). & SUPPORTED & Runtime capability, not a scientific-validity claim. \\
-PA-29 & EngiProof performs autonomous scientific discovery or AI-generated verification. & OUT\_\allowbreak{}OF\_\allowbreak{}SCOPE & Do not claim. Agent-assisted development is a method detail, not a result. \\
-PA-30 & Project state is recoverable from repository control files without chat memory. & SUPPORTED & Supporting infrastructure claim. \\
+{\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.08\linewidth}>{\raggedright\arraybackslash}p{0.64\linewidth}>{\raggedright\arraybackslash}p{0.2\linewidth}}
+\toprule ID & Claim & Status \\ \midrule \endfirsthead
+\toprule ID & Claim & Status \\ \midrule \endhead
+PA-01 & Every evidence case is bound to an external source by SHA-256, and the copyrighted source is never redistributed. & SUPPORTED \\
+PA-02 & A source-identity audit gates reproduction and detects bibliographic conflicts. & PARTIALLY\_\allowbreak{}SUPPORTED \\
+PA-03 & Extraction candidates never become evidence: readiness and promotion gates block unreviewed targets, and extraction uncertainty is kept separate from source error. & SUPPORTED \\
+PA-04 & Extraction was hardened against concrete, recorded failures across publisher styles (ASCE, ASME, Elsevier) and a 1983 scanned source. & SUPPORTED \\
+PA-05 & Quantified extraction accuracy /\allowbreak{} recall across publishers. & NOT\_\allowbreak{}SUPPORTED\_\allowbreak{}YET \\
+PA-06 & Published methods re-implemented from the source reproduce or closely agree with published values for bounded targets, with residual differences reported explicitly at target level. & SUPPORTED \\
+PA-07 & Outcomes are recorded per target as REPRODUCED /\allowbreak{} COMPARED /\allowbreak{} VERIFIED /\allowbreak{} CONDITIONAL /\allowbreak{} BLOCKED. & SUPPORTED \\
+PA-08 & Methodologically independent computations (different formulation or numerical method) corroborate or contradict published values. & SUPPORTED \\
+PA-09 & Independent checks decide the direction of a discrepancy (reproduction vs printed value) rather than being tuned to it. & SUPPORTED \\
+PA-10 & Checks are independent in the organisational sense (performed by other people/\allowbreak{}teams). & NOT\_\allowbreak{}SUPPORTED\_\allowbreak{}YET \\
+PA-11 & Source inconsistencies are detected and preserved without tuning or silent correction. & SUPPORTED \\
+PA-12 & All inconsistencies in a source are found (completeness). & NOT\_\allowbreak{}SUPPORTED\_\allowbreak{}YET \\
+PA-13 & Every discrepancy carries an explicit classification, independent-support basis, promotion effect and closure requirements. & SUPPORTED \\
+PA-14 & Discrepancies block promotion until an append-only human decision with reviewer, rationale and evidence references is recorded; decisions never change qualification. & SUPPORTED \\
+PA-15 & Each study has a machine-auditable evidence graph linking source, implementations, comparisons, discrepancies and assessments. & SUPPORTED \\
+PA-16 & Provenance hashes are independent of the checkout. & PARTIALLY\_\allowbreak{}SUPPORTED \\
+PA-17 & Verification never mutates the evidence being verified. & SUPPORTED \\
+PA-18 & Byte reproducibility, numerical reproducibility, engineering equivalence and engineering verification are distinct and machine-classified. & SUPPORTED \\
+PA-19 & Evidence regenerates equivalently across Python/\allowbreak{}NumPy versions and operating systems. & SUPPORTED \\
+PA-20 & Non-reproduction is an explicit, evidence-bearing outcome that names the missing inputs. & SUPPORTED \\
+PA-21 & Missing inputs are never inferred to complete a reproduction. & SUPPORTED \\
+PA-22 & Verification never grants engineering qualification; verification tolerances are not acceptance criteria. & SUPPORTED \\
+PA-23 & EngiProof qualifies designs or replaces project-specific engineering verification. & OUT\_\allowbreak{}OF\_\allowbreak{}SCOPE \\
+PA-24 & The framework's own failures were detected, recorded and corrected through the same evidence process. & SUPPORTED \\
+PA-25 & All three evidence classes (PUBLISHED, INDEPENDENT, SOLVER\_\allowbreak{}NEW) are exercised. & PARTIALLY\_\allowbreak{}SUPPORTED \\
+PA-26 & Experimental reference data are handled as a distinct evidence population (model vs experiment). & PARTIALLY\_\allowbreak{}SUPPORTED \\
+PA-27 & EngiProof generalises beyond offshore/\allowbreak{}subsea structural mechanics. & OUT\_\allowbreak{}OF\_\allowbreak{}SCOPE \\
+PA-28 & Evidence-controlled methods are callable, and every result carries its evidence envelope (class, status, limitations, boundary). & SUPPORTED \\
+PA-29 & EngiProof performs autonomous scientific discovery or AI-generated verification. & OUT\_\allowbreak{}OF\_\allowbreak{}SCOPE \\*
+PA-30 & Persistent repository records are sufficient to reconstruct the recorded project state. & SUPPORTED \\
 \bottomrule
 \end{longtable}
 }
