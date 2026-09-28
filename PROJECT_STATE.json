@@ -11,7 +11,7 @@
   "last_green_verification": "28_VERIFY_P45_PHASE1_WINDOWS.bat",
   "last_green_status": "PASS",
   "next_study": "PAPER_A_SUBMISSION_REFINEMENT",
-  "next_action": "EngiProof v0.2.0 released (tag v0.2.0 = d0d96eb; Zenodo version DOI 10.5281/zenodo.23017727, concept DOI 10.5281/zenodo.23017726). Paper A reference [16] and CITATION.cff carry the DOI. Next: owner re-checks the official Advances in Engineering Software guide for authors, then submits Paper A. No new evidence cases; no P46.",
+  "next_action": "EngiProof v0.2.0 released (tag v0.2.0 = d0d96eb; Zenodo version DOI 10.5281/zenodo.23017727, concept DOI 10.5281/zenodo.23017726). The AES guide check was closed by the owner. Next: Paper A submission package preparation (no further manuscript restructuring). No new evidence cases; no P46.",
   "qualification": "NOT_GRANTED",
   "open_evidence_items": [
     "P40-D001",
