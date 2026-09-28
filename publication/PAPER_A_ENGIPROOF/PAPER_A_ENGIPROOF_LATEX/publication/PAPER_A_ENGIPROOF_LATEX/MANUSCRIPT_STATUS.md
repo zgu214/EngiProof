@@ -70,3 +70,12 @@ The draft now follows `publication/PAPER_A_ENGIPROOF/PAPER_A_OUTLINE.md`. It has
   - Paper2Agent, ScientistOne and ScientistTwo are treated only as contemporary related work, described factually with shared features and differences;
   - no priority, chronology or inspiration claim is made in either direction;
   - they are not engineering validation evidence.
+
+## Technical-prose pass — 28 September 2026 (WORK_QUEUE Q11 step 0)
+
+- Style-only rewrite of §0–§13. List-heavy draft prose is converted into journal paragraphs. The contribution list and the repository-rule list stay as lists; tables and the figure are untouched.
+- Guard: `scripts/prose_audit.py` confirms that numbers, citation keys, labels and refs, evidence identifiers, status/class macros, inline mathematics, table bodies and the TikZ figure are unchanged against `develop`.
+- An independent semantic review compared old and new text paragraph by paragraph. It found 11 meaning shifts plus 6 borderline wording shifts, all corrected before commit. Its final verdict: no meaning changes.
+- Word count 7075 → 6997; the PDF is 18 pages (previously 22), mainly because lists became prose.
+- Noted for the later source audit, deliberately left unchanged in this pass:
+  - §7 says "graphs of 11--39 nodes", but after the PR #8 graph-sync the P45 graph has 40 nodes. This number needs checking against the current `graph-audit`.

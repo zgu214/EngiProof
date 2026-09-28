@@ -1,19 +1,6 @@
 \section{The qualification boundary}
 \label{sec:qualification}
 
-Every study manifest, result artifact and evidence graph records engineering qualification as \estatus{NOT\_GRANTED} (PA-22). Several things leave it untouched:
-\begin{itemize}[leftmargin=1.5em]
-  \item reproduction, independent agreement and recomputation equivalence;
-  \item complete graph coverage;
-  \item a human discrepancy decision, which carries \texttt{qualification\_effect: NONE} by construction;
-  \item promotion of a study.
-\end{itemize}
+Every study manifest, result artifact and evidence graph records engineering qualification as \estatus{NOT\_GRANTED} (PA-22). Reproduction, independent agreement and recomputation equivalence leave it untouched, as do complete graph coverage, a human discrepancy decision (which carries \texttt{qualification\_effect: NONE} by construction) and the promotion of a study.
 
-Three boundaries follow from this.
-\begin{itemize}[leftmargin=1.5em]
-  \item \textbf{Tolerances.} Verification tolerances express recomputation equivalence, not engineering acceptance.
-  \item \textbf{Agreement.} Agreement between a reproduction and a printed value says that the printed value follows from the printed method. It does not say that the method is valid for a design.
-  \item \textbf{Human review.} Physics interpretation, scope changes, interpretation of source ambiguities and discrepancy dispositions remain human responsibilities, and the repository contract names them as such.
-\end{itemize}
-
-\engiproof{} therefore does not qualify designs and does not replace project-specific engineering verification (PA-23).
+Three boundaries follow. Verification tolerances express recomputation equivalence, not engineering acceptance. Agreement between a reproduction and a printed value says that the printed value follows from the printed method, not that the method is valid for a design. Physics interpretation, scope changes, the interpretation of source ambiguities and discrepancy dispositions remain human responsibilities, and the repository contract names them as such. \engiproof{} therefore does not qualify designs and does not replace project-specific engineering verification (PA-23).

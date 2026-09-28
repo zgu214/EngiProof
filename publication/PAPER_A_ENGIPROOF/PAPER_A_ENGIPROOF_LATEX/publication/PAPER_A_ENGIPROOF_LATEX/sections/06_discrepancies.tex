@@ -2,30 +2,14 @@
 \label{sec:discrepancy}
 
 \subsection{Preservation}
-A discrepancy record states the following:
-\begin{itemize}[leftmargin=1.5em]
-  \item the target;
-  \item the observation, with both sides as printed or computed;
-  \item an engineering interpretation;
-  \item the independent-support basis;
-  \item the closure requirements;
-  \item a status (\estatus{OPEN}, \estatus{OBSERVED} or \estatus{BOUNDED}).
-\end{itemize}
-The printed value is never replaced. This holds even where an inferred correction is strongly supported: 13.221 is kept against 18.221 (P43-D001), 153 against $\approx$159 (P41-D001), and ``1.290.500~dN'' against a plausible decimal-grouping error (P45-D002). Tests assert this preservation (PA-11).
+A discrepancy record states the target; the observation, with both sides as printed or computed; an engineering interpretation; the independent-support basis; the closure requirements; and a status (\estatus{OPEN}, \estatus{OBSERVED} or \estatus{BOUNDED}). The printed value is never replaced, even where an inferred correction is strongly supported: 13.221 is kept against 18.221 (P43-D001), 153 against $\approx$159 (P41-D001), and ``1.290.500~dN'' against a plausible decimal-grouping error (P45-D002). Tests assert this preservation (PA-11).
 
-The six studies hold 14 records: 13 \estatus{OPEN} and one \estatus{OBSERVED}. The repository as a whole holds 19. No claim is made that all inconsistencies in a source were found (PA-12).
+The six studies hold 14 records, 13 \estatus{OPEN} and one \estatus{OBSERVED}, and the repository as a whole holds 19. No claim is made that all inconsistencies in a source were found (PA-12).
 
 \subsection{Controlled taxonomy}
-Early records used free-text classification hints. There were ten different labels over 14 records, and similar phenomena were labelled differently. For example, a paragraph-versus-axis unit conflict and a missing unit carried unrelated labels.
+Early records used free-text classification hints. Ten different labels were in use over 14 records, and similar phenomena were labelled differently; a paragraph-versus-axis unit conflict and a missing unit, for instance, carried unrelated labels. The framework now defines a controlled taxonomy in two parts. \emph{Categories} state what kind of conflict a record describes. There are nine, each with a definition, a decision rule and a ``not this when'' rule, applied in a fixed decision order so that every record receives exactly one category. \emph{Loci} state through which evidence the conflict was established; there are seven, and a record may have several. Labels never change an observation, value, status, decision or qualification, they never assert a cause, and manifests are validated against the vocabulary.
 
-The framework now defines a controlled taxonomy with two parts:
-\begin{itemize}[leftmargin=1.5em]
-  \item \textbf{Categories} say \emph{what kind} of conflict it is. There are nine. Each has a definition, a decision rule and a ``not this when'' rule, and they are applied in a fixed decision order so that each record gets exactly one category.
-  \item \textbf{Loci} say \emph{through which evidence} the conflict was established. There are seven, and a record may have several.
-\end{itemize}
-Labels never change an observation, value, status, decision or qualification, and they never assert a cause. Manifests are validated against the vocabulary.
-
-Table~\ref{tab:taxonomy} shows one example per category. A software agent proposed the mapping of all 19 records, and the study owner then approved each label. The approvals are recorded append-only (\texttt{docs/DISCREPANCY\_TAXONOMY.md}). The original free-text hints and the frozen assessments were left unchanged (PA-13).
+Table~\ref{tab:taxonomy} gives one example per category. A software agent proposed the mapping of all 19 records and the study owner approved each label; the approvals are recorded append-only (\texttt{docs/DISCREPANCY\_TAXONOMY.md}), and the original free-text hints and frozen assessments were left unchanged (PA-13).
 
 \begin{table}[htbp]
 \centering
@@ -50,19 +34,8 @@ Category & Example & Why this category \\
 \end{table}
 
 \subsection{Human decisions gate promotion}
-Automation classifies and escalates a discrepancy; it does not decide it. An \estatus{OPEN} high-priority discrepancy blocks the promotion of its study. Only an append-only human decision can lift that block. The decision is one of four: \estatus{RESOLVED}, \estatus{BOUNDED}, \estatus{ACCEPTED\_WITH\_RATIONALE} or \estatus{DEFERRED}. It must name a reviewer and give a rationale, and every unblocking disposition must cite evidence references. A decision never edits the discrepancy record, and its qualification effect is always \texttt{NONE}.
+Automation classifies and escalates a discrepancy but does not decide it. An \estatus{OPEN} high-priority discrepancy blocks the promotion of its study, and only an append-only human decision can lift that block. The decision is one of \estatus{RESOLVED}, \estatus{BOUNDED}, \estatus{ACCEPTED\_WITH\_RATIONALE} or \estatus{DEFERRED}; it must name a reviewer and give a rationale, and every unblocking disposition must cite evidence references. A decision never edits the discrepancy record, and its qualification effect is always \texttt{NONE}.
 
-Eight real decisions have been recorded, and they exercise the boundary in both directions (PA-14):
-\begin{itemize}[leftmargin=1.5em]
-  \item \textbf{Unblocking.} P45-D004, a notation-only conflict, and P41-D002, where the plotted kNm axis is used for comparison while the paragraph's MNm unit stays preserved, were accepted with rationale. P45's blockers fall from six to five, and P41's from two to one.
-  \item \textbf{Bounded.} P16-D001 and P36-D001 were formalised as \estatus{BOUNDED}. For P36 the record states explicitly that the residual is in-sample, not held-out.
-  \item \textbf{Deferred.} Four decisions keep the block:
-    \begin{itemize}
-      \item P40-D001;
-      \item P43-D001 and P43-D002, where three consistent internal checks support the recomputed eigenvalues, but the records' own closure requirements ask for an erratum or author clarification;
-      \item P44-D001.
-    \end{itemize}
-\end{itemize}
-The P43 case matters for the argument: the reviewer declined to accept a well-supported correction just to clear a promotion gate.
+Eight real decisions have been recorded, and they exercise the boundary in both directions (PA-14). Two were accepted with rationale and lift a block: P45-D004, a notation-only conflict, and P41-D002, for which the plotted kNm axis is used for comparison while the paragraph's MNm unit remains preserved. As a result, the blockers of P45 fall from six to five and those of P41 from two to one. P16-D001 and P36-D001 were formalised as \estatus{BOUNDED}, and the P36 record states explicitly that its residual is in-sample, not held-out. The remaining four decisions keep the block: P40-D001, P44-D001, and P43-D001 and P43-D002. For these two records, three consistent internal checks support the recomputed eigenvalues, but the records' own closure requirements ask for an erratum or author clarification. The P43 decisions are significant for the argument, because the reviewer declined to accept a well-supported correction merely to clear a promotion gate.
 
-A software agent prepared the candidate decisions, each with the dry-run effect on the gates. The reviewer made the decisions. Every decision records \texttt{qualification\_effect: NONE}.
+A software agent prepared the candidate decisions, each with its dry-run effect on the gates, and the reviewer made the decisions. Every decision records \texttt{qualification\_effect: NONE}.

@@ -2,7 +2,7 @@
 \label{sec:failures}
 
 \subsection{Failures of the framework}
-The evidence process recorded 22 failure modes of the framework itself (PA-24). They are condensed in Table~\ref{tab:failures}. They are reported as lessons, not as a quality metric. Each was surfaced by the process, recorded with a repository reference, and then corrected, bounded or left visible.
+The evidence process recorded 22 failure modes of the framework itself (PA-24), condensed in Table~\ref{tab:failures}. They are reported as lessons rather than as a quality metric: each was surfaced by the process, recorded with a repository reference, and then corrected, bounded or left visible.
 
 \begin{table}[htbp]
 \centering
@@ -23,22 +23,7 @@ Operations & Windows batch chaining (F9); hard-coded checkpoint test (F13); grap
 \end{table}
 
 \subsection{Legitimately irreproducible targets}
-Four of the six studies have a major target that cannot be reproduced from the source:
-\begin{itemize}[leftmargin=1.5em]
-  \item the P41 global-buckling FE response;
-  \item the P42 FE unit-cell results;
-  \item the P44 nonlinear FE contact profiles;
-  \item the P45 dynamic responses.
-\end{itemize}
-These are recorded as limitations or as \estatus{BLOCKED} comparisons, and no inputs are inferred to complete them. Only P45 records its non-reproduced targets as \estatus{BLOCKED} comparisons; the other three record them as limitations, and aligning them is a housekeeping item.
+Four of the six studies have a major target that cannot be reproduced from the source: the P41 global-buckling FE response, the P42 FE unit-cell results, the P44 nonlinear FE contact profiles and the P45 dynamic responses. These are recorded as limitations or as \estatus{BLOCKED} comparisons, and no inputs are inferred to complete them. Only P45 records its non-reproduced targets as \estatus{BLOCKED} comparisons; the other three record them as limitations, and aligning them is a housekeeping item.
 
 \subsection{Limitations}
-\begin{enumerate}[leftmargin=1.6em]
-  \item No extraction accuracy or recall is measured, and inconsistency detection is not claimed to be complete.
-  \item Independent checks are methodological, not organisational. External replication remains future work.
-  \item The six studies share one domain.
-  \item \eclass{SOLVER\_NEW} evidence is defined but not yet exercised.
-  \item Human decisions have been exercised on eight records by one reviewer, who is also the author; no external reviewer has been involved yet.
-  \item The source format is recorded for one study only.
-  \item Most frozen artifacts do not declare the environment that produced them.
-\end{enumerate}
+No extraction accuracy or recall is measured, and inconsistency detection is not claimed to be complete. The independent checks are methodological, not organisational, and external replication remains future work. The six studies share one domain, and \eclass{SOLVER\_NEW} evidence is defined but not yet exercised. Human decisions have been exercised on eight records by one reviewer, who is also the author; no external reviewer has been involved yet. The source format is recorded for one study only, and most frozen artifacts do not declare the environment that produced them.
