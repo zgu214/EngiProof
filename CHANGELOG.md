@@ -4,6 +4,8 @@
 
 The first release of the v0.2.0 line: paper ingestion and evidence automation, and the software state cited by Paper A.
 
+- **Licence:** Apache License 2.0 (`LICENSE.txt`, `NOTICE`). It replaces the previous all-rights-reserved notice. Third-party publications and source materials keep their original rights and are neither distributed nor relicensed.
+
 - Six frozen CONDITIONAL evidence cases, P40–P45 (1976–2019, including a 1983 scanned source). Every case is source-bounded, has independent checks, and keeps discrepancy records without tuning. Qualification is NOT_GRANTED throughout.
 - Non-mutating verification (D-005). It runs in a disposable sandbox with a six-class comparator. Cross-environment equivalence rules were approved in D-007. CI verifies all 12 studies on Linux, Windows and macOS with a tracked-file non-mutation gate. The Windows dispatcher now propagates exit codes (F22).
 - Controlled discrepancy taxonomy: 9 categories and 7 loci, with all 19 records approved (D-008). Append-only human discrepancy decisions gate promotion (D-008, D-009).

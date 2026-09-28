@@ -1,0 +1,27 @@
+EngiProof
+Copyright 2026 Zhiqiang Gu
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE.txt).
+
+Third-party publications and source materials
+---------------------------------------------
+EngiProof studies are derived from published engineering papers. Those
+publications, including their text, figures, tables and PDF files, remain
+the property of their respective rights holders and retain their original
+rights. EngiProof does not distribute them and does not relicense them. The
+Apache License 2.0 applies only to EngiProof's own contributions: its source
+code, documentation, calculations and evidence records.
+
+- Source PDFs and publisher figure rasters are not included in this
+  repository. Each source is identified by its bibliographic record, DOI
+  (where available) and SHA-256 fingerprint.
+- Reference values transcribed or digitised from those publications (for
+  example files under papers/*/reference/ and the published values recorded
+  in study manifests) are included only as factual data for comparison, with
+  the source identified. Short bibliographic lines and caption fragments
+  used as test fixtures are included for the same purpose. Nothing in this
+  repository grants any right in the underlying publications.
+
+Third-party software dependencies (NumPy, pypdf, fontTools and, optionally,
+the MCP Python SDK) are installed separately and are governed by their own
+licences. No third-party source code is vendored in this repository.

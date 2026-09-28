@@ -11,6 +11,10 @@ EngiProof converts selected published engineering methods into source-bounded, r
 - A controlled discrepancy taxonomy and append-only human decisions that gate promotion (DECISIONS.md D-007, D-008, D-009).
 - The Paper A manuscript sources, with tables generated from repository data and a prose facts check.
 
+## Licence
+
+EngiProof is released under the Apache License 2.0 (`LICENSE.txt`, `NOTICE`). The third-party publications used as sources retain their original rights. They are not distributed or relicensed; see `NOTICE`.
+
 ## Not included
 
 - Copyrighted source PDFs and publisher figures. Each source is identified by its SHA-256 and bibliographic record.

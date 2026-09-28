@@ -104,3 +104,17 @@ Approved by Zhiqiang Gu on 28 September 2026.
   - The "within the two-decimal source precision" wording is replaced in `papers/P40/README.md`, in the PA-06 evidence note and in the manuscript.
   - P40-D001 remains the materially larger discrepancy: Eq. (9), PIP-3, 0.705666 against 0.66.
 - **SA-10.** In the Paper A abstract, "independent formulations decide the direction of five numerical conflicts" becomes "independent checks and source-consistency checks clarify five source conflicts". Not all five records are numerical conflicts, and not all are decided by methodologically independent formulations.
+
+## D-010 — Licence: Apache License 2.0 from v0.2.0
+
+Decided by Zhiqiang Gu on 28 September 2026.
+
+- EngiProof is released under Apache-2.0 from v0.2.0: `LICENSE.txt` (the full licence text) and `NOTICE`. It replaces the previous all-rights-reserved notice.
+- Reasons: reproducible, open engineering software; academic and industrial reuse; a standard SPDX licence for software citation and Zenodo; clear redistribution terms with an explicit patent grant.
+- Licence and provenance audit of the tracked repository (392 files), done before applying the licence:
+  - No vendored third-party code. Every commit is by the owner, including AI-assisted work, which is disclosed.
+  - Runtime dependencies (NumPy, pypdf, fontTools, optional MCP SDK) are installed separately under their own permissive licences.
+  - No source PDFs or publisher rasters are tracked. The only tracked PDF is the owner's own Paper A draft v0.1, which has no embedded images.
+  - Third-party-derived content is limited to factual reference values transcribed or digitised from the cited publications (`papers/*/reference/`, published values in manifests), bibliographic records, and short caption and footer fragments in test fixtures and source-review notes.
+- `NOTICE` states that third-party publications keep their original rights and are neither distributed nor relicensed. Apache-2.0 covers only EngiProof's own contributions.
+- Historical v0.1.x release manifests (`RELEASE_MANIFEST.json`, `SHA256SUMS.txt`) record the licence file of that release and are left unchanged.
