@@ -271,6 +271,42 @@
       "generated_by": [
         "engiproof.evidence_graph_sync/1.0"
       ]
+    },
+    {
+      "id": "AUTO-DECISION-P43-D001-DEC-001",
+      "kind": "discrepancy_decision",
+      "label": "DEFERRED decision for P43-D001",
+      "evidence_class": "INDEPENDENT",
+      "status": "DEFERRED",
+      "source_refs": [
+        "P43-D001-DEC-001",
+        "P43-D001",
+        "papers/P43/results/table1_full_matrix_comparison.csv",
+        "papers/P43/results/phase2_full_matrix_summary.json"
+      ],
+      "reviewer": "Zhiqiang Gu",
+      "qualification_effect": "NONE",
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
+    },
+    {
+      "id": "AUTO-DECISION-P43-D002-DEC-001",
+      "kind": "discrepancy_decision",
+      "label": "DEFERRED decision for P43-D002",
+      "evidence_class": "INDEPENDENT",
+      "status": "DEFERRED",
+      "source_refs": [
+        "P43-D002-DEC-001",
+        "P43-D002",
+        "papers/P43/results/table1_full_matrix_comparison.csv",
+        "papers/P43/results/phase2_full_matrix_summary.json"
+      ],
+      "reviewer": "Zhiqiang Gu",
+      "qualification_effect": "NONE",
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
     }
   ],
   "edges": [
@@ -368,17 +404,37 @@
       "from": "AUTO-DISCREPANCY-P43-D002",
       "to": "AUTO-ASSESSMENT-P43-D002",
       "relation": "classified_by"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P43-D001",
+      "to": "AUTO-DECISION-P43-D001-DEC-001",
+      "relation": "reviewed_by"
+    },
+    {
+      "from": "AUTO-ASSESSMENT-P43-D001",
+      "to": "AUTO-DECISION-P43-D001-DEC-001",
+      "relation": "informs_decision"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P43-D002",
+      "to": "AUTO-DECISION-P43-D002-DEC-001",
+      "relation": "reviewed_by"
+    },
+    {
+      "from": "AUTO-ASSESSMENT-P43-D002",
+      "to": "AUTO-DECISION-P43-D002-DEC-001",
+      "relation": "informs_decision"
     }
   ],
   "qualification": "NOT_GRANTED",
   "sync": {
     "schema_version": "engiproof.evidence_graph_sync/1.0",
-    "added_nodes": 8,
-    "added_edges": 8,
+    "added_nodes": 2,
+    "added_edges": 4,
     "tool_count": 6,
     "comparison_count": 9,
     "discrepancy_count": 2,
-    "decision_count": 0,
+    "decision_count": 2,
     "rule": "Synchronization is additive: existing hand-authored nodes/edges are preserved and qualification is never promoted."
   }
 }

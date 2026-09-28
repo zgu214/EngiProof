@@ -509,6 +509,24 @@
       "generated_by": [
         "engiproof.evidence_graph_sync/1.0"
       ]
+    },
+    {
+      "id": "AUTO-DECISION-P45-D004-DEC-001",
+      "kind": "discrepancy_decision",
+      "label": "ACCEPTED_WITH_RATIONALE decision for P45-D004",
+      "evidence_class": "INDEPENDENT",
+      "status": "ACCEPTED_WITH_RATIONALE",
+      "source_refs": [
+        "P45-D004-DEC-001",
+        "P45-D004",
+        "papers/P45/reference/example_1200m_inputs.json",
+        "engiproof/studies/P45/study.json#P45-D004"
+      ],
+      "reviewer": "Zhiqiang Gu",
+      "qualification_effect": "NONE",
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
     }
   ],
   "edges": [
@@ -701,17 +719,27 @@
       "from": "AUTO-DISCREPANCY-P45-D006",
       "to": "AUTO-ASSESSMENT-P45-D006",
       "relation": "classified_by"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P45-D004",
+      "to": "AUTO-DECISION-P45-D004-DEC-001",
+      "relation": "reviewed_by"
+    },
+    {
+      "from": "AUTO-ASSESSMENT-P45-D004",
+      "to": "AUTO-DECISION-P45-D004-DEC-001",
+      "relation": "informs_decision"
     }
   ],
   "qualification": "NOT_GRANTED",
   "sync": {
     "schema_version": "engiproof.evidence_graph_sync/1.0",
-    "added_nodes": 22,
-    "added_edges": 22,
+    "added_nodes": 1,
+    "added_edges": 2,
     "tool_count": 16,
     "comparison_count": 9,
     "discrepancy_count": 6,
-    "decision_count": 0,
+    "decision_count": 1,
     "rule": "Synchronization is additive: existing hand-authored nodes/edges are preserved and qualification is never promoted."
   }
 }

@@ -6,14 +6,14 @@ Categories: **a** no new paper (work or decisions on existing records) · **b** 
 
 **Result: five gaps; none is category d. P46 is not required.**
 
-## Status after the evidence-hardening PR (27 September 2026)
+## Status after the evidence-hardening PR (updated 28 September 2026)
 
 | Gap | Status | What remains |
 |---|---|---|
-| G1 | Candidates prepared (`G1_DECISION_CANDIDATES.md`) with evidence, rationale options and dry-run gate effects | Owner decisions. The agent records none. |
-| G2 | Vocabulary, validation, CLI and a proposed mapping for all 19 records (`docs/DISCREPANCY_TAXONOMY.md`) | Owner review (`engiproof taxonomy-review`) |
-| G3 | Tracked text-free summaries for P40–P45. P45 is machine-generated; P40–P43 are explicit pending records; P44 has no ingestion record. | Run `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` where the intakes are |
-| G4 | CI on Linux, Windows and macOS verifies all 12 studies and records each environment (`docs/CROSS_ENVIRONMENT_VERIFICATION.md`). Findings F20/F21. | Owner approval of D-007 (comparator rules and scoped P45 tolerance) |
+| G1 | **Closed (D-008).** Eight real decisions, in both directions: two ACCEPTED_WITH_RATIONALE (unblocking), two BOUNDED, four DEFERRED (still blocking). Before/after gate evidence is in `G1_GATE_EVIDENCE.json`. | — |
+| G2 | **Closed (D-008).** Controlled taxonomy; all 19 labels approved by the owner, with an append-only review trail (`docs/DISCREPANCY_TAXONOMY.md`) | — |
+| G3 | Tracked text-free summaries for P40–P45. P45 is machine-generated; P40–P43 are pending the owner's local run; P44 has no ingestion record. | Incorporate the `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` results, or record them explicitly as still pending |
+| G4 | **Closed (D-007 approved).** CI on Linux, Windows and macOS verifies all 12 studies and records each environment (`docs/CROSS_ENVIRONMENT_VERIFICATION.md`). | P38 runner portability (WORK_QUEUE Q9) at the next approved regeneration |
 | G5 | Reassessed: optional. P38-D002 already instantiates MODEL_VS_EXPERIMENT_GAP, and P40 Table 2 ratios are analytical / experiment by construction. | Nothing required for Paper A |
 
 ---

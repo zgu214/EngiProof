@@ -72,3 +72,19 @@ engiproof discrepancy-gate <ID>      # then: engiproof promotion-gate <ID>; engi
 ```
 
 After decisions are recorded, the agent can do the evidence sync (graph-sync/audit, handover and Paper A matrix PA-14) and open a PR.
+
+## Outcome — recorded 28 September 2026 (D-008)
+
+The owner (Zhiqiang Gu) approved the following, and they were recorded with his rationales:
+
+| Candidate | Decision recorded | Gate effect (before → after) |
+|---|---|---|
+| P45-D004 | ACCEPTED_WITH_RATIONALE | P45 blockers 6 → 5 |
+| P41-D002 | ACCEPTED_WITH_RATIONALE | P41 blockers 2 → 1 |
+| P43-D001, P43-D002 | **DEFERRED**, per the recorded closure requirements; not accepted to clear the gate | P43 unchanged (2 blockers) |
+| P44-D001 | DEFERRED | P44 unchanged (1 blocker) |
+| P16-D001, P36-D001 | BOUNDED, formalising the existing status (P36 is in-sample, not held-out) | Unchanged (already ready) |
+
+- Decision files: `engiproof/studies/{P16,P36,P41,P43,P44,P45}/discrepancy_decisions.json`.
+- Before/after gate evidence and graph audits: `G1_GATE_EVIDENCE.json`.
+- Qualification remains NOT_GRANTED.

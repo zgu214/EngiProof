@@ -43,12 +43,15 @@ class TaxonomyContractTests(unittest.TestCase):
         self.assertEqual(len(paper_a), 14)
         self.assertEqual(mapped, expected)
 
-    def test_repository_audit_passes_and_nothing_is_approved_by_the_agent(self):
+    def test_repository_audit_passes_and_every_label_is_reviewer_approved(self):
+        # Owner approved the proposed mapping as documented (PR #8 review, 2026-09-28).
         audit = taxonomy_audit()
         self.assertEqual(audit["status"], "PASS", audit["issues"])
+        self.assertEqual(audit["review_status_counts"], {"APPROVED": 19})
         for r in audit["records"]:
-            self.assertIsNone(r["effective"], r["discrepancy_id"])
-        self.assertEqual(audit["review_status_counts"], {"PROPOSED": 19})
+            self.assertIsNotNone(r["effective"], r["discrepancy_id"])
+            self.assertTrue(r["effective"]["reviewer"], r["discrepancy_id"])
+            self.assertEqual({"category": r["effective"]["category"], "loci": r["effective"]["loci"]}, r["proposed"], r["discrepancy_id"])
 
 
     def test_reviewer_document_is_current(self):
@@ -96,6 +99,7 @@ class TaxonomyReviewTests(unittest.TestCase):
             root = self._copy(td)
             study = root / "engiproof/studies/P45/study.json"
             before = self._hash(study)
+            n_before = {r["discrepancy_id"]: len(r.get("reviews") or []) for r in load_mapping(root)["records"]}
             gate_before = discrepancy_gate("P45", root=root)
             out = record_taxonomy_review("P45", "P45-D004", "APPROVED", "Reviewer", "Notation-only conflict; period stated in text.", root=root, today="2026-09-27")
             self.assertEqual(out["effective"]["category"], "NOTATION_OR_TYPOGRAPHY")
@@ -104,13 +108,16 @@ class TaxonomyReviewTests(unittest.TestCase):
             self.assertEqual(rec["reviews"][-1]["loci"], ["SOURCE_INCOMPLETE"])
             record_taxonomy_review("P45", "P45-D004", "REJECTED", "Reviewer", "Revisited: reject pending source check.", root=root)
             rec = next(r for r in load_mapping(root)["records"] if r["discrepancy_id"] == "P45-D004")
-            self.assertEqual([r["decision"] for r in rec["reviews"]], ["APPROVED", "REJECTED"])
+            self.assertEqual([r["decision"] for r in rec["reviews"]][-2:], ["APPROVED", "REJECTED"])
             audit = taxonomy_audit("P45", root=root)
             self.assertEqual(audit["status"], "PASS", audit["issues"])
             eff = {r["discrepancy_id"]: r["effective"] for r in audit["records"]}
             self.assertIsNone(eff["P45-D004"])
             self.assertEqual(eff["P45-D003"]["loci"], ["SOURCE_INCOMPLETE"])
             self.assertEqual(self._hash(study), before)
+            n_after = {r["discrepancy_id"]: len(r.get("reviews") or []) for r in load_mapping(root)["records"]}
+            self.assertEqual(n_after["P45-D004"] - n_before["P45-D004"], 2)  # append-only
+            self.assertEqual(n_after["P45-D003"] - n_before["P45-D003"], 1)
             gate_after = discrepancy_gate("P45", root=root)
             self.assertEqual(gate_after["blocking_discrepancy_ids"], gate_before["blocking_discrepancy_ids"])
 

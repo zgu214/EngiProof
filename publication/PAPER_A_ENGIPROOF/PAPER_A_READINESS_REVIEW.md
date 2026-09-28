@@ -13,8 +13,8 @@ What can EngiProof now support as a publishable methods/evidence paper, given th
 | | |
 |---|---|
 | Claims tested | 30 (`CLAIM_EVIDENCE_MATRIX.md`) |
-| SUPPORTED | 16 |
-| PARTIALLY_SUPPORTED | 8 |
+| SUPPORTED | 19 |
+| PARTIALLY_SUPPORTED | 5 |
 | NOT_SUPPORTED_YET | 3 |
 | OUT_OF_SCOPE | 3 |
 | Genuine evidence gaps | 5 (G1–G5, `PAPER_A_GAPS.md`) |
@@ -74,8 +74,8 @@ What it does not stress-test:
 | F17 | graph-sync persists per-run counters | runtime | Recorded as low-priority hardening | WORK_QUEUE Q7 |
 | F18 | Source identity recorded incompletely or wrongly (P43/P44 DOI PENDING; P43 SPE number 5820 instead of 5620); ingestion records missing | P43, P44 (P40) | Identity corrected from publisher records (27 Sep 2026); tracked ingestion summaries still missing — gap G3 | `S(P43)`, `S(P44)`, `papers/P43/SOURCE.md` |
 | F19 | Generated packaging metadata tracked in Git | runtime | Untracked | PR #4 |
-| F20 | Frozen P45 evidence was not recomputation-equivalent across NumPy/BLAS builds under the default tolerance: the ill-conditioned independent FE check changes by ≤ 2.9e-7 abs. CI missed this because `verify-all` covers only live studies, and the earlier “NUMERICAL_NONMATERIAL under NumPy 2.5.3” statement was wrong. | P45 (cross-OS CI) | CI verifies every study (`environment-record`); path-scoped recomputation tolerance on the FE block only, with the engineering boolean still compared exactly (D-007, proposed) | `docs/CROSS_ENVIRONMENT_VERIFICATION.md` |
-| F21 | Provenance manifests are platform-dependent: hashes of non-materially changed CSVs, and OS path separators in keys, made P38 fail on Windows/macOS | P38 (cross-OS CI) | Provenance-hash inheritance and separator-rendering rules (D-007, proposed); runner fix deferred to the next approved regeneration | same |
+| F20 | Frozen P45 evidence was not recomputation-equivalent across NumPy/BLAS builds under the default tolerance: the ill-conditioned independent FE check changes by ≤ 2.9e-7 abs. CI missed this because `verify-all` covers only live studies, and the earlier “NUMERICAL_NONMATERIAL under NumPy 2.5.3” statement was wrong. | P45 (cross-OS CI) | CI verifies every study (`environment-record`); path-scoped recomputation tolerance on the FE block only, with the engineering boolean still compared exactly (D-007, approved 28 Sep 2026) | `docs/CROSS_ENVIRONMENT_VERIFICATION.md` |
+| F21 | Provenance manifests are platform-dependent: hashes of non-materially changed CSVs, and OS path separators in keys, made P38 fail on Windows/macOS | P38 (cross-OS CI) | Provenance-hash inheritance and separator-rendering rules (D-007, approved 28 Sep 2026); runner fix deferred to the next approved regeneration | same |
 
 These failures are themselves Paper A evidence: each was surfaced by the evidence process, recorded, and either corrected or left visible.
 
@@ -119,12 +119,6 @@ G5 is a C-type item (deeper use of P40). It is recommended but not blocking.
 
 ## 8. Next highest-value action
 
-Update, 27 September 2026: the “Paper A evidence hardening” PR implements G2–G4 and prepares G1 (status table in `PAPER_A_GAPS.md`). What remains are owner actions:
-- **G1:** record decisions from `G1_DECISION_CANDIDATES.md`.
-- **G2:** review the proposed taxonomy labels.
-- **G4:** approve D-007 (two comparator rules and the scoped P45 tolerance).
-- **G3:** run `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` where the P40–P43 intakes are.
-
-Then synthesise the manuscript from `PAPER_A_OUTLINE.md`. G5 is optional.
+Update, 28 September 2026: the owner has approved D-007 and the taxonomy mapping, and recorded the G1 decisions (D-008). What remains before PR #8 merges is incorporating the local P40–P43 ingestion summaries (`29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat`), or recording them explicitly as still pending. After that, finalise the manuscript (PR #9): regenerate Appendix A, complete the related-work references, rebuild. G5 is optional; there is no P46.
 
 Contextual literature, including the ScientistTwo / Chain-of-Evidence direction, belongs in related work as architectural context only. It is not engineering validation evidence and does not replace P40–P45.

@@ -34,7 +34,7 @@ Counts are regenerated artifacts per class, summed over the 12 studies.
 
 Legend: `=` all regenerated artifacts IDENTICAL; `B` BYTE_ONLY; `E` ENVIRONMENT_METADATA; `N` NUMERICAL_NONMATERIAL; `NM!` NUMERICAL_MATERIAL; `M!` MATERIAL_NON_NUMERIC (the last two would fail verification). The number after each letter is the count of artifacts in that class.
 
-## Findings that led to D-007 (proposed)
+## Findings that led to D-007 (approved by the owner, 28 September 2026)
 
 The first cross-OS runs (commits `be809a7`, `c102cde`, `d3979a5`) failed. Frozen evidence was not changed to make them pass:
 

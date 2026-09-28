@@ -460,6 +460,19 @@ Active task: Paper A readiness review across P40–P45 (WORK_QUEUE Q6). Create P
   - **G3:** tracked text-free `ingestion_summary.json` for P40–P45 (P45 machine-generated; P40–P43 pending local intakes; P44 none recorded).
   - **G4:** CI on Linux/Windows/macOS, verifying every study and recording its environment.
   - **G1:** decision candidates prepared.
-- Cross-OS findings F20 (P45 FE-check recomputation noise) and F21 (P38 platform-dependent provenance) are handled by D-007, **proposed**, which needs owner approval.
+- Cross-OS findings F20 (P45 FE-check recomputation noise) and F21 (P38 platform-dependent provenance) are handled by D-007, which the owner approved on 28 September 2026.
 - Qualification remains NOT_GRANTED everywhere, and all discrepancies keep their status. No P46.
+
+## Checkpoint — owner approvals recorded (28 September 2026)
+
+- D-007 is approved.
+- The taxonomy (G2) is approved: all 19 labels, with an append-only review trail.
+- The G1 decisions are recorded (D-008):
+  - P45-D004 and P41-D002: ACCEPTED_WITH_RATIONALE;
+  - P43-D001, P43-D002 and P44-D001: DEFERRED;
+  - P16-D001 and P36-D001: BOUNDED.
+- Before/after gate evidence: `publication/PAPER_A_ENGIPROOF/G1_GATE_EVIDENCE.json`.
+- Graphs were synced for P16, P36 and P41–P45; all audits PASS at coverage 1.0.
+- PR #8 now waits only on the owner's local `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` results for P40–P43.
+- Qualification remains NOT_GRANTED. No P46.
 

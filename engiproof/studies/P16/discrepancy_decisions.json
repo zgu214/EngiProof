@@ -1,0 +1,20 @@
+{
+  "schema_version": "engiproof.discrepancy_decisions/1.0",
+  "paper_id": "P16",
+  "decisions": [
+    {
+      "decision_id": "P16-D001-DEC-001",
+      "discrepancy_id": "P16-D001",
+      "disposition": "BOUNDED",
+      "rationale": "Formalises the existing BOUNDED manifest status: the maximum graph-minus-table difference across the six published cycle endpoints is 0.917245 mm, consistent with finite graph/table precision. This does not validate an independent walking solver.",
+      "reviewer": "Zhiqiang Gu",
+      "evidence_refs": [
+        "papers/P16/results/figure5_table2_comparison.csv",
+        "engiproof/studies/P16/study.json#P16-D001"
+      ],
+      "effective_promotion_effect": "NONE",
+      "qualification_effect": "NONE",
+      "rule": "Human discrepancy decisions may resolve/bound/accept a review item but never grant engineering qualification."
+    }
+  ]
+}

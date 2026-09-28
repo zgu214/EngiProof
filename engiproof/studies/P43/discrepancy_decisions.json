@@ -1,0 +1,34 @@
+{
+  "schema_version": "engiproof.discrepancy_decisions/1.0",
+  "paper_id": "P43",
+  "decisions": [
+    {
+      "decision_id": "P43-D001-DEC-001",
+      "discrepancy_id": "P43-D001",
+      "disposition": "DEFERRED",
+      "rationale": "Independent FE, Eq. (10), and Table 2 are internally consistent with approximately 18.221, but the study's closure requirements explicitly require authoritative erratum/author clarification before closure. Preserve the printed 13.221 and keep the discrepancy blocking.",
+      "reviewer": "Zhiqiang Gu",
+      "evidence_refs": [
+        "papers/P43/results/table1_full_matrix_comparison.csv",
+        "papers/P43/results/phase2_full_matrix_summary.json"
+      ],
+      "effective_promotion_effect": "BLOCK_PROMOTION",
+      "qualification_effect": "NONE",
+      "rule": "Human discrepancy decisions may resolve/bound/accept a review item but never grant engineering qualification."
+    },
+    {
+      "decision_id": "P43-D002-DEC-001",
+      "discrepancy_id": "P43-D002",
+      "disposition": "DEFERRED",
+      "rationale": "Independent FE and Table 2 are internally consistent with approximately 6.654, but authoritative clarification is still required by the recorded closure requirements. Preserve the printed 6.554 and keep the discrepancy blocking.",
+      "reviewer": "Zhiqiang Gu",
+      "evidence_refs": [
+        "papers/P43/results/table1_full_matrix_comparison.csv",
+        "papers/P43/results/phase2_full_matrix_summary.json"
+      ],
+      "effective_promotion_effect": "BLOCK_PROMOTION",
+      "qualification_effect": "NONE",
+      "rule": "Human discrepancy decisions may resolve/bound/accept a review item but never grant engineering qualification."
+    }
+  ]
+}

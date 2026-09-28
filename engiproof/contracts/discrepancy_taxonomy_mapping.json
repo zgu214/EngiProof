@@ -19,8 +19,16 @@
         "Eq. (8a-d) work balance"
       ],
       "rationale": "The same quantity has a printed value (0.66) and a recomputed value (0.7057) beyond the two-decimal rounding band; the independent work balance agrees with the recomputation.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P40-D001-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P41",
@@ -36,8 +44,16 @@
         "Eqs. (6)-(8)"
       ],
       "rationale": "Printed components (153 + 312) do not sum to the printed total (471); Eqs. (6)-(8) give a different inner increment (158.8).",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P41-D001-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P41",
@@ -51,8 +67,16 @@
         "Figure 10 axis (kNm)"
       ],
       "rationale": "The magnitudes (300, 850) are consistent with the plotted scale; the conflict is resolved by the unit alone, which is the UNIT_OR_DIMENSION rule and takes precedence over NUMERICAL_VALUE_CONFLICT.",
-      "review_status": "PROPOSED",
-      "reviews": [],
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P41-D002-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ],
       "alternative_for_review": "NUMERICAL_VALUE_CONFLICT — if the reviewer does not apply unit precedence."
     },
     {
@@ -67,8 +91,16 @@
         "published FP-RUC results"
       ],
       "rationale": "Both models are as published; the source attributes the Fz dependence to model kinematics. No printed value is contradicted.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P42-D001-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P42",
@@ -83,8 +115,16 @@
         "Figure 16"
       ],
       "rationale": "A literal implementation does not reconcile with Figure 16; the printed equations and load case do not fix the contact-pressure/interface convention. The legacy label is already of this kind.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P42-D002-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P43",
@@ -102,8 +142,16 @@
         "Eq. (8) Hermite FE"
       ],
       "rationale": "Printed eigenvalue vs recomputed 18.221 (published Eq. (10) and independent FE) and vs Table 2.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P43-D001-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P43",
@@ -119,8 +167,16 @@
         "Eq. (8) Hermite FE"
       ],
       "rationale": "Printed eigenvalue vs independent FE 6.654; Table 2 error is consistent only with 6.654.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P43-D002-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P44",
@@ -135,8 +191,16 @@
         "Figure 2"
       ],
       "rationale": "The same time labels have two incompatible printed values. The legacy label SOURCE_FIGURE_TEXT_MISMATCH described the locus, not the kind.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P44-D001-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P45",
@@ -151,8 +215,16 @@
         "Figure 3 buoyancy geometry"
       ],
       "rationale": "No other printed value of the buoyed weight exists; the conflict is established by buoyancy applied to the source geometry.",
-      "review_status": "PROPOSED",
-      "reviews": [],
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P45-D001-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ],
       "alternative_for_review": "NUMERICAL_VALUE_CONFLICT with WITHIN_SOURCE — if the reviewer treats the Figure 3 geometry as a second statement of the buoyed weight."
     },
     {
@@ -167,8 +239,16 @@
         "riser section and submerged weight"
       ],
       "rationale": "The printed tensions imply 662/1141 MPa axial stress and 6-23 times the submerged weight; no other printed value of these tensions exists. The decimal-grouping explanation is not asserted.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P45-D002-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P45",
@@ -183,8 +263,16 @@
         "Table 3 effective weight"
       ],
       "rationale": "No unit is printed; only a unit of order 10 kN supports the riser weight. No unit is asserted.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P45-D003-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P45",
@@ -199,8 +287,16 @@
         "tension equation 2 pi t/9"
       ],
       "rationale": "Notation contradicts the stated period; no printed numerical value is in conflict. No cause is asserted.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P45-D004-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P45",
@@ -215,8 +311,16 @@
         "Figures 4(a)-9(a) envelope widths (graphical measurement)"
       ],
       "rationale": "The figures reconcile with peak-to-peak and not with single amplitude; the source uses both readings of 'amplitude'.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P45-D005-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P45",
@@ -230,8 +334,16 @@
         "Figure 11 stress labels"
       ],
       "rationale": "The claim is reproduced only when read as peak absolute stress, not per envelope.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P45-D006-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P16",
@@ -245,8 +357,16 @@
         "Table 2 values"
       ],
       "rationale": "Graph-minus-table difference (max 0.92 mm) is consistent with finite graph/table precision; the record is already BOUNDED.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P16-D001-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P29",
@@ -261,8 +381,16 @@
         "printed two-sided integral"
       ],
       "rationale": "The figure matches the positive-frequency integral and the printed value is exactly the two-sided one; the numbers reconcile under one convention each.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P29-D001-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     },
     {
       "paper_id": "P36",
@@ -276,8 +404,16 @@
         "Figure 14 markers (graphical centres)"
       ],
       "rationale": "In-sample residual of a published empirical fit against the data it was fitted to; no printed value is contradicted.",
-      "review_status": "PROPOSED",
-      "reviews": [],
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P36-D001-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ],
       "alternative_for_review": "PRECISION_OR_DIGITIZATION_RESIDUAL — if the reviewer treats the 1.7 % mean / 3.6 % max residual as graphical-reading uncertainty rather than fit error."
     },
     {
@@ -293,8 +429,16 @@
         "digitization envelope"
       ],
       "rationale": "The plotted line and the literal equation give incompatible values beyond the conservative digitization envelope.",
-      "review_status": "PROPOSED",
-      "reviews": [],
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P38-D001-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ],
       "alternative_for_review": "MISSING_OR_INSUFFICIENT_SOURCE_INFORMATION — if the reviewer judges that the unstated yield placement, diameter definition or normalisation (not supplied, not tuned) is the likely reason."
     },
     {
@@ -310,8 +454,16 @@
         "Table 2 single-pipe and PiP experiments"
       ],
       "rationale": "Analytical pressures are 43 % / 26 % below the printed experiments; the arithmetic reproduces the printed analytical values within 0.16 %.",
-      "review_status": "PROPOSED",
-      "reviews": []
+      "review_status": "APPROVED",
+      "reviews": [
+        {
+          "review_id": "P38-D002-TAX-001",
+          "decision": "APPROVED",
+          "reviewer": "Zhiqiang Gu",
+          "date": "2026-09-28",
+          "note": "Approved as proposed and documented in docs/DISCREPANCY_TAXONOMY.md (owner review of PR #8). Labels only."
+        }
+      ]
     }
   ]
 }

@@ -28,13 +28,11 @@ Parallel/secondary. Keep evidence capture synchronized without displacing engine
 
 ## Q8 — Paper A evidence hardening (G1–G5)
 
-**Priority: HIGHEST (active).** The PR `feature/paper-a-evidence-hardening` implements G2–G4 and prepares G1. Owner actions:
-- approve D-007;
-- review the taxonomy labels (`engiproof taxonomy-review`);
-- record G1 decisions (`publication/PAPER_A_ENGIPROOF/G1_DECISION_CANDIDATES.md`);
-- run `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` where the P40–P43 intakes are.
-
-G5 is optional. Then manuscript synthesis. No P46.
+**Priority: HIGHEST (active).**
+- **Done:** D-007 approved; taxonomy approved; G1 decisions recorded (D-008).
+- **Remaining for PR #8:** incorporate the owner's local `29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat` results for P40–P43, or record them explicitly as still pending.
+- **After PR #8 merges:** finalise the manuscript in PR #9 (Appendix A, related-work references, P42 author list, rebuild).
+- G5 optional. No P46.
 
 ## Q9 — Runtime hardening: portable P38 runner
 

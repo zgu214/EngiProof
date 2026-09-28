@@ -11,7 +11,7 @@
   "last_green_verification": "28_VERIFY_P45_PHASE1_WINDOWS.bat",
   "last_green_status": "PASS",
   "next_study": "PAPER_A_MANUSCRIPT_SYNTHESIS",
-  "next_action": "Owner: approve D-007, review taxonomy labels, record G1 decisions, run 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat. Then Paper A manuscript synthesis from PAPER_A_OUTLINE.md. No P46.",
+  "next_action": "Incorporate the owner's local 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat results (P40-P43) into PR #8, or record them as still pending; after PR #8 merges, finalise the Paper A manuscript (PR #9). No P46.",
   "qualification": "NOT_GRANTED",
   "open_evidence_items": [
     "P40-D001",
@@ -43,9 +43,8 @@
   "private_source_policy": "Copyrighted PDFs remain outside the public repository; preserve canonical basename, DOI and SHA-256.",
   "last_confirmed_local_date": "2026-09-27",
   "pending_verification": null,
-  "pending_owner_decisions": [
-    "D-007 cross-environment recomputation equivalence",
-    "G2 taxonomy label review (19 PROPOSED)",
-    "G1 discrepancy decisions (publication/PAPER_A_ENGIPROOF/G1_DECISION_CANDIDATES.md)"
+  "pending_owner_decisions": [],
+  "pending_owner_actions": [
+    "Run 29_RECORD_INGESTION_SUMMARIES_WINDOWS.bat locally and provide the P40-P43 ingestion_summary.json results"
   ]
 }

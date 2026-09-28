@@ -44,7 +44,7 @@ Local Windows verification `28_VERIFY_P45_PHASE1_WINDOWS.bat` reported `=== P45 
 - Qualification remains `NOT_GRANTED`. P45 stays outside the live registry.
 
 
-## D-007 — Cross-environment recomputation equivalence (PROPOSED, awaiting owner approval)
+## D-007 — Cross-environment recomputation equivalence (APPROVED by Zhiqiang Gu, 28 September 2026)
 
 The first CI run on Windows and macOS, and the first CI run of the frozen non-live studies, found the following (failure register F20/F21 in `publication/PAPER_A_ENGIPROOF/PAPER_A_READINESS_REVIEW.md`). None of it changes engineering evidence.
 
@@ -53,3 +53,37 @@ The first CI run on Windows and macOS, and the first CI run of the frozen non-li
 - **P45 scoped tolerance.** A path-scoped recomputation tolerance (`rel 1e-6`, `abs 1e-7`) applies only to `.appendix1_checks.independent_fe_comparison` in `phase1_summary.json`. The study-wide default (`1e-9`/`1e-12`) is unchanged, and the engineering statement `appendix1_matches_independent_fe` (residual < 1e-6) is compared exactly. Measured variation: ≤ 2.9e-7 abs on FE outputs; ≤ 1e-8 abs on the ~3e-8 residual.
 - Environment fields (`verification_environment`, `frozen_environment_declared`) are verification output only. `ENVIRONMENT_KEYS` is not broadened, and frozen evidence is untouched.
 - None of these is an engineering acceptance or validation tolerance.
+
+Approval conditions, as stated by the owner:
+- D-007 covers cross-environment recomputation equivalence only.
+- No frozen engineering result changes, no discrepancy is closed, and qualification is unchanged.
+- **Scoped P45 tolerance.** Accepted for the Appendix-1 independent FE comparison only; the study default is unchanged, and `appendix1_matches_independent_fe` is still checked exactly.
+- **Hash inheritance.** Accepted provided the referenced artifact's own classification controls the inherited one.
+- **Path-separator keys.** Treated as `ENVIRONMENT_METADATA` only when the normalised keys match and all corresponding values are still compared.
+- **P38 runner cleanup.** Stays as WORK_QUEUE Q9; no silent regeneration now.
+
+
+## D-008 — Taxonomy approval and first human discrepancy decisions (G1/G2)
+
+Approved by Zhiqiang Gu on 28 September 2026.
+
+- **Taxonomy (G2).** The controlled taxonomy and the proposed mapping of all 19 records are approved as documented. Approvals are recorded append-only (`engiproof/contracts/discrepancy_taxonomy_mapping.json`, one `*-TAX-001` review per record). No observation, value, status, qualification or frozen assessment was rewritten to apply the labels, and legacy `classification_hint` values stay unchanged.
+- **Decisions (G1).** Recorded in `engiproof/studies/<ID>/discrepancy_decisions.json`, each with reviewer, rationale and evidence references:
+
+  | Record | Decision | Effect |
+  |---|---|---|
+  | P45-D004 | ACCEPTED_WITH_RATIONALE | Unblocks |
+  | P41-D002 | ACCEPTED_WITH_RATIONALE | Unblocks |
+  | P43-D001 | DEFERRED | Keeps blocking; the closure requirements ask for an erratum or author clarification. It was not accepted just to clear the gate. |
+  | P43-D002 | DEFERRED | Keeps blocking (same reason). |
+  | P44-D001 | DEFERRED | Keeps blocking. |
+  | P16-D001 | BOUNDED | Formalises the existing bounded status. |
+  | P36-D001 | BOUNDED | Formalises the existing bounded status; in-sample, not held-out validation. |
+
+- Gate evidence before and after: `publication/PAPER_A_ENGIPROOF/G1_GATE_EVIDENCE.json`.
+  - P45 blockers go from 6 to 5.
+  - P41 blockers go from 2 to 1.
+  - P43 and P44 are unchanged.
+  - P16 and P36 stay ready.
+- No discrepancy record was edited. Qualification remains NOT_GRANTED everywhere.
+

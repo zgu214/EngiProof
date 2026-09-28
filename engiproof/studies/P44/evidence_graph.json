@@ -186,6 +186,23 @@
       "generated_by": [
         "engiproof.evidence_graph_sync/1.0"
       ]
+    },
+    {
+      "id": "AUTO-DECISION-P44-D001-DEC-001",
+      "kind": "discrepancy_decision",
+      "label": "DEFERRED decision for P44-D001",
+      "evidence_class": "INDEPENDENT",
+      "status": "DEFERRED",
+      "source_refs": [
+        "P44-D001-DEC-001",
+        "P44-D001",
+        "engiproof/studies/P44/study.json#P44-D001"
+      ],
+      "reviewer": "Zhiqiang Gu",
+      "qualification_effect": "NONE",
+      "generated_by": [
+        "engiproof.evidence_graph_sync/1.0"
+      ]
     }
   ],
   "edges": [
@@ -258,17 +275,27 @@
       "from": "AUTO-DISCREPANCY-P44-D001",
       "to": "AUTO-ASSESSMENT-P44-D001",
       "relation": "classified_by"
+    },
+    {
+      "from": "AUTO-DISCREPANCY-P44-D001",
+      "to": "AUTO-DECISION-P44-D001-DEC-001",
+      "relation": "reviewed_by"
+    },
+    {
+      "from": "AUTO-ASSESSMENT-P44-D001",
+      "to": "AUTO-DECISION-P44-D001-DEC-001",
+      "relation": "informs_decision"
     }
   ],
   "qualification": "NOT_CLAIMED",
   "sync": {
     "schema_version": "engiproof.evidence_graph_sync/1.0",
-    "added_nodes": 7,
-    "added_edges": 7,
+    "added_nodes": 1,
+    "added_edges": 2,
     "tool_count": 4,
     "comparison_count": 4,
     "discrepancy_count": 1,
-    "decision_count": 0,
+    "decision_count": 1,
     "rule": "Synchronization is additive: existing hand-authored nodes/edges are preserved and qualification is never promoted."
   }
 }
