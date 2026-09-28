@@ -223,3 +223,12 @@ Remaining build messages, all benign:
   - "left pending at ingestion" (§3, a technical state).
 - The manuscript is 28 pages with 0 undefined references, and the facts check passes 20/0/0.
 - §1: the evidence-chain passage is rewritten as full sentences at the owner's request ("…explicit at every step. The resulting evidence chain is [chain]. Engineering qualification remains outside this chain."). The chain itself is unchanged.
+
+## Five editorial fixes — 28 September 2026 (owner)
+
+- §1 "What is not claimed": "does not quantify general extraction accuracy or recall because no labelled benchmark corpus was used", with the rest of the list unchanged. The extra AI-development sentence is removed; the formal AI declaration remains.
+- §3.3: "No general extraction accuracy or recall metric is reported (PA-05)".
+- §6.3: "projected effect on the promotion gates" replaces "dry-run effect on the gates".
+- §10.2: "their representation is not yet harmonised across studies" replaces "aligning them is a housekeeping item".
+- PA-30 claim text: "Persistent repository records are sufficient to reconstruct the recorded project state." Status stays SUPPORTED. Appendix A regenerated.
+- No evidence, number, status, decision, citation or qualification change.
