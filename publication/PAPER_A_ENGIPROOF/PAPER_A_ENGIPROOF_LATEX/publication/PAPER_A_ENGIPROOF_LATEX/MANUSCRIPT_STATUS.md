@@ -66,3 +66,7 @@ The draft now follows `publication/PAPER_A_ENGIPROOF/PAPER_A_OUTLINE.md`. It has
   - computational-reproducibility paragraph added (Peng 2011; Sandve et al. 2013; Stodden et al. 2018; Collberg & Proebsting 2016; NASEM 2019; Oberkampf & Roy 2010; all DOIs checked against Crossref);
   - acknowledgements TODO removed; acknowledgements will be added at submission.
 - No TODO markers remain in the rendered draft.
+- §12.3 rewritten per the owner's instruction:
+  - Paper2Agent, ScientistOne and ScientistTwo are treated only as contemporary related work, described factually with shared features and differences;
+  - no priority, chronology or inspiration claim is made in either direction;
+  - they are not engineering validation evidence.

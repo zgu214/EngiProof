@@ -14,18 +14,30 @@ A system judged only by how often it reproduces printed numbers would be rewarde
 The most transferable lesson came from the framework's own verification. A check that recomputes in place destroys the distinction between reproducing evidence and replacing it. Only once verification was isolated and classified did cross-platform recomputation noise become visible. Only when it ran on further operating systems did platform-dependent provenance and an ill-conditioned independent check show up. Each case was then handled without touching frozen evidence. We expect the same pattern in any research-software evidence pipeline that reruns its own analyses.
 
 \subsection{Related work and context}
-Two strands of related work are relevant as context, not as validation evidence:
+Three contemporary systems are relevant as context. They are not validation evidence for the P40--P45 results.
 \begin{itemize}[leftmargin=1.5em]
-  \item \textbf{Papers as agents.} Paper2Agent converts a research paper and its code base into an interactive agent: tools served through the Model Context Protocol that users can query in natural language \cite{Miao2026Paper2Agent}. \engiproof{} exposes its callable methods through the same protocol, but it adds an evidence envelope and a qualification boundary to every result.
-  \item \textbf{Chains of evidence.} ScientistOne introduces \emph{Chain-of-Evidence}: every claim produced by a research system must be traceable, through a recorded chain of supporting claims, to a grounding source \cite{Meng2026ScientistOne}. ScientistTwo extends this line to a fully autonomous multi-agent research pipeline \cite{Nam2026ScientistTwo}.
+  \item \textbf{Paper2Agent} turns a research paper and its code base into an executable, interactive agent: tools served through the Model Context Protocol that users can query in natural language \cite{Miao2026Paper2Agent}.
+  \item \textbf{ScientistOne} introduces \emph{Chain-of-Evidence}: every claim a research system produces must be traceable, through a recorded chain of supporting claims, to a grounding source \cite{Meng2026ScientistOne}.
+  \item \textbf{ScientistTwo} describes an autonomous research workflow, a multi-agent pipeline running from problem formulation to manuscript \cite{Nam2026ScientistTwo}.
 \end{itemize}
-They are related to \engiproof{} at the level of architecture. The contribution here differs in three ways:
+
+\engiproof{} shares some features with these systems:
 \begin{itemize}[leftmargin=1.5em]
-  \item the engineering-specific separation of published, independent and solver evidence;
-  \item preservation of source inconsistencies, with a human decision boundary;
-  \item non-mutating verification with an explicit qualification boundary.
+  \item \textbf{With Paper2Agent:} published methods become callable tools, served through the same protocol.
+  \item \textbf{With ScientistOne:} claims are traced to their sources.
 \end{itemize}
-\engiproof{} shares the traceability principle with this line of work but deliberately keeps a human decision boundary. Neither strand provides engineering validation of the P40--P45 evidence.
+
+It differs from them in its engineering-specific evidence model:
+\begin{itemize}[leftmargin=1.5em]
+  \item evidence classes that keep published, independent and solver-generated results apart;
+  \item source-bounded reproduction, with no tuning or inferred inputs;
+  \item methodologically independent checks that decide the direction of a conflict;
+  \item preservation of source discrepancies in a controlled taxonomy;
+  \item append-only human dispositions that gate promotion;
+  \item non-mutating verification;
+  \item an explicit boundary between verification and engineering qualification.
+\end{itemize}
+Unlike an autonomous research workflow, \engiproof{} keeps human decisions as a required step for discrepancies and qualification.
 
 \paragraph{Computational reproducibility and verification.}
 The framework also builds on the computational-reproducibility literature.
