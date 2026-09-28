@@ -164,3 +164,4 @@ Remaining build messages, all benign:
 - A duplicate `page.1` hyperref destination (elsarticle highlights page plus title page).
 - One underfull line (badness 1796) in §6 caused by a long monospaced path.
 - BibTeX: "empty pages in Bueno1994". The SPE conference paper has no page range in the source records; it is cited by paper number and DOI.
+- PA-06 (owner correction, 28 September 2026): the claim now reads "Published methods re-implemented from the source reproduce or closely agree with published values for bounded targets, with residual differences reported explicitly at target level", consistent with SA-3. Status stays SUPPORTED. Appendix A regenerated; claim counts unchanged (20 SUPPORTED / 4 PARTIALLY_SUPPORTED / 3 NOT_SUPPORTED_YET / 3 OUT_OF_SCOPE).
