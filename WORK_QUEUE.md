@@ -28,7 +28,7 @@ Parallel/secondary. Keep evidence capture synchronized without displacing engine
 
 ## Q8 — Paper A evidence hardening (G1–G5)
 
-**Priority: HIGHEST (active).**
+**State: COMPLETED** (PR #8 merged `be33392`; manuscript Draft v0.2.1 merged in PR #9, `36dfdcb`).
 - **Done:** D-007 approved; taxonomy approved; G1 decisions recorded (D-008).
 - **Done (28 Sep 2026):** machine-generated ingestion summaries for P40–P44 from the owner's local intakes (G3 closed). PR #8 is ready to merge on the owner's yes.
 - **After PR #8 merges:** finalise the manuscript in PR #9 (Appendix A, related-work references, P42 author list, rebuild).
@@ -41,4 +41,21 @@ Parallel/secondary. Keep evidence capture synchronized without displacing engine
 ## Q10 — Windows dispatcher exit codes (F22)
 
 **Fixed in PR #8.** `engiproof.cmd` returned 0 for every command. Windows CI now asserts that exit codes propagate. After pulling, re-run any local Windows batch whose PASS mattered. Verification of P40–P45 on Windows is covered by CI.
+
+## Q11 — Paper A submission-quality refinement
+
+**Priority: HIGHEST (active, from 28 Sep 2026).** The evidence base is closed. This stage adds no new evidence cases and no P46, and it does not change P40–P45 evidence, decisions or qualification.
+
+0. **Technical-prose pass (first, before journal format).** Rewrite for style only, removing AI-style list-heavy and formulaic prose. Numbers, evidence claims, decisions, citations, qualification boundaries and technical meaning do not change. A token audit checks that numbers, citation keys, cross-references and evidence identifiers are unchanged before and after.
+1. **Journal format.** Target: Advances in Engineering Software (`docs/PUBLICATION_STRATEGY.md`), Elsevier `elsarticle`. Required front and back matter:
+   - highlights and keywords;
+   - CRediT statement;
+   - competing interests;
+   - data and code availability;
+   - the Elsevier generative-AI declaration.
+2. **Figures and tables.** Redraw figures from repository data, and regenerate the tables from a tagged release.
+3. **Wording compression.** Convert list-heavy draft prose into journal prose and meet the length target.
+4. **Reproducibility references.** Complete and verify references; tag a software release (DOI if available).
+5. **Final source audit.** Check every number against its repository artifact, and every citation against its publisher record.
+6. **Final PDF review.**
 
