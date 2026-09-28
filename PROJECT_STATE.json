@@ -11,7 +11,7 @@
   "last_green_verification": "28_VERIFY_P45_PHASE1_WINDOWS.bat",
   "last_green_status": "PASS",
   "next_study": "PAPER_A_SUBMISSION_REFINEMENT",
-  "next_action": "Paper A submission refinement complete on develop (PRs #10-#14; Q11 steps 0-3, 5 and 6). Next: release v0.2.0 (release-prep PR into develop, develop -> main PR, tag v0.2.0 on main with Zenodo archiving), then add the Zenodo DOI to reference [16] and CITATION.cff and rebuild the submission PDF. Tag/release only on the owner's explicit approval. No new evidence cases; no P46.",
+  "next_action": "EngiProof v0.2.0 released (tag v0.2.0 = d0d96eb; Zenodo version DOI 10.5281/zenodo.23017727, concept DOI 10.5281/zenodo.23017726). Paper A reference [16] and CITATION.cff carry the DOI. Next: owner re-checks the official Advances in Engineering Software guide for authors, then submits Paper A. No new evidence cases; no P46.",
   "qualification": "NOT_GRANTED",
   "open_evidence_items": [
     "P40-D001",
@@ -45,7 +45,16 @@
   "pending_verification": null,
   "pending_owner_decisions": [],
   "pending_owner_actions": [],
-  "zenodo_archiving": "Enabled for zgu214/EngiProof by the owner on 2026-09-28; the DOI is minted when the v0.2.0 GitHub release is published.",
+  "zenodo_archiving": "Enabled for zgu214/EngiProof by the owner on 2026-09-28.",
+  "latest_release": {
+    "tag": "v0.2.0",
+    "commit": "d0d96eb82c63236781d553423442275e50d2e38d",
+    "github_release": "https://github.com/zgu214/EngiProof/releases/tag/v0.2.0",
+    "zenodo_record": "https://zenodo.org/records/23017727",
+    "version_doi": "10.5281/zenodo.23017727",
+    "concept_doi": "10.5281/zenodo.23017726",
+    "zenodo_metadata_verified": "Title, author Gu Zhiqiang, version v0.2.0, Software, Apache License 2.0; archive zgu214-EngiProof-d0d96eb (owner screenshots, 2026-09-28)"
+  },
   "paper_a_target_journal": "Advances in Engineering Software (Elsevier, elsarticle); confirmed by the owner on 2026-09-28",
   "last_green_verification_note": "Authoritative local P45 Windows verification: re-run on 2026-09-28 after the F22 dispatcher fix, on PR #8 head bab6764, Windows 10 AMD64, CPython 3.12.10, NumPy 2.5.3. verify P45 = PASS_SOURCE_EXTERNAL (BYTE_ONLY 1, NUMERICAL_NONMATERIAL 1, 0 material); batch banner PASS with exit codes checked. The pre-F22 banner of 2026-09-27 is superseded.",
   "last_green_verification_post_f22": true,

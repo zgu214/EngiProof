@@ -170,3 +170,10 @@ Remaining build messages, all benign:
 
 - The data and code availability statement keeps "openly available" and adds "under the Apache License 2.0". It now states that the third-party publications used as sources retain their original rights and are neither redistributed nor relicensed.
 - The PDF is 30 pages because references [13]–[16] reflow onto a new page. No number, citation or claim changed.
+
+## Release v0.2.0 and Zenodo DOI — 28 September 2026 (WORK_QUEUE Q11 step 4)
+
+- The GitHub release is v0.2.0, and tag `v0.2.0` points at `d0d96eb82c63236781d553423442275e50d2e38d` on `main`. The tree at that tag is identical to `develop` at the time, so the generated tables, Appendix A and the facts check correspond to the tagged release.
+- Zenodo record https://zenodo.org/records/23017727. The version DOI is 10.5281/zenodo.23017727, and the concept DOI is 10.5281/zenodo.23017726.
+- Verified from the owner's screenshots: title, author Gu, Zhiqiang, version v0.2.0, Software, open access, Apache License 2.0, and archive folder `zgu214-EngiProof-d0d96eb`.
+- Reference [16] now carries the version DOI. The data-availability statement adds "archived on Zenodo (version 0.2.0)".

@@ -44,7 +44,7 @@ Parallel/secondary. Keep evidence capture synchronized without displacing engine
 
 ## Q11 — Paper A submission-quality refinement
 
-**State (28 Sep 2026):** steps 0, 1, 2, 5 and 6 are done on `develop` (PRs #10–#14): prose pass, journal format, generated tables with the facts check, and the final source audit SA-1..SA-10 (D-009). Step 3 was covered by the prose pass and the abstract compression. The final PDF review is done. Remaining: step 4, release v0.2.0. This is the release-prep PR, then a develop → main PR, then tag `v0.2.0` on main with Zenodo archiving, then the DOI goes into reference [16] and CITATION.cff. Tagging happens only on the owner's explicit approval.
+**State (28 Sep 2026):** steps 0, 1, 2, 5 and 6 are done on `develop` (PRs #10–#14): prose pass, journal format, generated tables with the facts check, and the final source audit SA-1..SA-10 (D-009). Step 3 was covered by the prose pass and the abstract compression. The final PDF review is done. Step 4 is done: v0.2.0 was released on 28 Sep 2026 (tag `v0.2.0` = `d0d96eb`). The Zenodo version DOI is 10.5281/zenodo.23017727 and the concept DOI is 10.5281/zenodo.23017726. The DOI is in reference [16] and CITATION.cff. Remaining before submission: the owner re-checks the official AES guide for authors.
 
 **Priority: HIGHEST (active, from 28 Sep 2026).** The evidence base is closed. This stage adds no new evidence cases and no P46, and it does not change P40–P45 evidence, decisions or qualification.
 
