@@ -232,3 +232,8 @@ Remaining build messages, all benign:
 - §10.2: "their representation is not yet harmonised across studies" replaces "aligning them is a housekeeping item".
 - PA-30 claim text: "Persistent repository records are sufficient to reconstruct the recorded project state." Status stays SUPPORTED. Appendix A regenerated.
 - No evidence, number, status, decision, citation or qualification change.
+
+## Final PDF fixes — 28 September 2026 (owner, before approval in Editorial Manager)
+
+- §6.3: "Proposed dispositions, each with their projected effect on the promotion gates, were prepared with AI assistance; the final decisions were made by the human reviewer."
+- §4: the paragraph "Three aspects of this practice …" is kept together by a local penalty, so its first line no longer sits alone at the bottom of page 7. Layout only.
