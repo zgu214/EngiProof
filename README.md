@@ -197,6 +197,10 @@ v0.2.0 development builds paper-ingestion and evidence automation on top of the 
 
 Use `engiproof discrepancy-audit P40`, `engiproof assess-discrepancies P40`, `engiproof discrepancy-gate P40`, and `engiproof discrepancy-audit-all`. The engine classifies review/escalation without deciding physical acceptability. P40-D001 is the first real blocking case.
 
+## Citation
+
+Cite the archived release: Gu, Z. (2026). *EngiProof: From Published Research to Verified Engineering* (v0.2.0). Zenodo. https://doi.org/10.5281/zenodo.23017727. The concept DOI https://doi.org/10.5281/zenodo.23017726 always resolves to the latest version. See also `CITATION.cff`.
+
 ## Licence
 
 EngiProof is released under the [Apache License 2.0](LICENSE.txt). Copyright 2026 Zhiqiang Gu; see [NOTICE](NOTICE).
