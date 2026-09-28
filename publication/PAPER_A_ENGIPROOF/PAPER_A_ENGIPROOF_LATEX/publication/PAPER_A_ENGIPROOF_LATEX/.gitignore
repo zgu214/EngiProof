@@ -1,0 +1,12 @@
+# LaTeX build outputs (rebuild with latexmk or BUILD_LATEX_WINDOWS.bat); not tracked
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.spl
+*.synctex.gz
+*.toc
+main.pdf
